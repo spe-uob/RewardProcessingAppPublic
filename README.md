@@ -11,7 +11,7 @@ Our mood greatly impacts our decision-making skills by influencing the type of i
 Presently, there is a wide array of research focusing on the important role of emotions in decision making and how the change in our mental processes and logic impact our critical-thinking skills. However, most of this research is based on artificial mood-manipulation strategies in controlled laboratory settings. This makes it difficult for the results from these studies to ascertain that this reflects our true decision-making capabilities. This brings us to the importance of our app, where we are able to monitor decision-making skills in response to day-to-day fluctuations in a real-time manner using a gamified approach.
 
 ## Our Client
-Our client is Conor Houghton, Associate Professor in Computer Science at University of Bristol.
+Our client is Conor Houghton, an associate professor in Computer Science at University of Bristol.
 
 ## Group Members
 - Kaushiki Mudgal
