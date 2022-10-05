@@ -1,7 +1,8 @@
+# Studying Reward Processing Mobile App
+
 ## Table of Contents
 - [Overview](#overview)
-
-# Studying Reward Processing Mobile App
+- [Group Members](#group-members)
 
 ## Overview
 Our mood greatly impacts our decision-making skills by influencing the type of information we attend to and how we process it. According to research, individuals with depression tend to have negative responses to losses, leading them to make risky decisions. In contrast, those with anxiety are likely to make less risky decisions as they need certainty of outcomes to gain the sense of security.
