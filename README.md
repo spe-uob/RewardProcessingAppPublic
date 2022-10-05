@@ -1,3 +1,6 @@
+## Table of Contents
+- [Overview](#overview)
+
 # Studying Reward Processing Mobile App
 
 ## Overview
