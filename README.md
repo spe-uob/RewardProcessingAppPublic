@@ -13,6 +13,9 @@ Presently, there is a wide array of research focusing on the important role of e
 ## Our Client
 Our client is Conor Houghton, an associate professor in Computer Science at University of Bristol.
 
+## Stakeholder
+Client(Conor Houghton from UoB), RewardProcessingApp Team, mentor (Kejia Zhang), end-user(people experiencing mood disorders)
+
 ## Group Members
 - Kaushiki Mudgal
 - Warintorn Palarit
