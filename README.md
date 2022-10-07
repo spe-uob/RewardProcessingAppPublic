@@ -3,6 +3,7 @@
 ## Table of Contents
 - [Project Description](#project-description)
 - [Our Client](#our-client)
+- [Stakeholders](#Stakeholders)
 - [Group Members](#group-members)
 
 ## Project Description
@@ -13,7 +14,7 @@ Presently, there is a wide array of research focusing on the important role of e
 ## Our Client
 Our client is Conor Houghton, an associate professor in Computer Science at University of Bristol.
 
-## Stakeholder
+## Stakeholders
 Client(Conor Houghton from UoB), RewardProcessingApp Team, mentor (Kejia Zhang), end-user(people experiencing mood disorders)
 
 ## Group Members
