@@ -17,6 +17,10 @@ Our client is Conor Houghton, an associate professor in Computer Science at Univ
 ## Stakeholders
 Client(Conor Houghton from UoB), RewardProcessingApp Team, mentor (Kejia Zhang), end-user(who are easily affected by mood, especially experiencing mood disorders.)
 
+## User Stories
+- As a player
+- As a researcher
+
 ## Group Members
 - Kaushiki Mudgal
 - Warintorn Palarit
