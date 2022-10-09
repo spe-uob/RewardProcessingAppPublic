@@ -4,7 +4,7 @@
 - [Project Description](#project-description)
 - [Our Client](#our-client)
 - [Stakeholders](#stakeholders)
-- [User Stories](#user-sotries)
+- [User Stories](#user-stories)
 - [Group Members](#group-members)
 
 ## Project Description
@@ -12,11 +12,14 @@ Our mood greatly impacts our decision-making skills by influencing the type of i
 
 Presently, there is a wide array of research focusing on the important role of emotions in decision making and how the change in our mental processes and logic impact our critical-thinking skills. However, most of this research is based on artificial mood-manipulation strategies in controlled laboratory settings. This makes it difficult for the results from these studies to ascertain that this reflects our true decision-making capabilities. This brings us to the importance of our app, where we are able to monitor decision-making skills in response to day-to-day fluctuations in a real-time manner using a gamified approach.
 
-## Our Client
-Our client is Conor Houghton, an associate professor in Computer Science at University of Bristol, and Kimberley Beaumont, a postgraduate student in Digital Health and Care at University of Bristol.
+## Our Clients
+Our clients are Conor Houghton, an associate professor in Computer Science at University of Bristol, and Kimberley Beaumont, a postgraduate student in Digital Health and Care at University of Bristol.
 
 ## Stakeholders
-Client(Conor Houghton from UoB), RewardProcessingApp Team, mentor (Kejia Zhang), end-user(who are easily affected by mood, especially experiencing mood disorders.)
+- Client (Conor Houghton from UoB)
+- RewardProcessingApp Team
+- Mentor (Kejia Zhang)
+- End-user (who are easily affected by mood, especially those with mood disorders)
 
 ## User Stories
 - As a player, I want to play this game with the same strategy as the real-world settings, know the impact of mood on decision-making and to get the state of mind.
