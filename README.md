@@ -1,4 +1,4 @@
-# Studying Reward Processing Mobile App
+# Studying Reward Processing Through a Mobile App
 
 ## Table of Contents
 - [Project Description](#project-description)
