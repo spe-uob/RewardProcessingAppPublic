@@ -23,10 +23,10 @@ Our clients are Conor Houghton, an associate professor in Computer Science at Un
 
 ## User Stories
 ### Player
-- As a player, I want to play this game with the same strategy as the real-world settings, know the impact of mood on decision-making and to get the state of mind.
+As a player, I want to play this game with the same strategy as the real-world settings, know the impact of mood on decision-making and to get the state of mind.
 
 ### Researcher
-- As a researcher, I want players to have a true naturally-occurring mood states in the game and get their mental state according to the game data.
+As a researcher, I want players to have a true naturally-occurring mood states in the game and get their mental state according to the game data.
 
 ## Group Members
 - Kaushiki Mudgal
