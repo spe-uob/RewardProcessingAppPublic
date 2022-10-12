@@ -32,4 +32,4 @@ Our clients are Conor Houghton, an associate professor in Computer Science at Un
 - Haixin Li
 - Chongqi Xue
 
-Supported by the mentor Kejia Zhang
+### Supporting Mentor: Kejia Zhang
