@@ -2,7 +2,7 @@
 
 ## Table of Contents
 - [Project Description](#project-description)
-- [Our Client](#our-client)
+- [Our Clients](#our-clients)
 - [Stakeholders](#stakeholders)
 - [User Stories](#user-stories)
 - [Group Members](#group-members)
