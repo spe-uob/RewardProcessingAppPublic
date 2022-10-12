@@ -5,6 +5,7 @@
 - [Our Clients](#our-clients)
 - [Stakeholders](#stakeholders)
 - [User Stories](#user-stories)
+- [License](#license)
 - [Group Members](#group-members)
 
 ## Project Description
@@ -27,6 +28,9 @@ As a player, I want to play this game with the same strategy as the real-world s
 
 ### Researcher
 As a researcher, I want players to have a true naturally-occurring mood states in the game and get their mental state according to the game data.
+
+## License
+This project is distrubited under the [GNU Affero General Public License v3.0](LICENSE.txt)
 
 ## Group Members
 - Kaushiki Mudgal
