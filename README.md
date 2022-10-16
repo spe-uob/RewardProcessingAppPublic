@@ -17,7 +17,7 @@ Presently, there is a wide array of research focusing on the important role of e
 Our clients are Conor Houghton, an associate professor in Computer Science at University of Bristol, and Kimberley Beaumont, a postgraduate student in Digital Health and Care at University of Bristol.
 
 ## Stakeholders
-- Client (Conor Houghton from UoB)
+- Clients- Professor Ian Penton-Voak 
 - RewardProcessingApp Team
 - Mentor (Kejia Zhang)
 - End-user (who are easily affected by mood, especially those with mood disorders)
