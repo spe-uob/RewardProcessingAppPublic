@@ -18,6 +18,7 @@ Our clients are Conor Houghton, an associate professor in Computer Science at Un
 
 ## Stakeholders
 - Clients-Professor Conor Houghton, Professor Ian Penton-Voak and, Ms Kimberly Beaumont
+- UoB department of Digital Health and Care 
 - RewardProcessingApp Team
 - Mentor (Kejia Zhang)
 - End-user (who are easily affected by mood, especially those with mood disorders)
