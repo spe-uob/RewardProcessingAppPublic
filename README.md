@@ -17,7 +17,7 @@ Presently, there is a wide array of research focusing on the important role of e
 Our clients are Conor Houghton (an associate professor in Computer Science at University of Bristol), Ian Penton-Voak (a professor in Evolutionary Psychology at University of Bristol), and Kimberley Beaumont (a postgraduate student in Digital Health and Care at University of Bristol).
 
 ## Stakeholders
-- Clients——Conor Houghton, Ian Penton-Voak, and Kimberly Beaumont
+- Clients—Conor Houghton, Ian Penton-Voak, and Kimberly Beaumont
 - University of Bristol's Department of Digital Health and Care
 - Participants of Questionnaire and Surveys
 - RewardProcessingApp Team
