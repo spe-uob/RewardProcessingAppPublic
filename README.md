@@ -6,7 +6,7 @@
 - [Stakeholders](#stakeholders)
 - [User Stories](#user-stories)
 - [License](#license)
-- [Group Members](#group-members)
+- [Team Members](#team-members)
 
 ## Project Description
 Our mood greatly impacts our decision-making skills by influencing the type of information we attend to and how we process it. According to research, individuals with depression tend to have negative responses to losses, leading them to make risky decisions. In contrast, those with anxiety are likely to make less risky decisions as they need certainty of outcomes to gain the sense of security.
@@ -34,7 +34,7 @@ As a researcher, I want players to have a true naturally-occurring mood states i
 ## License
 This project is distrubited under the [GNU Affero General Public License v3.0](LICENSE.txt)
 
-## Group Members
+## Team Members
 - Kaushiki Mudgal
 - Warintorn Palarit
 - Yichen Zhao
