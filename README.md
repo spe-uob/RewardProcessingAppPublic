@@ -14,6 +14,17 @@ Our mood greatly impacts our decision-making skills by influencing the type of i
 
 Presently, there is a wide array of research focusing on the important role of emotions in decision making and how the change in our mental processes and logic impact our critical-thinking skills. However, most of this research is based on artificial mood-manipulation strategies in controlled laboratory settings. This makes it difficult for the results from these studies to ascertain that this reflects our true decision-making capabilities. This brings us to the importance of our app, where we are able to monitor decision-making skills in response to day-to-day fluctuations in a real-time manner using a gamified approach. Thus,the main objective of this project is to find a method to comprehensively assess emotions and decision making, and our approach is to design a mobile app(Android).
 
+## Developer Guide
+### Languages
+* HTML
+* JavaScript
+* C#
+### Platform
+* Unity
+  Unity is a cross-platform game engine developed by Unity Technologies, The engine support a variety of desktop, mobile, console and virtual reality platforms. 
+* Flutter
+  Flutter is Google's open-source build user interface (UI) toolkit that helps developers efficiently build multi-platform, beautiful applications across mobile, Web, desktop, and embedded platforms from a single code base.
+
 ## Deployment
 To connect Flutter and unity to achieve the purpose of embedding Unity with Flutter, use Flutter-union-View-Widget.
 The Flutter-Unity-View-Widget provides a dependency export plug-in for Unity to build the Unity project into Android and IOS dependency libraries. The Flutter-Unity-View-Widget provides a component library for Flutter, rendering Unity views as components, and provides a Flutter, Unity bidirectional communication interface.
