@@ -2,6 +2,7 @@
 
 ## Table of Contents
 - [Project Description](#project-description)
+- [Dveloper Guide](#Dveloper Guide)
 - [Deployment](#Deployment)
 - [Our Clients](#our-clients)
 - [Stakeholders](#stakeholders)
