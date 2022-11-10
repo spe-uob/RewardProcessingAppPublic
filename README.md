@@ -2,7 +2,7 @@
 
 ## Table of Contents
 - [Project Description](#project-description)
-- [Dveloper Guide](#Dveloper Guide)
+- [Developer Guide](#Developer Guide)
 - [Deployment](#Deployment)
 - [Our Clients](#our-clients)
 - [Stakeholders](#stakeholders)
@@ -21,9 +21,9 @@ Presently, there is a wide array of research focusing on the important role of e
 * JavaScript
 * C#
 ### Platform
-* Unity
+* Unity  
   Unity is a cross-platform game engine developed by Unity Technologies, The engine support a variety of desktop, mobile, console and virtual reality platforms. 
-* Flutter
+* Flutter  
   Flutter is Google's open-source build user interface (UI) toolkit that helps developers efficiently build multi-platform, beautiful applications across mobile, Web, desktop, and embedded platforms from a single code base.
 
 ## Deployment
