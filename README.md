@@ -20,6 +20,7 @@ Presently, there is a wide array of research focusing on the important role of e
 * HTML
 * JavaScript
 * C#
+* Dart
 ### Platform
 * Unity  
   Unity is a cross-platform game engine developed by Unity Technologies, The engine support a variety of desktop, mobile, console and virtual reality platforms. 
