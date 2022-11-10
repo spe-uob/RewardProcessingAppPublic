@@ -26,6 +26,8 @@ Presently, there is a wide array of research focusing on the important role of e
   Unity is a cross-platform game engine developed by Unity Technologies, The engine support a variety of desktop, mobile, console and virtual reality platforms. 
 * Flutter  
   Flutter is Google's open-source build user interface (UI) toolkit that helps developers efficiently build multi-platform, beautiful applications across mobile, Web, desktop, and embedded platforms from a single code base.
+* Dart
+    Dart is definitily Flutter's best friend, Dart allows Flutter to avoid the need for a separate declarative layout language like JSX and XML. The layout of Dart is declarative and programmatic, and it makes reading and visualizing it easy, quickly and effortlessly for developers.
 
 ## Deployment
 To connect Flutter and unity to achieve the purpose of embedding Unity with Flutter, use Flutter-union-View-Widget.
