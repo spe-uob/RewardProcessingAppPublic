@@ -19,14 +19,14 @@ The Flutter-Unity-View-Widget provides a dependency export plug-in for Unity to 
 Note: Supports only Unity 2019.4.3 or later. UnityFramework does not support emulator.
 
 ### API
--`<pause()>` (Use this to pause unity player)
--`<resume()>` (Use this to resume unity player)
--`<unload()>` (Use this to unload unity player) *Requires Unity 2019.4.3 or later
--`<quit()>`(Use this to quit unity player)
--`<postMessa>`(String gameObject, methodName, message) (Allows you invoke commands in Unity from flutter)
--`<onUnityMessage(data)>` (Unity to flutter binding and listener)
--`<onUnityUnloaded()>` (Unity to flutter listener when unity is unloaded)
--`<onUnitySceneLoaded(String name, int buildIndex, bool isLoaded, bool isValid,)>` (Unity to flutter binding and listener when new scene is loaded)
+* `<pause()>` (Use this to pause unity player)
+* `<resume()>` (Use this to resume unity player)
+* `<unload()>` (Use this to unload unity player) *Requires Unity 2019.4.3 or later
+* `<quit()>`(Use this to quit unity player)
+* `<postMessa>`(String gameObject, methodName, message) (Allows you invoke commands in Unity from flutter)
+* `<onUnityMessage(data)>` (Unity to flutter binding and listener)
+* `<onUnityUnloaded()>` (Unity to flutter listener when unity is unloaded)
+* `<onUnitySceneLoaded(String name, int buildIndex, bool isLoaded, bool isValid,)>` (Unity to flutter binding and listener when new scene is loaded)
 
 
 ## Our Clients
