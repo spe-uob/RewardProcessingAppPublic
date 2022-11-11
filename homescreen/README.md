@@ -1,6 +1,6 @@
 # homescreen
 
-SPE Demo
+Participant Consent Form
 
 ## Getting Started
 
