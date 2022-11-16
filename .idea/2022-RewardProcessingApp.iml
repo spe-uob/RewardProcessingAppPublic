@@ -12,8 +12,12 @@
       <excludeFolder url="file://$MODULE_DIR$/RewardApp/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/RewardApp/build" />
       <excludeFolder url="file://$MODULE_DIR$/RewardApp/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/homescreen/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/homescreen/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/homescreen/build" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
   </component>
 </module>
