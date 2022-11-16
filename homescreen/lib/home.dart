@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'questionnaire.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -19,68 +20,81 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: buildAppBar(),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              margin: const EdgeInsets.all(30),
-              child:
-              Text(content, textAlign: TextAlign.justify,
-                style: const TextStyle(fontSize: 15,
-                  fontStyle: FontStyle.normal,
-                  height: 1.75,
-                  letterSpacing: 1,
-                ),
-              ),
-            ),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                      margin: const EdgeInsets.only(left: 10, right: 10, bottom: 70),
-                      child:
-                      ElevatedButton(onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(160, 60),
-                            primary: Colors.white70,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100)),
-                            elevation: 2.0,
+      body: RawScrollbar(
+          thickness: 8,
+          isAlwaysShown: true,
+          thumbColor: Colors.grey,
+          radius: const Radius.circular(100),
+          child: SingleChildScrollView(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                        margin: const EdgeInsets.all(30),
+                        child:
+                        Text(content, textAlign: TextAlign.justify,
+                            style: const TextStyle(fontSize: 15,
+                              fontStyle: FontStyle.normal,
+                              height: 1.75,
+                              letterSpacing: 0.75,
+                            )
+                        )
+                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                              margin: const EdgeInsets.only(left: 10, right: 10, bottom: 70),
+                              child:
+                              ElevatedButton(onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: const Size(160, 60),
+                                    primary: Colors.white70,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(100)),
+                                    elevation: 2.0,
+                                  ),
+                                  child: const Text(
+                                      'No, I do not consent.',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.teal,
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w300
+                                      )
+                                  )
+                              )
                           ),
-                          child: const Text(
-                              'No, I do not consent.',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.teal,
-                                fontSize: 16,
+                          Container(
+                              margin: const EdgeInsets.only(left: 10, right: 10, bottom: 70),
+                              child:
+                              ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => questionnaire())
+                                    );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: const Size(160, 60),
+                                    primary: Colors.teal,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(100)),
+                                    elevation: 2.0,),
+                                  child: const Text(
+                                      'Yes, I consent.',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.white,
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w300
+                                      )
+                                  )
                               )
                           )
-                      )
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 10, right: 10, bottom: 70),
-                      child:
-                      ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(160, 60),
-                            primary: Colors.teal,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100)),
-                            elevation: 2.0,),
-                          child: const Text(
-                            'Yes, I consent.',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white,
-                              fontSize: 16,
-                            ),
-                          )
-                      ),
-                  )
-                ]
-            )
-          ]
-        )
+                        ]
+                    )
+                  ]
+              )
+          )
       )
     );
   }
@@ -93,10 +107,10 @@ class _HomeState extends State<Home> {
         'Participant Consent Form',
         textAlign: TextAlign.center,
         style: TextStyle(
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w400,
           color: Colors.white,
-          fontSize: 26,
-        ),
+          fontSize: 28,
+        )
       ),
       elevation: 0.0,
       flexibleSpace: Container(
@@ -105,9 +119,9 @@ class _HomeState extends State<Home> {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(35),
               bottomRight: Radius.circular(35)
-          ),
-        ),
-      ),
+          )
+        )
+      )
     );
   }
 }
