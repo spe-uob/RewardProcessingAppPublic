@@ -16,6 +16,17 @@ Our mood greatly impacts our decision-making skills by influencing the type of i
 Presently, there is a wide array of research focusing on the important role of emotions in decision making and how the change in our mental processes and logic impact our critical-thinking skills. However, most of this research is based on artificial mood-manipulation strategies in controlled laboratory settings. This makes it difficult for the results from these studies to ascertain that this reflects our true decision-making capabilities. This brings us to the importance of our app, where we are able to monitor decision-making skills in response to day-to-day fluctuations in a real-time manner using a gamified approach. Thus,the main objective of this project is to find a method to comprehensively assess emotions and decision making, and our approach is to design a mobile app(Android).
 
 ## Developer Guide
+### Local build
+* Clone the repository
+`<https://github.com/spe-uob/2022-RewardProcessingApp.git>`
+### Test
+* get dependencies command
+`<flutter pub get>`
+* clean dependencies command
+`<flutter clean>`
+* Run command of the code
+`<flutter run>` or `<flutter run -d chrome/edge>`
+
 ### Languages
 * HTML
 * Dart
