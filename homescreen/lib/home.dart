@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'questionnaire.dart';
 
 class Home extends StatefulWidget {
@@ -22,7 +24,7 @@ class _HomeState extends State<Home> {
       appBar: buildAppBar(),
       body: RawScrollbar(
           thickness: 8,
-          isAlwaysShown: true,
+          thumbVisibility: false,
           thumbColor: Colors.grey,
           radius: const Radius.circular(100),
           child: SingleChildScrollView(
@@ -46,10 +48,16 @@ class _HomeState extends State<Home> {
                           Container(
                               margin: const EdgeInsets.only(left: 10, right: 10, bottom: 70),
                               child:
-                              ElevatedButton(onPressed: () {},
+                              ElevatedButton(onPressed: () {
+                                if(Platform.isAndroid) {
+                                  SystemNavigator.pop();
+                                } else {
+                                  exit(0);
+                                }
+                              },
                                   style: ElevatedButton.styleFrom(
                                     fixedSize: const Size(160, 60),
-                                    primary: Colors.white70,
+                                    backgroundColor: Colors.white70,
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(100)),
                                     elevation: 2.0,
@@ -71,12 +79,12 @@ class _HomeState extends State<Home> {
                                   onPressed: () {
                                     Navigator.push(
                                         context,
-                                        MaterialPageRoute(builder: (context) => questionnaire())
+                                        MaterialPageRoute(builder: (context) => const Questionnaire())
                                     );
                                   },
                                   style: ElevatedButton.styleFrom(
                                     fixedSize: const Size(160, 60),
-                                    primary: Colors.teal,
+                                    backgroundColor: Colors.teal,
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(100)),
                                     elevation: 2.0,),
