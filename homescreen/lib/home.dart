@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'questionnaire.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -10,13 +12,24 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-String content = 'By clicking the "Yes, I consent" button below, you agree to the following: \n\n'
+String content =
+    'By clicking the "Yes, I consent" button below, you agree to the following: \n\n'
     '1.	I have received information about the tasks involved in this research study and been given the opportunity to ask questions\n\n'
     '2.	I have received enough information about the study to make an informed decision to participate, and I understand my participation is completely voluntary.\n\n'
     '3.	I understand that after the study the data will be made "open data". I understand that this means the anonymised data will be publicly available and may be used for purposes not related to this study, and it will not be possible to identify me from these data.\n\n'
     '4.	I am aware I am free to withdraw from the study at any time without giving a reason for doing so.\n';
 
 class _HomeState extends State<Home> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(const Duration(seconds: 3)).then((value) => {
+      FlutterNativeSplash.remove()
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

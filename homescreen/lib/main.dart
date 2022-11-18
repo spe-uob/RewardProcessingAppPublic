@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:homescreen/splash.dart';
+import 'package:homescreen/home.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+
 
 void main() {
   runApp(const MyApp());
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: const Splash(),
+      home: const Home(),
     );
   }
 }
