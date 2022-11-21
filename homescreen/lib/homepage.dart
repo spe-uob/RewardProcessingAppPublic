@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:homescreen/questionnaire.dart';
 
 
 
@@ -33,7 +34,7 @@ class _HomePageState extends State<HomePage> {
               label: 'account', icon: Icon(Icons.account_box))
         ],
       ),
-      backgroundColor: Color.fromARGB(36, 205, 235, 235),
+      backgroundColor: const Color.fromARGB(36, 205, 235, 235),
       body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -49,7 +50,9 @@ class ImageShow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [Image.asset('images/image001.png')],
+      children: [
+        Image.asset('assets/images/image001.png', width: 250)
+      ],
     );
   }
 }
@@ -62,7 +65,12 @@ class ButtomStart extends StatelessWidget {
     return Column(
       children: [
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Questionnaire())
+            );
+          },
           style: ElevatedButton.styleFrom(
             backgroundColor: Color.fromARGB(255, 242, 216, 51),
             fixedSize: const Size(180, 70),
