@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:homescreen/homepage.dart';
 
 class Questionnaire extends StatefulWidget {
   const Questionnaire({super.key});
@@ -93,7 +94,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                       onPressed: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const Questionnaire())
+                            MaterialPageRoute(builder: (context) => const HomePage())
                         );
                       },
                       style: ElevatedButton.styleFrom(
