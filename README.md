@@ -77,7 +77,7 @@ Our clients are Conor Houghton (an associate professor in Computer Science at Un
 As a player, I want to play this game with the same strategy as the real-world settings, know the impact of mood on decision-making and get the state of mind.
 
 ### Researcher
-As a researcher, I want players to have a true naturally-occurring mood states in the game and get their mental state according to the game data.
+As a researcher, I want players to have a true naturally-occurring mood states while playing the game in order to analyse their mental state in response to the game data.
 
 ## License
 This project is distrubited under the [GNU Affero General Public License v3.0](LICENSE.txt)
