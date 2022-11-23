@@ -13,10 +13,10 @@
 
 ## Navigating the GitHub pages
 ### Documentation
-* [Kanban Board] (https://github.com/spe-uob/2022-RewardProcessingApp/projects/1)
-* [Meeting Minutes] (https://github.com/spe-uob/2022-RewardProcessingApp/tree/main/Meetings)
+* [Kanban Board](https://github.com/spe-uob/2022-RewardProcessingApp/projects/1)
+* [Meeting Minutes](https://github.com/spe-uob/2022-RewardProcessingApp/tree/main/Meetings)
 ### Code
-* [Homescreen] (https://github.com/spe-uob/2022-RewardProcessingApp/tree/main/homescreen/lib)
+* [Homescreen](https://github.com/spe-uob/2022-RewardProcessingApp/tree/main/homescreen/lib)
 
 ## Project Description
 Our mood greatly impacts our decision-making skills by influencing the type of information we attend to and also how we process it. According to research, individuals with depression tend to have negative responses to losses, leading them to make risky decisions. In contrast, those with anxiety are likely to make less risky decisions as they need certainty of outcomes to gain the sense of security.
