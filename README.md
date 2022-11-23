@@ -37,7 +37,8 @@ Presently, there is a wide array of research focusing on the important role of e
 ## Deployment
 To connect Flutter and unity to achieve the purpose of embedding Unity with Flutter, use Flutter-union-View-Widget.
 The Flutter-Unity-View-Widget provides a dependency export plug-in for Unity to build the Unity project into Android and IOS dependency libraries. The Flutter-Unity-View-Widget provides a component library for Flutter, rendering Unity views as components, and provides a Flutter, Unity bidirectional communication interface.
-Note: Supports only Unity 2019.4.3 or later. UnityFramework does not support emulator.
+
+Note: Supports only Unity 2019.4.3 or later. Emulator is not supported.
 
 ### API
 * `<pause()>` (Use this to pause unity player)
