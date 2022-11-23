@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
                           margin: const EdgeInsets.all(30),
                           child:
                           Text(content, textAlign: TextAlign.justify,
-                              style: const TextStyle(fontSize: 15,
+                              style: const TextStyle(fontSize: 14,
                                 fontStyle: FontStyle.normal,
                                 height: 1.75,
                                 letterSpacing: 0.75,
@@ -79,7 +79,7 @@ class _HomeState extends State<Home> {
                                         'No, I do not consent.',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(color: Colors.teal,
-                                            fontSize: 17,
+                                            fontSize: 15,
                                             fontWeight: FontWeight.w300
                                         )
                                     )
@@ -105,7 +105,7 @@ class _HomeState extends State<Home> {
                                         'Yes, I consent.',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(color: Colors.white,
-                                            fontSize: 17,
+                                            fontSize: 15,
                                             fontWeight: FontWeight.w300
                                         )
                                     )
@@ -130,7 +130,7 @@ class _HomeState extends State<Home> {
             style: TextStyle(
               fontWeight: FontWeight.w400,
               color: Colors.white,
-              fontSize: 28,
+              fontSize: 24,
             )
         ),
         elevation: 0.0,
