@@ -42,7 +42,7 @@ Presently, there is a wide array of research focusing on the important role of e
 * Flutter  
   We develop this application with flutter because it supports both ios and Android application development.Flutter is Google's open-source build user interface (UI) toolkit that helps developers efficiently build multi-platform, beautiful applications across mobile, Web, desktop, and embedded platforms from a single code base.
 * Unity
- We use unity to make the graphics of our game. Unity is a real-time 3D interactive content creation and operation platform. From game development, to art, to architecture, to car design, to film and television, all creators use Unity to bring their ideas to life. The Unity platform provides a comprehensive suite of software solutions for creating, operating and monetizing any real-time interactive 2D and 3D content on mobile phones, tablets, PCS, game consoles, augmented reality and virtual reality devices.
+ We will use unity to create the graphics and deisgn our game. Unity is a real-time 3D interactive content creation and operation platform. From game development, to art, to architecture, to car design, to film and television, all creators use Unity to bring their ideas to life. The Unity platform provides a comprehensive suite of software solutions for creating, operating and monetizing any real-time interactive 2D and 3D content on mobile phones, tablets, PCS, game consoles, augmented reality and virtual reality devices.
 
 ## Deployment
 To connect Flutter and unity to achieve the purpose of embedding Unity with Flutter, use Flutter-union-View-Widget.
