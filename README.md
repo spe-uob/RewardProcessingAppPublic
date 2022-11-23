@@ -73,6 +73,8 @@ Our clients are Conor Houghton (an associate professor in Computer Science at Un
 - End-users (who are easily affected by mood, especially those with mood disorders)
 
 ## User Stories
+
+##Goals
 ### Player
 As a player, I want to play this game with the same strategy as the real-world settings, know the impact of mood on decision-making and get the state of mind.
 
