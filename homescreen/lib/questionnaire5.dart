@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:homescreen/questionnaire3.dart';
+import 'package:homescreen/questionnaire6.dart';
 
-class Questionnaire2 extends StatefulWidget {
-  const Questionnaire2({super.key});
+class Questionnaire5 extends StatefulWidget {
+  const Questionnaire5({super.key});
 
   @override
-  State<Questionnaire2> createState() => _Questionnaire2State();
+  State<Questionnaire5> createState() => _Questionnaire5State();
 }
 
-class _Questionnaire2State extends State<Questionnaire2> {
+class _Questionnaire5State extends State<Questionnaire5> {
   double _currentSliderValue = 50;
 
   @override
@@ -73,14 +73,14 @@ class _Questionnaire2State extends State<Questionnaire2> {
               children: <Widget>[
                 Container(
                     margin: const EdgeInsets.only(left: 10),
-                    child: const Text('Pessimistic',
+                    child: const Text('Numb',
                         style: TextStyle(fontSize: 15,
                             letterSpacing: 0.5)
                     )
                 ),
                 Container(
-                    margin: const EdgeInsets.only(left: 200, right: 10),
-                    child: const Text('Optimistic',
+                    margin: const EdgeInsets.only(left: 220, right: 10),
+                    child: const Text('Interested',
                         style: TextStyle(fontSize: 15,
                             letterSpacing: 0.5)
                     )
@@ -94,7 +94,7 @@ class _Questionnaire2State extends State<Questionnaire2> {
                     onPressed: () {
                       Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const Questionnaire3())
+                          MaterialPageRoute(builder: (context) => const Questionnaire6())
                       );
                     },
                     style: ElevatedButton.styleFrom(
