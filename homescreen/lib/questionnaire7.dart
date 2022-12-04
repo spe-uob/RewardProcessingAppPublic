@@ -13,7 +13,10 @@ class _Questionnaire7State extends State<Questionnaire7> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+        onWillPop: () async {
+      return false; // disable back page
+    }, child: Scaffold(
       body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -115,6 +118,7 @@ class _Questionnaire7State extends State<Questionnaire7> {
             )
           ]
       ),
+    )
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:homescreen/homepage.dart';
+import 'package:homescreen/questionnaire.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 
@@ -14,7 +14,7 @@ class Home extends StatefulWidget {
 
 String content =
     'By clicking the "Yes, I consent" button below, you agree to the following: \n\n'
-    '1.	I have received information about the tasks involved in this research study and been given the opportunity to ask questions\n\n'
+    '1.	I have received information about the tasks involved in this research study and been given the opportunity to ask questions.\n\n'
     '2.	I have received enough information about the study to make an informed decision to participate, and I understand my participation is completely voluntary.\n\n'
     '3.	I understand that after the study the data will be made "open data". I understand that this means the anonymised data will be publicly available and may be used for purposes not related to this study, and it will not be possible to identify me from these data.\n\n'
     '4.	I am aware I am free to withdraw from the study at any time without giving a reason for doing so.\n';
@@ -78,7 +78,7 @@ class _HomeState extends State<Home> {
                                     child: const Text(
                                         'No, I do not consent.',
                                         textAlign: TextAlign.center,
-                                        style: TextStyle(color: Colors.teal,
+                                        style: TextStyle(color: Color(0xFF03989E),
                                             fontSize: 15,
                                             fontWeight: FontWeight.w300
                                         )
@@ -92,12 +92,12 @@ class _HomeState extends State<Home> {
                                     onPressed: () {
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder: (context) => const HomePage())
+                                          MaterialPageRoute(builder: (context) => const Questionnaire())
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
                                       fixedSize: const Size(160, 60),
-                                      backgroundColor: Colors.teal,
+                                      backgroundColor: const Color(0xFF03989E),
                                       shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(100)),
                                       elevation: 2.0,),
@@ -136,7 +136,7 @@ class _HomeState extends State<Home> {
         elevation: 0.0,
         flexibleSpace: Container(
             decoration: const BoxDecoration(
-                color: Colors.teal,
+                color: Color(0xFF03989E),
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(35),
                     bottomRight: Radius.circular(35)
