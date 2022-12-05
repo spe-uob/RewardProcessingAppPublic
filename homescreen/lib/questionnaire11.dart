@@ -13,7 +13,10 @@ class _Questionnaire11State extends State<Questionnaire11> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+        onWillPop: () async {
+      return false; // disable back page
+    }, child: Scaffold(
       body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -79,7 +82,7 @@ class _Questionnaire11State extends State<Questionnaire11> {
                     )
                 ),
                 Container(
-                    margin: const EdgeInsets.only(left: 190, right: 10),
+                    margin: const EdgeInsets.only(left: 210, right: 10),
                     child: const Text('Peaceful',
                         style: TextStyle(fontSize: 15,
                             letterSpacing: 0.5)
@@ -115,6 +118,7 @@ class _Questionnaire11State extends State<Questionnaire11> {
             )
           ]
       ),
+    )
     );
   }
 }

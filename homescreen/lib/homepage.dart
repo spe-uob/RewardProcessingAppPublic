@@ -37,11 +37,11 @@ class _HomePageState extends State<HomePage> {
                   label: 'account', icon: Icon(Icons.account_box))
             ],
           ),
-          backgroundColor: const Color.fromARGB(36, 205, 235, 235),
+          backgroundColor: Colors.white, // fromARGB(36, 205, 235, 235)
           body: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [ImageShow(), ButtomStart()],
+                children: const [ImageShow(), ButtonStart()],
               )
           ),
         )
@@ -62,8 +62,8 @@ class ImageShow extends StatelessWidget {
   }
 }
 
-class ButtomStart extends StatelessWidget {
-  const ButtomStart({super.key});
+class ButtonStart extends StatelessWidget {
+  const ButtonStart({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +77,7 @@ class ButtomStart extends StatelessWidget {
             );
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color.fromARGB(255, 242, 216, 51),
+            backgroundColor: const Color(0xFF3565A4),
             fixedSize: const Size(180, 70),
             shape: const StadiumBorder(),
           ),

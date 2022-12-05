@@ -13,7 +13,10 @@ class _Questionnaire6State extends State<Questionnaire6> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+        onWillPop: () async {
+      return false; // disable back page
+    }, child: Scaffold(
       body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -23,7 +26,7 @@ class _Questionnaire6State extends State<Questionnaire6> {
                   width: 380,
                   height: 85,
                   decoration: const BoxDecoration(
-                      color: Color(0xFFEBCDB3),
+                      color: Color(0xFFFFD9A0),
                       borderRadius: BorderRadius.all(Radius.circular(30))
                   ),
                   alignment: Alignment.center,
@@ -34,6 +37,7 @@ class _Questionnaire6State extends State<Questionnaire6> {
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 19,
                             letterSpacing: 0.75,
+                            color: Colors.black
                           )
                       )
                   )
@@ -45,11 +49,11 @@ class _Questionnaire6State extends State<Questionnaire6> {
                   trackHeight: 2,
                   activeTrackColor: Colors.black,
                   inactiveTrackColor: Colors.black,
-                  thumbColor: Colors.teal,
+                  thumbColor: Color(0xFF00A8AF),
                   thumbShape: RoundSliderThumbShape(enabledThumbRadius: 13),
                   tickMarkShape: RoundSliderTickMarkShape(tickMarkRadius: 4),
-                  activeTickMarkColor: Colors.teal,
-                  inactiveTickMarkColor: Colors.teal,
+                  activeTickMarkColor: Color(0xFF00A8AF),
+                  inactiveTickMarkColor: Color(0xFF00A8AF),
                   overlayShape: RoundSliderOverlayShape(overlayRadius: 30),
                   overlayColor: Colors.transparent,
                   showValueIndicator: ShowValueIndicator.never,
@@ -99,7 +103,7 @@ class _Questionnaire6State extends State<Questionnaire6> {
                     },
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size(160, 60),
-                      backgroundColor: Colors.teal,
+                      backgroundColor: const Color(0xFF00A8AF),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(100)),
                       elevation: 2.0,),
@@ -115,6 +119,7 @@ class _Questionnaire6State extends State<Questionnaire6> {
             )
           ]
       ),
+    )
     );
   }
 }
