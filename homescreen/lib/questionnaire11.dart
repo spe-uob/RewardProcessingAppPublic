@@ -26,7 +26,7 @@ class _Questionnaire11State extends State<Questionnaire11> {
                   width: 380,
                   height: 85,
                   decoration: const BoxDecoration(
-                      color: Color(0xFFEBCDB3),
+                      color: Color(0xFFFFD9A0),
                       borderRadius: BorderRadius.all(Radius.circular(30))
                   ),
                   alignment: Alignment.center,
@@ -48,11 +48,11 @@ class _Questionnaire11State extends State<Questionnaire11> {
                   trackHeight: 2,
                   activeTrackColor: Colors.black,
                   inactiveTrackColor: Colors.black,
-                  thumbColor: Colors.teal,
+                  thumbColor: Color(0xFF00A8AF),
                   thumbShape: RoundSliderThumbShape(enabledThumbRadius: 13),
                   tickMarkShape: RoundSliderTickMarkShape(tickMarkRadius: 4),
-                  activeTickMarkColor: Colors.teal,
-                  inactiveTickMarkColor: Colors.teal,
+                  activeTickMarkColor: Color(0xFF00A8AF),
+                  inactiveTickMarkColor: Color(0xFF00A8AF),
                   overlayShape: RoundSliderOverlayShape(overlayRadius: 30),
                   overlayColor: Colors.transparent,
                   showValueIndicator: ShowValueIndicator.never,
@@ -102,7 +102,7 @@ class _Questionnaire11State extends State<Questionnaire11> {
                     },
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size(160, 60),
-                      backgroundColor: Colors.teal,
+                      backgroundColor: Color(0xFF00A8AF),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(100)),
                       elevation: 2.0,),
