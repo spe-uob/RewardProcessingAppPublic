@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:homescreen/questionnaire12.dart';
+import 'package:homescreen/questionnaire16.dart';
 
 class Questionnaire11 extends StatefulWidget {
   const Questionnaire11({super.key});
@@ -10,7 +10,7 @@ class Questionnaire11 extends StatefulWidget {
 
 class _Questionnaire11State extends State<Questionnaire11> {
   double _currentSliderValue = 50;
-
+  bool flag=false;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -66,6 +66,7 @@ class _Questionnaire11State extends State<Questionnaire11> {
                       onChanged: (double value) {
                         setState(() {
                           _currentSliderValue = value;
+                          flag=true;
                         });
                       }
                   ),
@@ -94,12 +95,12 @@ class _Questionnaire11State extends State<Questionnaire11> {
                 margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
                 child:
                 ElevatedButton(
-                    onPressed: () {
+                    onPressed:flag? () {
                       Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const Questionnaire12())
+                          MaterialPageRoute(builder: (context) => const Questionnaire16())
                       );
-                    },
+                    }:null,
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size(160, 60),
                       backgroundColor: Color(0xFF00A8AF),
