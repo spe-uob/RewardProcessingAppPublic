@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homescreen/questionnaire11.dart';
+import 'package:homescreen/questionnaire16.dart';
 
 class Questionnaire12 extends StatefulWidget {
   const Questionnaire12({super.key});
@@ -10,13 +11,13 @@ class Questionnaire12 extends StatefulWidget {
 
 class _Questionnaire12State extends State<Questionnaire12> {
   double _currentSliderValue = 50;
-
+  bool flag=false;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
         onWillPop: () async {
-      return false; // disable back page
-    }, child: Scaffold(
+          return false; // disable back page
+        }, child: Scaffold(
       body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -66,6 +67,7 @@ class _Questionnaire12State extends State<Questionnaire12> {
                       onChanged: (double value) {
                         setState(() {
                           _currentSliderValue = value;
+                          flag=true;
                         });
                       }
                   ),
@@ -94,12 +96,12 @@ class _Questionnaire12State extends State<Questionnaire12> {
                 margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
                 child:
                 ElevatedButton(
-                    onPressed: () {
+                    onPressed: flag?() {
                       Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const Questionnaire11())
+                          MaterialPageRoute(builder: (context) => const Questionnaire16())
                       );
-                    },
+                    }:null,
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size(160, 60),
                       backgroundColor: Color(0xFF00A8AF),

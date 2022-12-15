@@ -10,7 +10,7 @@ class Questionnaire6 extends StatefulWidget {
 
 class _Questionnaire6State extends State<Questionnaire6> {
   double _currentSliderValue = 50;
-
+  bool flag=false;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -67,6 +67,7 @@ class _Questionnaire6State extends State<Questionnaire6> {
                       onChanged: (double value) {
                         setState(() {
                           _currentSliderValue = value;
+                          flag=true;
                         });
                       }
                   ),
@@ -95,12 +96,12 @@ class _Questionnaire6State extends State<Questionnaire6> {
                 margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
                 child:
                 ElevatedButton(
-                    onPressed: () {
+                    onPressed:flag? () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => const Questionnaire7())
                       );
-                    },
+                    }:null,
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size(160, 60),
                       backgroundColor: const Color(0xFF00A8AF),

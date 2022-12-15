@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:homescreen/questionnaire.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:homescreen/questionnaire16.dart';
 
 
 class Home extends StatefulWidget {
@@ -78,7 +79,7 @@ class _HomeState extends State<Home> {
                                     child: const Text(
                                         'No, I do not consent.',
                                         textAlign: TextAlign.center,
-                                        style: TextStyle(color: Color(0xFF03989E),
+                                        style: TextStyle(color: Color(0xFF00A8AF),
                                             fontSize: 15,
                                             fontWeight: FontWeight.w300
                                         )
@@ -92,12 +93,13 @@ class _HomeState extends State<Home> {
                                     onPressed: () {
                                       Navigator.push(
                                           context,
+                                          // MaterialPageRoute(builder: (context) => const Questionnaire())
                                           MaterialPageRoute(builder: (context) => const Questionnaire())
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
                                       fixedSize: const Size(160, 60),
-                                      backgroundColor: const Color(0xFF03989E),
+                                      backgroundColor: const Color(0xFF00A8AF),
                                       shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(100)),
                                       elevation: 2.0,),
@@ -136,7 +138,7 @@ class _HomeState extends State<Home> {
         elevation: 0.0,
         flexibleSpace: Container(
             decoration: const BoxDecoration(
-                color: Color(0xFF03989E),
+                color: Color(0xFF00A8AF),
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(35),
                     bottomRight: Radius.circular(35)
