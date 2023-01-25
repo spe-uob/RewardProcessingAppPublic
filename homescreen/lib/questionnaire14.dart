@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:homescreen/questionnaire4.dart';
+import 'package:homescreen/questionnaire16.dart';
 
-class Questionnaire3 extends StatefulWidget {
-  const Questionnaire3({super.key});
+class Questionnaire14 extends StatefulWidget {
+  const Questionnaire14({super.key});
 
   @override
-  State<Questionnaire3> createState() => _Questionnaire3State();
+  State<Questionnaire14> createState() => _Questionnaire14State();
 }
 
-class _Questionnaire3State extends State<Questionnaire3> {
+class _Questionnaire14State extends State<Questionnaire14> {
   double _currentSliderValue = 0;
   bool activeButton = false;
 
@@ -16,8 +16,8 @@ class _Questionnaire3State extends State<Questionnaire3> {
   Widget build(BuildContext context) {
     return WillPopScope(
         onWillPop: () async {
-          return false; // disable back page
-        },
+      return false; // disable back page
+      },
         child: Scaffold(
             body: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -28,18 +28,17 @@ class _Questionnaire3State extends State<Questionnaire3> {
                         width: 380,
                         height: 85,
                         decoration: const BoxDecoration(
-                            color: Color(0xFFFFD9A0),
+                            color:Color(0xFFFFD9A0),
                             borderRadius: BorderRadius.all(Radius.circular(30))
                         ),
                         alignment: Alignment.center,
                         child: Container (
                             margin: const EdgeInsets.only(left: 20, right: 20),
                             child: const Text (
-                                'Using the bar below, rate how you feel right now:',
+                                'Please indicate on the sliding scale how positive or negative the experience was for you',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 19,
-                                    letterSpacing: 0.75,
-                                    color: Colors.black
+                                style: TextStyle(fontSize: 17,
+                                  letterSpacing: 0.75,
                                 )
                             )
                         )
@@ -58,14 +57,15 @@ class _Questionnaire3State extends State<Questionnaire3> {
                         inactiveTickMarkColor: Color(0xFF00A8AF),
                         overlayShape: RoundSliderOverlayShape(overlayRadius: 30),
                         overlayColor: Colors.transparent,
-                        showValueIndicator: ShowValueIndicator.never,
+                        showValueIndicator: ShowValueIndicator.always,
+                        valueIndicatorColor: Color(0xFF00A8AF),
+                        valueIndicatorShape: PaddleSliderValueIndicatorShape(),
                       ),
                       child: Center(
                         child: Slider(
                             value: _currentSliderValue,
-                            min: -3,
-                            max: 3,
-                            divisions: 6,
+                            min: -100,
+                            max: 100,
                             label: _currentSliderValue.round().toString(),
                             onChanged: (double value) {
                               setState(() {
@@ -73,7 +73,7 @@ class _Questionnaire3State extends State<Questionnaire3> {
                                 activeButton = true;
                               });
                             }
-                        )
+                        ),
                       )
                   ),
                   Row(
@@ -81,27 +81,28 @@ class _Questionnaire3State extends State<Questionnaire3> {
                     children: <Widget>[
                       Container(
                           margin: const EdgeInsets.only(left: 10),
-                          child: const Text('Apathetic',
+                          child: const Text('Negative',
                               style: TextStyle(fontSize: 15,
                                   letterSpacing: 0.5)
                           )
                       ),
                       Container(
                           margin: const EdgeInsets.only(left: 220, right: 10),
-                          child: const Text('Motivated',
+                          child: const Text('Positive',
                               style: TextStyle(fontSize: 15,
                                   letterSpacing: 0.5)
                           )
                       )
-                    ]
+                    ],
                   ),
                   Container(
                       margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
-                      child: ElevatedButton(
+                      child:
+                      ElevatedButton(
                           onPressed: activeButton ? () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const Questionnaire4())
+                                MaterialPageRoute(builder: (context) => const Questionnaire16())
                             );
                           }:null,
                           style: ElevatedButton.styleFrom(

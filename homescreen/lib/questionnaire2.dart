@@ -9,8 +9,9 @@ class Questionnaire2 extends StatefulWidget {
 }
 
 class _Questionnaire2State extends State<Questionnaire2> {
-  double _currentSliderValue = 50;
-  bool flag=false;
+  double _currentSliderValue = 0;
+  bool activeButton = false;
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -62,15 +63,16 @@ class _Questionnaire2State extends State<Questionnaire2> {
                     child: Center(
                       child: Slider(
                           value: _currentSliderValue,
-                          max: 100,
+                          min: -3,
+                          max: 3,
                           divisions: 6,
                           label: _currentSliderValue.round().toString(),
                           onChanged: (double value) {
                             setState(() {
                               _currentSliderValue = value;
-                              flag=true;
+                              activeButton = true;
                             });
-                          }),
+                          })
                     )
                 ),
                 Row(
@@ -96,19 +98,21 @@ class _Questionnaire2State extends State<Questionnaire2> {
                 ),
                 Container(
                     margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
-                    child:
-                    ElevatedButton(
-                        onPressed: flag? () {
+                    child: ElevatedButton(
+                        onPressed: activeButton ? () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => const Questionnaire3())
                           );
                           }:null,
                         style: ElevatedButton.styleFrom(
-                          fixedSize: const Size(160, 60),
-                          backgroundColor: const Color(0xFF00A8AF),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-                          elevation: 2.0,),
+                            fixedSize: const Size(160, 60),
+                            backgroundColor: const Color(0xFF00A8AF),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100)
+                            ),
+                            elevation: 2.0
+                        ),
                         child: const Text(
                             'Continue',
                             textAlign: TextAlign.center,

@@ -15,9 +15,15 @@
       <excludeFolder url="file://$MODULE_DIR$/homescreen/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/homescreen/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/homescreen/build" />
+      <excludeFolder url="file://$MODULE_DIR$/homescreen/ios/.symlinks/plugins/flutter_native_splash/build" />
+      <excludeFolder url="file://$MODULE_DIR$/homescreen/ios/.symlinks/plugins/flutter_native_splash/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/homescreen/ios/.symlinks/plugins/flutter_native_splash/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/homescreen/ios/.symlinks/plugins/flutter_native_splash/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/homescreen/ios/.symlinks/plugins/flutter_native_splash/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/homescreen/ios/.symlinks/plugins/flutter_native_splash/example/.pub" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Dart SDK" level="project" />
-    <orderEntry type="library" exported="" name="Dart Packages" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
   </component>
 </module>
