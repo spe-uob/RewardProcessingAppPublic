@@ -104,7 +104,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                             )
                         ),
                         Radio(
-                            value: 1,
+                            value: 3,
                             groupValue: _value,
                             activeColor: const Color(0xFF00A8AF),
                             onChanged: (value){
@@ -129,7 +129,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                             )
                         ),
                         Radio(
-                            value: 1,
+                            value: 4,
                             groupValue: _value,
                             activeColor: const Color(0xFF00A8AF),
                             onChanged: (value){
