@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homescreen/questionnaire16.dart';
-
+import 'package:percent_indicator/percent_indicator.dart';
 
 class Questionnaire15 extends StatefulWidget {
   const Questionnaire15({super.key});
@@ -21,12 +21,10 @@ class _Questionnaire15State extends State<Questionnaire15> {
         },
         child: Scaffold(
             body: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(
                       child: Container(
-                          margin: const EdgeInsets.only(bottom: 60, left:30, right: 30),
+                          margin: const EdgeInsets.only(bottom: 60, left:30, right: 30, top: 220),
                           width: 380,
                           height: 85,
                           decoration: const BoxDecoration(
@@ -139,7 +137,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                               });
                             }
                         ),
-                        const Text('Yes - I knew about it for more than a week before it happened',
+                        const Text('Yes - I knew about it for more than a \n week before it happened',
                             style: TextStyle(
                                 fontSize: 16
                             )
@@ -171,6 +169,20 @@ class _Questionnaire15State extends State<Questionnaire15> {
                                   fontWeight: FontWeight.w300
                               )
                           )
+                      )
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.only(left: 25, right: 25, top: 70),
+                      child: LinearPercentIndicator(
+                          animation: true,
+                          animateFromLastPercent: true,
+                          lineHeight: 20.0,
+                          animationDuration: 300,
+                          percent: 14/16,
+                          center: const Text('15/16'),
+                          barRadius: const Radius.circular(30),
+                          backgroundColor: const Color(0xFFDCDCDC),
+                          progressColor: const Color(0xFF32BEC4)
                       )
                   )
                 ]
