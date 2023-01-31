@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homescreen/questionnaire10.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class Questionnaire9 extends StatefulWidget {
   const Questionnaire9({super.key});
@@ -20,11 +21,10 @@ class _Questionnaire9State extends State<Questionnaire9> {
         },
         child: Scaffold(
             body: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(
                     child: Container(
-                        margin: const EdgeInsets.only(bottom: 60, left:30, right: 30),
+                        margin: const EdgeInsets.only(bottom: 60, left:30, right: 30, top: 260),
                         width: 380,
                         height: 85,
                         decoration: const BoxDecoration(
@@ -119,6 +119,20 @@ class _Questionnaire9State extends State<Questionnaire9> {
                                   fontWeight: FontWeight.w300
                               )
                           )
+                      )
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.only(left: 25, right: 25, top: 150),
+                      child: LinearPercentIndicator(
+                          animation: true,
+                          animateFromLastPercent: true,
+                          lineHeight: 20.0,
+                          animationDuration: 300,
+                          percent: 8/15,
+                          center: const Text('9/16'),
+                          barRadius: const Radius.circular(30),
+                          backgroundColor: const Color(0xFFDCDCDC),
+                          progressColor: const Color(0xFF32BEC4)
                       )
                   )
                 ]

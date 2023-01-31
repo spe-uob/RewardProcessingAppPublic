@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homescreen/questionnaire2.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class Questionnaire extends StatefulWidget {
   const Questionnaire({super.key});
@@ -9,8 +10,9 @@ class Questionnaire extends StatefulWidget {
 }
 
 class _QuestionnaireState extends State<Questionnaire> {
-  double _currentSliderValue = 50;
-  bool flag = false;
+  double _currentSliderValue = 0;
+  bool activeButton = false;
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -19,11 +21,10 @@ class _QuestionnaireState extends State<Questionnaire> {
         },
         child: Scaffold(
           body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SizedBox(
                 child: Container(
-                    margin: const EdgeInsets.only(bottom: 60, left: 30, right: 30),
+                    margin: const EdgeInsets.only(bottom: 60, left:30, right: 30, top: 260),
                     width: 380,
                     height: 85,
                     decoration: const BoxDecoration(
@@ -42,7 +43,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                             )
                         )
                     )
-                ),
+                )
               ),
               SliderTheme(
                   data: const SliderThemeData(
@@ -62,16 +63,17 @@ class _QuestionnaireState extends State<Questionnaire> {
                   child: Center(
                     child: Slider(
                         value: _currentSliderValue,
-                        max: 100,
+                        min: -3,
+                        max: 3,
                         divisions: 6,
                         label: _currentSliderValue.round().toString(),
                         onChanged: (double value) {
                           setState(() {
                             _currentSliderValue = value;
-                            flag = true;
+                            activeButton = true;
                           });
                         }
-                    ),
+                    )
                   )
               ),
               Row(
@@ -90,21 +92,19 @@ class _QuestionnaireState extends State<Questionnaire> {
                           style: TextStyle(fontSize: 15,
                               letterSpacing: 0.5)
                       )
-                  ),
-                ],
+                  )
+                ]
               ),
               Container(
                   margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
                   child:
                   ElevatedButton(
-                      onPressed:flag? () {
+                      onPressed: activeButton? () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => const Questionnaire2())
+                            MaterialPageRoute(builder: (context) => const Questionnaire2())
                         );
                       }: null,
-
                       style: ElevatedButton.styleFrom(
 
                         fixedSize: const Size(160, 60),
@@ -122,35 +122,22 @@ class _QuestionnaireState extends State<Questionnaire> {
                       )
                   )
               ),
-              Stack(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left:10,top: 80),
-                    height: 13,
-                    width:255,
-                    decoration:BoxDecoration(
-                      color: Color(0xffD7D7D7),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  Container(
-                    margin:EdgeInsets.only(left:10,top: 80),
-                    height:13,
-                    width:15,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF00A8AF),
-                      borderRadius:BorderRadius.circular(10),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left:120,top:65),
-                    child: const Text('1/16'
-                    ),
+              Padding(
+                  padding: const EdgeInsets.only(left: 25, right: 25, top: 150),
+                  child: LinearPercentIndicator(
+                      animation: true,
+                      animateFromLastPercent: true,
+                      lineHeight: 20.0,
+                      animationDuration: 300,
+                      percent: 0,
+                      center: const Text('1/16'),
+                      barRadius: const Radius.circular(30),
+                      backgroundColor: const Color(0xFFDCDCDC),
+                      progressColor: const Color(0xFF32BEC4)
                   )
-                ],
-              ),
+              )
             ]
-          ),
+          )
         )
     );
   }

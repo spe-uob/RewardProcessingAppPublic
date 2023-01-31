@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homescreen/questionnaire14.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 
 class Questionnaire13 extends StatefulWidget {
@@ -21,12 +22,10 @@ class _Questionnaire13State extends State<Questionnaire13> {
           },
         child: Scaffold(
             body: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
                   child: Container(
-                      margin: const EdgeInsets.only(bottom: 60, left:30, right: 30),
+                      margin: const EdgeInsets.only(bottom: 50, left:30, right: 30, top: 260),
                       width: 380,
                       height: 85,
                       decoration: const BoxDecoration(
@@ -97,7 +96,7 @@ class _Questionnaire13State extends State<Questionnaire13> {
                   ]
                 ),
                 Container(
-                    margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
+                    margin: const EdgeInsets.only(left: 10, right: 10, top: 52),
                     child: ElevatedButton(
                         onPressed: activeButton ? () {
                           Navigator.push(
@@ -121,6 +120,20 @@ class _Questionnaire13State extends State<Questionnaire13> {
                                 fontWeight: FontWeight.w300
                             )
                         )
+                    )
+                ),
+                Padding(
+                    padding: const EdgeInsets.only(left: 25, right: 25, top: 150),
+                    child: LinearPercentIndicator(
+                        animation: true,
+                        animateFromLastPercent: true,
+                        lineHeight: 20.0,
+                        animationDuration: 300,
+                        percent: 12/15,
+                        center: const Text('13/16'),
+                        barRadius: const Radius.circular(30),
+                        backgroundColor: const Color(0xFFDCDCDC),
+                        progressColor: const Color(0xFF32BEC4)
                     )
                 )
               ]

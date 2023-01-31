@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homescreen/questionnaire3.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class Questionnaire2 extends StatefulWidget {
   const Questionnaire2({super.key});
@@ -9,8 +10,9 @@ class Questionnaire2 extends StatefulWidget {
 }
 
 class _Questionnaire2State extends State<Questionnaire2> {
-  double _currentSliderValue = 50;
-  bool flag=false;
+  double _currentSliderValue = 0;
+  bool activeButton = false;
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -19,11 +21,10 @@ class _Questionnaire2State extends State<Questionnaire2> {
         },
         child: Scaffold(
           body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
                   child: Container(
-                      margin: const EdgeInsets.only(bottom: 60, left:30, right: 30),
+                      margin: const EdgeInsets.only(bottom: 60, left:30, right: 30, top: 260),
                       width: 380,
                       height: 85,
                       decoration: const BoxDecoration(
@@ -62,15 +63,16 @@ class _Questionnaire2State extends State<Questionnaire2> {
                     child: Center(
                       child: Slider(
                           value: _currentSliderValue,
-                          max: 100,
+                          min: -3,
+                          max: 3,
                           divisions: 6,
                           label: _currentSliderValue.round().toString(),
                           onChanged: (double value) {
                             setState(() {
                               _currentSliderValue = value;
-                              flag=true;
+                              activeButton = true;
                             });
-                          }),
+                          })
                     )
                 ),
                 Row(
@@ -92,13 +94,13 @@ class _Questionnaire2State extends State<Questionnaire2> {
                                 letterSpacing: 0.5)
                         )
                     )
-                  ],
+                  ]
                 ),
                 Container(
                     margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
                     child:
                     ElevatedButton(
-                        onPressed: flag? () {
+                        onPressed: activeButton? () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => const Questionnaire3())
@@ -118,33 +120,20 @@ class _Questionnaire2State extends State<Questionnaire2> {
                         )
                     )
                 ),
-                Stack(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(left:10,top: 80),
-                      height: 13,
-                      width:255,
-                      decoration:BoxDecoration(
-                        color: Color(0xffD7D7D7),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    Container(
-                      margin:EdgeInsets.only(left:10,top: 80),
-                      height:13,
-                      width:30,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF00A8AF),
-                        borderRadius:BorderRadius.circular(10),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(left:120,top:65),
-                      child: const Text('2/16'
-                      ),
+                Padding(
+                    padding: const EdgeInsets.only(left: 25, right: 25, top: 150),
+                    child: LinearPercentIndicator(
+                        animation: true,
+                        animateFromLastPercent: true,
+                        lineHeight: 20.0,
+                        animationDuration: 300,
+                        percent: 1/15,
+                        center: const Text('2/16'),
+                        barRadius: const Radius.circular(30),
+                        backgroundColor: const Color(0xFFDCDCDC),
+                        progressColor: const Color(0xFF32BEC4)
                     )
-                  ],
-                ),
+                )
               ]
           )
         )

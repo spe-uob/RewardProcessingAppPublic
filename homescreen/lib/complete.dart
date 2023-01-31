@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:homescreen/questionnaire12.dart';
+import 'package:homescreen/game_instructions.dart';
 
 class Complete extends StatefulWidget {
   const Complete({super.key});
@@ -49,14 +49,15 @@ class _CompleteState extends State<Complete> {
                             Navigator.push(
                                 context,
                                 // MaterialPageRoute(builder: (context) => const Questionnaire())
-                                MaterialPageRoute(builder: (context) => const Questionnaire12())
+                                MaterialPageRoute(builder: (context) => const GameInstructions())
                             );
                           },
                           style: ElevatedButton.styleFrom(
                             fixedSize: const Size(160, 60),
                             backgroundColor: const Color(0xFF00A8AF),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100)),
+                                borderRadius: BorderRadius.circular(100)
+                            ),
                             elevation: 2.0,),
                           child: const Text(
                               'Game Instructions',
