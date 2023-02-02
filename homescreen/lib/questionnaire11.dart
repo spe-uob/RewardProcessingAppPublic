@@ -21,10 +21,11 @@ class _Questionnaire11State extends State<Questionnaire11> {
         },
         child: Scaffold(
           body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
                     child: Container(
-                        margin: const EdgeInsets.only(bottom: 60, left:30, right: 30, top: 260),
+                        margin: const EdgeInsets.only(bottom: 60, left:30, right: 30),
                         width: 380,
                         height: 85,
                         decoration: const BoxDecoration(
@@ -119,22 +120,21 @@ class _Questionnaire11State extends State<Questionnaire11> {
                             )
                         )
                     )
-                ),
-                Padding(
-                    padding: const EdgeInsets.only(left: 25, right: 25, top: 150),
-                    child: LinearPercentIndicator(
-                        animation: true,
-                        animateFromLastPercent: true,
-                        lineHeight: 20.0,
-                        animationDuration: 300,
-                        percent: 10/15,
-                        center: const Text('11/16'),
-                        barRadius: const Radius.circular(30),
-                        backgroundColor: const Color(0xFFDCDCDC),
-                        progressColor: const Color(0xFF32BEC4)
-                    )
                 )
               ]
+          ),
+          bottomSheet: Padding(
+              padding: const EdgeInsets.only(left: 25, right: 25, bottom: 80),
+              child: LinearPercentIndicator(
+                  animateFromLastPercent: true,
+                  lineHeight: 20.0,
+                  animationDuration: 300,
+                  percent: 10/15,
+                  center: const Text('11/16'),
+                  barRadius: const Radius.circular(30),
+                  backgroundColor: const Color(0xFFDCDCDC),
+                  progressColor: const Color(0xFF32BEC4)
+              )
           )
         )
     );

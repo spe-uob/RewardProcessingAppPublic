@@ -21,10 +21,11 @@ class _QuestionnaireState extends State<Questionnaire> {
         },
         child: Scaffold(
           body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SizedBox(
                 child: Container(
-                    margin: const EdgeInsets.only(bottom: 60, left:30, right: 30, top: 260),
+                    margin: const EdgeInsets.only(bottom: 60, left:30, right: 30),
                     width: 380,
                     height: 85,
                     decoration: const BoxDecoration(
@@ -97,18 +98,16 @@ class _QuestionnaireState extends State<Questionnaire> {
               ),
               Container(
                   margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
-                  child:
-                  ElevatedButton(
-                      onPressed: activeButton? () {
+                  child: ElevatedButton(
+                      onPressed: activeButton ? () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => const Questionnaire2())
                         );
                       }: null,
                       style: ElevatedButton.styleFrom(
-
                         fixedSize: const Size(160, 60),
-                        backgroundColor:  Color(0xFF00A8AF),
+                        backgroundColor: const Color(0xFF00A8AF),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100)),
                         elevation: 2.0,),
@@ -121,11 +120,12 @@ class _QuestionnaireState extends State<Questionnaire> {
                           )
                       )
                   )
-              ),
-              Padding(
-                  padding: const EdgeInsets.only(left: 25, right: 25, top: 150),
+              )
+            ]
+          ),
+          bottomSheet: Padding(
+                  padding: const EdgeInsets.only(left: 25, right: 25, bottom: 80),
                   child: LinearPercentIndicator(
-                      animation: true,
                       animateFromLastPercent: true,
                       lineHeight: 20.0,
                       animationDuration: 300,
@@ -135,8 +135,6 @@ class _QuestionnaireState extends State<Questionnaire> {
                       backgroundColor: const Color(0xFFDCDCDC),
                       progressColor: const Color(0xFF32BEC4)
                   )
-              )
-            ]
           )
         )
     );
