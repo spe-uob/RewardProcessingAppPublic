@@ -26,7 +26,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
               children: <Widget>[
                 SizedBox(
                   child: Container(
-                      margin: const EdgeInsets.only(bottom: 60, left:30, right: 30),
+                      margin: const EdgeInsets.only(bottom: 40, left:30, right: 30),
                       width: 380,
                       height: 110,
                       decoration: const BoxDecoration(
@@ -49,7 +49,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                 Container(
                     padding: const EdgeInsets.only(left: 25, right: 25),
                     child: TextField(
-                        maxLines: 8,
+                        maxLines: 7,
                         cursorColor: const Color(0xFF00A8AF),
                         decoration: const InputDecoration(
                             hintText: 'Type your answer here',
@@ -78,7 +78,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                     )
                 ),
                 Container(
-                    margin: const EdgeInsets.only(top: 60),
+                    margin: const EdgeInsets.only(top: 40),
                     child: ElevatedButton(
                         onPressed: activeButton ? () {
                           Navigator.push(
@@ -110,7 +110,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
               padding: const EdgeInsets.only(left: 25, right: 25, bottom: 80),
               child: LinearPercentIndicator(
                   animateFromLastPercent: true,
-                  lineHeight: 20.0,
+                  lineHeight: 20,
                   animationDuration: 300,
                   percent: 1,
                   center: const Text('16/16'),
