@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:homescreen/complete.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -20,10 +22,11 @@ class _Questionnaire16State extends State<Questionnaire16> {
         },
         child: Scaffold(
           body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
                   child: Container(
-                      margin: const EdgeInsets.only(bottom: 60, left:30, right: 30, top: 200),
+                      margin: const EdgeInsets.only(bottom: 60, left:30, right: 30),
                       width: 380,
                       height: 110,
                       decoration: const BoxDecoration(
@@ -37,39 +40,46 @@ class _Questionnaire16State extends State<Questionnaire16> {
                               'If you feel comfortable, please briefly describe the event or experience that significantly affected your mood:',
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize: 17,
-                                letterSpacing: 0.75,
+                                height: 1.45
                               )
                           )
                       )
                   )
                 ),
                 Container(
-                    margin: EdgeInsets.zero,
-                    width: 380,
-                    height: 150,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(30))
-                    ),
-                    padding: const EdgeInsets.only(left: 30, right: 30),
+                    padding: const EdgeInsets.only(left: 25, right: 25),
                     child: TextField(
-                        maxLines: 6,
+                        maxLines: 8,
+                        cursorColor: const Color(0xFF00A8AF),
                         decoration: const InputDecoration(
-                            hintText: 'Input your feedback',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(10))
+                            hintText: 'Type your answer here',
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(20)),
+                                borderSide: BorderSide(
+                                    width: 2,
+                                    color: Colors.grey,
+                                    style: BorderStyle.solid
+                                )
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              borderSide: BorderSide(
+                                  width: 2,
+                                  color: Color(0xFF00A8AF),
+                                  style: BorderStyle.solid
+                              )
                             )
                         ),
                         onChanged: (value) {
                           setState(() {
                             activeButton = value.isNotEmpty ? true : false;
                           });
-                      }
+                        }
                     )
                 ),
                 Container(
                     margin: const EdgeInsets.only(top: 60),
-                    child:
-                    ElevatedButton(
+                    child: ElevatedButton(
                         onPressed: activeButton ? () {
                           Navigator.push(
                               context,
@@ -93,22 +103,21 @@ class _Questionnaire16State extends State<Questionnaire16> {
                             )
                         )
                     )
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 25, right: 25, top: 110),
-                  child: LinearPercentIndicator(
-                      animation: true,
-                      animateFromLastPercent: true,
-                      lineHeight: 20.0,
-                      animationDuration: 300,
-                      percent: 1,
-                      center: const Text('16/16'),
-                      barRadius: const Radius.circular(30),
-                      backgroundColor: const Color(0xFFDCDCDC),
-                      progressColor: const Color(0xFF32BEC4)
-                  )
                 )
               ]
+          ),
+          bottomSheet: Padding(
+              padding: const EdgeInsets.only(left: 25, right: 25, bottom: 80),
+              child: LinearPercentIndicator(
+                  animateFromLastPercent: true,
+                  lineHeight: 20.0,
+                  animationDuration: 300,
+                  percent: 1,
+                  center: const Text('16/16'),
+                  barRadius: const Radius.circular(30),
+                  backgroundColor: const Color(0xFFDCDCDC),
+                  progressColor: const Color(0xFF32BEC4)
+              )
           )
         )
     );
