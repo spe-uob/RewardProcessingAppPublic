@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:homescreen/home.dart';
+import 'package:homescreen/prolificID.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: const Home(),
+      home: const ProlificID(),
     );
   }
 }
