@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:homescreen/game_instructions.dart';
+import 'package:flutter/services.dart';
+
 
 class Complete extends StatefulWidget {
   const Complete({super.key});
@@ -9,6 +11,14 @@ class Complete extends StatefulWidget {
 }
 
 class _CompleteState extends State<Complete> {
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +31,7 @@ class _CompleteState extends State<Complete> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Image.asset('assets/images/UoB_logo2.png',
-                    width: 300,
+                   width: 300,
                   ),
                   Container(
                       margin: const EdgeInsets.only(right: 50, left: 50, top: 50, bottom: 20),
