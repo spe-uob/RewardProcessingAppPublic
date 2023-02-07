@@ -22,15 +22,6 @@ String content =
 
 class _HomeState extends State<Home> {
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //
-  //   Future.delayed(const Duration(seconds: 3)).then((value) => {
-  //     FlutterNativeSplash.remove()
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
