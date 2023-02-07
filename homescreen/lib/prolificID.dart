@@ -15,7 +15,8 @@ class ProlificID extends StatefulWidget {
 
 class _ProlificIDState extends State<ProlificID> {
   bool activeButton = false;
-
+final formKey = GlobalKey<FormState>();
+TextEditingController textEditingController = TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -59,33 +60,46 @@ class _ProlificIDState extends State<ProlificID> {
                   ),
                   Container(
                       padding: const EdgeInsets.only(left: 25, right: 25),
-                      child: TextField(
-                          maxLines: 1,
-                          cursorColor: const Color(0xFF00A8AF),
-                          decoration: const InputDecoration(
-                              hintText: 'Prolific ID',
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      width: 2,
-                                      color: Colors.grey,
-                                      style: BorderStyle.solid
-                                  )
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      width: 2,
-                                      color: Color(0xFF00A8AF),
-                                      style: BorderStyle.solid
-                                  )
-                              )
-                          ),
-                          onChanged: (value) {
-                            setState(() {
-                              activeButton = value.isNotEmpty ? true : false;
-                            });
-                          }
+                      child: Form(
+                        key: formKey,
+                        child: TextFormField(
+                            maxLines: 1,
+                            inputFormatters:[
+                              FilteringTextInputFormatter.allow(RegExp('[A-Z a-z 0-9]')),
+                              // LengthLimitingTextInputFormatter(7)
+                            ] ,
+                            validator: (val){
+                              return (
+                                  RegExp("[A-Za-z0-9]").hasMatch(val!)
+                                      && val.length<=15
+                              )? null:"Request body length over limit";
+                            },
+                            cursorColor: const Color(0xFF00A8AF),
+                            decoration: const InputDecoration(
+                                hintText: 'Please enter letter or number only',
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                                    borderSide: BorderSide(
+                                        width: 2,
+                                        color: Colors.grey,
+                                        style: BorderStyle.solid
+                                    )
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                                    borderSide: BorderSide(
+                                        width: 2,
+                                        color: Color(0xFF00A8AF),
+                                        style: BorderStyle.solid
+                                    )
+                                )
+                            ),
+                            onChanged: (value) {
+                              setState(() {
+                                activeButton = value.isNotEmpty ? true : false;
+                              });
+                            }
+                        ),
                       )
 
                   ),
@@ -93,10 +107,13 @@ class _ProlificIDState extends State<ProlificID> {
                       margin: const EdgeInsets.only(top: 50),
                       child: ElevatedButton(
                           onPressed: activeButton ? () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const Home())
-                            );
+                            if(formKey.currentState!.validate()){
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const Home())
+                              );
+                            }
+
                           }:null,
                           style: ElevatedButton.styleFrom(
                               fixedSize: const Size(160, 60),
