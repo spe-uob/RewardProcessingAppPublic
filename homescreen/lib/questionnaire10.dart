@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:homescreen/questionnaire11.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:flutter/services.dart';
 
 class Questionnaire10 extends StatefulWidget {
   const Questionnaire10({super.key});
@@ -12,6 +13,15 @@ class Questionnaire10 extends StatefulWidget {
 class _Questionnaire10State extends State<Questionnaire10> {
   double _currentSliderValue = 0;
   bool activeButton = false;
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +140,7 @@ class _Questionnaire10State extends State<Questionnaire10> {
                     animateFromLastPercent: true,
                     lineHeight: 20.0,
                     animationDuration: 300,
-                    percent: 9/15,
+                    percent: 10/16,
                     center: const Text('10/16'),
                     barRadius: const Radius.circular(30),
                     backgroundColor: const Color(0xFFDCDCDC),
