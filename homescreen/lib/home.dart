@@ -2,14 +2,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:homescreen/questionnaire.dart';
-<<<<<<< HEAD
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 
-=======
-import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter/services.dart';
->>>>>>> main
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -27,24 +22,16 @@ String content =
 
 class _HomeState extends State<Home> {
 
-  @override
-<<<<<<< HEAD
-=======
-  void initState() {
-    super.initState();
-
-    Future.delayed(const Duration(seconds: 3)).then((value) => {
-      FlutterNativeSplash.remove()
-    });
-
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //
+  //   Future.delayed(const Duration(seconds: 3)).then((value) => {
+  //     FlutterNativeSplash.remove()
+  //   });
+  // }
 
   @override
->>>>>>> main
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
