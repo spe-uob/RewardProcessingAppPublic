@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:homescreen/game_instructions2.dart';
+import 'package:homescreen/game_instructions3.dart';
 import 'package:flutter/services.dart';
 
-class GameInstructions extends StatefulWidget {
-  const GameInstructions({super.key});
+class GameInstructions2 extends StatefulWidget {
+  const GameInstructions2({super.key});
 
   @override
-  State<GameInstructions> createState() => _GameInstructionsState();
+  State<GameInstructions2> createState() => _GameInstructions2State();
 }
 
-class _GameInstructionsState extends State<GameInstructions> {
+class _GameInstructions2State extends State<GameInstructions2> {
   @override
   void initState() {
     super.initState();
@@ -26,14 +26,14 @@ class _GameInstructionsState extends State<GameInstructions> {
           return false; // disable back page
         },
         child: Scaffold(
-          backgroundColor: const Color(0xFFFFFFFF),
+            backgroundColor: const Color(0xFFFFFFFF),
             body: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image.asset('assets/images/gi1.png',
+                      Image.asset('assets/images/gi2.png',
                         scale: 11,
                       ),
                       ElevatedButton(
@@ -41,7 +41,7 @@ class _GameInstructionsState extends State<GameInstructions> {
                             Navigator.push(
                                 context,
                                 // MaterialPageRoute(builder: (context) => const Questionnaire())
-                                MaterialPageRoute(builder: (context) => const GameInstructions2())
+                                MaterialPageRoute(builder: (context) => const GameInstructions3())
                             );
                           },
                           style: ElevatedButton.styleFrom(
@@ -61,7 +61,7 @@ class _GameInstructionsState extends State<GameInstructions> {
                       )
                     ]
                 )
-              ],
+              ]
             )
         )
     );
