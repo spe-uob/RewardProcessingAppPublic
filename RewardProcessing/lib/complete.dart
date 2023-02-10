@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:homescreen/game_instructions.dart';
+import 'package:RewardProcessing/game_instructions.dart';
 import 'package:flutter/services.dart';
 
 
