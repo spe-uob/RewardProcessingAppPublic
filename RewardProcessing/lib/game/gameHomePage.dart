@@ -19,12 +19,8 @@ class _HomePageState extends State<HomePage> {
         Expanded(
           flex: 5,
           child: Container(
-            child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: numberInRow),
-                itemBuilder: null),
+            ),
           ),
-        ),
         Expanded(
           child: Container(color: Colors.pink),
         )
