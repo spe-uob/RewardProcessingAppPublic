@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget { // widget cannot change when the user inte
   @override 
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false, // to remove the defalut banner
       home: HomePage(),
       
     );
