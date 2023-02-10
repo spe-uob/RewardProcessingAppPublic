@@ -39,5 +39,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Null get newMethod => null;
+
 }
