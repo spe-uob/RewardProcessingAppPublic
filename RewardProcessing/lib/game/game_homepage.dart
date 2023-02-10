@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 
+class MyApp extends StatelessWidget { // widget cannot change when the user interacts with it, hence stateless 
+  @override 
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false, // to remove the defalut banner
+      home: HomePage(),
+
+    );
+  }
+}
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -28,4 +39,6 @@ class _HomePageState extends State<HomePage> {
       ])
     );
   }
+
+
 }
