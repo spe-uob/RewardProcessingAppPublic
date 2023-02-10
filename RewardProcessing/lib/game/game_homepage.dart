@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:rewardprocessing/game/game_main.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
-  const HomePage({super.key});
 }
 
 class _HomePageState extends State<HomePage> {
