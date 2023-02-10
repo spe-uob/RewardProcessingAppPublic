@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rewardprocessing/game/game_main.dart';
 
 class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -18,14 +18,14 @@ class _HomePageState extends State<HomePage> {
         Expanded(
           flex: 5,
           child: Container(
-            ),
-          ),
+          )
+        ),
         Expanded(
-          child: Container(color: Colors.pink),
+          child: Container(
+              color: Colors.pink
+          )
         )
-      ]),
+      ])
     );
   }
-
-  Null get newMethod => null;
 }
