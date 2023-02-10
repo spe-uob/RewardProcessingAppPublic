@@ -1,11 +1,10 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'Gamemain.dart';
+import 'package:rewardprocessing/game/game_main.dart';
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
+  const HomePage({super.key});
 }
 
 class _HomePageState extends State<HomePage> {

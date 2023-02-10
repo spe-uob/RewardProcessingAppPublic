@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'gamehomepage.dart';
+import 'package:rewardprocessing/game/game_homepage.dart';
 
 void main() {
   runApp(MyApp());
