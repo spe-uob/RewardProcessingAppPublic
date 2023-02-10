@@ -1,43 +1,16 @@
-import 'dart:async';
-import 'dart:html';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-//import 'package:pacman/pacman.dart';
+import 'package:rewardapp/main.dart';
 
-//import 'barriers.dart';
-//import 'ghost.dart';
-//import 'pixel.dart'
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatefulWidget{
   @override
   _HomePageState createState() => _HomePageState();
 }
-
 class _HomePageState extends State<HomePage> {
-  @override 
+  @override
   Widget build(BuildContext context) {
-    var colors;
-    var SilverGrid;
-    return Scaffold(
-       backgroundColor: Colors.black,
-      body: Column(
-        children: [
-          Expanded(
-            flex: 5,
-            child: Container(
-            child:GridView.builder(gridDelegate: SilverGrid, itemBuilder: null)
-            ),
-            ),
-            Expanded(
-              child: Container(
-              color: colors.pink,
-              ),
-              ),
+    return Scaffold( // using scaffold widget as the main parent of the page
 
-        ],
-    )
     );
-    
   }
 }
