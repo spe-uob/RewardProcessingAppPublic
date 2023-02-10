@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:homescreen/questionnaire10.dart';
+import 'package:homescreen/questionnaire8.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/services.dart';
 
-class Questionnaire9 extends StatefulWidget {
-  const Questionnaire9({super.key});
+class Questionnaire7 extends StatefulWidget {
+  const Questionnaire7({super.key});
 
   @override
-  State<Questionnaire9> createState() => _Questionnaire9State();
+  State<Questionnaire7> createState() => _Questionnaire7State();
 }
 
-class _Questionnaire9State extends State<Questionnaire9> {
+class _Questionnaire7State extends State<Questionnaire7> {
   double _currentSliderValue = 0;
   bool activeButton = false;
 
@@ -34,26 +34,27 @@ class _Questionnaire9State extends State<Questionnaire9> {
               mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(
-                    child: Container(
-                        margin: const EdgeInsets.only(bottom: 60, left:30, right: 30),
-                        width: 380,
-                        height: 85,
-                        decoration: const BoxDecoration(
-                            color: Color(0xFFFFD9A0),
-                            borderRadius: BorderRadius.all(Radius.circular(30))
-                        ),
-                        alignment: Alignment.center,
-                        child: Container (
-                            margin: const EdgeInsets.only(left: 20, right: 20),
-                            child: const Text (
-                                'Using the bar below, rate how you feel right now:',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 19,
-                                  letterSpacing: 0.75,
-                                )
-                            )
-                        )
-                    )
+                      child: Container(
+                          margin: const EdgeInsets.only(bottom: 60, left:30, right: 30),
+                          width: 380,
+                          height: 85,
+                          decoration: const BoxDecoration(
+                              color: Color(0xFFFFD9A0),
+                              borderRadius: BorderRadius.all(Radius.circular(30))
+                          ),
+                          alignment: Alignment.center,
+                          child: Container (
+                              margin: const EdgeInsets.only(left: 20, right: 20),
+                              child: const Text (
+                                  'Using the bar below, rate how you feel right now:',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 19,
+                                      letterSpacing: 0.75,
+                                      color: Colors.black
+                                  )
+                              )
+                          )
+                      )
                   ),
                   SliderTheme(
                       data: const SliderThemeData(
@@ -83,7 +84,7 @@ class _Questionnaire9State extends State<Questionnaire9> {
                                 activeButton = true;
                               });
                             }
-                        )
+                        ),
                       )
                   ),
                   Row(
@@ -91,14 +92,14 @@ class _Questionnaire9State extends State<Questionnaire9> {
                       children: <Widget>[
                         Container(
                             margin: const EdgeInsets.only(left: 10),
-                            child: const Text('Worried',
+                            child: const Text('Hopeless',
                                 style: TextStyle(fontSize: 15,
                                     letterSpacing: 0.5)
                             )
                         ),
                         Container(
                             margin: const EdgeInsets.only(left: 190, right: 10),
-                            child: const Text('Untroubled',
+                            child: const Text('Hopeful',
                                 style: TextStyle(fontSize: 15,
                                     letterSpacing: 0.5)
                             )
@@ -111,7 +112,7 @@ class _Questionnaire9State extends State<Questionnaire9> {
                           onPressed: activeButton ? () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const Questionnaire10())
+                                MaterialPageRoute(builder: (context) => const Questionnaire8())
                             );
                           }:null,
                           style: ElevatedButton.styleFrom(
@@ -137,11 +138,11 @@ class _Questionnaire9State extends State<Questionnaire9> {
           bottomSheet: Padding(
               padding: const EdgeInsets.only(left: 25, right: 25, bottom: 80),
               child: LinearPercentIndicator(
-                  animateFromLastPercent: true,
+                  animateFromLastPercent: false,
                   lineHeight: 20.0,
-                  animationDuration: 300,
-                  percent: 9/16,
-                  center: const Text('9/16'),
+                  animationDuration: 1000,
+                  percent: 7/16,
+                  center: const Text('7/16'),
                   barRadius: const Radius.circular(30),
                   backgroundColor: const Color(0xFFDCDCDC),
                   progressColor: const Color(0xFF32BEC4)

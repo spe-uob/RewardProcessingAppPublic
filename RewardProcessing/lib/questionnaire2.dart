@@ -90,7 +90,7 @@ class _Questionnaire2State extends State<Questionnaire2> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                        margin: const EdgeInsets.only(left: 10),
+                        margin: const EdgeInsets.only(left: 20),
                         child: const Text('Pessimistic',
                             style: TextStyle(
                                 fontSize: 15,
@@ -99,7 +99,7 @@ class _Questionnaire2State extends State<Questionnaire2> {
                         )
                     ),
                     Container(
-                        margin: const EdgeInsets.only(left: 200, right: 10),
+                        margin: const EdgeInsets.only(left: 170, right: 20),
                         child: const Text('Optimistic',
                             style: TextStyle(fontSize: 15,
                                 letterSpacing: 0.5)
@@ -137,7 +137,7 @@ class _Questionnaire2State extends State<Questionnaire2> {
               child: LinearPercentIndicator(
                   animateFromLastPercent: true,
                   lineHeight: 20.0,
-                  animationDuration: 300,
+                  animationDuration: 1000,
                   percent: 2/16,
                   center: const Text('2/16'),
                   barRadius: const Radius.circular(30),

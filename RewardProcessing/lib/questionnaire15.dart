@@ -35,7 +35,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                 children: <Widget>[
                   SizedBox(
                       child: Container(
-                          margin: const EdgeInsets.only(bottom: 60, left:30, right: 30),
+                          margin: const EdgeInsets.only(bottom: 40, left:30, right: 30),
                           width: 380,
                           height: 85,
                           decoration: const BoxDecoration(
@@ -150,13 +150,13 @@ class _Questionnaire15State extends State<Questionnaire15> {
                         ),
                         const Text('Yes - I knew about it for more than a \n week before it happened',
                             style: TextStyle(
-                                fontSize: 16
+                              fontSize: 16,
                             )
                         )
                       ]
                   ),
                   Container(
-                      margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
+                      margin: const EdgeInsets.only(left: 10, right: 10, top: 40),
                       child: ElevatedButton(
                           onPressed: activeButton ? () {
                             Navigator.push(
@@ -189,7 +189,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
               child: LinearPercentIndicator(
                   animateFromLastPercent: true,
                   lineHeight: 20.0,
-                  animationDuration: 300,
+                  animationDuration: 1000,
                   percent: 15/16,
                   center: const Text('15/16'),
                   barRadius: const Radius.circular(30),

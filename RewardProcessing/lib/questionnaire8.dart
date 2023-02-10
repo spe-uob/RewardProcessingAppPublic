@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:homescreen/questionnaire8.dart';
+import 'package:homescreen/questionnaire9.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/services.dart';
 
-class Questionnaire7 extends StatefulWidget {
-  const Questionnaire7({super.key});
+class Questionnaire8 extends StatefulWidget {
+  const Questionnaire8({super.key});
 
   @override
-  State<Questionnaire7> createState() => _Questionnaire7State();
+  State<Questionnaire8> createState() => _Questionnaire8State();
 }
 
-class _Questionnaire7State extends State<Questionnaire7> {
+class _Questionnaire8State extends State<Questionnaire8> {
   double _currentSliderValue = 0;
   bool activeButton = false;
 
@@ -84,7 +84,7 @@ class _Questionnaire7State extends State<Questionnaire7> {
                                 activeButton = true;
                               });
                             }
-                        ),
+                        )
                       )
                   ),
                   Row(
@@ -92,14 +92,14 @@ class _Questionnaire7State extends State<Questionnaire7> {
                       children: <Widget>[
                         Container(
                             margin: const EdgeInsets.only(left: 10),
-                            child: const Text('Hopeless',
+                            child: const Text('Tensed',
                                 style: TextStyle(fontSize: 15,
                                     letterSpacing: 0.5)
                             )
                         ),
                         Container(
-                            margin: const EdgeInsets.only(left: 190, right: 10),
-                            child: const Text('Hopeful',
+                            margin: const EdgeInsets.only(left: 220, right: 10),
+                            child: const Text('Relaxed',
                                 style: TextStyle(fontSize: 15,
                                     letterSpacing: 0.5)
                             )
@@ -112,7 +112,7 @@ class _Questionnaire7State extends State<Questionnaire7> {
                           onPressed: activeButton ? () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const Questionnaire8())
+                                MaterialPageRoute(builder: (context) => const Questionnaire9())
                             );
                           }:null,
                           style: ElevatedButton.styleFrom(
@@ -140,9 +140,9 @@ class _Questionnaire7State extends State<Questionnaire7> {
               child: LinearPercentIndicator(
                   animateFromLastPercent: true,
                   lineHeight: 20.0,
-                  animationDuration: 300,
-                  percent: 7/16,
-                  center: const Text('7/16'),
+                  animationDuration: 1000,
+                  percent: 8/16,
+                  center: const Text('8/16'),
                   barRadius: const Radius.circular(30),
                   backgroundColor: const Color(0xFFDCDCDC),
                   progressColor: const Color(0xFF32BEC4)

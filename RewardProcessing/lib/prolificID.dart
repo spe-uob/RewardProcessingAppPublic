@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:homescreen/consent.dart';
@@ -65,10 +64,10 @@ class _ProlificIDState extends State<ProlificID> {
                             FilteringTextInputFormatter.allow(RegExp('[A-Za-z0-9]')),
                             // LengthLimitingTextInputFormatter(7)
                           ],
-                          validator: (val){
+                          validator: (value){
                             return (
-                                RegExp("[A-Za-z0-9]").hasMatch(val!)
-                                    && val.length <= 15
+                                RegExp("[A-Za-z0-9]").hasMatch(value!)
+                                    && value.length <= 15
                             )? null: "Request body length over limit";
                           },
                           cursorColor: const Color(0xFF00A8AF),

@@ -12,15 +12,15 @@
       <excludeFolder url="file://$MODULE_DIR$/RewardApp/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/RewardApp/build" />
       <excludeFolder url="file://$MODULE_DIR$/RewardApp/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/homescreen/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/homescreen/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/homescreen/build" />
-      <excludeFolder url="file://$MODULE_DIR$/homescreen/ios/.symlinks/plugins/flutter_native_splash/build" />
-      <excludeFolder url="file://$MODULE_DIR$/homescreen/ios/.symlinks/plugins/flutter_native_splash/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/homescreen/ios/.symlinks/plugins/flutter_native_splash/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/homescreen/ios/.symlinks/plugins/flutter_native_splash/example/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/homescreen/ios/.symlinks/plugins/flutter_native_splash/example/build" />
-      <excludeFolder url="file://$MODULE_DIR$/homescreen/ios/.symlinks/plugins/flutter_native_splash/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/RewardProcessing/ios/.symlinks/plugins/flutter_native_splash/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/RewardProcessing/ios/.symlinks/plugins/flutter_native_splash/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/RewardProcessing/ios/.symlinks/plugins/flutter_native_splash/build" />
+      <excludeFolder url="file://$MODULE_DIR$/RewardProcessing/ios/.symlinks/plugins/flutter_native_splash/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/RewardProcessing/ios/.symlinks/plugins/flutter_native_splash/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/RewardProcessing/ios/.symlinks/plugins/flutter_native_splash/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/RewardProcessing/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/RewardProcessing/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/RewardProcessing/build" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Dart SDK" level="project" />

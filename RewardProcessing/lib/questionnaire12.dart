@@ -139,7 +139,7 @@ class _Questionnaire12State extends State<Questionnaire12> {
               child: LinearPercentIndicator(
                   animateFromLastPercent: true,
                   lineHeight: 20.0,
-                  animationDuration: 300,
+                  animationDuration: 1000,
                   percent: 12/16,
                   center: const Text('12/16'),
                   barRadius: const Radius.circular(30),

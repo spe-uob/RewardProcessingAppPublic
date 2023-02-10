@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:homescreen/questionnaire7.dart';
+import 'package:homescreen/questionnaire15.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/services.dart';
 
-class Questionnaire6 extends StatefulWidget {
-  const Questionnaire6({super.key});
+class Questionnaire14 extends StatefulWidget {
+  const Questionnaire14({super.key});
 
   @override
-  State<Questionnaire6> createState() => _Questionnaire6State();
+  State<Questionnaire14> createState() => _Questionnaire14State();
 }
 
-class _Questionnaire6State extends State<Questionnaire6> {
+class _Questionnaire14State extends State<Questionnaire14> {
   double _currentSliderValue = 0;
   bool activeButton = false;
 
@@ -27,34 +27,33 @@ class _Questionnaire6State extends State<Questionnaire6> {
   Widget build(BuildContext context) {
     return WillPopScope(
         onWillPop: () async {
-          return false; // disable back page
-        },
+      return false; // disable back page
+      },
         child: Scaffold(
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(
-                      child: Container(
-                          margin: const EdgeInsets.only(bottom: 60, left:30, right: 30),
-                          width: 380,
-                          height: 85,
-                          decoration: const BoxDecoration(
-                              color: Color(0xFFFFD9A0),
-                              borderRadius: BorderRadius.all(Radius.circular(30))
-                          ),
-                          alignment: Alignment.center,
-                          child: Container (
-                              margin: const EdgeInsets.only(left: 20, right: 20),
-                              child: const Text (
-                                  'Using the bar below, rate how you feel right now:',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(fontSize: 19,
-                                      letterSpacing: 0.75,
-                                      color: Colors.black
-                                  )
-                              )
-                          )
-                      )
+                    child: Container(
+                        margin: const EdgeInsets.only(bottom: 60, left:30, right: 30),
+                        width: 380,
+                        height: 85,
+                        decoration: const BoxDecoration(
+                            color:Color(0xFFFFD9A0),
+                            borderRadius: BorderRadius.all(Radius.circular(30))
+                        ),
+                        alignment: Alignment.center,
+                        child: Container (
+                            margin: const EdgeInsets.only(left: 20, right: 20),
+                            child: const Text (
+                                'Please indicate on the sliding scale how positive or negative the experience was for you',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 17,
+                                  letterSpacing: 0.75,
+                                )
+                            )
+                        )
+                    )
                   ),
                   SliderTheme(
                       data: const SliderThemeData(
@@ -69,14 +68,15 @@ class _Questionnaire6State extends State<Questionnaire6> {
                         inactiveTickMarkColor: Color(0xFF00A8AF),
                         overlayShape: RoundSliderOverlayShape(overlayRadius: 30),
                         overlayColor: Colors.transparent,
-                        showValueIndicator: ShowValueIndicator.never,
+                        showValueIndicator: ShowValueIndicator.always,
+                        valueIndicatorColor: Color(0xFF00A8AF),
+                        valueIndicatorShape: PaddleSliderValueIndicatorShape(),
                       ),
                       child: Center(
                         child: Slider(
                             value: _currentSliderValue,
-                            min: -3,
-                            max: 3,
-                            divisions: 6,
+                            min: -100,
+                            max: 100,
                             label: _currentSliderValue.round().toString(),
                             onChanged: (double value) {
                               setState(() {
@@ -84,27 +84,27 @@ class _Questionnaire6State extends State<Questionnaire6> {
                                 activeButton = true;
                               });
                             }
-                        ),
+                        )
                       )
                   ),
                   Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                            margin: const EdgeInsets.only(left: 10),
-                            child: const Text('Withdrawn',
-                                style: TextStyle(fontSize: 15,
-                                    letterSpacing: 0.5)
-                            )
-                        ),
-                        Container(
-                            margin: const EdgeInsets.only(left: 190, right: 10),
-                            child: const Text('Welcoming',
-                                style: TextStyle(fontSize: 15,
-                                    letterSpacing: 0.5)
-                            )
-                        )
-                      ]
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                          margin: const EdgeInsets.only(left: 10),
+                          child: const Text('Negative',
+                              style: TextStyle(fontSize: 15,
+                                  letterSpacing: 0.5)
+                          )
+                      ),
+                      Container(
+                          margin: const EdgeInsets.only(left: 220, right: 10),
+                          child: const Text('Positive',
+                              style: TextStyle(fontSize: 15,
+                                  letterSpacing: 0.5)
+                          )
+                      )
+                    ]
                   ),
                   Container(
                       margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
@@ -112,7 +112,7 @@ class _Questionnaire6State extends State<Questionnaire6> {
                           onPressed: activeButton ? () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const Questionnaire7())
+                                MaterialPageRoute(builder: (context) => const Questionnaire15())
                             );
                           }:null,
                           style: ElevatedButton.styleFrom(
@@ -135,14 +135,14 @@ class _Questionnaire6State extends State<Questionnaire6> {
                   )
                 ]
             ),
-          bottomSheet:  Padding(
+          bottomSheet: Padding(
               padding: const EdgeInsets.only(left: 25, right: 25, bottom: 80),
               child: LinearPercentIndicator(
                   animateFromLastPercent: true,
                   lineHeight: 20.0,
-                  animationDuration: 300,
-                  percent: 6/16,
-                  center: const Text('6/16'),
+                  animationDuration: 1000,
+                  percent: 14/16,
+                  center: const Text('14/16'),
                   barRadius: const Radius.circular(30),
                   backgroundColor: const Color(0xFFDCDCDC),
                   progressColor: const Color(0xFF32BEC4)

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:homescreen/questionnaire5.dart';
+import 'package:homescreen/questionnaire4.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/services.dart';
 
-class Questionnaire4 extends StatefulWidget {
-  const Questionnaire4({super.key});
+class Questionnaire3 extends StatefulWidget {
+  const Questionnaire3({super.key});
 
   @override
-  State<Questionnaire4> createState() => _Questionnaire4State();
+  State<Questionnaire3> createState() => _Questionnaire3State();
 }
 
-class _Questionnaire4State extends State<Questionnaire4> {
+class _Questionnaire3State extends State<Questionnaire3> {
   double _currentSliderValue = 0;
   bool activeButton = false;
 
@@ -72,34 +72,34 @@ class _Questionnaire4State extends State<Questionnaire4> {
                         showValueIndicator: ShowValueIndicator.never,
                       ),
                       child: Center(
-                        child: Slider(
-                            value: _currentSliderValue,
-                            min: -3,
-                            max: 3,
-                            divisions: 6,
-                            label: _currentSliderValue.round().toString(),
-                            onChanged: (double value) {
-                              setState(() {
-                                _currentSliderValue = value;
-                                activeButton = true;
-                              });
-                            }
-                        ),
+                          child: Slider(
+                              value: _currentSliderValue,
+                              min: -3,
+                              max: 3,
+                              divisions: 6,
+                              label: _currentSliderValue.round().toString(),
+                              onChanged: (double value) {
+                                setState(() {
+                                  _currentSliderValue = value;
+                                  activeButton = true;
+                                });
+                              }
+                          )
                       )
                   ),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Container(
-                            margin: const EdgeInsets.only(left: 10),
-                            child: const Text('Guilty',
+                            margin: const EdgeInsets.only(left: 20),
+                            child: const Text('Apathetic',
                                 style: TextStyle(fontSize: 15,
                                     letterSpacing: 0.5)
                             )
                         ),
                         Container(
-                            margin: const EdgeInsets.only(left: 260, right: 10),
-                            child: const Text('Proud',
+                            margin: const EdgeInsets.only(left: 180, right: 20),
+                            child: const Text('Motivated',
                                 style: TextStyle(fontSize: 15,
                                     letterSpacing: 0.5)
                             )
@@ -112,7 +112,7 @@ class _Questionnaire4State extends State<Questionnaire4> {
                           onPressed: activeButton ? () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const Questionnaire5())
+                                MaterialPageRoute(builder: (context) => const Questionnaire4())
                             );
                           }:null,
                           style: ElevatedButton.styleFrom(
@@ -140,9 +140,9 @@ class _Questionnaire4State extends State<Questionnaire4> {
               child: LinearPercentIndicator(
                   animateFromLastPercent: true,
                   lineHeight: 20.0,
-                  animationDuration: 300,
-                  percent: 4/16,
-                  center: const Text('4/16'),
+                  animationDuration: 1000,
+                  percent: 3/16,
+                  center: const Text('3/16'),
                   barRadius: const Radius.circular(30),
                   backgroundColor: const Color(0xFFDCDCDC),
                   progressColor: const Color(0xFF32BEC4)
