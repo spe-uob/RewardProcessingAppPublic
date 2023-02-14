@@ -98,19 +98,23 @@ class _GameMapState extends State<GameMap> {
                   crossAxisCount: row),
               itemBuilder: (BuildContext, int index) {
                 if (barriers.contains(index)) {
-                  return Padding(
+                 return Padding(
                     padding: const EdgeInsets.all(1.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(5.0),
                     child: Container(
                       child: Text(index.toString()),
                       color: Colors.blue,
+                      
                     ),
+                  )
                   );
                 } else {}
                 return Padding(
                   padding: const EdgeInsets.all(1.0),
                   child: Container(
                     child: Text(index.toString()),
-                    color: Color.fromARGB(255, 166, 175, 183),
+                    color: Color.fromARGB(255, 10, 10, 10),
                   ),
                 );
               }),
