@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:rewardprocessing/questionnaire/questionnaire15.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Questionnaire14 extends StatefulWidget {
-  const Questionnaire14({super.key});
+  final String id;
+  const Questionnaire14({super.key, required this.id});
 
   @override
   State<Questionnaire14> createState() => _Questionnaire14State();
@@ -13,6 +15,7 @@ class Questionnaire14 extends StatefulWidget {
 class _Questionnaire14State extends State<Questionnaire14> {
   double _currentSliderValue = 0;
   bool activeButton = false;
+  late String text;
 
   @override
   void initState() {
@@ -78,7 +81,7 @@ class _Questionnaire14State extends State<Questionnaire14> {
                             min: -100,
                             max: 100,
                             label: _currentSliderValue.round().toString(),
-                            onChanged: (double value) {
+                            onChanged: (value) {
                               setState(() {
                                 _currentSliderValue = value;
                                 activeButton = true;
@@ -109,11 +112,18 @@ class _Questionnaire14State extends State<Questionnaire14> {
                   Container(
                       margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
                       child: ElevatedButton(
-                          onPressed: activeButton ? () {
+                          onPressed: activeButton ? () async {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const Questionnaire15())
+                                MaterialPageRoute(builder: (context) => Questionnaire15(
+                                    id: widget.id)
+                                )
                             );
+                            await FirebaseFirestore.instance
+                                .collection('questionnaire')
+                                .doc(widget.id)
+                                .set({'14. How negative or positive the experience was (-100/100)': _currentSliderValue.toInt()},
+                                SetOptions(merge: true));
                           }:null,
                           style: ElevatedButton.styleFrom(
                               fixedSize: const Size(160, 60),
@@ -140,7 +150,7 @@ class _Questionnaire14State extends State<Questionnaire14> {
               child: LinearPercentIndicator(
                   animateFromLastPercent: true,
                   lineHeight: 20.0,
-                  animationDuration: 300,
+                  animationDuration: 1000,
                   percent: 14/16,
                   center: const Text('14/16'),
                   barRadius: const Radius.circular(30),

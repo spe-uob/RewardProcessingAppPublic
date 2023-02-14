@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:rewardprocessing/questionnaire/questionnaire2.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class Questionnaire extends StatefulWidget {
-  const Questionnaire({super.key});
+  final String id;
+  const Questionnaire({super.key, required this.id});
 
   @override
   State<Questionnaire> createState() => _QuestionnaireState();
@@ -109,11 +112,18 @@ class _QuestionnaireState extends State<Questionnaire> {
               Container(
                   margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
                   child: ElevatedButton(
-                      onPressed: activeButton ? () {
+                      onPressed: activeButton ? () async {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const Questionnaire2())
+                            MaterialPageRoute(builder: (context) => Questionnaire2(
+                                id: widget.id)
+                            )
                         );
+                        await FirebaseFirestore.instance
+                            .collection('questionnaire')
+                            .doc(widget.id)
+                            .set({'1. Worthless/Valuable (-3/3)': _currentSliderValue},
+                            SetOptions(merge: true));
                       }: null,
                       style: ElevatedButton.styleFrom(
                         fixedSize: const Size(160, 60),
@@ -134,17 +144,17 @@ class _QuestionnaireState extends State<Questionnaire> {
             ]
           ),
           bottomSheet: Padding(
-                  padding: const EdgeInsets.only(left: 25, right: 25, bottom: 80),
-                  child: LinearPercentIndicator(
-                      animateFromLastPercent: true,
-                      lineHeight: 20.0,
-                      animationDuration: 300,
-                      percent: 1/16,
-                      center: const Text('1/16'),
-                      barRadius: const Radius.circular(30),
-                      backgroundColor: const Color(0xFFDCDCDC),
-                      progressColor: const Color(0xFF32BEC4)
-                  )
+              padding: const EdgeInsets.only(left: 25, right: 25, bottom: 80),
+              child: LinearPercentIndicator(
+                  animateFromLastPercent: true,
+                  lineHeight: 20.0,
+                  animationDuration: 1000,
+                  percent: 1/16,
+                  center: const Text('1/16'),
+                  barRadius: const Radius.circular(30),
+                  backgroundColor: const Color(0xFFDCDCDC),
+                  progressColor: const Color(0xFF32BEC4)
+              )
           )
         )
     );

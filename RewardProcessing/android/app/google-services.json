@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "458757187364",
+    "project_id": "spe-data-3fd17",
+    "storage_bucket": "spe-data-3fd17.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:458757187364:android:290e62abf82d9465b4f5b1",
+        "android_client_info": {
+          "package_name": "com.example.RewardProcessing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "458757187364-36lj1dlgvpddhuvlf07v6jj6na2pm7dm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz5V-AU434f4bm1DUwE2I1Yy4B_o2R-g0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "458757187364-36lj1dlgvpddhuvlf07v6jj6na2pm7dm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "458757187364-gnk3ijtuc85jkcigqp78lgnjslhgldvq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.RewardProcessing"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
