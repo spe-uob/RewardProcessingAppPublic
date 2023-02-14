@@ -111,7 +111,7 @@ class _GameMapState extends State<GameMap> {
                   );
                 } else {}
                 return Padding(
-                  padding: const EdgeInsets.all(1.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: ClipOval(
                   child: Container(
                     child: Text(index.toString()),
