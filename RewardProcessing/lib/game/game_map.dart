@@ -112,10 +112,12 @@ class _GameMapState extends State<GameMap> {
                 } else {}
                 return Padding(
                   padding: const EdgeInsets.all(1.0),
+                  child: ClipOval(
                   child: Container(
                     child: Text(index.toString()),
-                    color: Color.fromARGB(255, 10, 10, 10),
+                    color: Color.fromARGB(255, 224, 237, 41),
                   ),
+                )
                 );
               }),
         ),
