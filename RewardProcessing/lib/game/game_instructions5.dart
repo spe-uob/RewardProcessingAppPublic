@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rewardprocessing/game/game_instructions.dart';
 import 'package:flutter/services.dart';
+import 'package:rewardprocessing/game/game_map.dart';
 
 class GameInstructions5 extends StatefulWidget {
   const GameInstructions5({super.key});
@@ -41,7 +42,7 @@ class _GameInstructions5State extends State<GameInstructions5> {
                               Navigator.push(
                                   context,
                                   // MaterialPageRoute(builder: (context) => const Questionnaire())
-                                  MaterialPageRoute(builder: (context) => const GameInstructions())
+                                  MaterialPageRoute(builder: (context) => const GameMap())
                               );
                             },
                             style: ElevatedButton.styleFrom(
