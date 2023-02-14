@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rewardprocessing/questionnaire/consent.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProlificID extends StatefulWidget {
   const ProlificID ({super.key});
@@ -13,6 +14,7 @@ class ProlificID extends StatefulWidget {
 class _ProlificIDState extends State<ProlificID> {
   bool activeButton = false;
   final formKey = GlobalKey<FormState>();
+  late String prolificID;
 
   @override
   void initState() {
@@ -92,6 +94,7 @@ class _ProlificIDState extends State<ProlificID> {
                           ),
                           onChanged: (value) {
                             setState(() {
+                              prolificID = value;
                               activeButton = value.isNotEmpty ? true : false;
                             });
                           }
@@ -101,13 +104,19 @@ class _ProlificIDState extends State<ProlificID> {
               Container(
                   margin: const EdgeInsets.only(top: 60),
                   child: ElevatedButton(
-                      onPressed: activeButton ? () {
+                      onPressed: activeButton ? () async {
                         if(formKey.currentState!.validate()){
                           Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const Consent())
+                              MaterialPageRoute(builder: (context) => Consent(
+                                  id: prolificID)
+                              )
                           );
                         }
+                        await FirebaseFirestore.instance
+                            .collection('questionnaire')
+                            .doc(prolificID)
+                            .set({'Prolific ID': prolificID});
                       }:null,
                       style: ElevatedButton.styleFrom(
                           fixedSize: const Size(160, 60),

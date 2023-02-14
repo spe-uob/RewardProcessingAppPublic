@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:rewardprocessing/questionnaire/questionnaire5.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Questionnaire4 extends StatefulWidget {
-  const Questionnaire4({super.key});
+  final String id;
+  const Questionnaire4({super.key, required this.id});
 
   @override
   State<Questionnaire4> createState() => _Questionnaire4State();
@@ -109,11 +111,18 @@ class _Questionnaire4State extends State<Questionnaire4> {
                   Container(
                       margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
                       child: ElevatedButton(
-                          onPressed: activeButton ? () {
+                          onPressed: activeButton ? () async {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const Questionnaire5())
+                                MaterialPageRoute(builder: (context) => Questionnaire5(
+                                    id: widget.id)
+                                )
                             );
+                            await FirebaseFirestore.instance
+                                .collection('questionnaire')
+                                .doc(widget.id)
+                                .set({'4. Guilty/Proud (-3/3)': _currentSliderValue},
+                                SetOptions(merge: true));
                           }:null,
                           style: ElevatedButton.styleFrom(
                               fixedSize: const Size(160, 60),
@@ -140,7 +149,7 @@ class _Questionnaire4State extends State<Questionnaire4> {
               child: LinearPercentIndicator(
                   animateFromLastPercent: true,
                   lineHeight: 20.0,
-                  animationDuration: 300,
+                  animationDuration: 1000,
                   percent: 4/16,
                   center: const Text('4/16'),
                   barRadius: const Radius.circular(30),

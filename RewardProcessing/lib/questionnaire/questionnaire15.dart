@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:rewardprocessing/questionnaire/questionnaire16.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Questionnaire15 extends StatefulWidget {
-  const Questionnaire15({super.key});
+  final String id;
+  const Questionnaire15({super.key, required this.id});
 
   @override
   State<Questionnaire15> createState() => _Questionnaire15State();
@@ -13,6 +15,7 @@ class Questionnaire15 extends StatefulWidget {
 class _Questionnaire15State extends State<Questionnaire15> {
   int? _value = 0;
   bool activeButton = false;
+  late String text;
 
   @override
   void initState() {
@@ -46,7 +49,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                           child: Container (
                               margin: const EdgeInsets.only(left: 20, right: 20),
                               child: const Text (
-                                  'In the last 24 hours, has an event or experience significantly affected your mood?',
+                                  'Did you know the event/experience was going to occur before it happened?',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(fontSize: 17,
                                     letterSpacing: 0.75,
@@ -70,6 +73,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                               setState(() {
                                 _value = value;
                                 activeButton = true;
+                                text = 'No - it was a complete surprise';
                               });
                             }
                         ),
@@ -95,6 +99,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                               setState(() {
                                 _value = value;
                                 activeButton = true;
+                                text = 'Yes - on the day it happened';
                               });
                             }
                         ),
@@ -120,6 +125,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                               setState(() {
                                 _value = value;
                                 activeButton = true;
+                                text = 'Yes - up to a week before it happened';
                               });
                             }
                         ),
@@ -145,6 +151,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                               setState(() {
                                 _value = value;
                                 activeButton = true;
+                                text = 'Yes - I knew about it for more than a week before it happened';
                               });
                             }
                         ),
@@ -158,11 +165,18 @@ class _Questionnaire15State extends State<Questionnaire15> {
                   Container(
                       margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
                       child: ElevatedButton(
-                          onPressed: activeButton ? () {
+                          onPressed: activeButton ? () async {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const Questionnaire16())
+                                MaterialPageRoute(builder: (context) => Questionnaire16(
+                                    id: widget.id)
+                                )
                             );
+                            await FirebaseFirestore.instance
+                                .collection('questionnaire')
+                                .doc(widget.id)
+                                .set({'15. Did you know the event/experience was going to occur before it happened?': text},
+                                SetOptions(merge: true));
                           }:null,
                           style: ElevatedButton.styleFrom(
                               fixedSize: const Size(160, 60),
@@ -189,7 +203,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
               child: LinearPercentIndicator(
                   animateFromLastPercent: true,
                   lineHeight: 20.0,
-                  animationDuration: 300,
+                  animationDuration: 1000,
                   percent: 15/16,
                   center: const Text('15/16'),
                   barRadius: const Radius.circular(30),

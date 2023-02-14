@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:rewardprocessing/questionnaire/questionnaire.dart';
 
 class Consent extends StatefulWidget {
-  const Consent({Key? key}) : super(key: key);
+  final String id;
+  const Consent({super.key, required this.id});
 
   @override
   State<Consent> createState() => _ConsentState();
@@ -18,7 +19,6 @@ String content =
     '4.	I am aware I am free to withdraw from the study at any time without giving a reason for doing so.\n';
 
 class _ConsentState extends State<Consent> {
-
   @override
   void initState() {
     super.initState();
@@ -31,7 +31,7 @@ class _ConsentState extends State<Consent> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: ()async {
+        onWillPop: () async {
           return false; // disable back page
         },
         child: Scaffold(
@@ -46,76 +46,72 @@ class _ConsentState extends State<Consent> {
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Container(
-                              margin: const EdgeInsets.all(30),
-                              child:
-                              Text(content, textAlign: TextAlign.justify,
-                                  style: const TextStyle(fontSize: 14,
-                                    fontStyle: FontStyle.normal,
-                                    height: 1.75,
-                                    letterSpacing: 0.75,
-                                  )
-                              )
-                          ),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                    margin: const EdgeInsets.only(left: 10, right: 10, bottom: 70),
-                                    child:
-                                    ElevatedButton(onPressed: () {
-                                      if(Platform.isAndroid) {
+                      Container(
+                          margin: const EdgeInsets.all(30),
+                          child: Text(content,
+                              textAlign: TextAlign.justify,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontStyle: FontStyle.normal,
+                                height: 1.75,
+                                letterSpacing: 0.75,
+                              ))),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                                margin: const EdgeInsets.only(
+                                    left: 10, right: 10, bottom: 70),
+                                child: ElevatedButton(
+                                    onPressed: () {
+                                      if (Platform.isAndroid) {
                                         SystemNavigator.pop();
                                       } else {
                                         exit(0);
                                       }
                                     },
-                                        style: ElevatedButton.styleFrom(
-                                          fixedSize: const Size(160, 60),
-                                          backgroundColor: Colors.white70,
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(100)),
-                                          elevation: 2.0,
-                                        ),
-                                        child: const Text(
-                                            'No, I do not consent.',
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(color: Color(0xFF00A8AF),
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w300
-                                            )
-                                        )
-                                    )
-                                ),
-                                Container(
-                                    margin: const EdgeInsets.only(left: 10, right: 10, bottom: 70),
-                                    child:
-                                    ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              // MaterialPageRoute(builder: (context) => const Questionnaire())
-                                              MaterialPageRoute(builder: (context) => const Questionnaire())
-                                          );
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          fixedSize: const Size(160, 60),
-                                          backgroundColor: const Color(0xFF00A8AF),
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(100)),
-                                          elevation: 2.0,),
-                                        child: const Text(
-                                            'Yes, I consent.',
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(color: Colors.white,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w300
-                                            )
-                                        )
-                                    )
-                                )
-                              ]
-                          )
+                                    style: ElevatedButton.styleFrom(
+                                      fixedSize: const Size(160, 60),
+                                      backgroundColor: Colors.white70,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(100)),
+                                      elevation: 2.0,
+                                    ),
+                                    child: const Text('No, I do not consent.',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Color(0xFF00A8AF),
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w300)))),
+                            Container(
+                                margin: const EdgeInsets.only(
+                                    left: 10, right: 10, bottom: 70),
+                                child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          // MaterialPageRoute(builder: (context) => const Questionnaire())
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Questionnaire(
+                                                      id: widget.id)));
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      fixedSize: const Size(160, 60),
+                                      backgroundColor: const Color(0xFF00A8AF),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(100)),
+                                      elevation: 2.0,
+                                    ),
+                                    child: const Text('Yes, I consent.',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w300))))
+                          ])
                         ]
                     )
                 )
@@ -130,25 +126,19 @@ class _ConsentState extends State<Consent> {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: const Text(
-            'Participant Consent Form',
+        title: const Text('Participant Consent Form',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight: FontWeight.w400,
               color: Colors.white,
               fontSize: 24,
-            )
-        ),
+            )),
         elevation: 0,
         flexibleSpace: Container(
             decoration: const BoxDecoration(
                 color: Color(0xFF00A8AF),
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(35),
-                    bottomRight: Radius.circular(35)
-                )
-            )
-        )
-    );
+                    bottomRight: Radius.circular(35)))));
   }
 }

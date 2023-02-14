@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:rewardprocessing/questionnaire/questionnaire14.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Questionnaire13 extends StatefulWidget {
-  const Questionnaire13({super.key});
+  final String id;
+  const Questionnaire13({super.key, required this.id});
 
   @override
   State<Questionnaire13> createState() => _Questionnaire13State();
@@ -13,6 +15,7 @@ class Questionnaire13 extends StatefulWidget {
 class _Questionnaire13State extends State<Questionnaire13> {
   int? _value = 0;
   bool activeButton = false;
+  late String text;
 
   @override
   void initState() {
@@ -70,6 +73,7 @@ class _Questionnaire13State extends State<Questionnaire13> {
                           setState(() {
                             _value = value;
                             activeButton = true;
+                            text = 'Yes';
                           });
                         }
                     ),
@@ -95,6 +99,7 @@ class _Questionnaire13State extends State<Questionnaire13> {
                           setState(() {
                             _value = value;
                             activeButton = true;
+                            text = 'No';
                           });
                         }
                     ),
@@ -108,11 +113,18 @@ class _Questionnaire13State extends State<Questionnaire13> {
                 Container(
                     margin: const EdgeInsets.only(left: 10, right: 10, top: 52),
                     child: ElevatedButton(
-                        onPressed: activeButton ? () {
+                        onPressed: activeButton ? () async {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const Questionnaire14())
+                              MaterialPageRoute(builder: (context) => Questionnaire14(
+                                  id: widget.id)
+                              )
                           );
+                          await FirebaseFirestore.instance
+                              .collection('questionnaire')
+                              .doc(widget.id)
+                              .set({'13. In the last 24 hours, has an event or experience significantly affected your mood?': text},
+                              SetOptions(merge: true));
                         }:null,
                         style: ElevatedButton.styleFrom(
                             fixedSize: const Size(160, 60),
@@ -139,7 +151,7 @@ class _Questionnaire13State extends State<Questionnaire13> {
               child: LinearPercentIndicator(
                   animateFromLastPercent: true,
                   lineHeight: 20.0,
-                  animationDuration: 300,
+                  animationDuration: 1000,
                   percent: 13/16,
                   center: const Text('13/16'),
                   barRadius: const Radius.circular(30),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:rewardprocessing/questionnaire/complete.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Questionnaire16 extends StatefulWidget {
-  const Questionnaire16({super.key});
+  final String id;
+  const Questionnaire16({super.key, required this.id});
 
   @override
   State<Questionnaire16> createState() => _Questionnaire16State();
@@ -11,6 +13,7 @@ class Questionnaire16 extends StatefulWidget {
 
 class _Questionnaire16State extends State<Questionnaire16> {
   bool activeButton = false;
+  late String text;
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +74,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                         onChanged: (value) {
                           setState(() {
                             activeButton = value.isNotEmpty ? true : false;
+                            text = value;
                           });
                         }
                     )
@@ -78,11 +82,16 @@ class _Questionnaire16State extends State<Questionnaire16> {
                 Container(
                     margin: const EdgeInsets.only(top: 40),
                     child: ElevatedButton(
-                        onPressed: activeButton ? () {
+                        onPressed: activeButton ? () async {
                           Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => const Complete())
                           );
+                          await FirebaseFirestore.instance
+                              .collection('questionnaire')
+                              .doc(widget.id)
+                              .set({'16. A brief description of the event or experience': text},
+                              SetOptions(merge: true));
                         }:null,
                         style: ElevatedButton.styleFrom(
                             fixedSize: const Size(160, 60),
@@ -109,7 +118,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
               child: LinearPercentIndicator(
                   animateFromLastPercent: true,
                   lineHeight: 20,
-                  animationDuration: 300,
+                  animationDuration: 1000,
                   percent: 1,
                   center: const Text('16/16'),
                   barRadius: const Radius.circular(30),

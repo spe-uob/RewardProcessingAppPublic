@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:rewardprocessing/questionnaire/questionnaire6.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Questionnaire5 extends StatefulWidget {
-  const Questionnaire5({super.key});
+  final String id;
+  const Questionnaire5({super.key, required this.id});
 
   @override
   State<Questionnaire5> createState() => _Questionnaire5State();
@@ -104,16 +106,23 @@ class _Questionnaire5State extends State<Questionnaire5> {
                             letterSpacing: 0.5)
                     )
                 )
-              ],
+              ]
             ),
                   Container(
                       margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
                       child: ElevatedButton(
-                          onPressed: activeButton ? () {
+                          onPressed: activeButton ? () async {
                             Navigator.push(
-                          context,
-                                MaterialPageRoute(builder: (context) => const Questionnaire6())
+                                context,
+                                MaterialPageRoute(builder: (context) => Questionnaire6(
+                                  id: widget.id)
+                                )
                             );
+                            await FirebaseFirestore.instance
+                                .collection('questionnaire')
+                                .doc(widget.id)
+                                .set({'5. Numb/Interested (-3/3)': _currentSliderValue},
+                                SetOptions(merge: true));
                           }:null,
                           style: ElevatedButton.styleFrom(
                               fixedSize: const Size(160, 60),
@@ -140,7 +149,7 @@ class _Questionnaire5State extends State<Questionnaire5> {
               child: LinearPercentIndicator(
                   animateFromLastPercent: true,
                   lineHeight: 20.0,
-                  animationDuration: 300,
+                  animationDuration: 1000,
                   percent: 5/16,
                   center: const Text('5/16'),
                   barRadius: const Radius.circular(30),

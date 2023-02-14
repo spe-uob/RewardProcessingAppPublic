@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:rewardprocessing/questionnaire/questionnaire13.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Questionnaire12 extends StatefulWidget {
-  const Questionnaire12({super.key});
+  final String id;
+  const Questionnaire12({super.key, required this.id});
 
   @override
   State<Questionnaire12> createState() => _Questionnaire12State();
@@ -108,11 +110,18 @@ class _Questionnaire12State extends State<Questionnaire12> {
                 Container(
                     margin: const EdgeInsets.only(left: 10, right: 10, top: 60),
                     child: ElevatedButton(
-                        onPressed: activeButton ? () {
+                        onPressed: activeButton ? () async {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const Questionnaire13())
+                              MaterialPageRoute(builder: (context) => Questionnaire13(
+                                  id: widget.id)
+                              )
                           );
+                          await FirebaseFirestore.instance
+                              .collection('questionnaire')
+                              .doc(widget.id)
+                              .set({'12. Restless/Calm (-3/3)': _currentSliderValue},
+                              SetOptions(merge: true));
                         }:null,
                         style: ElevatedButton.styleFrom(
                             fixedSize: const Size(160, 60),
@@ -139,7 +148,7 @@ class _Questionnaire12State extends State<Questionnaire12> {
               child: LinearPercentIndicator(
                   animateFromLastPercent: true,
                   lineHeight: 20.0,
-                  animationDuration: 300,
+                  animationDuration: 1000,
                   percent: 12/16,
                   center: const Text('12/16'),
                   barRadius: const Radius.circular(30),
