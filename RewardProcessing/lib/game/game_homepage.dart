@@ -135,13 +135,23 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               flex: 5,
               child: GestureDetector(
+                //when the mouse is dragged vertically across the screen
                 onVerticalDragUpdate: (details){
                   if(details.delta.dy>0){
-                    direction="up";
-                  }else if(details.delta.dy<0){
                     direction="down";
+                  }else if(details.delta.dy<0){
+                    direction="up";
                   }
-                  print(direction);
+                  //print(direction);//testing
+                },
+                //when the mouse is dragged horizontally across the screen
+                onHorizontalDragUpdate:(details){
+                  if(details.delta.dx>0){
+                    direction="right";
+                  }else if(details.delta.dx<0){
+                    direction="left";
+                  }
+                  //print(direction);//testing
                 },
                 child: Container(
                   child: GridView.builder(
