@@ -4,7 +4,7 @@ import 'package:rewardprocessing/questionnaire/complete.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class Questionnaire16 extends StatefulWidget {
-  const Questionnaire16({super.key});
+  const Questionnaire16({super.key, required String id});
 
   @override
   State<Questionnaire16> createState() => _Questionnaire16State();
@@ -47,8 +47,8 @@ class _Questionnaire16State extends State<Questionnaire16> {
                       maxLines: 7,
                       inputFormatters: [
                         FilteringTextInputFormatter.allow(
-                            RegExp('[A-Z a-z 0-9 ]')),
-                         LengthLimitingTextInputFormatter(250)
+                            RegExp('[A-Za-z0-9 ]')),
+                         LengthLimitingTextInputFormatter(1000)
                       ],
                       validator: (val) {
                         return (RegExp("[A-Z a-z 0-9 ]").hasMatch(val!) &&
@@ -58,7 +58,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                       },
                       cursorColor: const Color(0xFF00A8AF),
                       decoration: const InputDecoration(
-                          hintText: 'Type your answer here in 1000 characters',
+                          hintText: 'Type your answer here in 250 characters',
                           enabledBorder: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20)),
