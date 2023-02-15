@@ -13,9 +13,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   static int numberInRow = 11;
   int numberOfSquares = numberInRow * 17;
-
   int player = numberInRow = 15 + 1;
 
+  //the walls of the map
   List<int> barriers = [
     0,
     1,
@@ -113,11 +113,16 @@ class _HomePageState extends State<HomePage> {
     149,
   ];
 
+  String direction = 'right';// direction changes when we swipe
+
   void startGame() {
     Timer.periodic(Duration(milliseconds: 150),(timer){
-      setState(() {
-        player++;// increments the position of the pacman object by on on hitting play
-      });
+     if(!barriers.contains(player+1)){
+       setState(() {
+         player++;
+       });
+     }//the if statement returns false if the (players position)+1 is equal to any
+      //the barriers indices, thus preventing it from moving further
     });
   }
 
@@ -129,31 +134,41 @@ class _HomePageState extends State<HomePage> {
           children: [
             Expanded(
               flex: 5,
-              child: Container(
-                child: GridView.builder(
-                    physics:
-                        NeverScrollableScrollPhysics(), // prevent the page from scrolling
-                    itemCount: numberOfSquares,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: numberInRow),
-                    itemBuilder: (BuildContext context, int index) {
-                      if (player == index) {
-                        return MyPlayer();
-                      } else if (barriers.contains(index)) {
-                        // setting boundary gridboxes to a different color
-                        return MyPixel(
-                          innerColor: Colors.blue[800],
-                          outerColor: Colors.blue[900],
-                          //child: Text(index.toString())// hiding the index of the pixels
-                        );
-                      } else {
-                        return MyPath(
-                          innerColor: Colors.yellow,
-                          outerColor: Colors.black,
-                          //child: Text(index.toString())// hiding the index of the pixels
-                        );
-                      }
-                    }),
+              child: GestureDetector(
+                onVerticalDragUpdate: (details){
+                  if(details.delta.dy>0){
+                    direction="up";
+                  }else if(details.delta.dy<0){
+                    direction="down";
+                  }
+                  print(direction);
+                },
+                child: Container(
+                  child: GridView.builder(
+                      physics:
+                          NeverScrollableScrollPhysics(), // prevent the page from scrolling
+                      itemCount: numberOfSquares,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: numberInRow),
+                      itemBuilder: (BuildContext context, int index) {
+                        if (player == index) {
+                          return MyPlayer();
+                        } else if (barriers.contains(index)) {
+                          // setting boundary gridboxes to a different color
+                          return MyPixel(
+                            innerColor: Colors.blue[800],
+                            outerColor: Colors.blue[900],
+                            //child: Text(index.toString())// hiding the index of the pixels
+                          );
+                        } else {
+                          return MyPath(
+                            innerColor: Colors.yellow,
+                            outerColor: Colors.black,
+                            //child: Text(index.toString())// hiding the index of the pixels
+                          );
+                        }
+                      }),
+                ),
               ),
             ),
             Expanded(
