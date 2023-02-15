@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+import 'pixel.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
   @override
-  State<HomePage> createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-
     int numberInRow = 11;
     int numberOfSquares = numberInRow * 17;
 
@@ -110,21 +108,49 @@ class _HomePageState extends State<HomePage> {
       148,
       149,
     ];
-    // using scaffold widget as the main parent of the page
     return Scaffold(
-      backgroundColor: Colors.grey[800],
-      body: Column(children: [
-        Expanded(
-          flex: 5,
-          child: Container(
-          )
-        ),
-        Expanded(
-          child: Container(
-              color: Colors.pink
-          )
-        )
-      ])
-    );
+        backgroundColor: Colors.black,
+        body: Column(
+          children: [
+            Expanded(
+              flex: 5,
+              child: Container(
+                child: GridView.builder(
+                    physics:
+                    NeverScrollableScrollPhysics(), // prevent the page from scrolling
+                    itemCount: numberOfSquares,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: numberInRow),
+                    itemBuilder: (BuildContext context, int index) {
+                      if(barriers.contains(index)){ // setting boundary gridboxes to a different color
+                        return MyPixel(
+                          color: Colors.blue[980],
+                          child: Text(index.toString())
+                        );
+                      }else{
+                        return MyPixel(
+                            color: Colors.blue[980],
+                            child: Text(index.toString())
+                        );
+                      }
+                    }),
+              ),
+            ),
+            Expanded(
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      Text("Score:",
+                          style: TextStyle(color: Colors.white, fontSize: 40)),
+                      Text(
+                        " P L A Y",
+                        style: TextStyle(color: Colors.white, fontSize: 40),
+                      )
+                    ],
+                  ),
+                ))
+          ],
+        ));
   }
 }
