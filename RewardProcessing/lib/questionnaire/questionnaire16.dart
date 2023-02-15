@@ -12,7 +12,7 @@ class Questionnaire16 extends StatefulWidget {
 
 class _Questionnaire16State extends State<Questionnaire16> {
   bool activeButton = false;
-  TextEditingController _textEditingController = TextEditingController();
+  final TextEditingController _textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
