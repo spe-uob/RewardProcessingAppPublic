@@ -1,5 +1,3 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -91,16 +89,10 @@ class _GameMapState extends State<GameMap> {
               itemCount: col,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: row),
-              itemBuilder: (BuildContext, int index) {
-
+              itemBuilder: (buildContext, int index) {
                 if (player == index) {
                   return Image.asset("assets/images/pacman01.pic.jpg");
-                }
-                
-                
-                
-                
-                else if (barriers.contains(index)) {
+                } else if (barriers.contains(index)) {
                   return Padding(
                       padding: const EdgeInsets.all(1.0),
                       child: ClipRRect(
@@ -123,7 +115,7 @@ class _GameMapState extends State<GameMap> {
         ),
         Expanded(
             child: Column(
-          children: [
+          children: const [
             Text("Score:",
                 textAlign: TextAlign.left,
                 style: TextStyle(color: Colors.black, fontSize: 30)),
