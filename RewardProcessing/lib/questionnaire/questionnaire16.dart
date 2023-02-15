@@ -58,7 +58,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                       },
                       cursorColor: const Color(0xFF00A8AF),
                       decoration: const InputDecoration(
-                          hintText: 'Type your answer here in 250 characters',
+                          hintText: 'Type your answer here in 1000 characters',
                           enabledBorder: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20)),
@@ -82,7 +82,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                 margin: EdgeInsets.only(left: 30,right: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: [Text("${_textEditingController.text.length}/250")],
+                  children: [Text("${_textEditingController.text.length}/1000")],
                 ),
               ),
               Container(
