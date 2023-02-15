@@ -124,12 +124,14 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (BuildContext context, int index) {
                       if(barriers.contains(index)){ // setting boundary gridboxes to a different color
                         return MyPixel(
-                          color: Colors.blue[980],
+                          innerColor: Colors.blue[800],
+                          outerColor: Colors.blue[900],
                           child: Text(index.toString())
                         );
                       }else{
                         return MyPixel(
-                            color: Colors.blue[980],
+                            innerColor: Colors.yellow,
+                            outerColor: Colors.black,
                             child: Text(index.toString())
                         );
                       }
