@@ -3,8 +3,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-
-
 class GameMap extends StatefulWidget {
   const GameMap({super.key});
 
@@ -14,18 +12,15 @@ class GameMap extends StatefulWidget {
 
 int row = 8;
 int col = row * 11;
+int player = row * 5 + 4;
 
 class _GameMapState extends State<GameMap> {
-
-    @override
+  @override
   void initState() {
     super.initState();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown
-    ]);
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   }
-
 
   List<int> barriers = [
     0,
@@ -97,28 +92,33 @@ class _GameMapState extends State<GameMap> {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: row),
               itemBuilder: (BuildContext, int index) {
-                if (barriers.contains(index)) {
-                 return Padding(
-                    padding: const EdgeInsets.all(1.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(5.0),
-                    child: Container(
-                      child: Text(index.toString()),
-                      color: Colors.blue,
-                      
-                    ),
-                  )
-                  );
+
+                if (player == index) {
+                  return Image.asset("assets/images/pacman01.pic.jpg");
+                }
+                
+                
+                
+                
+                else if (barriers.contains(index)) {
+                  return Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5.0),
+                        child: Container(
+                          // child: Text(index.toString()),
+                          color: Colors.blue,
+                        ),
+                      ));
                 } else {}
                 return Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: ClipOval(
-                  child: Container(
-                    child: Text(index.toString()),
-                    color: Color.fromARGB(255, 224, 237, 41),
-                  ),
-                )
-                );
+                    padding: const EdgeInsets.all(16.0),
+                    child: ClipOval(
+                      child: Container(
+                        // child: Text(index.toString()),
+                        color: Colors.yellow,
+                      ),
+                    ));
               }),
         ),
         Expanded(
@@ -134,6 +134,5 @@ class _GameMapState extends State<GameMap> {
         ))
       ]),
     );
-
   }
 }
