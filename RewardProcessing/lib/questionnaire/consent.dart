@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:rewardprocessing/questionnaire/questionnaire.dart';
+import 'questionnaire.dart';
 
 class Consent extends StatefulWidget {
   const Consent({Key? key}) : super(key: key);

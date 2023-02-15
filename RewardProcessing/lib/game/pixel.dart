@@ -19,7 +19,6 @@ class MyPixel extends StatelessWidget{
           child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Container(
-                padding:EdgeInsets.all(4) ,
                 color: innerColor,// this will be set to whichever color we choose in game_homepage.dart
                 child: Center( child:child))// container for innerColor
                 )

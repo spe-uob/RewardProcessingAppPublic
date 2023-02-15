@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rewardprocessing/game/game_instructions4.dart';
+import 'game_instructions4.dart';
 import 'package:flutter/services.dart';
 
 class GameInstructions3 extends StatefulWidget {
