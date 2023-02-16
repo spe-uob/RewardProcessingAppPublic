@@ -30,7 +30,6 @@ class _HomePageState extends State<HomePage> {
     10,
     11,
     22,
-    33,
     44,
     55,
     66,
@@ -78,7 +77,6 @@ class _HomePageState extends State<HomePage> {
     107,
     108,
     24,
-    35,
     46,
     57,
     30,
@@ -93,8 +91,6 @@ class _HomePageState extends State<HomePage> {
     83,
     26,
     28,
-    37,
-    38,
     39,
     123,
     134,
@@ -117,13 +113,61 @@ class _HomePageState extends State<HomePage> {
 
   void startGame() {
     Timer.periodic(Duration(milliseconds: 150),(timer){
+      switch (direction){// switch on the basis of input of type 'direction'
+        case 'left':
+          moveLeft();
+          break;
+        case "right":
+          moveRight();
+          break;
+        case "up":
+          moveUp();
+          break;
+        case"down":
+          moveDown();
+          break;
+      }
      if(!barriers.contains(player+1)){
        setState(() {
          player++;
        });
      }//the if statement returns false if the (players position)+1 is equal to any
       //the barriers indices, thus preventing it from moving further
+
     });
+  }
+
+  void moveLeft() {//decrements index
+    if(!barriers.contains(player-1)){
+      setState(() {
+        player--;
+      });
+    }
+  }
+
+  void moveRight() {//increments index
+    if(!barriers.contains(player+1)){
+      setState(() {
+        player++;
+      });
+    }
+  }
+// for moving up and down, need to add the number of squares in each row
+  //using var numberInRow
+  void moveUp() {
+    if(!barriers.contains(player-numberInRow)){
+      setState(() {
+        player -= numberInRow;
+      });
+    }
+  }
+
+  void moveDown() {
+    if(!barriers.contains(player+numberInRow)){
+      setState(() {
+        player += numberInRow;
+      });
+    }
   }
 
   @override
@@ -168,7 +212,7 @@ class _HomePageState extends State<HomePage> {
                           return MyPixel(
                             innerColor: Colors.blue[800],
                             outerColor: Colors.blue[900],
-                            //child: Text(index.toString())// hiding the index of the pixels
+                            child: Text(index.toString())// hiding the index of the pixels
                           );
                         } else {
                           return MyPath(
@@ -198,6 +242,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ));
   }
+
 
 
 }
