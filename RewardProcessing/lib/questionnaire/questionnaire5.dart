@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rewardprocessing/questionnaire/MySlider.dart';
+import 'package:rewardprocessing/questionnaire/my_slider.dart';
 import 'package:rewardprocessing/questionnaire/questionnaire6.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/services.dart';
