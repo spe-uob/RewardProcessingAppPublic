@@ -81,21 +81,79 @@ class _GameMapState extends State<GameMap> {
                   crossAxisCount: row),
               itemBuilder: (buildContext, int index) {
                 if (32 == index) {
-                  return Image.asset("assets/images/LeftClick.png");
+                  return Padding(
+                  padding: const EdgeInsets.all(1.0),
+                  
+                    child: Column(children: [
+                      Image.asset("assets/images/LeftClick.png")
+                      ])
+                  ,
+                );
                 } else if (34 == index) {
-                  return Image.asset("assets/images/RightClick.png");
+                   return Padding(
+                  padding: const EdgeInsets.all(1.0),
+                 
+                    child: Column(children: [
+                      Image.asset("assets/images/RightClick.png")
+                      ])
+                  ,
+                );
+                  
                 } else if (27 == index) {
-                  return Image.asset("assets/images/UpClick.png");
+                   return Padding(
+                  padding: const EdgeInsets.all(1.0),
+                  
+                    child: Column(children: [
+                      Image.asset("assets/images/UpClick.png")
+                      ])
+                  ,
+                );
+                
                 } else if (39 == index) {
-                  return Image.asset("assets/images/DownClick.png");
+                   return Padding(
+                  padding: const EdgeInsets.all(1.0),
+                
+                    child: Column(children: [
+                     Image.asset("assets/images/DownClick.png")
+                      ])
+                  ,
+                );
                 } else if (player == index) {
-                  return Image.asset("assets/images/pacman01.pic.jpg");
+                   return Padding(
+                  padding: const EdgeInsets.all(1.0),
+                
+                    child: Column(children: [
+                      Image.asset("assets/images/pacman01.pic.jpg")
+                      ])
+                  ,
+                );
                 } else if (barriers.contains(index)) {
-                  return Image.asset("assets/images/wall.png");
+                   return Padding(
+                  padding: const EdgeInsets.all(1.0),
+                 
+                    child: Column(children: [
+                      Image.asset("assets/images/wall.png")
+                      ])
+                  ,
+                );
                 } else if (guess.contains(index)) {
-                  return Image.asset("assets/images/thisguess.png");
+                   return Padding(
+                  padding: const EdgeInsets.all(1.0),
+                  
+                    child: Column(children: [
+                     Image.asset("assets/images/thisguess.png")
+                      ])
+                  ,
+                );
                 } else if (pellets.contains(index)) {
-                  return Image.asset("assets/images/dot.png");
+                   return Padding(
+                  padding: const EdgeInsets.all(1.0),
+                
+                    child: Column(children: [
+                     Image.asset("assets/images/dot.png")
+                      ])
+                  ,
+                );
                 } else {}
                 return Padding(
                     padding: const EdgeInsets.all(1.0),
