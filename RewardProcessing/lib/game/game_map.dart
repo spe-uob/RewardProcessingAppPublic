@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class GameMap extends StatefulWidget {
   const GameMap({super.key});
@@ -166,14 +167,24 @@ class _GameMapState extends State<GameMap> {
         ),
         Expanded(
             child: Column(
-          children: const [
-            Text("Score:",
-                textAlign: TextAlign.left,
-                style: TextStyle(color: Colors.black, fontSize: 30)),
-            Text("Target Goal: 200 points",
-                textAlign: TextAlign.left,
-                style: TextStyle(color: Colors.black, fontSize: 30))
-          ],
+              crossAxisAlignment:CrossAxisAlignment.stretch,
+              children:  [
+                Padding(padding: const EdgeInsets.all(16),
+                child:  LinearPercentIndicator(
+                  width: 140.0,
+                  lineHeight: 16,
+                  progressColor: Colors.blue,
+                  backgroundColor: Colors.grey,
+                  center: const Text ("32%"),
+                  leading: const Text("Score:64", style: TextStyle(color: Colors.yellow),),
+                  trailing: const Text("Target Goal: 200points", style: TextStyle(color: Colors.yellow),),
+                  percent: 0.32,
+
+                  
+                ),
+                )
+            
+                    ],
         ))
       ]),
     );
