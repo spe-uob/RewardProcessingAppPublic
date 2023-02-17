@@ -75,7 +75,7 @@ class _MySliderState extends State<MySlider> {
           width: 8,
           height: 8,
           decoration: BoxDecoration(
-              color: const Color(0xff336600),
+              color: const Color(0xFF00A8AF),
               borderRadius: BorderRadius.circular(10)),
         ));
       }
@@ -110,7 +110,7 @@ class _MySliderState extends State<MySlider> {
             margin: const EdgeInsets.all(15),
             width: MediaQuery.of(context).size.width - 60,
             height: 2,
-            color: const Color(0xff000000),
+            color: const Color(0xFF00A8AF),
           ),
           widget.divisions != null
               ? Positioned(
@@ -137,7 +137,7 @@ class _MySliderState extends State<MySlider> {
                         width: 30,
                         height: 30,
                         decoration: BoxDecoration(
-                            color: const Color(0xff336600),
+                            color: const Color(0xFF00A8AF),
                             borderRadius: BorderRadius.circular(20)),
                         child: Text(
                           widget.label!,
@@ -148,7 +148,7 @@ class _MySliderState extends State<MySlider> {
                         alignment: Alignment.center,
                         width: 2,
                         height: 10,
-                        color: const Color(0xff336600),
+                        color: const Color(0xFF00A8AF),
                       )
                     ],
                   ),
