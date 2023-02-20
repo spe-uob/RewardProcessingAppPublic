@@ -150,8 +150,8 @@ class _MySliderState extends State<MySlider> {
                         height: 10,
                         color: const Color(0xFF00A8AF),
                       )
-                    ],
-                  ),
+                    ]
+                  )
                 )
               : Positioned(left: 0, top: 0, child: Container()),
           Positioned(
@@ -163,9 +163,10 @@ class _MySliderState extends State<MySlider> {
                 "assets/images/pacman.png",
                 width: 30,
                 height: 30,
-              ))
-        ],
-      ),
+              )
+          )
+        ]
+      )
     );
   }
 }

@@ -40,7 +40,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                       child: Container(
                           margin: const EdgeInsets.only(bottom: 60, left:30, right: 30),
                           width: 380,
-                          height: 85,
+                          height: 100,
                           decoration: const BoxDecoration(
                               color:Color(0xFFFFD9A0),
                               borderRadius: BorderRadius.all(Radius.circular(30))
@@ -51,7 +51,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                               child: const Text (
                                   'Did you know the event/experience was going to occur before it happened?',
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(fontSize: 17,
+                                  style: TextStyle(fontSize: 16,
                                     letterSpacing: 0.75,
                                   )
                               )
@@ -78,6 +78,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                             }
                         ),
                         const Text('No - it was a complete surprise',
+                            overflow: TextOverflow.visible,
                             style: TextStyle(
                                 fontSize: 16
                             )
@@ -104,6 +105,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                             }
                         ),
                         const Text('Yes - on the day it happened',
+                            overflow: TextOverflow.visible,
                             style: TextStyle(
                               fontSize: 16,
                             )
@@ -130,6 +132,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                             }
                         ),
                         const Text('Yes - up to a week before it happened',
+                            overflow: TextOverflow.visible,
                             style: TextStyle(
                                 fontSize: 16
                             )
@@ -155,7 +158,8 @@ class _Questionnaire15State extends State<Questionnaire15> {
                               });
                             }
                         ),
-                        const Text('Yes - I knew about it for more than a \n week before it happened',
+                        const Text('Yes - I knew about it for more than a week before it happened',
+                            overflow: TextOverflow.visible,
                             style: TextStyle(
                                 fontSize: 16
                             )
@@ -168,16 +172,15 @@ class _Questionnaire15State extends State<Questionnaire15> {
                           onPressed: activeButton ? () async {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => Questionnaire16(
-                                    id: widget.id)
-                                )
+                                MaterialPageRoute(builder: (context) => Questionnaire16(id: widget.id))
                             );
                             await FirebaseFirestore.instance
                                 .collection('questionnaire')
                                 .doc(widget.id)
                                 .set({'15. Did you know the event/experience was going to occur before it happened?': text},
-                                SetOptions(merge: true));
-                          }:null,
+                                SetOptions(merge: true)
+                            );
+                          } : null,
                           style: ElevatedButton.styleFrom(
                               fixedSize: const Size(160, 60),
                               backgroundColor: const Color(0xFF00A8AF),
