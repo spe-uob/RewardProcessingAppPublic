@@ -7,24 +7,29 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:rewardprocessing/main.dart';
+import 'package:rewardprocessing/questionnaire/my_slider.dart';
+import 'package:rewardprocessing/questionnaire/prolific_id.dart';
+import 'package:rewardprocessing/questionnaire/questionnaire.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Text field test', (tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const MaterialApp(home: ProlificID()));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text(''), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    await tester.enterText(find.byType(TextFormField), 'Hello123');
+    await tester.pumpAndSettle(const Duration(seconds: 2));
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('Hello123'), findsOneWidget);
+  });
+
+  testWidgets('Slider test', (tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const MaterialApp(home: Questionnaire(id: 'Test')));
+
+    await tester.drag(find.byType(MySlider), const Offset(3, 0));
+    await tester.pumpAndSettle(const Duration(seconds: 2));
+
   });
 }
