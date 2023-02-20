@@ -77,7 +77,7 @@ class _Questionnaire7State extends State<Questionnaire7> {
                             showValueIndicator: ShowValueIndicator.never,
                           ),
                           child: Center(
-                            child: Slider(
+                            child: MySlider(
                                 value: _currentSliderValue,
                                 min: -3,
                                 max: 3,

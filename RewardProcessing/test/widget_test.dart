@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:rewardprocessing/questionnaire/my_slider.dart';
 import 'package:rewardprocessing/questionnaire/prolific_id.dart';
 import 'package:rewardprocessing/questionnaire/questionnaire.dart';
 
@@ -27,7 +28,7 @@ void main() {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MaterialApp(home: Questionnaire(id: 'Test')));
 
-    await tester.drag(find.byType(Slider), const Offset(3, 0));
+    await tester.drag(find.byType(MySlider), const Offset(3, 0));
     await tester.pumpAndSettle(const Duration(seconds: 2));
 
   });
