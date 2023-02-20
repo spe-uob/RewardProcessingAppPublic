@@ -110,7 +110,7 @@ class _MySliderState extends State<MySlider> {
             margin: const EdgeInsets.all(15),
             width: MediaQuery.of(context).size.width - 60,
             height: 2,
-            color: const Color(0xFF00A8AF),
+            color: const Color(0xff000000),
           ),
           widget.divisions != null
               ? Positioned(
