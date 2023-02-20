@@ -211,9 +211,9 @@ class _GameMapState extends State<GameMap> {
         child: Column(children: [Image.asset("assets/images/wall.png")]),
       );
     }
-    print("index$index");
-    print("left${(index % 11) * itemWidth + startLeft}");
-    print("top${index ~/ 11 * itemWidth + startTop}");
+    debugPrint("index$index");
+    debugPrint("left${(index % 11) * itemWidth + startLeft}");
+    debugPrint("top${index ~/ 11 * itemWidth + startTop}");
     return Positioned(
         left: ((index % 11) * itemWidth).toInt() + startLeft,
         top: (index ~/ 11 * itemWidth).toInt() + startTop,
