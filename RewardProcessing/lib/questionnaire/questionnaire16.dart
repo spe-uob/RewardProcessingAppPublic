@@ -99,7 +99,9 @@ class _Questionnaire16State extends State<Questionnaire16> {
                         margin: const EdgeInsets.only(left: 30, right: 30),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
-                          children: [Text('${_textEditingController.text?.length ?? 0}/1,000')],
+                          children: [
+                            Text('${_textEditingController.text.length ?? 0}/1,000')
+                          ],
                         ),
                       ),
                       Container(
