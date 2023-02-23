@@ -9,9 +9,11 @@ class GameMap extends StatefulWidget {
   State<GameMap> createState() => _GameMapState();
 }
 
+int score = 0;
 int row = 6;
 int col = row * 11;
 int player = 49;
+double percentage = score/2;
 
 class _GameMapState extends State<GameMap> {
   @override
@@ -72,7 +74,6 @@ class _GameMapState extends State<GameMap> {
   ];
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
@@ -120,17 +121,17 @@ class _GameMapState extends State<GameMap> {
                       lineHeight: 16,
                       progressColor: Colors.blue,
                       backgroundColor: Colors.grey,
-                      center: const Text("32%"),
-                      leading: const Text(
-                        "Score:64",
-                        style: TextStyle(color: Colors.black),
+                      center:  Text("$percentage%"),
+                      leading:  Text(
+                        "Score:$score",
+                        style: const TextStyle(color: Colors.black),
                       ),
-                      percent: 0.32,
+                      percent: percentage/100,
                     ),
                   ),
                   const Spacer(),
                   const Text(
-                    "Target Goal: 200points",
+                    "Target Goal: 200 points",
                     style: TextStyle(color: Colors.black),
                   ),
                 ],
