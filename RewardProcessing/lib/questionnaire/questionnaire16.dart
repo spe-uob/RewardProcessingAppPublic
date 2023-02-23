@@ -100,7 +100,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text('${_textEditingController.text.length ?? 0}/1,000')
+                            Text('${_textEditingController.text.length}/1,000')
                           ],
                         ),
                       ),
