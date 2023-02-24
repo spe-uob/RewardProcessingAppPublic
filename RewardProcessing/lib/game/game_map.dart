@@ -117,14 +117,18 @@ class _GameMapState extends State<GameMap> {
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: LinearPercentIndicator(
-                      width: 140.0,
+                      width: 320.0,
                       lineHeight: 16,
                       progressColor: Colors.blue,
                       backgroundColor: Colors.grey,
                       center:  Text("$percentage%"),
                       leading:  Text(
                         "Score:$score",
-                        style: const TextStyle(color: Colors.black),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.0,
+                          color: Colors.black
+                        ),
                       ),
                       percent: percentage/100,
                     ),
@@ -132,7 +136,10 @@ class _GameMapState extends State<GameMap> {
                   const Spacer(),
                   const Text(
                     "Target Goal: 200 points",
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
+                      color: Colors.black),
                   ),
                 ],
               )),
