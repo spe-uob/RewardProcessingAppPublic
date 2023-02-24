@@ -69,7 +69,6 @@ class _GameMap2State extends State<GameMap2> {
     30,
     36,
     42,
-    48,
     54,
     60,
     17,

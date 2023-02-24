@@ -13,8 +13,8 @@ class Questionnaire16 extends StatefulWidget {
 }
 
 class _Questionnaire16State extends State<Questionnaire16> {
-  bool activeButton = true;
- // late String text;
+  bool activeButton = false;
+  late String text;
   final TextEditingController _textEditingController = TextEditingController();
 
   @override
@@ -45,8 +45,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                               child: Container (
                                   margin: const EdgeInsets.only(left: 10, right: 10),
                                   child: const Text (
-                                      '*Optional: '
-                                          'If you feel comfortable, please briefly describe the event or experience that significantly affected your mood:',
+                                      'If you feel comfortable, please briefly describe the event or experience that significantly affected your mood:',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(fontSize: 15,
                                           height: 1.45
@@ -58,7 +57,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                       Container(
                           padding: const EdgeInsets.only(left: 25, right: 25),
                           child: TextFormField(
-                            //  controller: _textEditingController,
+                              controller: _textEditingController,
                               maxLines: 7,
                               inputFormatters: [
                                 FilteringTextInputFormatter.allow(RegExp('[A-Z a-z 0-9 ]')),
@@ -88,21 +87,18 @@ class _Questionnaire16State extends State<Questionnaire16> {
                                           style: BorderStyle.solid)
                                   )
                               ),
-                              // onChanged: (value) {
-                                // setState(() {
-                                //   activeButton = value.isNotEmpty ? true : false;
-                                // });
-                              // }
-                              )
+                              onChanged: (value) {
+                                setState(() {
+                                  activeButton = value.isNotEmpty ? true : false;
+                                });
+                              })
                       ),
                       Container(
                         margin: const EdgeInsets.only(left: 30, right: 30),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text('${_textEditingController.text.length}/1,000')
-                          ],
-                        ),
+                          children: [Text('${_textEditingController.text.length}/1,000')],
+                        )
                       ),
                       Container(
                           margin: const EdgeInsets.only(top: 40),
@@ -115,7 +111,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                                 await FirebaseFirestore.instance
                                     .collection('questionnaire')
                                     .doc(widget.id)
-                                    .set({'16. A brief description of the event or experience': _textEditingController.text},
+                                    .set({'16. A brief description of the event or experience': text},
                                     SetOptions(merge: true));
                               }:null,
                               style: ElevatedButton.styleFrom(

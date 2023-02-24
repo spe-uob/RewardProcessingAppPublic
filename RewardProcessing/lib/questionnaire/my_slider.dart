@@ -76,8 +76,7 @@ class _MySliderState extends State<MySlider> {
           height: 8,
           decoration: BoxDecoration(
               color: const Color(0xFF00A8AF),
-              borderRadius: BorderRadius.circular(10)
-          ),
+              borderRadius: BorderRadius.circular(10)),
         ));
       }
     }
