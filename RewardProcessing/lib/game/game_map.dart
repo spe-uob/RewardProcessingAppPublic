@@ -172,7 +172,7 @@ class _GameMapState extends State<GameMap> {
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/UpClick.png")]),
       );
-    } else if (28 == index) {
+    } else if (38 == index) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/DownClick.png")]),
@@ -209,7 +209,9 @@ class _GameMapState extends State<GameMap> {
     } else {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/wall.png")]),
+        child: Column(
+          
+          children: [Image.asset("assets/images/wall.png")]),
       );
     }
     debugPrint("index$index");
