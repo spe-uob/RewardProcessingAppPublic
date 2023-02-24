@@ -13,7 +13,7 @@ int score = 0;
 int row = 6;
 int col = row * 11;
 int player = 49;
-double percentage = score/2;
+double percentage = score / 2;
 
 class _GameMapState extends State<GameMap> {
   @override
@@ -79,6 +79,18 @@ class _GameMapState extends State<GameMap> {
         overlays: SystemUiOverlay.values);
   }
 
+  void trigger() {
+    if (pellets.contains(player)) {
+      pellets.remove(player);
+      Padding(
+        padding: const EdgeInsets.all(1.0),
+        child: Container(color: Colors.black),
+      );
+    }
+  }
+
+  void refresh() {}
+
   @override
   Widget build(BuildContext context) {
     List<Widget> items = [];
@@ -121,25 +133,24 @@ class _GameMapState extends State<GameMap> {
                       lineHeight: 16,
                       progressColor: Colors.blue,
                       backgroundColor: Colors.grey,
-                      center:  Text("$percentage%"),
-                      leading:  Text(
+                      center: Text("$percentage%"),
+                      leading: Text(
                         "Score:$score",
                         style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16.0,
-                          color: Colors.black
-                        ),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                            color: Colors.black),
                       ),
-                      percent: percentage/100,
+                      percent: percentage / 100,
                     ),
                   ),
                   const Spacer(),
                   const Text(
                     "Target Goal: 200 points",
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
-                      color: Colors.black),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                        color: Colors.black),
                   ),
                 ],
               )),
@@ -197,12 +208,7 @@ class _GameMapState extends State<GameMap> {
         ]),
       );
     }
-    // else if (barriers.contains(index)) {
-    //   w = Padding(
-    //     padding: const EdgeInsets.all(1.0),
-    //     child: Column(children: [Image.asset("assets/images/wall.png")]),
-    //   );
-    // }
+    
     else if (guess.contains(index)) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
@@ -216,9 +222,7 @@ class _GameMapState extends State<GameMap> {
     } else {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
-        child: Column(
-          
-          children: [Image.asset("assets/images/wall.png")]),
+        child: Column(children: [Image.asset("assets/images/wall.png")]),
       );
     }
     debugPrint("index$index");
