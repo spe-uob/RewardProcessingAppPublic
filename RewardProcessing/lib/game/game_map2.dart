@@ -96,7 +96,6 @@ class _GameMap2State extends State<GameMap2> {
   ];
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);

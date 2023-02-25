@@ -207,10 +207,12 @@ class _GameMapState extends State<GameMap> {
           )
         ]),
       );
-    } else if (guess.contains(index)) {
+    }
+    
+    else if (guess.contains(index)) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/guess.png")]),
+        child: Column(children: [Image.asset("assets/images/thisguess.png")]),
       );
     } else if (pellets.contains(index)) {
       w = Padding(
