@@ -2,20 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-class GameMap extends StatefulWidget {
-  const GameMap({super.key});
+class GameMap2 extends StatefulWidget {
+  const GameMap2({super.key});
 
   @override
-  State<GameMap> createState() => _GameMapState();
+  State<GameMap2> createState() => _GameMap2State();
 }
 
-int score = 0;
-int row = 6;
+int row = 8;
 int col = row * 11;
 int player = 49;
-double percentage = score / 2;
 
-class _GameMapState extends State<GameMap> {
+class _GameMap2State extends State<GameMap2> {
   @override
   void initState() {
     super.initState();
@@ -27,7 +25,32 @@ class _GameMapState extends State<GameMap> {
 
   List<int> guess = [13, 19, 23, 25, 29, 31];
   double topHeight = 60;
-  List<int> pellets = [24, 35, 46, 47, 48, 50, 51, 52, 30, 41];
+  List<int> pellets = [
+    24,
+    35,
+    46,
+    48,
+    50,
+    52,
+    30,
+    41,
+    45,
+    56,
+    67,
+    68,
+    69,
+    70,
+    59,
+    48,
+    49,
+    61,
+    72,
+    73,
+    74,
+    75,
+    64,
+    53
+  ];
 
   List<int> barriers = [
     0,
@@ -39,9 +62,9 @@ class _GameMapState extends State<GameMap> {
     6,
     7,
     8,
+    9,
+    10,
     11,
-    12,
-    18,
     24,
     30,
     36,
@@ -56,7 +79,7 @@ class _GameMapState extends State<GameMap> {
     41,
     47,
     53,
-    59,
+    51,
     65,
     61,
     62,
@@ -64,7 +87,6 @@ class _GameMapState extends State<GameMap> {
     64,
     55,
     56,
-    20,
     26,
     38,
     44,
@@ -74,27 +96,16 @@ class _GameMapState extends State<GameMap> {
   ];
   @override
   void dispose() {
+    // TODO: implement dispose
     super.dispose();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
   }
 
-  void trigger() {
-    if (pellets.contains(player)) {
-      pellets.remove(player);
-      Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Container(color: Colors.black),
-      );
-    }
-  }
-
-  void refresh() {}
-
   @override
   Widget build(BuildContext context) {
     List<Widget> items = [];
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 8; i++) {
       for (int j = 0; j < 11; j++) {
         items.add(getWiget(i * 11 + j));
       }
@@ -129,28 +140,22 @@ class _GameMapState extends State<GameMap> {
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: LinearPercentIndicator(
-                      width: 320.0,
+                      width: 140.0,
                       lineHeight: 16,
                       progressColor: Colors.blue,
                       backgroundColor: Colors.grey,
-                      center: Text("$percentage%"),
-                      leading: Text(
-                        "Score:$score",
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16.0,
-                            color: Colors.black),
+                      center: const Text("0%"),
+                      leading: const Text(
+                        "Score:0",
+                        style: TextStyle(color: Colors.black),
                       ),
-                      percent: percentage / 100,
+                      percent: 0,
                     ),
                   ),
                   const Spacer(),
                   const Text(
-                    "Target Goal: 200 points",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16.0,
-                        color: Colors.black),
+                    "Target Goal: 200points",
+                    style: TextStyle(color: Colors.black),
                   ),
                 ],
               )),
@@ -174,7 +179,7 @@ class _GameMapState extends State<GameMap> {
 
     double startLeft = (MediaQuery.of(context).size.width - itemWidth * 11) / 2;
     double startTop =
-        ((MediaQuery.of(context).size.height - topHeight) - itemWidth * 6) / 2;
+        ((MediaQuery.of(context).size.height - topHeight) - itemWidth * 8) / 2;
     if (26 == index) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
@@ -190,7 +195,7 @@ class _GameMapState extends State<GameMap> {
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/UpClick.png")]),
       );
-    } else if (38 == index) {
+    } else if (28 == index) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/DownClick.png")]),
@@ -198,16 +203,23 @@ class _GameMapState extends State<GameMap> {
     } else if (player == index) {
       w = Container(
         color: Colors.black,
-        padding: const EdgeInsets.all(1.0),
+        padding: const EdgeInsets.all(2.0),
         child: Column(children: [
           Image.asset(
             "assets/images/pacman.png",
-            width: itemWidth - 2,
-            height: itemWidth - 2,
+            width: itemWidth - 10,
+            height: itemWidth - 5,
           )
         ]),
       );
-    } else if (guess.contains(index)) {
+    }
+    // else if (barriers.contains(index)) {
+    //   w = Padding(
+    //     padding: const EdgeInsets.all(1.0),
+    //     child: Column(children: [Image.asset("assets/images/wall.png")]),
+    //   );
+    // }
+    else if (guess.contains(index)) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/guess.png")]),

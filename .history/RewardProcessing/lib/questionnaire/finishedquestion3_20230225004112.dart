@@ -113,7 +113,10 @@ class _FinishedQuestion3State extends State<FinishedQuestion3> {
                                         await FirebaseFirestore.instance
                                             .collection('questionnaire')
                                             .doc(widget.id)
-                                            .set({}, SetOptions(merge: true));
+                                            .set({
+                                          '16. A brief description of the event or experience':
+                                              text
+                                        }, SetOptions(merge: true));
                                       }
                                     : null,
                                 style: ElevatedButton.styleFrom(
