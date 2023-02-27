@@ -36,7 +36,7 @@ class _FinishPageState extends State<FinishPage> {
                     margin: const EdgeInsets.only(right:50,left:50,top:55,bottom:20),
                     child: const Text("THANK YOU FOR COMPLETING TODAY'S STUDY",
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
+                      style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 25,
                           color: Colors.black
