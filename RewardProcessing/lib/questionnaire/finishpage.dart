@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rewardprocessing/questionnaire/finishedquestion2.dart';
 import 'package:flutter/services.dart';
 
 class FinishPage extends StatefulWidget {
