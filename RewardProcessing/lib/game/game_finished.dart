@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:rewardprocessing/questionnaire/finishedquestion.dart';
 import 'package:flutter/services.dart';
 
