@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:rewardprocessing/questionnaire/finishedquestion.dart';
 import 'package:flutter/services.dart';
 
-import 'game_map.dart';
 
 class GameFinished extends StatefulWidget {
   final String id;
@@ -67,7 +66,7 @@ class _GameFinishedState extends State<GameFinished> {
                           child: const Text(
                               'CLICK HERE TO FINISH',
                               textAlign: TextAlign.center,
-                              style: const TextStyle(
+                              style:TextStyle(
                                  // fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                   fontSize: 18,
