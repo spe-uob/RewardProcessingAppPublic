@@ -20,7 +20,7 @@ class _FinishedQuestion2State extends State<FinishedQuestion2> {
   void initState() {
     super.initState();
     SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp, // 锁定纵向方向
+      DeviceOrientation.portraitUp,
     ]);
   }
 

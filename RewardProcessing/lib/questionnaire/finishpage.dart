@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:rewardprocessing/questionnaire/finishedquestion2.dart';
 import 'package:flutter/services.dart';
 
-class FinishedQuestion extends StatefulWidget {
+class FinishPage extends StatefulWidget {
   final String id;
-  const FinishedQuestion({super.key, required this.id});
+  const FinishPage({super.key, required this.id});
 
   @override
-  State<FinishedQuestion> createState() => _FinishedQuestionState();
+  State<FinishPage> createState() => _FinishPageState();
 }
 
-class _FinishedQuestionState extends State<FinishedQuestion> {
+class _FinishPageState extends State<FinishPage> {
   @override
   void initState() {
     super.initState();
@@ -35,27 +34,27 @@ class _FinishedQuestionState extends State<FinishedQuestion> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(right:50,left:50,top:55,bottom:20),
-                    child: const Text('CONGRATULATIONS',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
+                    child: const Text("THANK YOU FOR COMPLETING TODAY'S STUDY",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 30,
+                          fontSize: 25,
                           color: Colors.black
-                        ),
-                  ),
+                      ),
+                    ),
                   ),
                   Container(
                       margin: const EdgeInsets.only(right: 50, left: 50, top: 52, bottom: 20),
-                      child: const Text('You finished the game!',
+                      child: const Text('',
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 20,
+                          style: TextStyle(fontSize: 17,
                               color: Colors.black
                           )
                       )
                   ),
                   Container(
                       margin: const EdgeInsets.only(right :50, left: 50, top: 30, bottom: 30),
-                      child: const Text("Please answer two final questions to complete today's study: ",
+                      child: const Text("Please click the button below to end the experiment and exit ",
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 20,
                               color: Colors.black
@@ -67,14 +66,8 @@ class _FinishedQuestionState extends State<FinishedQuestion> {
                       child:
                       ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                // MaterialPageRoute(builder: (context) => const Questionnaire())
-                                MaterialPageRoute(builder: (context) => const FinishedQuestion2(
-                                    id:'',
-                                ))
-                            );
-                          },
+                            SystemNavigator.pop(); //exit app
+                            },
                           style: ElevatedButton.styleFrom(
                             fixedSize: const Size(160, 60),
                             backgroundColor: const Color(0xFF00A8AF),
@@ -83,10 +76,10 @@ class _FinishedQuestionState extends State<FinishedQuestion> {
                             ),
                             elevation: 2.0,),
                           child: const Text(
-                              'Continue',
+                              'Exit',
                               textAlign: TextAlign.center,
                               style: TextStyle(color: Colors.white,
-                                  fontSize: 15,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.w300
                               )
                           )

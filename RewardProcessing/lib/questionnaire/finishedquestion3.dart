@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:rewardprocessing/questionnaire/complete.dart';
+import 'package:rewardprocessing/questionnaire/finishpage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FinishedQuestion3 extends StatefulWidget {
@@ -109,7 +109,9 @@ class _FinishedQuestion3State extends State<FinishedQuestion3> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const Complete()));
+                                                    const FinishPage(
+                                                        id: '')
+                                            ));
                                         await FirebaseFirestore.instance
                                             .collection('questionnaire')
                                             .doc(widget.id)
