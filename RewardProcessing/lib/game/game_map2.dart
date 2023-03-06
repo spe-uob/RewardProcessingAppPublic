@@ -12,6 +12,8 @@ class GameMap2 extends StatefulWidget {
 int row = 8;
 int col = row * 11;
 int player = 49;
+int score = 0;
+double percentage = score /2;
 
 class _GameMap2State extends State<GameMap2> {
   @override
@@ -25,6 +27,8 @@ class _GameMap2State extends State<GameMap2> {
 
   List<int> guess = [13, 19, 23, 25, 29, 31];
   double topHeight = 60;
+  int quarterTurns = 0;
+  List<int>back =[12,14,18,20];
   List<int> pellets = [
     24,
     35,
@@ -101,6 +105,47 @@ class _GameMap2State extends State<GameMap2> {
         overlays: SystemUiOverlay.values);
   }
 
+  void movePlayer(int right, int down) {
+
+    int nowPlayer = player + down * 11 + right;
+    if (nowPlayer < 0) {
+      nowPlayer = player;
+    } else if (nowPlayer >= 6 * 11) {
+      nowPlayer = player;
+    }
+    if (down == 0) {
+      int c = player % 11 - nowPlayer % 11;
+      if (c != -1 && c != 1) {
+        nowPlayer = player;
+      }
+    }
+    if (right == 0) {
+      int c = player ~/ 11 - nowPlayer ~/ 11;
+      if (c != -1 && c != 1) {
+        nowPlayer = player;
+      }
+    }
+    if (!pellets.contains(nowPlayer)) {
+      nowPlayer = player;
+    }
+    if (right == -1 && down == 0) {
+      quarterTurns = -2 ;
+    }
+    if (right == 1 && down == 0) {
+      quarterTurns = 0;
+    }
+    if (right == 0 && down == -1) {
+      quarterTurns = -1;
+      // transform.setEntry(0, 0, -1);
+    }
+    if (right == 0 && down == 1) {
+      quarterTurns = 1;
+    }
+    setState(() {
+      player = nowPlayer;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     List<Widget> items = [];
@@ -139,22 +184,29 @@ class _GameMap2State extends State<GameMap2> {
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: LinearPercentIndicator(
-                      width: 140.0,
+                      width: 400.0,
                       lineHeight: 16,
-                      progressColor: Colors.blue,
-                      backgroundColor: Colors.grey,
-                      center: const Text("0%"),
-                      leading: const Text(
-                        "Score:0",
-                        style: TextStyle(color: Colors.black),
+                      progressColor: Colors.teal[400],
+                      backgroundColor: Colors.grey[400],
+                      center: Text("$percentage%"),
+                      leading: Text(
+                        "Score:$score",
+                        style:const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize:16.0,
+                            color: Color(0xFF000000)
+                            ),
                       ),
-                      percent: 0,
+                      percent: percentage/100,
                     ),
                   ),
                   const Spacer(),
                   const Text(
                     "Target Goal: 200points",
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(
+                        fontWeight:FontWeight.bold,
+                        fontSize:16.0,
+                        color: Colors.black),
                   ),
                 ],
               )),
@@ -180,44 +232,65 @@ class _GameMap2State extends State<GameMap2> {
     double startTop =
         ((MediaQuery.of(context).size.height - topHeight) - itemWidth * 8) / 2;
     if (26 == index) {
-      w = Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/LeftClick.png")]),
-      );
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            movePlayer(-1, 0);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(1.0),
+            child:
+            Column(children: [Image.asset("assets/images/LeftClick.png")]),
+          ));
     } else if (28 == index) {
-      w = Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/RightClick.png")]),
-      );
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            movePlayer(1, 0);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(1.0),
+            child:
+            Column(children: [Image.asset("assets/images/RightClick.png")]),
+          ));
     } else if (16 == index) {
-      w = Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/UpClick.png")]),
-      );
-    } else if (28 == index) {
-      w = Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/DownClick.png")]),
-      );
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            movePlayer(0, -1);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(1.0),
+            child: Column(children: [Image.asset("assets/images/UpClick.png")]),
+          ));
+    } else if (38 == index) {
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            movePlayer(0, 1);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(1.0),
+            child:
+            Column(children: [Image.asset("assets/images/DownClick.png")]),
+          ));
     } else if (player == index) {
-      w = Container(
-        color: Colors.black,
-        padding: const EdgeInsets.all(2.0),
-        child: Column(children: [
-          Image.asset(
-            "assets/images/pacman.png",
-            width: itemWidth - 10,
-            height: itemWidth - 5,
-          )
-        ]),
-      );
+      w = RotatedBox(
+          quarterTurns: quarterTurns == -2 ? 0 : quarterTurns,
+          child: Container(
+            color: Colors.black,
+            padding: const EdgeInsets.all(1.0),
+            child: Column(children: [
+              Image.asset(
+                quarterTurns == -2
+                ?"assets/images/pacmanleft.png"
+                :"assets/images/pacman.png",
+                width: itemWidth - 2,
+                height: itemWidth - 2,
+              )
+            ]),
+          ));
     }
-    // else if (barriers.contains(index)) {
-    //   w = Padding(
-    //     padding: const EdgeInsets.all(1.0),
-    //     child: Column(children: [Image.asset("assets/images/wall.png")]),
-    //   );
-    // }
     else if (guess.contains(index)) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
@@ -228,7 +301,14 @@ class _GameMap2State extends State<GameMap2> {
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/dot.png")]),
       );
-    } else {
+    }
+    else if (back.contains(index)){
+      w = Padding(
+        padding : const EdgeInsets.all(1.0),
+        child:Column(children:[Image.asset("assets/images/back.png")]),
+      );
+    }
+    else {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/wall.png")]),
