@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
+
 class GameMap extends StatefulWidget {
   const GameMap({super.key});
 
@@ -9,11 +10,11 @@ class GameMap extends StatefulWidget {
   State<GameMap> createState() => _GameMapState();
 }
 
-int score = 0;
 int row = 6;
 int col = row * 11;
 int player = 49;
-double percentage = score / 2;
+int score = 0;
+double percentage = score /2;
 
 class _GameMapState extends State<GameMap> {
   @override
@@ -27,7 +28,22 @@ class _GameMapState extends State<GameMap> {
 
   List<int> guess = [13, 19, 23, 25, 29, 31];
   double topHeight = 60;
-  List<int> pellets = [24, 35, 46, 47, 48, 50, 51, 52, 30, 41];
+  int quarterTurns = 0;
+  List<int> back = [12,14,18,20];
+  List<int> pellets = [
+    24,
+    35,
+    46,
+    47,
+    48,
+    50,
+    51,
+    52,
+    30,
+    41,
+    30,
+    49
+  ];
 
   List<int> barriers = [
     0,
@@ -74,22 +90,52 @@ class _GameMapState extends State<GameMap> {
   ];
   @override
   void dispose() {
+  
     super.dispose();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
   }
 
-  void trigger() {
-    if (pellets.contains(player)) {
-      pellets.remove(player);
-      Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Container(color: Colors.black),
-      );
+  void movePlayer(int right, int down) {
+
+    int nowPlayer = player + down * 11 + right;
+    if (nowPlayer < 0) {
+      nowPlayer = player;
+    } else if (nowPlayer >= 6 * 11) {
+      nowPlayer = player;
     }
+    if (down == 0) {
+      int c = player % 11 - nowPlayer % 11;
+      if (c != -1 && c != 1) {
+        nowPlayer = player;
+      }
+    }
+    if (right == 0) {
+      int c = player ~/ 11 - nowPlayer ~/ 11;
+      if (c != -1 && c != 1) {
+        nowPlayer = player;
+      }
+    }
+    if (!pellets.contains(nowPlayer)) {
+      nowPlayer = player;
+    }
+    if (right == -1 && down == 0) {
+      quarterTurns = -2 ;
+    }
+    if (right == 1 && down == 0) {
+      quarterTurns = 0;
+    }
+    if (right == 0 && down == -1) {
+      quarterTurns = -1;
+    }
+    if (right == 0 && down == 1) {
+      quarterTurns = 1;
+    }
+    setState(() {
+      player = nowPlayer;
+    });
   }
 
-  void refresh() {}
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +156,8 @@ class _GameMapState extends State<GameMap> {
           backgroundColor: Colors.transparent,
           foregroundColor: Colors.transparent,
         ),
-        body: Column(children: [
+        body: Column(
+            children: [
           Container(
               height: topHeight - 10,
               width: double.infinity,
@@ -118,38 +165,30 @@ class _GameMapState extends State<GameMap> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      icon: const Icon(
-                        Icons.arrow_back_ios,
-                        size: 25,
-                      )),
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: LinearPercentIndicator(
-                      width: 320.0,
+                      width: 400.0,
                       lineHeight: 16,
-                      progressColor: Colors.blue,
-                      backgroundColor: Colors.grey,
+                      progressColor: Colors.teal[400],
+                      backgroundColor: Colors.grey[400],
                       center: Text("$percentage%"),
                       leading: Text(
                         "Score:$score",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 16.0,
+                            fontSize:16.0,
                             color: Colors.black),
                       ),
-                      percent: percentage / 100,
+                      percent: percentage/100,
                     ),
                   ),
                   const Spacer(),
                   const Text(
-                    "Target Goal: 200 points",
+                    "Target Goal: 200points",
                     style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16.0,
+                        fontWeight:FontWeight.bold,
+                        fontSize:16.0,
                         color: Colors.black),
                   ),
                 ],
@@ -176,38 +215,67 @@ class _GameMapState extends State<GameMap> {
     double startTop =
         ((MediaQuery.of(context).size.height - topHeight) - itemWidth * 6) / 2;
     if (26 == index) {
-      w = Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/LeftClick.png")]),
-      );
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            movePlayer(-1, 0);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(1.0),
+            child:
+                Column(children: [Image.asset("assets/images/LeftClick.png")]),
+          ));
     } else if (28 == index) {
-      w = Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/RightClick.png")]),
-      );
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            movePlayer(1, 0);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(1.0),
+            child:
+                Column(children: [Image.asset("assets/images/RightClick.png")]),
+          ));
     } else if (16 == index) {
-      w = Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/UpClick.png")]),
-      );
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            movePlayer(0, -1);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(1.0),
+            child: Column(children: [Image.asset("assets/images/UpClick.png")]),
+          ));
     } else if (38 == index) {
-      w = Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/DownClick.png")]),
-      );
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            movePlayer(0, 1);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(1.0),
+            child:
+                Column(children: [Image.asset("assets/images/DownClick.png")]),
+          ));
     } else if (player == index) {
-      w = Container(
-        color: Colors.black,
-        padding: const EdgeInsets.all(1.0),
-        child: Column(children: [
-          Image.asset(
-            "assets/images/pacman.png",
-            width: itemWidth - 2,
-            height: itemWidth - 2,
-          )
-        ]),
-      );
-    } else if (guess.contains(index)) {
+      w = RotatedBox(
+          quarterTurns: quarterTurns == -2 ? 0 : quarterTurns,
+          child: Container(
+            color: Colors.black,
+            padding: const EdgeInsets.all(1.0),
+            child: Column(children: [
+              Image.asset(
+                quarterTurns == -2
+                ?"assets/images/pacmanleft.png"
+                :"assets/images/pacman.png",
+                width: itemWidth - 2,
+                height: itemWidth - 2,
+              )
+            ]),
+          ));
+    }
+
+    else if (guess.contains(index)) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/guess.png")]),
@@ -217,7 +285,14 @@ class _GameMapState extends State<GameMap> {
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/dot.png")]),
       );
-    } else {
+      }
+      else if (back.contains(index)){
+        w = Padding(
+          padding : const EdgeInsets.all(1.0),
+          child:Column(children:[Image.asset("assets/images/back.png")]),
+        );
+    }
+     else {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/wall.png")]),
