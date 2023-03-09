@@ -13,7 +13,7 @@ int row = 6;
 int col = row * 11;
 int player = 49;
 int score = 0;
-double percentage = score / 2;
+double percentage = 0 ;
 
 class _GameMapState extends State<GameMap> {
   @override
@@ -84,6 +84,8 @@ class _GameMapState extends State<GameMap> {
   void trigger() {
     if (pellets.contains(player)) {
       pellets.remove(player);
+      score = score + 5;
+      percentage = score / 2;
     }
   }
 
@@ -281,7 +283,6 @@ class _GameMapState extends State<GameMap> {
         padding: const EdgeInsets.all(1.0),
         child: Container(
           color: Colors.black,
-          child: Text(toString()),
         ),
       );
     }
