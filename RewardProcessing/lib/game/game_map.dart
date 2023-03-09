@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-
 class GameMap extends StatefulWidget {
   const GameMap({super.key});
 
@@ -14,7 +13,7 @@ int row = 6;
 int col = row * 11;
 int player = 49;
 int score = 0;
-double percentage = score /2;
+double percentage = score / 2;
 
 class _GameMapState extends State<GameMap> {
   @override
@@ -29,21 +28,7 @@ class _GameMapState extends State<GameMap> {
   List<int> guess = [13, 19, 23, 25, 29, 31];
   double topHeight = 60;
   int quarterTurns = 0;
-  List<int> back = [12,14,18,20];
-  List<int> pellets = [
-    24,
-    35,
-    46,
-    47,
-    48,
-    50,
-    51,
-    52,
-    30,
-    41,
-    30,
-    49
-  ];
+  List<int> pellets = [24, 35, 46, 47, 48, 50, 51, 52, 30, 41, 30];
 
   List<int> barriers = [
     0,
@@ -55,49 +40,53 @@ class _GameMapState extends State<GameMap> {
     6,
     7,
     8,
+    9,
+    10,
     11,
-    12,
-    18,
-    24,
-    30,
-    36,
-    42,
-    48,
-    54,
-    60,
+    15,
     17,
-    23,
-    29,
-    35,
-    41,
-    47,
+    21,
+    22,
+    27,
+    32,
+    33,
+    34,
+    36,
+    37,
+    39,
+    40,
+    42,
+    43,
+    44,
+    45,
     53,
+    54,
+    55,
+    56,
+    57,
+    58,
     59,
-    65,
+    60,
     61,
     62,
     63,
     64,
-    55,
-    56,
-    20,
-    26,
-    38,
-    44,
-    33,
-    28,
-    40,
+    65
   ];
   @override
   void dispose() {
-  
     super.dispose();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
   }
 
-  void movePlayer(int right, int down) {
+  void trigger() {
+    if (pellets.contains(player)) {
+      pellets.remove(player);
+    }
+  }
 
+  void movePlayer(int right, int down) {
     int nowPlayer = player + down * 11 + right;
     if (nowPlayer < 0) {
       nowPlayer = player;
@@ -120,7 +109,7 @@ class _GameMapState extends State<GameMap> {
       nowPlayer = player;
     }
     if (right == -1 && down == 0) {
-      quarterTurns = -2 ;
+      quarterTurns = -2;
     }
     if (right == 1 && down == 0) {
       quarterTurns = 0;
@@ -135,7 +124,6 @@ class _GameMapState extends State<GameMap> {
       player = nowPlayer;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -156,8 +144,7 @@ class _GameMapState extends State<GameMap> {
           backgroundColor: Colors.transparent,
           foregroundColor: Colors.transparent,
         ),
-        body: Column(
-            children: [
+        body: Column(children: [
           Container(
               height: topHeight - 10,
               width: double.infinity,
@@ -177,18 +164,18 @@ class _GameMapState extends State<GameMap> {
                         "Score:$score",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize:16.0,
+                            fontSize: 16.0,
                             color: Colors.black),
                       ),
-                      percent: percentage/100,
+                      percent: percentage / 100,
                     ),
                   ),
                   const Spacer(),
                   const Text(
                     "Target Goal: 200points",
                     style: TextStyle(
-                        fontWeight:FontWeight.bold,
-                        fontSize:16.0,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
                         color: Colors.black),
                   ),
                 ],
@@ -219,6 +206,7 @@ class _GameMapState extends State<GameMap> {
           behavior: HitTestBehavior.opaque,
           onTap: () {
             movePlayer(-1, 0);
+            trigger();
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
@@ -230,6 +218,7 @@ class _GameMapState extends State<GameMap> {
           behavior: HitTestBehavior.opaque,
           onTap: () {
             movePlayer(1, 0);
+            trigger();
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
@@ -241,6 +230,7 @@ class _GameMapState extends State<GameMap> {
           behavior: HitTestBehavior.opaque,
           onTap: () {
             movePlayer(0, -1);
+            trigger();
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
@@ -251,6 +241,7 @@ class _GameMapState extends State<GameMap> {
           behavior: HitTestBehavior.opaque,
           onTap: () {
             movePlayer(0, 1);
+            trigger();
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
@@ -266,16 +257,14 @@ class _GameMapState extends State<GameMap> {
             child: Column(children: [
               Image.asset(
                 quarterTurns == -2
-                ?"assets/images/pacmanleft.png"
-                :"assets/images/pacman.png",
+                    ? "assets/images/pacmanleft.png"
+                    : "assets/images/pacman.png",
                 width: itemWidth - 2,
                 height: itemWidth - 2,
               )
             ]),
           ));
-    }
-
-    else if (guess.contains(index)) {
+    } else if (guess.contains(index)) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/guess.png")]),
@@ -285,19 +274,26 @@ class _GameMapState extends State<GameMap> {
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/dot.png")]),
       );
-      }
-      else if (back.contains(index)){
-        w = Padding(
-          padding : const EdgeInsets.all(1.0),
-          child:Column(children:[Image.asset("assets/images/back.png")]),
-        );
-    }
-     else {
+    } 
+     else if (barriers.contains(index)) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/wall.png")]),
+        child: Column(
+          children: [Image.asset("assets/images/wall.png")]),
+        
+      );
+    } else {
+      w = Padding(
+        padding: const EdgeInsets.all(1.0),
+        child: Container(
+          color: Color.fromARGB(255, 227, 221, 221),
+          child: Text(index.toString())
+        
+        ),
+        
       );
     }
+
     debugPrint("index$index");
     debugPrint("left${(index % 11) * itemWidth + startLeft}");
     debugPrint("top${index ~/ 11 * itemWidth + startTop}");
