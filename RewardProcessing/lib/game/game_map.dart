@@ -29,6 +29,7 @@ class _GameMapState extends State<GameMap> {
   double topHeight = 60;
   int quarterTurns = 0;
   List<int> pellets = [24, 35, 46, 47, 48, 50, 51, 52, 30, 41, 30];
+  List<int> paths = [24, 35, 46, 47, 48, 49, 50, 51, 52, 30, 41, 30];
 
   List<int> barriers = [
     0,
@@ -88,11 +89,7 @@ class _GameMapState extends State<GameMap> {
 
   void movePlayer(int right, int down) {
     int nowPlayer = player + down * 11 + right;
-    if (nowPlayer < 0) {
-      nowPlayer = player;
-    } else if (nowPlayer >= 6 * 11) {
-      nowPlayer = player;
-    }
+
     if (down == 0) {
       int c = player % 11 - nowPlayer % 11;
       if (c != -1 && c != 1) {
@@ -105,9 +102,7 @@ class _GameMapState extends State<GameMap> {
         nowPlayer = player;
       }
     }
-    if (!pellets.contains(nowPlayer)) {
-      nowPlayer = player;
-    }
+
     if (right == -1 && down == 0) {
       quarterTurns = -2;
     }
@@ -120,9 +115,11 @@ class _GameMapState extends State<GameMap> {
     if (right == 0 && down == 1) {
       quarterTurns = 1;
     }
-    setState(() {
-      player = nowPlayer;
-    });
+    if (paths.contains(nowPlayer)) {
+      setState(() {
+        player = nowPlayer;
+      });
+    }
   }
 
   @override
@@ -274,23 +271,18 @@ class _GameMapState extends State<GameMap> {
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/dot.png")]),
       );
-    } 
-     else if (barriers.contains(index)) {
+    } else if (barriers.contains(index)) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
-        child: Column(
-          children: [Image.asset("assets/images/wall.png")]),
-        
+        child: Column(children: [Image.asset("assets/images/wall.png")]),
       );
     } else {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Container(
-          color: Color.fromARGB(255, 227, 221, 221),
-          child: Text(index.toString())
-        
+          color: Colors.black,
+          child: Text(toString()),
         ),
-        
       );
     }
 
