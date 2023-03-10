@@ -13,7 +13,7 @@ int row = 8;
 int col = row * 11;
 int player = 49;
 int score = 0;
-double percentage = score /2;
+double percentage = score / 2;
 
 class _GameMap2State extends State<GameMap2> {
   @override
@@ -28,7 +28,7 @@ class _GameMap2State extends State<GameMap2> {
   List<int> guess = [13, 19, 23, 25, 29, 31];
   double topHeight = 60;
   int quarterTurns = 0;
-  List<int>back =[12,14,18,20];
+  List<int> back = [12, 14, 18, 20];
   List<int> pellets = [
     24,
     35,
@@ -53,7 +53,13 @@ class _GameMap2State extends State<GameMap2> {
     74,
     75,
     64,
-    53
+    53,
+    13,
+    19,
+    23,
+    25,
+    29,
+    31
   ];
 
   List<int> barriers = [
@@ -106,11 +112,10 @@ class _GameMap2State extends State<GameMap2> {
   }
 
   void movePlayer(int right, int down) {
-
     int nowPlayer = player + down * 11 + right;
     if (nowPlayer < 0) {
       nowPlayer = player;
-    } else if (nowPlayer >= 6 * 11) {
+    } else if (nowPlayer >= 8 * 11) {
       nowPlayer = player;
     }
     if (down == 0) {
@@ -129,7 +134,7 @@ class _GameMap2State extends State<GameMap2> {
       nowPlayer = player;
     }
     if (right == -1 && down == 0) {
-      quarterTurns = -2 ;
+      quarterTurns = -2;
     }
     if (right == 1 && down == 0) {
       quarterTurns = 0;
@@ -141,6 +146,8 @@ class _GameMap2State extends State<GameMap2> {
     if (right == 0 && down == 1) {
       quarterTurns = 1;
     }
+
+    guess.remove(nowPlayer);
     setState(() {
       player = nowPlayer;
     });
@@ -191,21 +198,20 @@ class _GameMap2State extends State<GameMap2> {
                       center: Text("$percentage%"),
                       leading: Text(
                         "Score:$score",
-                        style:const TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize:16.0,
-                            color: Color(0xFF000000)
-                            ),
+                            fontSize: 16.0,
+                            color: Color(0xFF000000)),
                       ),
-                      percent: percentage/100,
+                      percent: percentage / 100,
                     ),
                   ),
                   const Spacer(),
                   const Text(
                     "Target Goal: 200points",
                     style: TextStyle(
-                        fontWeight:FontWeight.bold,
-                        fontSize:16.0,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
                         color: Colors.black),
                   ),
                 ],
@@ -215,8 +221,11 @@ class _GameMap2State extends State<GameMap2> {
             color: const Color(0xffeeeeee),
           ),
           Expanded(
-              child: Stack(
-            children: items,
+              child: Container(
+            color: Colors.black,
+            child: Stack(
+              children: items,
+            ),
           ))
         ]));
   }
@@ -240,7 +249,7 @@ class _GameMap2State extends State<GameMap2> {
           child: Padding(
             padding: const EdgeInsets.all(1.0),
             child:
-            Column(children: [Image.asset("assets/images/LeftClick.png")]),
+                Column(children: [Image.asset("assets/images/LeftClick.png")]),
           ));
     } else if (28 == index) {
       w = GestureDetector(
@@ -251,7 +260,7 @@ class _GameMap2State extends State<GameMap2> {
           child: Padding(
             padding: const EdgeInsets.all(1.0),
             child:
-            Column(children: [Image.asset("assets/images/RightClick.png")]),
+                Column(children: [Image.asset("assets/images/RightClick.png")]),
           ));
     } else if (16 == index) {
       w = GestureDetector(
@@ -272,7 +281,7 @@ class _GameMap2State extends State<GameMap2> {
           child: Padding(
             padding: const EdgeInsets.all(1.0),
             child:
-            Column(children: [Image.asset("assets/images/DownClick.png")]),
+                Column(children: [Image.asset("assets/images/DownClick.png")]),
           ));
     } else if (player == index) {
       w = RotatedBox(
@@ -283,15 +292,14 @@ class _GameMap2State extends State<GameMap2> {
             child: Column(children: [
               Image.asset(
                 quarterTurns == -2
-                ?"assets/images/pacmanleft.png"
-                :"assets/images/pacman.png",
+                    ? "assets/images/pacmanleft.png"
+                    : "assets/images/pacman.png",
                 width: itemWidth - 2,
                 height: itemWidth - 2,
               )
             ]),
           ));
-    }
-    else if (guess.contains(index)) {
+    } else if (guess.contains(index)) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/guess.png")]),
@@ -301,14 +309,12 @@ class _GameMap2State extends State<GameMap2> {
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/dot.png")]),
       );
-    }
-    else if (back.contains(index)){
+    } else if (back.contains(index)) {
       w = Padding(
-        padding : const EdgeInsets.all(1.0),
-        child:Column(children:[Image.asset("assets/images/back.png")]),
+        padding: const EdgeInsets.all(1.0),
+        child: Column(children: [Image.asset("assets/images/back.png")]),
       );
-    }
-    else {
+    } else {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/wall.png")]),
