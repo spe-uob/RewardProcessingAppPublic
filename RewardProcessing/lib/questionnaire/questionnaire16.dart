@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Questionnaire16 extends StatefulWidget {
   final String id;
   const Questionnaire16({super.key, required this.id});
+  
 
   @override
   State<Questionnaire16> createState() => _Questionnaire16State();
@@ -14,6 +15,8 @@ class Questionnaire16 extends StatefulWidget {
 
 class _Questionnaire16State extends State<Questionnaire16> {
   bool activeButton = true;
+  // ignore: non_constant_identifier_names
+  bool overWordLimit = false; 
  // late String text;
   final TextEditingController _textEditingController = TextEditingController();
 
@@ -45,7 +48,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                               child: Container (
                                   margin: const EdgeInsets.only(left: 10, right: 10),
                                   child: const Text (
-                                      '*Optional: '
+                                      '*Optional: \n'
                                           'If you feel comfortable, please briefly describe the event or experience that significantly affected your mood:',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(fontSize: 15,
@@ -58,15 +61,19 @@ class _Questionnaire16State extends State<Questionnaire16> {
                       Container(
                           padding: const EdgeInsets.only(left: 25, right: 25),
                           child: TextFormField(
-                            //  controller: _textEditingController,
+                             controller: _textEditingController,
                               maxLines: 7,
                               inputFormatters: [
-                                FilteringTextInputFormatter.allow(RegExp('[A-Z a-z 0-9 ]')),
-                                LengthLimitingTextInputFormatter(1000)
+                                FilteringTextInputFormatter.allow(RegExp('[A-Z a-z 0-9]')),
+                                LengthLimitingTextInputFormatter(1000),
                               ],
                               validator: (val) {
-                                return (RegExp('[A-Z a-z 0-9 ]').hasMatch(val!) &&
-                                    val.length <= 1000) ? null : 'Request body length over limit';
+                                final List<String>words = val!.trim().split(' ');
+                                if (words.length <= 1000 && RegExp(r'[A-Za-z0-9 ]').hasMatch(val)) {
+                                  return null;
+                                }else{
+                                  return'Request body length over limit';
+                                }
                               },
                               cursorColor: const Color(0xFF00A8AF),
                               decoration: const InputDecoration(
@@ -77,7 +84,8 @@ class _Questionnaire16State extends State<Questionnaire16> {
                                       borderSide: BorderSide(
                                           width: 2,
                                           color: Colors.grey,
-                                          style: BorderStyle.solid)
+                                          style: BorderStyle.solid
+                                          )
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius:
@@ -88,11 +96,14 @@ class _Questionnaire16State extends State<Questionnaire16> {
                                           style: BorderStyle.solid)
                                   )
                               ),
-                              // onChanged: (value) {
-                                // setState(() {
-                                //   activeButton = value.isNotEmpty ? true : false;
-                                // });
-                              // }
+                              onChanged: (value) {
+                                setState(() {
+                             
+                                 activeButton =
+                                  _textEditingController.text.trim().split(' ').length <= 50 && 
+                                    _textEditingController.text.isNotEmpty;
+                                });
+                              }
                               )
                       ),
                       Container(
@@ -100,14 +111,16 @@ class _Questionnaire16State extends State<Questionnaire16> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text('${_textEditingController.text.length}/1,000')
+                            //Text('${_textEditingController.text.length}/1,000')
+                             Text('${_textEditingController.text.trim().isEmpty ? 0 : _textEditingController.text.trim().split(' ').where((element) => element.isNotEmpty).length}/500')
                           ],
                         ),
                       ),
                       Container(
                           margin: const EdgeInsets.only(top: 40),
                           child: ElevatedButton(
-                              onPressed: activeButton ? () async {
+                              onPressed: activeButton 
+                              ? () async {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(builder: (context) => const Complete())
@@ -117,7 +130,8 @@ class _Questionnaire16State extends State<Questionnaire16> {
                                     .doc(widget.id)
                                     .set({'16. A brief description of the event or experience': _textEditingController.text},
                                     SetOptions(merge: true));
-                              }:null,
+                              }
+                              :null,
                               style: ElevatedButton.styleFrom(
                                   fixedSize: const Size(160, 60),
                                   backgroundColor: const Color(0xFF00A8AF),
@@ -129,13 +143,14 @@ class _Questionnaire16State extends State<Questionnaire16> {
                               child: const Text(
                                   'Continue',
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(color: Colors.white,
+                                  style: TextStyle(
+                                    color: Colors.white,
                                       fontSize: 17,
                                       fontWeight: FontWeight.w300
                                   )
                               )
                           )
-                      )
+                      ) 
                     ]
                 )
               )

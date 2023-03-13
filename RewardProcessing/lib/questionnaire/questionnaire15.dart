@@ -158,7 +158,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                               });
                             }
                         ),
-                        const Text('Yes - I knew about it for more than a week before it happened',
+                        const Text('Yes - I knew about it for more than a week \n before it happened',
                             overflow: TextOverflow.visible,
                             style: TextStyle(
                                 fontSize: 16

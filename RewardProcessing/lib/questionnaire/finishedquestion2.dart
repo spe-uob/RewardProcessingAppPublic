@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rewardprocessing/questionnaire/finishedquestion3.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FinishedQuestion2 extends StatefulWidget {
@@ -105,8 +106,8 @@ class _FinishedQuestion2State extends State<FinishedQuestion2> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Text(
-                                    '${_textEditingController.text.length}/1,000')
+                                   Text('${_textEditingController.text.trim().isEmpty ? 0 : _textEditingController.text.trim().split(' ').where((element) => element.isNotEmpty).length}/500')
+                        
                               ],
                             )),
                         Container(
@@ -142,8 +143,29 @@ class _FinishedQuestion2State extends State<FinishedQuestion2> {
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 17,
-                                        fontWeight: FontWeight.w300))))
-                      ]))),
-        ));
+                                        fontWeight: FontWeight.w300
+                                        )
+                                        )
+                                        )
+                                        )
+                      ]
+                      )
+                      )
+                      ),
+            bottomSheet: Padding(
+                padding: const EdgeInsets.only(left: 25, right: 25, bottom: 80),
+                child: LinearPercentIndicator(
+                    animateFromLastPercent: true,
+                    lineHeight: 20,
+                    animationDuration: 1000,
+                    percent: 1/2,
+                    center: const Text('1/2'),
+                    barRadius: const Radius.circular(30),
+                    backgroundColor: const Color(0xFFDCDCDC),
+                    progressColor: const Color(0xFF32BEC4)
+                )
+            )          
+        )
+        );
   }
 }
