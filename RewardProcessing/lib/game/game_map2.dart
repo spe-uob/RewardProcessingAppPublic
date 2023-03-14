@@ -184,14 +184,6 @@ class _GameMap2State extends State<GameMap2> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      icon: const Icon(
-                        Icons.arrow_back_ios,
-                        size: 25,
-                      )),
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: LinearPercentIndicator(
