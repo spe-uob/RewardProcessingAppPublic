@@ -1,5 +1,17 @@
 # Studying Reward Processing Through a Mobile App
 
+<p align="center">
+<a>
+
+   <img  height="22"
+         width="150" 
+         src="https://img.shields.io/badge/Porject-RewardProcessing-9cf" />
+    <img height="22"
+         width="100" 
+         src="https://img.shields.io/badge/Version-v0.0.2-9cf"/>
+</a>
+</p>
+
 ## Table of Contents
 - [Navigating the GitHub pages](#Navigating-the-GitHub-pages)
 - [Project Description](#project-description)
