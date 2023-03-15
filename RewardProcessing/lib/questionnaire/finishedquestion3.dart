@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:rewardprocessing/questionnaire/finishpage.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FinishedQuestion3 extends StatefulWidget {
@@ -13,6 +13,7 @@ class FinishedQuestion3 extends StatefulWidget {
 
 class _FinishedQuestion3State extends State<FinishedQuestion3> {
   bool activeButton = false;
+  bool isOverLimit = false;
   late String text;
   final TextEditingController _textEditingController = TextEditingController();
 
@@ -56,17 +57,13 @@ class _FinishedQuestion3State extends State<FinishedQuestion3> {
                             child: TextFormField(
                                 controller: _textEditingController,
                                 maxLines: 7,
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.allow(
-                                      RegExp('[A-Z a-z 0-9 ]')),
-                                  LengthLimitingTextInputFormatter(1000)
-                                ],
                                 validator: (val) {
-                                  return (RegExp('[A-Z a-z 0-9 ]')
-                                              .hasMatch(val!) &&
-                                          val.length <= 1000)
-                                      ? null
-                                      : 'Request body length over limit';
+                                if (RegExp('[A-Z a-z 0-9 ]')
+                                              .hasMatch(val!) ){
+                                      return null;
+                                              }else{
+                                      return 'Request body length over limit';
+                                              }
                                 },
                                 cursorColor: const Color(0xFF00A8AF),
                                 decoration: const InputDecoration(
@@ -87,19 +84,20 @@ class _FinishedQuestion3State extends State<FinishedQuestion3> {
                                             style: BorderStyle.solid))),
                                 onChanged: (value) {
                                   setState(() {
-                                    activeButton =
-                                        value.isNotEmpty ? true : false;
-                                  });
+                                    isOverLimit = value.trim().split(' ').length >500;
+                                    activeButton = value.trim().split(' ').length <= 500 && value.isNotEmpty;
+                                    });
                                 })),
                         Container(
                             margin: const EdgeInsets.only(left: 30, right: 30),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Text(
-                                    '${_textEditingController.text.length}/1,000')
+                                Text
+                                    ('${_textEditingController.text.trim().isEmpty ? 0 : _textEditingController.text.trim().split(' ').where((element) => element.isNotEmpty).length}/500')
                               ],
-                            )),
+                            )
+                            ),
                         Container(
                             margin: const EdgeInsets.only(top: 40),
                             child: ElevatedButton(
@@ -131,7 +129,25 @@ class _FinishedQuestion3State extends State<FinishedQuestion3> {
                                         color: Colors.white,
                                         fontSize: 17,
                                         fontWeight: FontWeight.w300))))
-                      ]))),
-        ));
+                      ]
+                      )
+                      )
+                      ),
+                      bottomSheet: 
+                      Padding(
+                         padding: const EdgeInsets.only(left: 25, right: 25, bottom: 80),
+                         child: LinearPercentIndicator(
+                    animateFromLastPercent: true,
+                    lineHeight: 20,
+                    animationDuration: 1000,
+                    percent: 1,
+                    center: const Text('2/2'),
+                    barRadius: const Radius.circular(30),
+                    backgroundColor: const Color(0xFFDCDCDC),
+                    progressColor: const Color(0xFF32BEC4)
+                )
+            )  
+        )
+        );
   }
 }

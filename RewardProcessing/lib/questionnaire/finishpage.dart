@@ -19,7 +19,7 @@ class _FinishPageState extends State<FinishPage> {
     ]);
   }
 
-  @override
+@override
   Widget build(BuildContext context) {
     return WillPopScope(
         onWillPop: () async {
@@ -66,7 +66,7 @@ class _FinishPageState extends State<FinishPage> {
                       child:
                       ElevatedButton(
                           onPressed: () {
-                            SystemNavigator.pop(); //exit app
+                            SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop');
                             },
                           style: ElevatedButton.styleFrom(
                             fixedSize: const Size(160, 60),

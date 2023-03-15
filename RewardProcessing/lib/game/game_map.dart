@@ -13,7 +13,7 @@ int row = 6;
 int col = row * 11;
 int player = 49;
 int score = 0;
-double percentage = score / 2;
+double percentage = 0;
 
 class _GameMapState extends State<GameMap> {
   @override
@@ -165,14 +165,6 @@ class _GameMapState extends State<GameMap> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      icon: const Icon(
-                        Icons.arrow_back_ios,
-                        size: 25,
-                      )),
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: LinearPercentIndicator(
