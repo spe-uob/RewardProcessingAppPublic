@@ -14,6 +14,7 @@ class FinishedQuestion3 extends StatefulWidget {
 
 class _FinishedQuestion3State extends State<FinishedQuestion3> {
   bool activeButton = false;
+  bool isOverLimit = false;
   late String text;
   final TextEditingController _textEditingController = TextEditingController();
 
@@ -57,17 +58,13 @@ class _FinishedQuestion3State extends State<FinishedQuestion3> {
                             child: TextFormField(
                                 controller: _textEditingController,
                                 maxLines: 7,
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.allow(
-                                      RegExp('[A-Z a-z 0-9 ]')),
-                                  LengthLimitingTextInputFormatter(1000)
-                                ],
                                 validator: (val) {
-                                  return (RegExp('[A-Z a-z 0-9 ]')
-                                              .hasMatch(val!) &&
-                                          val.length <= 1000)
-                                      ? null
-                                      : 'Request body length over limit';
+                                if (RegExp('[A-Z a-z 0-9 ]')
+                                              .hasMatch(val!) ){
+                                      return null;
+                                              }else{
+                                      return 'Request body length over limit';
+                                              }
                                 },
                                 cursorColor: const Color(0xFF00A8AF),
                                 decoration: const InputDecoration(
@@ -88,9 +85,9 @@ class _FinishedQuestion3State extends State<FinishedQuestion3> {
                                             style: BorderStyle.solid))),
                                 onChanged: (value) {
                                   setState(() {
-                                    activeButton =
-                                        value.isNotEmpty ? true : false;
-                                  });
+                                    isOverLimit = value.trim().split(' ').length >500;
+                                    activeButton = value.trim().split(' ').length <= 500 && value.isNotEmpty;
+                                    });
                                 })),
                         Container(
                             margin: const EdgeInsets.only(left: 30, right: 30),

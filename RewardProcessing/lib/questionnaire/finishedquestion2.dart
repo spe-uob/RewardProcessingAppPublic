@@ -14,6 +14,7 @@ class FinishedQuestion2 extends StatefulWidget {
 
 class _FinishedQuestion2State extends State<FinishedQuestion2> {
   bool activeButton = false;
+  bool isOverLimit = false;
   late String text;
   final TextEditingController _textEditingController = TextEditingController();
 
@@ -66,17 +67,13 @@ class _FinishedQuestion2State extends State<FinishedQuestion2> {
                             child: TextFormField(
                                 controller: _textEditingController,
                                 maxLines: 7,
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.allow(
-                                      RegExp('[A-Z a-z 0-9 ]')),
-                                  LengthLimitingTextInputFormatter(1000)
-                                ],
                                 validator: (val) {
-                                  return (RegExp('[A-Z a-z 0-9 ]')
-                                              .hasMatch(val!) &&
-                                          val.length <= 1000)
-                                      ? null
-                                      : 'Request body length over limit';
+                                  if (RegExp('[A-Z a-z 0-9 ]')
+                                              .hasMatch(val!) ){
+                                      return null;
+                                              }else{
+                                      return 'Request body length over limit';
+                                      }
                                 },
                                 cursorColor: const Color(0xFF00A8AF),
                                 decoration: const InputDecoration(
@@ -97,10 +94,12 @@ class _FinishedQuestion2State extends State<FinishedQuestion2> {
                                             style: BorderStyle.solid))),
                                 onChanged: (value) {
                                   setState(() {
-                                    activeButton =
-                                        value.isNotEmpty ? true : false;
+                                     isOverLimit = value.trim().split(' ').length >500;
+                                 activeButton = value.trim().split(' ').length <= 500 && value.isNotEmpty;
+                             
                                   });
-                                })),
+                                }
+                                )),
                         Container(
                             margin: const EdgeInsets.only(left: 30, right: 30),
                             child: Row(
@@ -109,7 +108,8 @@ class _FinishedQuestion2State extends State<FinishedQuestion2> {
                                    Text('${_textEditingController.text.trim().isEmpty ? 0 : _textEditingController.text.trim().split(' ').where((element) => element.isNotEmpty).length}/500')
                         
                               ],
-                            )),
+                            )
+                            ),
                         Container(
                             margin: const EdgeInsets.only(top: 40),
                             child: ElevatedButton(

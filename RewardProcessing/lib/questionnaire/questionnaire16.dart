@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart';
 import 'package:rewardprocessing/questionnaire/complete.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,9 +15,7 @@ class Questionnaire16 extends StatefulWidget {
 
 class _Questionnaire16State extends State<Questionnaire16> {
   bool activeButton = true;
-  // ignore: non_constant_identifier_names
-  bool overWordLimit = false; 
- // late String text;
+  bool isOverLimit = false;
   final TextEditingController _textEditingController = TextEditingController();
 
   @override
@@ -63,13 +61,8 @@ class _Questionnaire16State extends State<Questionnaire16> {
                           child: TextFormField(
                              controller: _textEditingController,
                               maxLines: 7,
-                              inputFormatters: [
-                                FilteringTextInputFormatter.allow(RegExp('[A-Z a-z 0-9]')),
-                                LengthLimitingTextInputFormatter(1000),
-                              ],
                               validator: (val) {
-                                final List<String>words = val!.trim().split(' ');
-                                if (words.length <= 1000 && RegExp(r'[A-Za-z0-9 ]').hasMatch(val)) {
+                                if (RegExp(r'[A-Za-z0-9 ]').hasMatch(val!)) {
                                   return null;
                                 }else{
                                   return'Request body length over limit';
@@ -98,13 +91,12 @@ class _Questionnaire16State extends State<Questionnaire16> {
                               ),
                               onChanged: (value) {
                                 setState(() {
-                             
-                                 activeButton =
-                                  _textEditingController.text.trim().split(' ').length <= 50 && 
-                                    _textEditingController.text.isNotEmpty;
+                                  isOverLimit = value.trim().split(' ').length >500;
+                                 activeButton = value.trim().split(' ').length <= 500 && value.isNotEmpty;
                                 });
-                              }
-                              )
+                              },
+                              ),
+                              
                       ),
                       Container(
                         margin: const EdgeInsets.only(left: 30, right: 30),
@@ -169,6 +161,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                 )
             )
         )
+        
     );
   }
 }
