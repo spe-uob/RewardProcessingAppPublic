@@ -15,6 +15,7 @@
 ### Documentation
 * [Kanban Board](https://github.com/spe-uob/2022-RewardProcessingApp/projects/1)
 * [Meeting Minutes](https://github.com/spe-uob/2022-RewardProcessingApp/tree/main/Meetings)
+* [Gantt Chart](https://github.com/spe-uob/2022-RewardProcessingApp/blob/main/RewardProcessinApp%20Gantt%20chart.xlsx)
 ### Code
 * [RewardProcessing](https://github.com/spe-uob/2022-RewardProcessingApp/tree/main/RewardProcessing/lib)
 ## Project Description
