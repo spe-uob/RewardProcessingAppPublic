@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -14,6 +15,7 @@ int col = row * 11;
 int player = 49;
 int score = 0;
 double percentage = 0;
+ String imagePath = "assets/images/guess.png";
 
 class _GameMapState extends State<GameMap> {
   @override
@@ -276,11 +278,39 @@ class _GameMapState extends State<GameMap> {
             ]),
           ));
     } else if (guess.contains(index)) {
-      w = Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/guess.png")]),
-      );
-    } else if (pellets.contains(index)) {
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            var doubleValue = Random().nextDouble();
+
+            if (player == 24) {
+              if (imagePath == "assets/images/guess.png") {
+                if (doubleValue < 0.5) {
+                  setState(() {
+                    imagePath = "assets/images/cherry.png";
+                  });
+                } else {
+                  setState(() {
+                    imagePath = "assets/images/ghost.png";
+                  });
+                }
+              } else if (imagePath == "assets/images/cherry.png") {
+                setState(() {
+                  imagePath = "assets/images/NoCherry.png";
+                  score = score + 5;
+                });
+              } else if (imagePath == "assets/images/.ghost.png") {}
+            }
+          },
+
+          child: Padding(
+            padding: const EdgeInsets.all(0.1),
+            child: Column(children: [Image.asset(imagePath)]),
+          ));
+    } 
+    
+    
+    else if (pellets.contains(index)) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/dot.png")]),
