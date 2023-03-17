@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class GameMap2 extends StatefulWidget {
-  const GameMap2({super.key});
+  final String id;
+  const GameMap2({super.key, required this.id});
 
   @override
   State<GameMap2> createState() => _GameMap2State();
@@ -147,7 +148,7 @@ class _GameMap2State extends State<GameMap2> {
     void trigger() {
     if (pellets.contains(player)) {
       pellets.remove(player);
-      caculate(0);
+      calculate(0);
       refresh();
     }
   }
@@ -171,7 +172,7 @@ class _GameMap2State extends State<GameMap2> {
     // }
   }
 
-    void caculate(int type) {
+    void calculate(int type) {
     if (type == 0) {
       score = score + 10;
     } else if (type == 1){
@@ -222,7 +223,7 @@ class _GameMap2State extends State<GameMap2> {
     List<Widget> items = [];
     for (int i = 0; i < 8; i++) {
       for (int j = 0; j < 11; j++) {
-        items.add(getWiget(i * 11 + j));
+        items.add(getWidget(i * 11 + j));
       }
     }
 
@@ -286,7 +287,7 @@ class _GameMap2State extends State<GameMap2> {
         ]));
   }
 
-  Widget getWiget(int index) {
+  Widget getWidget(int index) {
     double itemWidth = (MediaQuery.of(context).size.height - topHeight) / row;
     if (itemWidth > (MediaQuery.of(context).size.width / 11)) {
       itemWidth = MediaQuery.of(context).size.width / 11;
@@ -387,7 +388,7 @@ class _GameMap2State extends State<GameMap2> {
                 setState(() {
                   leftImage13 = "assets/images/NoCherry.png";
                   fresh++;
-                  caculate(1);
+                  calculate(1);
                 });
               } else if (leftImage13 == "assets/images/.ghost.png") {}
             }
@@ -421,7 +422,7 @@ class _GameMap2State extends State<GameMap2> {
                 setState(() {
                   leftImage23 = "assets/images/NoCherry.png";
                   fresh++;
-                  caculate(1);
+                  calculate(1);
                 });
               } else if (leftImage23 == "assets/images/.ghost.png") {}
             }
@@ -455,7 +456,7 @@ class _GameMap2State extends State<GameMap2> {
                 setState(() {
                   leftImage25 = "assets/images/NoCherry.png";
                   fresh++;
-                  caculate(1);
+                  calculate(1);
                 });
               } else if (leftImage25 == "assets/images/.ghost.png") {}
             }
@@ -489,7 +490,7 @@ class _GameMap2State extends State<GameMap2> {
                 setState(() {
                   rightImage19 = "assets/images/NoCherry.png";
                   fresh++;
-                  caculate(1);
+                  calculate(1);
                 });
               } else if (rightImage19 == "assets/images/.ghost.png") {}
             }
@@ -522,7 +523,7 @@ class _GameMap2State extends State<GameMap2> {
                 setState(() {
                   rightImage29  = "assets/images/NoCherry.png";
                   fresh++;
-                  caculate(1);
+                  calculate(1);
                 });
               } else if (rightImage29  == "assets/images/.ghost.png") {}
             }
@@ -556,7 +557,7 @@ class _GameMap2State extends State<GameMap2> {
                 setState(() {
                   rightImage31  = "assets/images/NoCherry.png";
                   fresh++;
-                  caculate(1);
+                  calculate(1);
                 });
               } else if (rightImage31  == "assets/images/.ghost.png") {}
             }
@@ -564,8 +565,13 @@ class _GameMap2State extends State<GameMap2> {
           
           child: Padding(
             padding: const EdgeInsets.all(0.1),
-            child: Column(children: [Image.asset(rightImage31 )]),
-          ));
+            child: Column(
+                children: [
+                  Image.asset(rightImage31)
+                ]
+            ),
+          )
+      );
     } 
 
     
@@ -606,11 +612,6 @@ class _GameMap2State extends State<GameMap2> {
         ),
       );
     }
-
-
-
-
-
 
     debugPrint("index$index");
     debugPrint("left${(index % 11) * itemWidth + startLeft}");
