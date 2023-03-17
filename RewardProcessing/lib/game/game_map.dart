@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:rewardprocessing/game/game_map2.dart';
 
 class GameMap extends StatefulWidget {
   const GameMap({super.key});
@@ -131,17 +132,29 @@ class _GameMapState extends State<GameMap> {
     setState(() {
       imagePath == "assets/images/guess.png";
     });
-    // }
+    
   }
 
     void caculate(int type) {
+
+      if (score >= 200) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const GameMap2()));
+    }
+
+
+
     if (type == 0) {
       score = score + 10;
     } else if (type == 1){
       score = score + 20;
     }
 
-    percentage = score / 2;
+    if (score <= 200) {
+      percentage = score / 2;
+    } else {
+      percentage = 100;
+    }
   }
 
 
