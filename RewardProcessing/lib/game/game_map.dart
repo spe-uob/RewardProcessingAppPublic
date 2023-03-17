@@ -103,14 +103,16 @@ class _GameMapState extends State<GameMap> {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
   }
-
+  
   void trigger() {
     if (pellets.contains(player)) {
       pellets.remove(player);
-      score = score + 5;
-      percentage = score / 2;
+      caculate(0);
+      refresh();
     }
   }
+
+
   
   
   void refresh() {
@@ -131,7 +133,18 @@ class _GameMapState extends State<GameMap> {
     });
     // }
   }
-  void clickGuess() {}
+
+    void caculate(int type) {
+    if (type == 0) {
+      score = score + 10;
+    } else if (type == 1){
+      score = score + 20;
+    }
+
+    percentage = score / 2;
+  }
+
+
 
   void movePlayer(int right, int down) {
     int nowPlayer = player + down * 11 + right;
@@ -345,6 +358,7 @@ class _GameMapState extends State<GameMap> {
                 setState(() {
                   leftImage13 = "assets/images/NoCherry.png";
                   fresh++;
+                  caculate(1);
                 });
               } else if (leftImage13 == "assets/images/.ghost.png") {}
             }
@@ -378,6 +392,7 @@ class _GameMapState extends State<GameMap> {
                 setState(() {
                   leftImage23 = "assets/images/NoCherry.png";
                   fresh++;
+                  caculate(1);
                 });
               } else if (leftImage23 == "assets/images/.ghost.png") {}
             }
@@ -411,6 +426,7 @@ class _GameMapState extends State<GameMap> {
                 setState(() {
                   leftImage25 = "assets/images/NoCherry.png";
                   fresh++;
+                  caculate(1);
                 });
               } else if (leftImage25 == "assets/images/.ghost.png") {}
             }
@@ -444,6 +460,7 @@ class _GameMapState extends State<GameMap> {
                 setState(() {
                   rightImage19 = "assets/images/NoCherry.png";
                   fresh++;
+                  caculate(1);
                 });
               } else if (rightImage19 == "assets/images/.ghost.png") {}
             }
@@ -476,6 +493,7 @@ class _GameMapState extends State<GameMap> {
                 setState(() {
                   rightImage29  = "assets/images/NoCherry.png";
                   fresh++;
+                  caculate(1);
                 });
               } else if (rightImage29  == "assets/images/.ghost.png") {}
             }
@@ -509,6 +527,7 @@ class _GameMapState extends State<GameMap> {
                 setState(() {
                   rightImage31  = "assets/images/NoCherry.png";
                   fresh++;
+                  caculate(1);
                 });
               } else if (rightImage31  == "assets/images/.ghost.png") {}
             }
