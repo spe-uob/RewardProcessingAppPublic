@@ -38,6 +38,14 @@ class _GameMapState extends State<GameMap> {
   int quarterTurns = 0;
   List<int> pellets = [24, 35, 46, 47, 48, 50, 51, 52, 30, 41, 30];
   List<int> paths = [24, 35, 46, 47, 48, 49, 50, 51, 52, 30, 41, 30];
+  String leftImage13 = "assets/images/guess.png";
+  String leftImage23 = "assets/images/guess.png";
+
+  String leftImage25 = "assets/images/guess.png";
+
+  String rightImage19 = "assets/images/guess.png";
+  String rightImage29 = "assets/images/guess.png";
+  String rightImage31 = "assets/images/guess.png";
 
   List<int> barriers = [
     0,
@@ -284,68 +292,208 @@ class _GameMapState extends State<GameMap> {
             ]),
           ));
     } 
-    else if (leftGuess.contains(index)) {
+
+
+
+
+
+    else if (13 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
             var doubleValue = Random().nextDouble();
 
             if (player == 24) {
-              if (leftImage == "assets/images/guess.png") {
+              
+              if (leftImage13 == "assets/images/guess.png") {
                 if (doubleValue < 0.5) {
                   setState(() {
-                    leftImage = "assets/images/cherry.png";
+                    leftImage13 = "assets/images/cherry.png";
                   });
                 } else {
                   setState(() {
-                    leftImage = "assets/images/ghost.png";
+                    leftImage13 = "assets/images/ghost.png";
                   });
                 }
-              } else if (leftImage == "assets/images/cherry.png") {
+              } else if (leftImage13 == "assets/images/cherry.png") {
                 setState(() {
-                  leftImage = "assets/images/NoCherry.png";
+                  leftImage13 = "assets/images/NoCherry.png";
                   score = score + 5;
                 });
-              } else if (leftImage == "assets/images/.ghost.png") {}
+              } else if (leftImage13 == "assets/images/.ghost.png") {}
             }
           },
 
           child: Padding(
             padding: const EdgeInsets.all(0.1),
-            child: Column(children: [Image.asset(leftImage)]),
+            child: Column(children: [Image.asset(leftImage13)]),
           ));
-    } 
-     else if (rightGuess.contains(index)) {
+    } else if (23 == index) {
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            var doubleValue = Random().nextDouble();
+
+            if (player == 24) {
+              
+              if (leftImage23 == "assets/images/guess.png") {
+                if (doubleValue < 0.5) {
+                  setState(() {
+                    leftImage23 = "assets/images/cherry.png";
+                  });
+                } else {
+                  setState(() {
+                    leftImage23 = "assets/images/ghost.png";
+                  });
+                }
+              } else if (leftImage23 == "assets/images/cherry.png") {
+                setState(() {
+                  leftImage23 = "assets/images/NoCherry.png";
+                  score = score + 5;
+                });
+              } else if (leftImage23 == "assets/images/.ghost.png") {}
+            }
+          },
+
+          child: Padding(
+            padding: const EdgeInsets.all(0.1),
+            child: Column(children: [Image.asset(leftImage23)]),
+          ));
+    } else if (25 == index) {
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            var doubleValue = Random().nextDouble();
+
+            if (player == 24) {
+              
+              if (leftImage25 == "assets/images/guess.png") {
+                if (doubleValue < 0.5) {
+                  setState(() {
+                    leftImage25 = "assets/images/cherry.png";
+                  });
+                } else {
+                  setState(() {
+                    leftImage25 = "assets/images/ghost.png";
+                  });
+                }
+              } else if (leftImage25 == "assets/images/cherry.png") {
+                setState(() {
+                  leftImage25 = "assets/images/NoCherry.png";
+                  score = score + 5;
+                });
+              } else if (leftImage25 == "assets/images/.ghost.png") {}
+            }
+          },
+
+          child: Padding(
+            padding: const EdgeInsets.all(0.1),
+            child: Column(children: [Image.asset(leftImage25)]),
+          ));
+    } else if (19 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
             var doubleValue = Random().nextDouble();
 
             if (player == 30) {
-              if (rightImage == "assets/images/guess.png") {
+
+              if (rightImage19 == "assets/images/guess.png") {
                 if (doubleValue < 0.5) {
                   setState(() {
-                    rightImage = "assets/images/cherry.png";
+                    rightImage19 = "assets/images/cherry.png";
                   });
                 } else {
                   setState(() {
-                    rightImage = "assets/images/ghost.png";
+                    rightImage19 = "assets/images/ghost.png";
                   });
                 }
-              } else if (rightImage == "assets/images/cherry.png") {
+              } else if (rightImage19 == "assets/images/cherry.png") {
                 setState(() {
-                  rightImage = "assets/images/NoCherry.png";
+                  rightImage19 = "assets/images/NoCherry.png";
                   score = score + 5;
                 });
-              } else if (rightImage == "assets/images/.ghost.png") {}
+              } else if (rightImage19 == "assets/images/.ghost.png") {}
             }
           },
           
           child: Padding(
             padding: const EdgeInsets.all(0.1),
-            child: Column(children: [Image.asset(rightImage)]),
+            child: Column(children: [Image.asset(rightImage19)]),
+          ));
+    } else if (29 == index) {
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            var doubleValue = Random().nextDouble();
+
+            if (player == 30) {
+              if (rightImage29 == "assets/images/guess.png") {
+                if (doubleValue < 0.5) {
+                  setState(() {
+                    rightImage29  = "assets/images/cherry.png";
+                  });
+                } else {
+                  setState(() {
+                    rightImage29  = "assets/images/ghost.png";
+                  });
+                }
+              } else if (rightImage29  == "assets/images/cherry.png") {
+                setState(() {
+                  rightImage29  = "assets/images/NoCherry.png";
+                  score = score + 5;
+                });
+              } else if (rightImage29  == "assets/images/.ghost.png") {}
+            }
+          },
+          
+          child: Padding(
+            padding: const EdgeInsets.all(0.1),
+            child: Column(children: [Image.asset(rightImage29 )]),
+          ));
+    } else if (31 == index) {
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            var doubleValue = Random().nextDouble();
+
+            if (player == 30) {
+
+
+
+
+
+              if (rightImage31 == "assets/images/guess.png") {
+                if (doubleValue < 0.5) {
+                  setState(() {
+                    rightImage31  = "assets/images/cherry.png";
+                  });
+                } else {
+                  setState(() {
+                    rightImage31  = "assets/images/ghost.png";
+                  });
+                }
+              } else if (rightImage31  == "assets/images/cherry.png") {
+                setState(() {
+                  rightImage31  = "assets/images/NoCherry.png";
+                  score = score + 5;
+                });
+              } else if (rightImage31  == "assets/images/.ghost.png") {}
+            }
+          },
+          
+          child: Padding(
+            padding: const EdgeInsets.all(0.1),
+            child: Column(children: [Image.asset(rightImage31 )]),
           ));
     } 
+
+    
+
+
+
+
+
     
     
     else if (pellets.contains(index)) {
