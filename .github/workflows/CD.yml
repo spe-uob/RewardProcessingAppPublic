@@ -3,6 +3,8 @@ name: CD
 on:
   push:
     branches: [ "main" ]
+    tags:
+      - v*
 
 jobs:
   ios-build:
@@ -29,8 +31,11 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "build/ios/iphoneos/app.ipa"
-          tag: v1.0.${{ github.run_number }}
+          allowUpdates: "true"
           token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v1
+        with:
+          name: iOS-release
 
   build-android:
     runs-on: ubuntu-latest
@@ -51,6 +56,10 @@ jobs:
       - run: flutter build appbundle
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/flutter-apk/app-release.apk"
-          tag: v1.0.${{ github.run_number }}
+          artifacts: "build/app/outputs/flutter-apk/*.apk"
+          allowUpdates: "true"
+          tag: android-release
           token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v1
+        with:
+          name: android-release
