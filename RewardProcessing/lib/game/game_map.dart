@@ -30,8 +30,11 @@ class _GameMapState extends State<GameMap> {
     ]);
   }
 
-    List<int> leftGuess = [13, 23, 25];
+ List<int> leftGuess = [13, 23, 25];
   List<int> rightGuess = [19, 29, 31];
+
+   int fresh = 0;
+
 
   List<int> guess = [13, 19, 23, 25, 29, 31];
   double topHeight = 60;
@@ -108,9 +111,26 @@ class _GameMapState extends State<GameMap> {
       percentage = score / 2;
     }
   }
+  
+  
+  void refresh() {
+    if (player == 35 || player == 41) {
+      if (fresh != 0) {
+        leftImage13 = "assets/images/guess.png";
+        leftImage23 = "assets/images/guess.png";
+        leftImage25 = "assets/images/guess.png";
+        rightImage19 = "assets/images/guess.png";
+        rightImage29 = "assets/images/guess.png";
+        rightImage31 = "assets/images/guess.png";
+        fresh = 0;
+      }
+    }
 
-  void refresh() {}
-
+    setState(() {
+      imagePath == "assets/images/guess.png";
+    });
+    // }
+  }
   void clickGuess() {}
 
   void movePlayer(int right, int down) {
@@ -234,6 +254,7 @@ class _GameMapState extends State<GameMap> {
           onTap: () {
             movePlayer(-1, 0);
             trigger();
+            refresh();
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
@@ -246,6 +267,7 @@ class _GameMapState extends State<GameMap> {
           onTap: () {
             movePlayer(1, 0);
             trigger();
+            refresh();
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
@@ -258,6 +280,7 @@ class _GameMapState extends State<GameMap> {
           onTap: () {
             movePlayer(0, -1);
             trigger();
+            refresh();
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
@@ -269,6 +292,7 @@ class _GameMapState extends State<GameMap> {
           onTap: () {
             movePlayer(0, 1);
             trigger();
+            refresh();
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
@@ -309,16 +333,18 @@ class _GameMapState extends State<GameMap> {
                 if (doubleValue < 0.5) {
                   setState(() {
                     leftImage13 = "assets/images/cherry.png";
+                    fresh++;
                   });
                 } else {
                   setState(() {
                     leftImage13 = "assets/images/ghost.png";
+                    fresh++;
                   });
                 }
               } else if (leftImage13 == "assets/images/cherry.png") {
                 setState(() {
                   leftImage13 = "assets/images/NoCherry.png";
-                  score = score + 5;
+                  fresh++;
                 });
               } else if (leftImage13 == "assets/images/.ghost.png") {}
             }
@@ -340,16 +366,18 @@ class _GameMapState extends State<GameMap> {
                 if (doubleValue < 0.5) {
                   setState(() {
                     leftImage23 = "assets/images/cherry.png";
+                    fresh++;
                   });
                 } else {
                   setState(() {
                     leftImage23 = "assets/images/ghost.png";
+                    fresh++;
                   });
                 }
               } else if (leftImage23 == "assets/images/cherry.png") {
                 setState(() {
                   leftImage23 = "assets/images/NoCherry.png";
-                  score = score + 5;
+                  fresh++;
                 });
               } else if (leftImage23 == "assets/images/.ghost.png") {}
             }
@@ -371,16 +399,18 @@ class _GameMapState extends State<GameMap> {
                 if (doubleValue < 0.5) {
                   setState(() {
                     leftImage25 = "assets/images/cherry.png";
+                    fresh++;
                   });
                 } else {
                   setState(() {
                     leftImage25 = "assets/images/ghost.png";
+                    fresh++;
                   });
                 }
               } else if (leftImage25 == "assets/images/cherry.png") {
                 setState(() {
                   leftImage25 = "assets/images/NoCherry.png";
-                  score = score + 5;
+                  fresh++;
                 });
               } else if (leftImage25 == "assets/images/.ghost.png") {}
             }
@@ -402,16 +432,18 @@ class _GameMapState extends State<GameMap> {
                 if (doubleValue < 0.5) {
                   setState(() {
                     rightImage19 = "assets/images/cherry.png";
+                    fresh++;
                   });
                 } else {
                   setState(() {
                     rightImage19 = "assets/images/ghost.png";
+                    fresh++;
                   });
                 }
               } else if (rightImage19 == "assets/images/cherry.png") {
                 setState(() {
                   rightImage19 = "assets/images/NoCherry.png";
-                  score = score + 5;
+                  fresh++;
                 });
               } else if (rightImage19 == "assets/images/.ghost.png") {}
             }
@@ -432,16 +464,18 @@ class _GameMapState extends State<GameMap> {
                 if (doubleValue < 0.5) {
                   setState(() {
                     rightImage29  = "assets/images/cherry.png";
+                    fresh++;
                   });
                 } else {
                   setState(() {
                     rightImage29  = "assets/images/ghost.png";
+                    fresh++;
                   });
                 }
               } else if (rightImage29  == "assets/images/cherry.png") {
                 setState(() {
                   rightImage29  = "assets/images/NoCherry.png";
-                  score = score + 5;
+                  fresh++;
                 });
               } else if (rightImage29  == "assets/images/.ghost.png") {}
             }
@@ -459,24 +493,22 @@ class _GameMapState extends State<GameMap> {
 
             if (player == 30) {
 
-
-
-
-
               if (rightImage31 == "assets/images/guess.png") {
                 if (doubleValue < 0.5) {
                   setState(() {
                     rightImage31  = "assets/images/cherry.png";
+                    fresh++;
                   });
                 } else {
                   setState(() {
                     rightImage31  = "assets/images/ghost.png";
+                    fresh++;
                   });
                 }
               } else if (rightImage31  == "assets/images/cherry.png") {
                 setState(() {
                   rightImage31  = "assets/images/NoCherry.png";
-                  score = score + 5;
+                  fresh++;
                 });
               } else if (rightImage31  == "assets/images/.ghost.png") {}
             }
