@@ -3,7 +3,8 @@ import 'package:rewardprocessing/game/game_instructions3.dart';
 import 'package:flutter/services.dart';
 
 class GameInstructions2 extends StatefulWidget {
-  const GameInstructions2({super.key});
+  final String id;
+  const GameInstructions2({super.key, required this.id});
 
   @override
   State<GameInstructions2> createState() => _GameInstructions2State();
@@ -41,7 +42,7 @@ class _GameInstructions2State extends State<GameInstructions2> {
                             Navigator.push(
                                 context,
                                 // MaterialPageRoute(builder: (context) => const Questionnaire())
-                                MaterialPageRoute(builder: (context) => const GameInstructions3())
+                                MaterialPageRoute(builder: (context) => GameInstructions3(id: widget.id))
                             );
                           },
                           style: ElevatedButton.styleFrom(

@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 
 
 class Complete extends StatefulWidget {
-  const Complete({super.key});
+  final String id;
+  const Complete({super.key, required this.id});
 
   @override
   State<Complete> createState() => _CompleteState();
@@ -59,7 +60,7 @@ class _CompleteState extends State<Complete> {
                             Navigator.push(
                                 context,
                                 // MaterialPageRoute(builder: (context) => const Questionnaire())
-                                MaterialPageRoute(builder: (context) => const GameInstructions())
+                                MaterialPageRoute(builder: (context) => GameInstructions(id: widget.id))
                             );
                           },
                           style: ElevatedButton.styleFrom(

@@ -5,7 +5,8 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:rewardprocessing/game/game_map2.dart';
 
 class GameMap extends StatefulWidget {
-  const GameMap({super.key});
+  final String id;
+  const GameMap({super.key, required this.id});
 
   @override
   State<GameMap> createState() => _GameMapState();
@@ -20,7 +21,6 @@ double percentage = 0;
    String leftImage = "assets/images/guess.png";
   String rightImage = "assets/images/guess.png";
 
-
 class _GameMapState extends State<GameMap> {
   @override
   void initState() {
@@ -34,8 +34,7 @@ class _GameMapState extends State<GameMap> {
  List<int> leftGuess = [13, 23, 25];
   List<int> rightGuess = [19, 29, 31];
 
-   int fresh = 0;
-
+  int fresh = 0;
 
   List<int> guess = [13, 19, 23, 25, 29, 31];
   double topHeight = 60;
@@ -95,9 +94,6 @@ class _GameMapState extends State<GameMap> {
     65
      ];
 
-
-
-
   @override
   void dispose() {
     super.dispose();
@@ -108,13 +104,10 @@ class _GameMapState extends State<GameMap> {
   void trigger() {
     if (pellets.contains(player)) {
       pellets.remove(player);
-      caculate(0);
+      calculate(0);
       refresh();
     }
   }
-
-
-  
   
   void refresh() {
     if (player == 35 || player == 41) {
@@ -132,17 +125,14 @@ class _GameMapState extends State<GameMap> {
     setState(() {
       imagePath == "assets/images/guess.png";
     });
-    
   }
 
-    void caculate(int type) {
+    void calculate(int type) {
 
       if (score >= 200) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const GameMap2()));
+          context, MaterialPageRoute(builder: (context) => GameMap2(id: widget.id)));
     }
-
-
 
     if (type == 0) {
       score = score + 10;
@@ -156,8 +146,6 @@ class _GameMapState extends State<GameMap> {
       percentage = 100;
     }
   }
-
-
 
   void movePlayer(int right, int down) {
     int nowPlayer = player + down * 11 + right;
@@ -200,7 +188,7 @@ class _GameMapState extends State<GameMap> {
     List<Widget> items = [];
     for (int i = 0; i < 6; i++) {
       for (int j = 0; j < 11; j++) {
-        items.add(getWiget(i * 11 + j));
+        items.add(getWidget(i * 11 + j));
       }
     }
 
@@ -264,7 +252,7 @@ class _GameMapState extends State<GameMap> {
         ]));
   }
 
-  Widget getWiget(int index) {
+  Widget getWidget(int index) {
     double itemWidth = (MediaQuery.of(context).size.height - topHeight) / row;
     if (itemWidth > (MediaQuery.of(context).size.width / 11)) {
       itemWidth = MediaQuery.of(context).size.width / 11;
@@ -341,11 +329,7 @@ class _GameMapState extends State<GameMap> {
               )
             ]),
           ));
-    } 
-
-
-
-
+    }
 
     else if (13 == index) {
       w = GestureDetector(
@@ -371,7 +355,7 @@ class _GameMapState extends State<GameMap> {
                 setState(() {
                   leftImage13 = "assets/images/NoCherry.png";
                   fresh++;
-                  caculate(1);
+                  calculate(1);
                 });
               } else if (leftImage13 == "assets/images/.ghost.png") {}
             }
@@ -405,7 +389,7 @@ class _GameMapState extends State<GameMap> {
                 setState(() {
                   leftImage23 = "assets/images/NoCherry.png";
                   fresh++;
-                  caculate(1);
+                  calculate(1);
                 });
               } else if (leftImage23 == "assets/images/.ghost.png") {}
             }
@@ -439,7 +423,7 @@ class _GameMapState extends State<GameMap> {
                 setState(() {
                   leftImage25 = "assets/images/NoCherry.png";
                   fresh++;
-                  caculate(1);
+                  calculate(1);
                 });
               } else if (leftImage25 == "assets/images/.ghost.png") {}
             }
@@ -473,7 +457,7 @@ class _GameMapState extends State<GameMap> {
                 setState(() {
                   rightImage19 = "assets/images/NoCherry.png";
                   fresh++;
-                  caculate(1);
+                  calculate(1);
                 });
               } else if (rightImage19 == "assets/images/.ghost.png") {}
             }
@@ -506,7 +490,7 @@ class _GameMapState extends State<GameMap> {
                 setState(() {
                   rightImage29  = "assets/images/NoCherry.png";
                   fresh++;
-                  caculate(1);
+                  calculate(1);
                 });
               } else if (rightImage29  == "assets/images/.ghost.png") {}
             }
@@ -540,7 +524,7 @@ class _GameMapState extends State<GameMap> {
                 setState(() {
                   rightImage31  = "assets/images/NoCherry.png";
                   fresh++;
-                  caculate(1);
+                  calculate(1);
                 });
               } else if (rightImage31  == "assets/images/.ghost.png") {}
             }
@@ -578,9 +562,6 @@ class _GameMapState extends State<GameMap> {
         ),
       );
     }
-
-
-
 
     debugPrint("index$index");
     debugPrint("left${(index % 11) * itemWidth + startLeft}");
