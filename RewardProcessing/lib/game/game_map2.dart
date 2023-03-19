@@ -68,7 +68,6 @@ class _GameMap2State extends State<GameMap2> {
     69,
     70,
     59,
-    48,
     61,
     72,
     73,
