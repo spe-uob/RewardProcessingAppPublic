@@ -39,8 +39,8 @@ class _GameMapState extends State<GameMap> {
   List<int> guess = [13, 19, 23, 25, 29, 31];
   double topHeight = 60;
   int quarterTurns = 0;
-  List<int> pellets = [24, 35, 46, 47, 48, 50, 51, 52, 30, 41, 30];
-  List<int> paths = [24, 35, 46, 47, 48, 49, 50, 51, 52, 30, 41, 30];
+  List<int> pellets = [24, 35, 46, 47, 48, 50, 51, 52, 30, 41];
+  List<int> paths = [24, 35, 46, 47, 48, 49, 50, 51, 52, 30, 41];
   String leftImage13 = "assets/images/guess.png";
   String leftImage23 = "assets/images/guess.png";
 
