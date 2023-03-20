@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:rewardprocessing/questionnaire/finishedquestion.dart';
 
 class GameMap2 extends StatefulWidget {
   final String id;
@@ -67,7 +68,6 @@ class _GameMap2State extends State<GameMap2> {
     69,
     70,
     59,
-    48,
     61,
     72,
     73,
@@ -173,6 +173,11 @@ class _GameMap2State extends State<GameMap2> {
   }
 
     void calculate(int type) {
+      if (score >= 200) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => FinishedQuestion(id: widget.id)));
+    }
+
     if (type == 0) {
       score = score + 10;
     } else if (type == 1){
@@ -248,7 +253,7 @@ class _GameMap2State extends State<GameMap2> {
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: LinearPercentIndicator(
-                      width: 400.0,
+                      width:600.0,
                       lineHeight: 16,
                       progressColor: Colors.teal[400],
                       backgroundColor: Colors.grey[400],

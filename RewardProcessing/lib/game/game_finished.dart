@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rewardprocessing/questionnaire/finishedquestion.dart';
+import 'package:rewardprocessing/game/game_map2.dart';
 import 'package:flutter/services.dart';
 
 
@@ -53,7 +53,7 @@ class _GameFinishedState extends State<GameFinished> {
                           onPressed: () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const FinishedQuestion(
+                                MaterialPageRoute(builder: (context) => const GameMap2(
                                     id: ''))
                             );
                           },

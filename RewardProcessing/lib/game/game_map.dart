@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:rewardprocessing/game/game_map2.dart';
+import 'package:rewardprocessing/game/game_finished.dart';
 
 class GameMap extends StatefulWidget {
   final String id;
@@ -39,8 +39,8 @@ class _GameMapState extends State<GameMap> {
   List<int> guess = [13, 19, 23, 25, 29, 31];
   double topHeight = 60;
   int quarterTurns = 0;
-  List<int> pellets = [24, 35, 46, 47, 48, 50, 51, 52, 30, 41, 30];
-  List<int> paths = [24, 35, 46, 47, 48, 49, 50, 51, 52, 30, 41, 30];
+  List<int> pellets = [24, 35, 46, 47, 48, 50, 51, 52, 30, 41];
+  List<int> paths = [24, 35, 46, 47, 48, 49, 50, 51, 52, 30, 41];
   String leftImage13 = "assets/images/guess.png";
   String leftImage23 = "assets/images/guess.png";
 
@@ -131,7 +131,7 @@ class _GameMapState extends State<GameMap> {
 
       if (score >= 200) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => GameMap2(id: widget.id)));
+          context, MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)));
     }
 
     if (type == 0) {
@@ -213,7 +213,7 @@ class _GameMapState extends State<GameMap> {
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: LinearPercentIndicator(
-                      width: 400.0,
+                      width: 600.0,
                       lineHeight: 16,
                       progressColor: Colors.teal[400],
                       backgroundColor: Colors.grey[400],
