@@ -124,7 +124,7 @@ class _GameMapState extends State<GameMap> {
   }
   
   void refresh() {
-    if (player == 26 || player == 32) {
+    if (player == 38 || player == 44) {
       if (fresh != 0) {
         leftImage13 = "assets/images/guess.png";
         leftImage23 = "assets/images/guess.png";
