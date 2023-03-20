@@ -3,8 +3,6 @@ name: CD
 on:
   push:
     branches: [ "main" ]
-    tags:
-      - v*
 
 jobs:
   ios-build:
@@ -32,10 +30,8 @@ jobs:
         with:
           artifacts: "build/ios/iphoneos/app.ipa"
           allowUpdates: "true"
+          tag: v1.0.${{ github.run_number }}
           token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-artifact@v1
-        with:
-          name: iOS-release
 
   build-android:
     runs-on: ubuntu-latest
@@ -58,8 +54,5 @@ jobs:
         with:
           artifacts: "build/app/outputs/flutter-apk/*.apk"
           allowUpdates: "true"
-          tag: android-release
+          tag: v1.0.${{ github.run_number }}
           token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-artifact@v1
-        with:
-          name: android-release
