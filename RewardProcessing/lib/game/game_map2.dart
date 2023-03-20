@@ -257,7 +257,7 @@ class _GameMap2State extends State<GameMap2> {
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: LinearPercentIndicator(
-                      width:600.0,
+                      width:400.0,
                       lineHeight: 16,
                       progressColor: Colors.teal[400],
                       backgroundColor: Colors.grey[400],
