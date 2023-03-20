@@ -40,7 +40,6 @@ class _GameMap2State extends State<GameMap2> {
   List<int> guess = [13, 19, 23, 25, 29, 31];
   double topHeight = 60;
   int quarterTurns = 0;
-  List<int> back = [12, 14, 18, 20];
   String leftImage13 = "assets/images/guess.png";
   String leftImage23 = "assets/images/guess.png";
 
@@ -183,8 +182,13 @@ class _GameMap2State extends State<GameMap2> {
     } else if (type == 1){
       score = score + 20;
     }
-
-    percentage = score / 2;
+    
+    
+    if (score <= 200) {
+      percentage = score / 2;
+    } else {
+      percentage = 100;
+    }
   }
 
   void movePlayer(int right, int down) {
