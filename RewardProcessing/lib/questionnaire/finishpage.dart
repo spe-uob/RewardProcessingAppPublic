@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'dart:io';
 
 class FinishPage extends StatefulWidget {
   final String id;
@@ -66,7 +67,8 @@ class _FinishPageState extends State<FinishPage> {
                       child:
                       ElevatedButton(
                           onPressed: () {
-                            SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop');
+                            //SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop');
+                            exit(0);
                             },
                           style: ElevatedButton.styleFrom(
                             fixedSize: const Size(160, 60),

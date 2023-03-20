@@ -17,6 +17,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
   bool activeButton = true;
   bool isOverLimit = false;
   final TextEditingController _textEditingController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -58,16 +59,19 @@ class _Questionnaire16State extends State<Questionnaire16> {
                       ),
                       Container(
                           padding: const EdgeInsets.only(left: 25, right: 25),
-                          child: TextFormField(
+                          child:Form(
+                            key: formKey,
+                          child: Column(
+                            children:[
+                          TextFormField(
                              controller: _textEditingController,
                               maxLines: 7,
                               validator: (val) {
-                                if (RegExp(r'[A-Za-z0-9 ]').hasMatch(val!)) {
-                                  return null;
-                                }else{
-                                  return'Request body length over limit';
-                                }
-                              },
+                                  return (RegExp("[A-Za-z0-9]").hasMatch(val!) &&
+                                     val.trim().split(' ').length>500) 
+                                     ? null 
+                                     : "Request body length over limit";
+                                },
                               cursorColor: const Color(0xFF00A8AF),
                               decoration: const InputDecoration(
                                   hintText: 'Type your answer here',
@@ -77,8 +81,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                                       borderSide: BorderSide(
                                           width: 2,
                                           color: Colors.grey,
-                                          style: BorderStyle.solid
-                                          )
+                                          style: BorderStyle.solid),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius:
@@ -86,25 +89,31 @@ class _Questionnaire16State extends State<Questionnaire16> {
                                       borderSide: BorderSide(
                                           width: 2,
                                           color: Color(0xFF00A8AF),
-                                          style: BorderStyle.solid)
-                                  )
+                                          style: BorderStyle.solid),
+                                  ),
                               ),
                               onChanged: (value) {
                                 setState(() {
                                   isOverLimit = value.trim().split(' ').length >500;
-                                 activeButton = value.trim().split(' ').length <= 500 && value.isNotEmpty;
+                                  activeButton = value.trim().split(' ').length <= 500 && value.isNotEmpty;
                                 });
                               },
                               ),
-                              
+                              if(_textEditingController.text.isNotEmpty && isOverLimit)
+                              const Text(
+                                "*Request body length over limit！",
+                                style: TextStyle(color: Colors.red),
+                              )
+                            ],
+                      ),
+                      ),
                       ),
                       Container(
                         margin: const EdgeInsets.only(left: 30, right: 30),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            //Text('${_textEditingController.text.length}/1,000')
-                             Text('${_textEditingController.text.trim().isEmpty ? 0 : _textEditingController.text.trim().split(' ').where((element) => element.isNotEmpty).length}/500')
+                             Text('${_textEditingController.text.trim().isEmpty ? 0 : _textEditingController.text.trim().split(' ').where((element) => element.isNotEmpty).length}/50')
                           ],
                         ),
                       ),
