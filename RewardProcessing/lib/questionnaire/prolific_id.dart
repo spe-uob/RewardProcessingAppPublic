@@ -15,6 +15,8 @@ class _ProlificIDState extends State<ProlificID> {
   bool activeButton = false;
   final formKey = GlobalKey<FormState>();
   late String prolificID;
+  final TextEditingController _textEditingController = TextEditingController();
+  Color counterTextColor = Colors.black;
 
   @override
   void initState() {
@@ -63,11 +65,12 @@ class _ProlificIDState extends State<ProlificID> {
                           maxLines: 1,
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(RegExp('[A-Za-z0-9]')),
-                            // LengthLimitingTextInputFormatter(7)
                           ],
                           validator: (val) {
-                            return (RegExp("[A-Za-z0-9]").hasMatch(val!) &&
-                                val.length <= 15) ? null : "Request body length over limit";
+                            return (RegExp("[A-Za-z0-9]").hasMatch(prolificID) &&
+                                prolificID.length <= 15) 
+                                ? null
+                                 : "Request body length over limit";
                           },
                           cursorColor: const Color(0xFF00A8AF),
                           decoration: const InputDecoration(
@@ -91,10 +94,28 @@ class _ProlificIDState extends State<ProlificID> {
                             setState(() {
                               prolificID = value;
                               activeButton = value.isNotEmpty ? true : false;
+                              _textEditingController.text = value;
+
+                              if(value.length >15){
+                                counterTextColor =Colors.red;
+                              }else {
+                                counterTextColor = Colors.black;
+                              }
                             });
                           })
                   )
               ),
+              Container(
+                        margin: const EdgeInsets.only(right: 60),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              '${_textEditingController.text.trim().length}/15',
+                              style: TextStyle(color: counterTextColor),)
+                          ],
+                        ),
+                      ),
               Container(
                   margin: const EdgeInsets.only(top: 60),
                   child: ElevatedButton(

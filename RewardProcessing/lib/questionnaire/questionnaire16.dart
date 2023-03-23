@@ -113,7 +113,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                             Text('${_textEditingController.text.trim().isEmpty ? 0 : _textEditingController.text.trim().split(' ').where((element) => element.isNotEmpty).length}/50')
+                             Text('${_textEditingController.text.trim().isEmpty ? 0 : _textEditingController.text.trim().split(' ').where((element) => element.isNotEmpty).length}/500')
                           ],
                         ),
                       ),
