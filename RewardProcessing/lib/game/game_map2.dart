@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -23,6 +24,9 @@ double percentage = 0;
  String rightImage = "assets/images/guess.png";
 
 class _GameMap2State extends State<GameMap2> {
+  late Timer _timer;
+  int _seconds = 0;
+
   @override
   void initState() {
     super.initState();
@@ -30,7 +34,22 @@ class _GameMap2State extends State<GameMap2> {
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
     ]);
+     _timer = Timer.periodic(const Duration(seconds: 1),(timer){
+      setState((){
+        _seconds++;
+      });
+
+      if(_seconds >300){
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder:(context) => FinishedQuestion(id: widget.id)),
+        );
+        _timer.cancel(); //stop timer
+      }
+    });
   }
+  
+
 
   List<int> leftGuess = [13, 23, 25];
   List<int> rightGuess = [19, 29, 31];
@@ -143,6 +162,7 @@ class _GameMap2State extends State<GameMap2> {
     super.dispose();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
+        _timer.cancel;
   }
 
     void trigger() {
