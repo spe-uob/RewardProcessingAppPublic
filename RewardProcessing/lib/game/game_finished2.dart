@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:rewardprocessing/game/game_map2.dart';
 import 'package:flutter/services.dart';
+import 'package:rewardprocessing/questionnaire/finishedquestion.dart';
 
 
-class GameFinished extends StatefulWidget {
+class GameFinished2 extends StatefulWidget {
   final String id;
-  const GameFinished({super.key, required this.id});
+  const GameFinished2({super.key, required this.id});
 
   @override
-  State<GameFinished> createState() => _GameFinishedState();
+  State<GameFinished2> createState() => _GameFinishedState2();
 }
 
-class _GameFinishedState extends State<GameFinished> {
+class _GameFinishedState2 extends State<GameFinished2> {
   double topHeight = 60;
 
   @override
@@ -46,26 +46,26 @@ class _GameFinishedState extends State<GameFinished> {
                 Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image.asset('assets/images/finishpage1.png',
-                      fit:BoxFit.contain,
-                        scale: 2.5,
+                      Image.asset('assets/images/finishpage2.png',
+                        fit:BoxFit.contain,
+                        scale: 2,
                       ),
                       ElevatedButton(
                           onPressed: () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const GameMap2(
+                                MaterialPageRoute(builder: (context) => const FinishedQuestion(
                                     id: ''))
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(240, 50),
+                            fixedSize: const Size(240, 20),
                             backgroundColor: const Color(0xFF00A8AF),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(100)),
                             elevation: 2.0,),
                           child: const Text(
-                              'CLICK HERE TO LEVLE2',
+                              'CLICK HERE TO FINISH',
                               textAlign: TextAlign.center,
                               style:TextStyle(
                                  // fontWeight: FontWeight.bold,
