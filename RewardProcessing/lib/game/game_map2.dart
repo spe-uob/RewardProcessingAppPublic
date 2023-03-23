@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:rewardprocessing/questionnaire/finishedquestion.dart';
+import 'package:rewardprocessing/game/game_finished2.dart';
 
 class GameMap2 extends StatefulWidget {
   final String id;
@@ -42,7 +42,7 @@ class _GameMap2State extends State<GameMap2> {
       if(_seconds >300){
         Navigator.push(
           context,
-          MaterialPageRoute(builder:(context) => FinishedQuestion(id: widget.id)),
+          MaterialPageRoute(builder:(context) => GameFinished2(id: widget.id)),
         );
         _timer.cancel(); //stop timer
       }
@@ -195,7 +195,7 @@ class _GameMap2State extends State<GameMap2> {
     void calculate(int type) {
       if (score >= 200) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => FinishedQuestion(id: widget.id)));
+          context, MaterialPageRoute(builder: (context) => GameFinished2(id: widget.id)));
     }
 
     if (type == 0) {
