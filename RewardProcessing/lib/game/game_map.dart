@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,6 +24,9 @@ double percentage = 0;
  String rightImage = "assets/images/guess.png";
 
 class _GameMapState extends State<GameMap> {
+  late Timer _timer;
+  int _seconds = 0;
+
   @override
   void initState() {
     super.initState();
@@ -30,6 +34,20 @@ class _GameMapState extends State<GameMap> {
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
     ]);
+
+    _timer = Timer.periodic(const Duration(seconds: 1),(timer){
+      setState((){
+        _seconds++;
+      });
+
+      if(_seconds >300){
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder:(context) => GameFinished(id: widget.id)),
+        );
+        _timer.cancel(); //stop timer
+      }
+    });
   }
   
   
@@ -66,7 +84,6 @@ class _GameMapState extends State<GameMap> {
     16,
     17,
     18,
-    21,
     22,
     23,
     24,
@@ -113,6 +130,7 @@ class _GameMapState extends State<GameMap> {
     super.dispose();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
+        _timer.cancel();
   }
   
   void trigger() {
