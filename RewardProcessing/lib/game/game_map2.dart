@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -23,6 +24,9 @@ double percentage = 0;
  String rightImage = "assets/images/guess.png";
 
 class _GameMap2State extends State<GameMap2> {
+  late Timer _timer;
+  int _seconds = 0;
+
   @override
   void initState() {
     super.initState();
@@ -30,7 +34,22 @@ class _GameMap2State extends State<GameMap2> {
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
     ]);
+     _timer = Timer.periodic(const Duration(seconds: 1),(timer){
+      setState((){
+        _seconds++;
+      });
+
+      if(_seconds >300){
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder:(context) => FinishedQuestion(id: widget.id)),
+        );
+        _timer.cancel(); //stop timer
+      }
+    });
   }
+  
+
 
   List<int> leftGuess = [13, 23, 25];
   List<int> rightGuess = [19, 29, 31];
@@ -40,6 +59,7 @@ class _GameMap2State extends State<GameMap2> {
   List<int> guess = [13, 19, 23, 25, 29, 31];
   double topHeight = 60;
   int quarterTurns = 0;
+  List<int> back = [12, 14, 18, 20];
   String leftImage13 = "assets/images/guess.png";
   String leftImage23 = "assets/images/guess.png";
 
@@ -142,6 +162,7 @@ class _GameMap2State extends State<GameMap2> {
     super.dispose();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
+        _timer.cancel;
   }
 
     void trigger() {
@@ -182,13 +203,8 @@ class _GameMap2State extends State<GameMap2> {
     } else if (type == 1){
       score = score + 20;
     }
-    
-    
-    if (score <= 200) {
-      percentage = score / 2;
-    } else {
-      percentage = 100;
-    }
+
+    percentage = score / 2;
   }
 
   void movePlayer(int right, int down) {
@@ -257,7 +273,7 @@ class _GameMap2State extends State<GameMap2> {
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: LinearPercentIndicator(
-                      width:400.0,
+                      width:600.0,
                       lineHeight: 16,
                       progressColor: Colors.teal[400],
                       backgroundColor: Colors.grey[400],
