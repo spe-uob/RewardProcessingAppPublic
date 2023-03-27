@@ -47,33 +47,43 @@ class _FinishPageState extends State<FinishPage> {
                   ),
                   Container(
                       margin: const EdgeInsets.only(right: 50, left: 50, top: 52, bottom: 20),
-                      child:GestureDetector(
-                        onTap: (){
-                           launch('https://www.samaritans.org' );
+                      child: GestureDetector(
+                        onTap: ()async{
+                          await launchUrl(Uri.parse('https://www.samaritans.org' ));
                         },
-                        child: const Text.rich(
-                          TextSpan(
-                            text:'Please note: If you experience any adverse effects to your mental health please seek help from your usual care providers. If you require immediate help, online advice can be found at ',
-                          children:[
-                            TextSpan(
-                              text: 'www.samaritans.org',
-                              style:TextStyle(
-                                decoration: TextDecoration.underline,
-                                color: Colors.blue,
-                              ),
-                            ),
-                              TextSpan(
-                                text: ', or alternatively you can contact a Samaritan free of charge on 116 123 (available 24 hours a day, 365 days a year).',
-                              ),
-                          ],
-                          ),
+                        child: const Text(
+                          'Please note: If you experience any adverse effects to your mental health please seek help from your usual care providers. If you require immediate help, online advice can be found at www.samaritans.org, or alternatively you can contact a Samaritan free of charge on 116 123 (available 24 hours a day, 365 days a year).',
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize:17,
-                            color: Colors.black,
-                          ),
-                          ),
+                          style: TextStyle(fontSize: 17, color: Colors.black),
+                        ),
                       ),
+                      // child:GestureDetector(
+                      //   onTap: (){
+                      //      launch('https://www.samaritans.org' );
+                      //   },
+                      //   child: const Text.rich(
+                      //     TextSpan(
+                      //       text:'Please note: If you experience any adverse effects to your mental health please seek help from your usual care providers. If you require immediate help, online advice can be found at ',
+                      //     children:[
+                      //       TextSpan(
+                      //         text: 'www.samaritans.org',
+                      //         style:TextStyle(
+                      //           decoration: TextDecoration.underline,
+                      //           color: Colors.blue,
+                      //         ),
+                      //       ),
+                      //         TextSpan(
+                      //           text: ', or alternatively you can contact a Samaritan free of charge on 116 123 (available 24 hours a day, 365 days a year).',
+                      //         ),
+                      //     ],
+                      //     ),
+                      //     textAlign: TextAlign.center,
+                      //     style: TextStyle(
+                      //       fontSize:17,
+                      //       color: Colors.black,
+                      //     ),
+                      //     ),
+                      // ),
                   ),
                   Container(
                       margin: const EdgeInsets.only(right :50, left: 50, top: 30, bottom: 30),
