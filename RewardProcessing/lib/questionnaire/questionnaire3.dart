@@ -120,7 +120,7 @@ class _Questionnaire3State extends State<Questionnaire3> {
                                 await FirebaseFirestore.instance
                                     .collection('questionnaire')
                                     .doc(widget.id)
-                                    .set({'3. Apathetic/Motivated (-3/3)': _currentSliderValue},
+                                    .set({'03. Apathetic/Motivated (-3/3)': _currentSliderValue},
                                     SetOptions(merge: true)
                                 );
                               } : null,

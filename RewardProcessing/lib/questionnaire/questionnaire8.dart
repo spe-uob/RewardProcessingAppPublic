@@ -120,7 +120,7 @@ class _Questionnaire8State extends State<Questionnaire8> {
                             await FirebaseFirestore.instance
                                 .collection('questionnaire')
                                 .doc(widget.id)
-                                .set({'8. Tensed/Relaxed (-3/3)': _currentSliderValue},
+                                .set({'08. Tensed/Relaxed (-3/3)': _currentSliderValue},
                                 SetOptions(merge: true)
                             );
                           } : null,
