@@ -54,16 +54,19 @@ class _GameFinishedState2 extends State<GameFinished2> {
                           onPressed: () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const FinishedQuestion(
-                                    id: ''))
+                                MaterialPageRoute(builder: (context) => FinishedQuestion(
+                                    id: widget.id)
+                                )
                             );
                           },
                           style: ElevatedButton.styleFrom(
                             fixedSize: const Size(240, 20),
                             backgroundColor: const Color(0xFF00A8AF),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100)),
-                            elevation: 2.0,),
+                                borderRadius: BorderRadius.circular(100)
+                            ),
+                            elevation: 2.0
+                          ),
                           child: const Text(
                               'CLICK HERE TO FINISH',
                               textAlign: TextAlign.center,

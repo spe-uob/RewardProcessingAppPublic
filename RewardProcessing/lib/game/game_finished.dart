@@ -27,7 +27,7 @@ class _GameFinishedState extends State<GameFinished> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: ()async {
+        onWillPop: () async {
           return false; // disable back page
         },
         child: Scaffold(
@@ -38,9 +38,7 @@ class _GameFinishedState extends State<GameFinished> {
               backgroundColor: Colors.transparent,
               foregroundColor: Colors.transparent,
             ),
-
-            body:
-            Row(
+            body: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Column(
@@ -54,20 +52,23 @@ class _GameFinishedState extends State<GameFinished> {
                           onPressed: () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const GameMap2(
-                                    id: ''))
+                                MaterialPageRoute(builder: (context) => GameMap2(
+                                    id: widget.id)
+                                )
                             );
                           },
                           style: ElevatedButton.styleFrom(
                             fixedSize: const Size(240, 50),
                             backgroundColor: const Color(0xFF00A8AF),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100)),
-                            elevation: 2.0,),
+                                borderRadius: BorderRadius.circular(100)
+                            ),
+                            elevation: 2.0
+                          ),
                           child: const Text(
-                              'CLICK HERE TO LEVLE2',
+                              'CONTINUE TO LEVEL 2',
                               textAlign: TextAlign.center,
-                              style:TextStyle(
+                              style: TextStyle(
                                  // fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                   fontSize: 18,
@@ -76,8 +77,7 @@ class _GameFinishedState extends State<GameFinished> {
                           )
                       )
                     ]
-                )
-              ],
+                )]
             )
         )
     );

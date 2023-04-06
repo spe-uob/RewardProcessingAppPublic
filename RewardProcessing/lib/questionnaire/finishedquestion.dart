@@ -34,7 +34,7 @@ class _FinishedQuestionState extends State<FinishedQuestion> {
                     width: 300,
                   ),
                   Container(
-                    margin: const EdgeInsets.only(right:50,left:50,top:55,bottom:20),
+                    margin: const EdgeInsets.only(right:30, left:30, top:55, bottom:20),
                     child: const Text('CONGRATULATIONS',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -45,7 +45,7 @@ class _FinishedQuestionState extends State<FinishedQuestion> {
                   ),
                   ),
                   Container(
-                      margin: const EdgeInsets.only(right: 50, left: 50, top: 52, bottom: 20),
+                      margin: const EdgeInsets.only(right: 30, left: 30, top: 52, bottom: 20),
                       child: const Text('You finished the game!',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 20,
@@ -54,25 +54,26 @@ class _FinishedQuestionState extends State<FinishedQuestion> {
                       )
                   ),
                   Container(
-                      margin: const EdgeInsets.only(right :50, left: 50, top: 30, bottom: 30),
+                      margin: const EdgeInsets.only(right :30, left: 30, top: 30, bottom: 30),
                       child: const Text("Please answer two final questions to complete today's study: ",
+                          overflow: TextOverflow.visible,
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 20,
+                          style: TextStyle(
+                              fontSize: 20,
                               color: Colors.black
                           )
                       )
                   ),
                   Container(
                       margin: const EdgeInsets.only(left: 10, right: 10, top: 30),
-                      child:
-                      ElevatedButton(
-                          onPressed: () {
+                      child: ElevatedButton(
+                          onPressed: () async {
                             Navigator.push(
                                 context,
-                                // MaterialPageRoute(builder: (context) => const Questionnaire())
-                                MaterialPageRoute(builder: (context) => const FinishedQuestion2(
-                                    id:'',
-                                ))
+                                MaterialPageRoute(builder: (context) => FinishedQuestion2 (
+                                    id: widget.id
+                                )
+                                )
                             );
                           },
                           style: ElevatedButton.styleFrom(
@@ -81,7 +82,8 @@ class _FinishedQuestionState extends State<FinishedQuestion> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(100)
                             ),
-                            elevation: 2.0,),
+                            elevation: 2.0
+                          ),
                           child: const Text(
                               'Continue',
                               textAlign: TextAlign.center,

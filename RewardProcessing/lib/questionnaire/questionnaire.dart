@@ -123,7 +123,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                             await FirebaseFirestore.instance
                                 .collection('questionnaire')
                                 .doc(widget.id)
-                                .set({'1. Worthless/Valuable (-3/3)': _currentSliderValue},
+                                .set({'01. Worthless/Valuable (-3/3)': _currentSliderValue},
                                 SetOptions(merge: true)
                             );
                           } : null,
