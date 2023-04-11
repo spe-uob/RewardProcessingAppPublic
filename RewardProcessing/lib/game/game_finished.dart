@@ -65,7 +65,7 @@ class _GameFinishedState extends State<GameFinished> {
                                 borderRadius: BorderRadius.circular(100)),
                             elevation: 2.0,),
                           child: const Text(
-                              'CLICK HERE TO LEVLE2',
+                              'CONTINUES TO LEVEL2',
                               textAlign: TextAlign.center,
                               style:TextStyle(
                                  // fontWeight: FontWeight.bold,
