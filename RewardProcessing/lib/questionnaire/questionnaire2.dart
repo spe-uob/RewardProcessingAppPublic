@@ -119,7 +119,7 @@ class _Questionnaire2State extends State<Questionnaire2> {
                                 await FirebaseFirestore.instance
                                     .collection('questionnaire')
                                     .doc(widget.id)
-                                    .set({'2. Pessimistic/Optimistic (-3/3)': _currentSliderValue},
+                                    .set({'02. Pessimistic/Optimistic (-3/3)': _currentSliderValue},
                                     SetOptions(merge: true)
                                 );
                               } : null,

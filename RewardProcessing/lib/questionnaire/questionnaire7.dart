@@ -121,7 +121,7 @@ class _Questionnaire7State extends State<Questionnaire7> {
                                 await FirebaseFirestore.instance
                                     .collection('questionnaire')
                                     .doc(widget.id)
-                                    .set({'7. Hopeless/Hopeful (-3/3)': _currentSliderValue},
+                                    .set({'07. Hopeless/Hopeful (-3/3)': _currentSliderValue},
                                     SetOptions(merge: true)
                                 );
                               } : null,

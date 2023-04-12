@@ -121,7 +121,7 @@ class _Questionnaire6State extends State<Questionnaire6> {
                                 await FirebaseFirestore.instance
                                     .collection('questionnaire')
                                     .doc(widget.id)
-                                    .set({'6. Withdrawn/Welcoming (-3/3)': _currentSliderValue},
+                                    .set({'06. Withdrawn/Welcoming (-3/3)': _currentSliderValue},
                                     SetOptions(merge: true)
                                 );
                               } : null,

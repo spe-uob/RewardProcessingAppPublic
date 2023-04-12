@@ -121,7 +121,7 @@ class _Questionnaire4State extends State<Questionnaire4> {
                                 await FirebaseFirestore.instance
                                     .collection('questionnaire')
                                     .doc(widget.id)
-                                    .set({'4. Guilty/Proud (-3/3)': _currentSliderValue},
+                                    .set({'04. Guilty/Proud (-3/3)': _currentSliderValue},
                                     SetOptions(merge: true)
                                 );
                               } : null,
