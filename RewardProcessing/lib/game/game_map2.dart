@@ -14,8 +14,8 @@ class GameMap2 extends StatefulWidget {
 }
 
 int row = 8;
-int col = row * 11;
-int player = 49;
+int col = row * 14;
+int player = 61;
 int score = 0;
 double percentage = 0;
 
@@ -49,15 +49,15 @@ class _GameMap2State extends State<GameMap2> {
     });
   }
 
-  List<int> leftGuess = [13, 23, 25];
-  List<int> rightGuess = [19, 29, 31];
+  List<int> leftGuess = [16, 29, 31];
+  List<int> rightGuess = [22, 35, 37];
 
   int fresh = 0;
 
-  List<int> guess = [13, 19, 23, 25, 29, 31];
+  List<int> guess = [16, 29, 31, 22, 35, 37];
   double topHeight = 60;
   int quarterTurns = 0;
-  List<int> back = [12, 14, 18, 20];
+
   String leftImage13 = "assets/images/guess.png";
   String leftImage23 = "assets/images/guess.png";
 
@@ -68,63 +68,60 @@ class _GameMap2State extends State<GameMap2> {
   String rightImage31 = "assets/images/guess.png";
 
   List<int> paths = [
-    24,
     30,
-    41,
-    35,
-    46,
-    45,
-    48,
-    49,
-    50,
-    52,
-    53,
-    56,
-    59,
-    61,
-    64,
-    67,
-    68,
-    69,
-    70,
-    72,
-    73,
+    44,
+    58,
+    57,
+    71,
+    85,
+    86,
+    87,
+    88,
     74,
-    75
+    60,
+    61,
+    62,
+    76,
+    90,
+    91,
+    92,
+    93,
+    79,
+    65,
+    64,
+    50,
+    36,
+    61,
   ];
   List<int> pellets = [
-    24,
-    35,
-    46,
-    48,
-    50,
-    52,
     30,
-    41,
-    45,
-    56,
-    67,
-    68,
-    69,
-    70,
-    59,
-    61,
-    72,
-    73,
+    44,
+    58,
+    57,
+    71,
+    85,
+    86,
+    87,
+    88,
     74,
-    75,
+    60,
+    61,
+    62,
+    76,
+    90,
+    91,
+    92,
+    93,
+    79,
+    65,
     64,
-    53,
-    13,
-    19,
-    23,
-    25,
-    29,
-    31
+    50,
+    36,
+
   ];
 
   List<int> barriers = [
-    0,
+     0,
     1,
     2,
     3,
@@ -135,58 +132,65 @@ class _GameMap2State extends State<GameMap2> {
     8,
     9,
     10,
-    11,
-    15,
-    17,
-    21,
-    22,
-    27,
-    32,
-    33,
-    34,
-    36,
-    37,
-    39,
-    40,
+    14,
+    28,
     42,
-    43,
-    44,
-    47,
-    51,
-    54,
-    55,
-    57,
-    58,
-    60,
-    62,
-    63,
-    65,
+    56,
+    70,
+    84,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    24,
+    38,
+    52,
     66,
-    71,
-    76,
+    80,
+    94,
+    43,
+    72,
+    73,
+    59,
+    45,
+    46,
+    18,
+    33,
+    20,
+    48,
+    49,
+    75,
+    89,
+    63,
     77,
     78,
-    79,
-    80,
-    81,
-    82,
-    83,
-    84,
-    85,
-    86,
-    87
+    51,
+    19,
+    32,
+    47,
+    34,
+
+   
+
   ];
   int guessIndex = -1;
-  List guessesLeft = [13, 23, 25];
-  List guessesRight = [19, 29, 31];
+  List guessesLeft = [16, 29, 31];
+  List guessesRight = [22, 35, 37];
 
   Map clickCells = {
-    "13": "assets/images/guess.png",
-    "23": "assets/images/guess.png",
-    "25": "assets/images/guess.png",
-    "19": "assets/images/guess.png",
+    "16": "assets/images/guess.png",
     "29": "assets/images/guess.png",
     "31": "assets/images/guess.png",
+    "22": "assets/images/guess.png",
+    "35": "assets/images/guess.png",
+    "37": "assets/images/guess.png",
   };
 
   bool leftIsEmpty = false;
