@@ -91,7 +91,6 @@ class _GameMap2State extends State<GameMap2> {
     64,
     50,
     36,
-    61,
   ];
   List<int> pellets = [
     30,
@@ -105,7 +104,7 @@ class _GameMap2State extends State<GameMap2> {
     88,
     74,
     60,
-    61,
+    
     62,
     76,
     90,
@@ -176,6 +175,7 @@ class _GameMap2State extends State<GameMap2> {
     32,
     47,
     34,
+    68,
 
    
 
