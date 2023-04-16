@@ -249,16 +249,16 @@ class _GameMap2State extends State<GameMap2> {
   }
 
   void movePlayer(int right, int down) {
-    int nowPlayer = player + down * 11 + right;
+    int nowPlayer = player + down * 14 + right;
 
     if (down == 0) {
-      int c = player % 11 - nowPlayer % 11;
+      int c = player % 14 - nowPlayer % 14;
       if (c != -1 && c != 1) {
         nowPlayer = player;
       }
     }
     if (right == 0) {
-      int c = player ~/ 11 - nowPlayer ~/ 11;
+      int c = player ~/ 14 - nowPlayer ~/ 14;
       if (c != -1 && c != 1) {
         nowPlayer = player;
       }
@@ -285,7 +285,7 @@ class _GameMap2State extends State<GameMap2> {
       });
     }
     if (lastPlayer != player) {
-      if (player == 24 || player == 30) {
+      if (player == 40 || player == 36) {
         if (guessIndex == -1) {
           randomCanGuess(lastPlayer == player);
         }
@@ -296,7 +296,7 @@ class _GameMap2State extends State<GameMap2> {
       }
     }
 
-    if (player == 49) {
+    if (player == 61) {
       leftIsEmpty = false;
       rightIsEmpty = false;
     }
@@ -304,17 +304,17 @@ class _GameMap2State extends State<GameMap2> {
   }
 
   void randomCanGuess(changeDrection) {
-    if (player == 24) {
+    if (player == 30) {
       if (guessIndex == -1) {
         guessIndex = guessesLeft[Random().nextInt(guessesLeft.length)];
         if (changeDrection) {
-          if (guessIndex == 13) {
+          if (guessIndex == 16) {
             quarterTurns = -1;
           }
-          if (guessIndex == 23) {
+          if (guessIndex == 30) {
             quarterTurns = -2;
           }
-          if (guessIndex == 25) {
+          if (guessIndex == 31) {
             quarterTurns = 0;
           }
         }
@@ -322,17 +322,17 @@ class _GameMap2State extends State<GameMap2> {
         clickCells[guessIndex.toString()] = "assets/images/thisguess.png";
       }
     }
-    if (player == 30) {
+    if (player == 36) {
       if (guessIndex == -1) {
         guessIndex = guessesRight[Random().nextInt(guessesRight.length)];
         if (changeDrection) {
-          if (guessIndex == 19) {
+          if (guessIndex == 22) {
             quarterTurns = -1;
           }
-          if (guessIndex == 29) {
+          if (guessIndex == 35) {
             quarterTurns = -2;
           }
-          if (guessIndex == 31) {
+          if (guessIndex == 37) {
             quarterTurns = 0;
           }
         }
@@ -425,8 +425,8 @@ class _GameMap2State extends State<GameMap2> {
   Widget build(BuildContext context) {
     List<Widget> items = [];
     for (int i = 0; i < 8; i++) {
-      for (int j = 0; j < 11; j++) {
-        items.add(getWidget(i * 11 + j));
+      for (int j = 0; j < 14; j++) {
+        items.add(getWidget(i * 14 + j));
       }
     }
 
@@ -451,7 +451,7 @@ class _GameMap2State extends State<GameMap2> {
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: LinearPercentIndicator(
-                      width: 600.0,
+                      width: 500.0,
                       lineHeight: 16,
                       progressColor: Colors.teal[400],
                       backgroundColor: Colors.grey[400],
@@ -492,15 +492,15 @@ class _GameMap2State extends State<GameMap2> {
 
   Widget getWidget(int index) {
     double itemWidth = (MediaQuery.of(context).size.height - topHeight) / row;
-    if (itemWidth > (MediaQuery.of(context).size.width / 11)) {
-      itemWidth = MediaQuery.of(context).size.width / 11;
+    if (itemWidth > (MediaQuery.of(context).size.width / 14)) {
+      itemWidth = MediaQuery.of(context).size.width / 14;
     }
     Widget w;
 
-    double startLeft = (MediaQuery.of(context).size.width - itemWidth * 11) / 2;
+    double startLeft = (MediaQuery.of(context).size.width - itemWidth * 14) / 2;
     double startTop =
         ((MediaQuery.of(context).size.height - topHeight) - itemWidth * 8) / 2;
-    if (26 == index) {
+    if (67 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
@@ -513,7 +513,7 @@ class _GameMap2State extends State<GameMap2> {
             child:
                 Column(children: [Image.asset("assets/images/LeftClick.png")]),
           ));
-    } else if (28 == index) {
+    } else if (69 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
@@ -526,7 +526,7 @@ class _GameMap2State extends State<GameMap2> {
             child:
                 Column(children: [Image.asset("assets/images/RightClick.png")]),
           ));
-    } else if (16 == index) {
+    } else if (54 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
@@ -538,7 +538,7 @@ class _GameMap2State extends State<GameMap2> {
             padding: const EdgeInsets.all(1.0),
             child: Column(children: [Image.asset("assets/images/UpClick.png")]),
           ));
-    } else if (38 == index) {
+    } else if (82 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
@@ -567,7 +567,7 @@ class _GameMap2State extends State<GameMap2> {
               )
             ]),
           ));
-    } else if (13 == index) {
+    } else if (16 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
@@ -578,44 +578,11 @@ class _GameMap2State extends State<GameMap2> {
             child:
                 Column(children: [Image.asset(clickCells[index.toString()])]),
           ));
-    } else if (23 == index) {
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: () {
-            clickCell(23, true);
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(0.1),
-            child:
-                Column(children: [Image.asset(clickCells[index.toString()])]),
-          ));
-    } else if (25 == index) {
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: () {
-            clickCell(25, true);
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(0.1),
-            child:
-                Column(children: [Image.asset(clickCells[index.toString()])]),
-          ));
-    } else if (19 == index) {
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: () {
-            clickCell(19, false);
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(0.1),
-            child:
-                Column(children: [Image.asset(clickCells[index.toString()])]),
-          ));
     } else if (29 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            clickCell(29, false);
+            clickCell(29, true);
           },
           child: Padding(
             padding: const EdgeInsets.all(0.1),
@@ -626,7 +593,40 @@ class _GameMap2State extends State<GameMap2> {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            clickCell(31, false);
+            clickCell(31, true);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(0.1),
+            child:
+                Column(children: [Image.asset(clickCells[index.toString()])]),
+          ));
+    } else if (22 == index) {
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            clickCell(22, false);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(0.1),
+            child:
+                Column(children: [Image.asset(clickCells[index.toString()])]),
+          ));
+    } else if (35 == index) {
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            clickCell(35, false);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(0.1),
+            child:
+                Column(children: [Image.asset(clickCells[index.toString()])]),
+          ));
+    } else if (37 == index) {
+      w = GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            clickCell(37, false);
           },
           child: Padding(
             padding: const EdgeInsets.all(0.1),
@@ -653,11 +653,11 @@ class _GameMap2State extends State<GameMap2> {
     }
 
     debugPrint("index$index");
-    debugPrint("left${(index % 11) * itemWidth + startLeft}");
-    debugPrint("top${index ~/ 11 * itemWidth + startTop}");
+    debugPrint("left${(index % 14) * itemWidth + startLeft}");
+    debugPrint("top${index ~/ 14 * itemWidth + startTop}");
     return Positioned(
-        left: ((index % 11) * itemWidth).toInt() + startLeft,
-        top: (index ~/ 11 * itemWidth).toInt() + startTop,
+        left: ((index % 14) * itemWidth).toInt() + startLeft,
+        top: (index ~/ 14 * itemWidth).toInt() + startTop,
         width: itemWidth,
         height: itemWidth,
         child: w);
