@@ -216,7 +216,7 @@ class _GameMap2State extends State<GameMap2> {
   }
 
   void refresh() {
-    if (player == 35 || player == 41) {
+    if (player == 47 || player == 53) {
       if (fresh != 0) {
         leftImage13 = "assets/images/guess.png";
         leftImage23 = "assets/images/guess.png";
@@ -288,7 +288,7 @@ class _GameMap2State extends State<GameMap2> {
       });
     }
     if (lastPlayer != player) {
-      if (player == 40 || player == 36) {
+      if (player == 32 || player == 38) {
         if (guessIndex == -1) {
           randomCanGuess(lastPlayer == player);
         }
@@ -299,7 +299,7 @@ class _GameMap2State extends State<GameMap2> {
       }
     }
 
-    if (player == 61) {
+    if (player == 65) {
       leftIsEmpty = false;
       rightIsEmpty = false;
     }
@@ -307,17 +307,17 @@ class _GameMap2State extends State<GameMap2> {
   }
 
   void randomCanGuess(changeDrection) {
-    if (player == 30) {
+    if (player == 32) {
       if (guessIndex == -1) {
         guessIndex = guessesLeft[Random().nextInt(guessesLeft.length)];
         if (changeDrection) {
-          if (guessIndex == 16) {
+          if (guessIndex == 17) {
             quarterTurns = -1;
           }
-          if (guessIndex == 30) {
+          if (guessIndex == 31) {
             quarterTurns = -2;
           }
-          if (guessIndex == 31) {
+          if (guessIndex == 33) {
             quarterTurns = 0;
           }
         }
@@ -325,17 +325,17 @@ class _GameMap2State extends State<GameMap2> {
         clickCells[guessIndex.toString()] = "assets/images/thisguess.png";
       }
     }
-    if (player == 36) {
+    if (player == 38) {
       if (guessIndex == -1) {
         guessIndex = guessesRight[Random().nextInt(guessesRight.length)];
         if (changeDrection) {
-          if (guessIndex == 22) {
+          if (guessIndex == 23) {
             quarterTurns = -1;
           }
-          if (guessIndex == 35) {
+          if (guessIndex == 37) {
             quarterTurns = -2;
           }
-          if (guessIndex == 37) {
+          if (guessIndex == 39) {
             quarterTurns = 0;
           }
         }
@@ -428,8 +428,8 @@ class _GameMap2State extends State<GameMap2> {
   Widget build(BuildContext context) {
     List<Widget> items = [];
     for (int i = 0; i < 8; i++) {
-      for (int j = 0; j < 14; j++) {
-        items.add(getWidget(i * 14 + j));
+      for (int j = 0; j < 15; j++) {
+        items.add(getWidget(i * 15 + j));
       }
     }
 
@@ -656,11 +656,11 @@ class _GameMap2State extends State<GameMap2> {
     }
 
     debugPrint("index$index");
-    debugPrint("left${(index % 14) * itemWidth + startLeft}");
-    debugPrint("top${index ~/ 14 * itemWidth + startTop}");
+    debugPrint("left${(index % 15) * itemWidth + startLeft}");
+    debugPrint("top${index ~/ 15 * itemWidth + startTop}");
     return Positioned(
-        left: ((index % 14) * itemWidth).toInt() + startLeft,
-        top: (index ~/ 14 * itemWidth).toInt() + startTop,
+        left: ((index % 15) * itemWidth).toInt() + startLeft,
+        top: (index ~/ 15 * itemWidth).toInt() + startTop,
         width: itemWidth,
         height: itemWidth,
         child: w);
