@@ -58,14 +58,14 @@ class _GameMap2State extends State<GameMap2> {
   double topHeight = 60;
   int quarterTurns = 0;
 
-  String leftImage13 = "assets/images/guess.png";
-  String leftImage23 = "assets/images/guess.png";
+  String leftImage17 = "assets/images/guess.png";
+  String leftImage31 = "assets/images/guess.png";
 
-  String leftImage25 = "assets/images/guess.png";
+  String leftImage33 = "assets/images/guess.png";
 
-  String rightImage19 = "assets/images/guess.png";
-  String rightImage29 = "assets/images/guess.png";
-  String rightImage31 = "assets/images/guess.png";
+  String rightImage23 = "assets/images/guess.png";
+  String rightImage37 = "assets/images/guess.png";
+  String rightImage39 = "assets/images/guess.png";
 
   List<int> paths = [
     32,
@@ -188,12 +188,12 @@ class _GameMap2State extends State<GameMap2> {
   List guessesRight = [23, 37, 39];
 
   Map clickCells = {
-    "16": "assets/images/guess.png",
-    "29": "assets/images/guess.png",
+    "17": "assets/images/guess.png",
     "31": "assets/images/guess.png",
-    "22": "assets/images/guess.png",
-    "35": "assets/images/guess.png",
+    "33": "assets/images/guess.png",
+    "23": "assets/images/guess.png",
     "37": "assets/images/guess.png",
+    "39": "assets/images/guess.png",
   };
 
   bool leftIsEmpty = false;
@@ -218,12 +218,12 @@ class _GameMap2State extends State<GameMap2> {
   void refresh() {
     if (player == 47 || player == 53) {
       if (fresh != 0) {
-        leftImage13 = "assets/images/guess.png";
-        leftImage23 = "assets/images/guess.png";
-        leftImage25 = "assets/images/guess.png";
-        rightImage19 = "assets/images/guess.png";
-        rightImage29 = "assets/images/guess.png";
-        rightImage31 = "assets/images/guess.png";
+        leftImage17 = "assets/images/guess.png";
+        leftImage31 = "assets/images/guess.png";
+        leftImage33 = "assets/images/guess.png";
+        rightImage23 = "assets/images/guess.png";
+        rightImage37 = "assets/images/guess.png";
+        rightImage39 = "assets/images/guess.png";
         fresh = 0;
       }
     }
@@ -252,16 +252,16 @@ class _GameMap2State extends State<GameMap2> {
   }
 
   void movePlayer(int right, int down) {
-    int nowPlayer = player + down * 14 + right;
+    int nowPlayer = player + down * 15 + right;
 
     if (down == 0) {
-      int c = player % 14 - nowPlayer % 14;
+      int c = player % 15 - nowPlayer % 15;
       if (c != -1 && c != 1) {
         nowPlayer = player;
       }
     }
     if (right == 0) {
-      int c = player ~/ 14 - nowPlayer ~/ 14;
+      int c = player ~/ 15 - nowPlayer ~/ 15;
       if (c != -1 && c != 1) {
         nowPlayer = player;
       }
@@ -365,13 +365,13 @@ class _GameMap2State extends State<GameMap2> {
 
   void allGhost(bool left) {
     if (left) {
-      clickCells["13"] = "assets/images/ghost.png";
-      clickCells["23"] = "assets/images/ghost.png";
-      clickCells["25"] = "assets/images/ghost.png";
-    } else {
-      clickCells["19"] = "assets/images/ghost.png";
-      clickCells["29"] = "assets/images/ghost.png";
+      clickCells["17"] = "assets/images/ghost.png";
       clickCells["31"] = "assets/images/ghost.png";
+      clickCells["33"] = "assets/images/ghost.png";
+    } else {
+      clickCells["23"] = "assets/images/ghost.png";
+      clickCells["37"] = "assets/images/ghost.png";
+      clickCells["39"] = "assets/images/ghost.png";
     }
   }
 
@@ -495,12 +495,12 @@ class _GameMap2State extends State<GameMap2> {
 
   Widget getWidget(int index) {
     double itemWidth = (MediaQuery.of(context).size.height - topHeight) / row;
-    if (itemWidth > (MediaQuery.of(context).size.width / 14)) {
-      itemWidth = MediaQuery.of(context).size.width / 14;
+    if (itemWidth > (MediaQuery.of(context).size.width / 15)) {
+      itemWidth = MediaQuery.of(context).size.width / 15;
     }
     Widget w;
 
-    double startLeft = (MediaQuery.of(context).size.width - itemWidth * 14) / 2;
+    double startLeft = (MediaQuery.of(context).size.width - itemWidth * 15) / 2;
     double startTop =
         ((MediaQuery.of(context).size.height - topHeight) - itemWidth * 8) / 2;
     if (72 == index) {
@@ -574,7 +574,7 @@ class _GameMap2State extends State<GameMap2> {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            clickCell(13, true);
+            clickCell(17, true);
           },
           child: Padding(
             padding: const EdgeInsets.all(0.1),
@@ -585,7 +585,7 @@ class _GameMap2State extends State<GameMap2> {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            clickCell(29, true);
+            clickCell(31, true);
           },
           child: Padding(
             padding: const EdgeInsets.all(0.1),
@@ -596,7 +596,7 @@ class _GameMap2State extends State<GameMap2> {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            clickCell(31, true);
+            clickCell(33, true);
           },
           child: Padding(
             padding: const EdgeInsets.all(0.1),
@@ -607,7 +607,7 @@ class _GameMap2State extends State<GameMap2> {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            clickCell(22, false);
+            clickCell(23, false);
           },
           child: Padding(
             padding: const EdgeInsets.all(0.1),
@@ -618,7 +618,7 @@ class _GameMap2State extends State<GameMap2> {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            clickCell(35, false);
+            clickCell(37, false);
           },
           child: Padding(
             padding: const EdgeInsets.all(0.1),
@@ -629,7 +629,7 @@ class _GameMap2State extends State<GameMap2> {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            clickCell(37, false);
+            clickCell(39, false);
           },
           child: Padding(
             padding: const EdgeInsets.all(0.1),
