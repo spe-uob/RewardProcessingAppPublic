@@ -503,7 +503,7 @@ class _GameMap2State extends State<GameMap2> {
     double startLeft = (MediaQuery.of(context).size.width - itemWidth * 14) / 2;
     double startTop =
         ((MediaQuery.of(context).size.height - topHeight) - itemWidth * 8) / 2;
-    if (67 == index) {
+    if (72 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
@@ -516,7 +516,7 @@ class _GameMap2State extends State<GameMap2> {
             child:
                 Column(children: [Image.asset("assets/images/LeftClick.png")]),
           ));
-    } else if (69 == index) {
+    } else if (74 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
@@ -529,7 +529,7 @@ class _GameMap2State extends State<GameMap2> {
             child:
                 Column(children: [Image.asset("assets/images/RightClick.png")]),
           ));
-    } else if (54 == index) {
+    } else if (43 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
@@ -541,7 +541,7 @@ class _GameMap2State extends State<GameMap2> {
             padding: const EdgeInsets.all(1.0),
             child: Column(children: [Image.asset("assets/images/UpClick.png")]),
           ));
-    } else if (82 == index) {
+    } else if (103 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
@@ -570,7 +570,7 @@ class _GameMap2State extends State<GameMap2> {
               )
             ]),
           ));
-    } else if (16 == index) {
+    } else if (17 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
@@ -581,7 +581,7 @@ class _GameMap2State extends State<GameMap2> {
             child:
                 Column(children: [Image.asset(clickCells[index.toString()])]),
           ));
-    } else if (29 == index) {
+    } else if (31 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
@@ -592,7 +592,7 @@ class _GameMap2State extends State<GameMap2> {
             child:
                 Column(children: [Image.asset(clickCells[index.toString()])]),
           ));
-    } else if (31 == index) {
+    } else if (33 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
@@ -603,7 +603,7 @@ class _GameMap2State extends State<GameMap2> {
             child:
                 Column(children: [Image.asset(clickCells[index.toString()])]),
           ));
-    } else if (22 == index) {
+    } else if (23 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
@@ -614,7 +614,7 @@ class _GameMap2State extends State<GameMap2> {
             child:
                 Column(children: [Image.asset(clickCells[index.toString()])]),
           ));
-    } else if (35 == index) {
+    } else if (37 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
@@ -625,7 +625,7 @@ class _GameMap2State extends State<GameMap2> {
             child:
                 Column(children: [Image.asset(clickCells[index.toString()])]),
           ));
-    } else if (37 == index) {
+    } else if (39 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
