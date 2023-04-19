@@ -283,7 +283,8 @@ class _GameMap2State extends State<GameMap2> {
     if (lastPlayer != player) {
       if (player == 24 || player == 30) {
         if (guessIndex == -1) {
-          randomCanGuess(lastPlayer == player);
+          // randomCanGuess(lastPlayer == player);
+          randomCanGuess(true);
         }
       } else {
         setState(() {
@@ -370,6 +371,10 @@ class _GameMap2State extends State<GameMap2> {
 
   void clickCell(int index, bool left) {
     String image = clickCells[index.toString()];
+    if (image == "assets/images/guess.png") {
+      // guess click return
+      return;
+    }
     if (guessIndex != -1) {
       guessIndex = -1;
       var doubleValue = Random().nextDouble();
