@@ -514,7 +514,7 @@ class _GameMap2State extends State<GameMap2> {
           child: Padding(
             padding: const EdgeInsets.all(1.0),
             child:
-                Column(children: [Image.asset("assets/images/LeftClick.png")]),
+                Column(children: [Image.asset("assets/images/arrowleft.png")]),
           ));
     } else if (74 == index) {
       w = GestureDetector(
@@ -527,7 +527,7 @@ class _GameMap2State extends State<GameMap2> {
           child: Padding(
             padding: const EdgeInsets.all(1.0),
             child:
-                Column(children: [Image.asset("assets/images/RightClick.png")]),
+                Column(children: [Image.asset("assets/images/arrowright.png")]),
           ));
     } else if (43 == index) {
       w = GestureDetector(
@@ -539,7 +539,7 @@ class _GameMap2State extends State<GameMap2> {
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
-            child: Column(children: [Image.asset("assets/images/UpClick.png")]),
+            child: Column(children: [Image.asset("assets/images/arrowup.png")]),
           ));
     } else if (103 == index) {
       w = GestureDetector(
@@ -552,7 +552,7 @@ class _GameMap2State extends State<GameMap2> {
           child: Padding(
             padding: const EdgeInsets.all(1.0),
             child:
-                Column(children: [Image.asset("assets/images/DownClick.png")]),
+                Column(children: [Image.asset("assets/images/arrowdown.png")]),
           ));
     } else if (player == index) {
       w = RotatedBox(
