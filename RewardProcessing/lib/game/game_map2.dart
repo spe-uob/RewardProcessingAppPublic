@@ -19,9 +19,9 @@ int player = 49;
 int score = 0;
 double percentage = 0;
 
- String imagePath = "assets/images/guess.png";
- String leftImage = "assets/images/guess.png";
- String rightImage = "assets/images/guess.png";
+String imagePath = "assets/images/guess.png";
+String leftImage = "assets/images/guess.png";
+String rightImage = "assets/images/guess.png";
 
 class _GameMap2State extends State<GameMap2> {
   late Timer _timer;
@@ -34,22 +34,20 @@ class _GameMap2State extends State<GameMap2> {
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
     ]);
-     _timer = Timer.periodic(const Duration(seconds: 1),(timer){
-      setState((){
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
         _seconds++;
       });
 
-      if(_seconds >300){
+      if (_seconds > 300) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder:(context) => GameFinished2(id: widget.id)),
+          MaterialPageRoute(builder: (context) => GameFinished2(id: widget.id)),
         );
         _timer.cancel(); //stop timer
       }
     });
   }
-  
-
 
   List<int> leftGuess = [13, 23, 25];
   List<int> rightGuess = [19, 29, 31];
@@ -69,8 +67,31 @@ class _GameMap2State extends State<GameMap2> {
   String rightImage29 = "assets/images/guess.png";
   String rightImage31 = "assets/images/guess.png";
 
-
-  List<int> paths = [24,30,41,35,46,45,48,49,50,52,53,56,59,61,64,67,68,69,70,72,73,74,75];
+  List<int> paths = [
+    24,
+    30,
+    41,
+    35,
+    46,
+    45,
+    48,
+    49,
+    50,
+    52,
+    53,
+    56,
+    59,
+    61,
+    64,
+    67,
+    68,
+    69,
+    70,
+    72,
+    73,
+    74,
+    75
+  ];
   List<int> pellets = [
     24,
     35,
@@ -154,18 +175,32 @@ class _GameMap2State extends State<GameMap2> {
     85,
     86,
     87
-
-
   ];
+  int guessIndex = -1;
+  List guessesLeft = [13, 23, 25];
+  List guessesRight = [19, 29, 31];
+
+  Map clickCells = {
+    "13": "assets/images/guess.png",
+    "23": "assets/images/guess.png",
+    "25": "assets/images/guess.png",
+    "19": "assets/images/guess.png",
+    "29": "assets/images/guess.png",
+    "31": "assets/images/guess.png",
+  };
+
+  bool leftIsEmpty = false;
+  bool rightIsEmpty = false;
+
   @override
   void dispose() {
     super.dispose();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
-        _timer.cancel;
+    _timer.cancel;
   }
 
-    void trigger() {
+  void trigger() {
     if (pellets.contains(player)) {
       pellets.remove(player);
       calculate(0);
@@ -173,7 +208,7 @@ class _GameMap2State extends State<GameMap2> {
     }
   }
 
-    void refresh() {
+  void refresh() {
     if (player == 35 || player == 41) {
       if (fresh != 0) {
         leftImage13 = "assets/images/guess.png";
@@ -192,16 +227,18 @@ class _GameMap2State extends State<GameMap2> {
     // }
   }
 
-    void calculate(int type) {
-      if (score >= 200) {
+  void calculate(int type) {
+    if (score >= 200) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => GameFinished2(id: widget.id)));
+          context,
+          MaterialPageRoute(
+              builder: (context) => GameFinished2(id: widget.id)));
     }
 
     if (type == 0) {
-      score = score + 10;
-    } else if (type == 1){
-      score = score + 20;
+      score = score + 1;
+    } else if (type == 1) {
+      score = score + 5;
     }
 
     percentage = score / 2;
@@ -236,11 +273,153 @@ class _GameMap2State extends State<GameMap2> {
       quarterTurns = 1;
     }
 
-        if (paths.contains(nowPlayer)) {
+    int lastPlayer = player;
+
+    if (paths.contains(nowPlayer)) {
       setState(() {
         player = nowPlayer;
       });
     }
+    if (lastPlayer != player) {
+      if (player == 24 || player == 30) {
+        if (guessIndex == -1) {
+          // randomCanGuess(lastPlayer == player);
+          randomCanGuess(true);
+        }
+      } else {
+        setState(() {
+          allGuess();
+        });
+      }
+    }
+
+    if (player == 49) {
+      leftIsEmpty = false;
+      rightIsEmpty = false;
+    }
+    setState(() {});
+  }
+
+  void randomCanGuess(changeDrection) {
+    if (player == 24) {
+      if (guessIndex == -1) {
+        guessIndex = guessesLeft[Random().nextInt(guessesLeft.length)];
+        if (changeDrection) {
+          if (guessIndex == 13) {
+            quarterTurns = -1;
+          }
+          if (guessIndex == 23) {
+            quarterTurns = -2;
+          }
+          if (guessIndex == 25) {
+            quarterTurns = 0;
+          }
+        }
+
+        clickCells[guessIndex.toString()] = "assets/images/thisguess.png";
+      }
+    }
+    if (player == 30) {
+      if (guessIndex == -1) {
+        guessIndex = guessesRight[Random().nextInt(guessesRight.length)];
+        if (changeDrection) {
+          if (guessIndex == 19) {
+            quarterTurns = -1;
+          }
+          if (guessIndex == 29) {
+            quarterTurns = -2;
+          }
+          if (guessIndex == 31) {
+            quarterTurns = 0;
+          }
+        }
+        clickCells[guessIndex.toString()] = "assets/images/thisguess.png";
+      }
+    }
+    setState(() {});
+    debugPrint("guessIndex=$guessIndex");
+  }
+
+  void nextShow() {
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        allGuess();
+        guessIndex = -1;
+      });
+      randomCanGuess(true);
+    });
+  }
+
+  void allGuess() {
+    guessIndex = -1;
+    for (var a in clickCells.keys) {
+      clickCells[a] = "assets/images/guess.png";
+    }
+  }
+
+  void allGhost(bool left) {
+    if (left) {
+      clickCells["13"] = "assets/images/ghost.png";
+      clickCells["23"] = "assets/images/ghost.png";
+      clickCells["25"] = "assets/images/ghost.png";
+    } else {
+      clickCells["19"] = "assets/images/ghost.png";
+      clickCells["29"] = "assets/images/ghost.png";
+      clickCells["31"] = "assets/images/ghost.png";
+    }
+  }
+
+  void clickCell(int index, bool left) {
+    String image = clickCells[index.toString()];
+    if (image == "assets/images/guess.png") {
+      // guess click return
+      return;
+    }
+    if (guessIndex != -1) {
+      guessIndex = -1;
+      var doubleValue = Random().nextDouble();
+      if (image == "assets/images/thisguess.png") {
+        if (leftIsEmpty || rightIsEmpty) {
+          image = "assets/images/NoCherry.png";
+          clickCells[index.toString()] = image;
+          nextShow();
+        } else if (doubleValue < 0.5) {
+          image = "assets/images/cherry.png";
+          clickCells[index.toString()] = image;
+
+          fresh++;
+        } else if (doubleValue < 0.8) {
+          if (left) {
+            leftIsEmpty = true;
+          } else {
+            rightIsEmpty = true;
+          }
+
+          allGhost(left);
+          fresh++;
+        } else {
+          if (left) {
+            leftIsEmpty = true;
+          } else {
+            rightIsEmpty = true;
+          }
+          image = "assets/images/NoCherry.png";
+          clickCells[index.toString()] = image;
+          nextShow();
+          fresh++;
+        }
+      }
+    } else if (image == "assets/images/cherry.png") {
+      image = "assets/images/NoCherry.png";
+      clickCells[index.toString()] = image;
+
+      fresh++;
+      calculate(1);
+      nextShow();
+      allGuess();
+    }
+
+    setState(() {});
   }
 
   @override
@@ -273,7 +452,7 @@ class _GameMap2State extends State<GameMap2> {
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: LinearPercentIndicator(
-                      width:600.0,
+                      width: 600.0,
                       lineHeight: 16,
                       progressColor: Colors.teal[400],
                       backgroundColor: Colors.grey[400],
@@ -389,237 +568,73 @@ class _GameMap2State extends State<GameMap2> {
               )
             ]),
           ));
-    }  else if (13 == index) {
+    } else if (13 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            var doubleValue = Random().nextDouble();
-
-            if (player == 24) {
-              
-              if (leftImage13 == "assets/images/guess.png") {
-                if (doubleValue < 0.5) {
-                  setState(() {
-                    leftImage13 = "assets/images/cherry.png";
-                    fresh++;
-                  });
-                } else {
-                  setState(() {
-                    leftImage13 = "assets/images/ghost.png";
-                    fresh++;
-                  });
-                }
-              } else if (leftImage13 == "assets/images/cherry.png") {
-                setState(() {
-                  leftImage13 = "assets/images/NoCherry.png";
-                  fresh++;
-                  calculate(1);
-                });
-              } else if (leftImage13 == "assets/images/.ghost.png") {}
-            }
+            clickCell(13, true);
           },
-
           child: Padding(
             padding: const EdgeInsets.all(0.1),
-            child: Column(children: [Image.asset(leftImage13)]),
+            child:
+                Column(children: [Image.asset(clickCells[index.toString()])]),
           ));
     } else if (23 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            var doubleValue = Random().nextDouble();
-
-            if (player == 24) {
-              
-              if (leftImage23 == "assets/images/guess.png") {
-                if (doubleValue < 0.5) {
-                  setState(() {
-                    leftImage23 = "assets/images/cherry.png";
-                    fresh++;
-                  });
-                } else {
-                  setState(() {
-                    leftImage23 = "assets/images/ghost.png";
-                    fresh++;
-                  });
-                }
-              } else if (leftImage23 == "assets/images/cherry.png") {
-                setState(() {
-                  leftImage23 = "assets/images/NoCherry.png";
-                  fresh++;
-                  calculate(1);
-                });
-              } else if (leftImage23 == "assets/images/.ghost.png") {}
-            }
+            clickCell(23, true);
           },
-
           child: Padding(
             padding: const EdgeInsets.all(0.1),
-            child: Column(children: [Image.asset(leftImage23)]),
+            child:
+                Column(children: [Image.asset(clickCells[index.toString()])]),
           ));
     } else if (25 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            var doubleValue = Random().nextDouble();
-
-            if (player == 24) {
-              
-              if (leftImage25 == "assets/images/guess.png") {
-                if (doubleValue < 0.5) {
-                  setState(() {
-                    leftImage25 = "assets/images/cherry.png";
-                    fresh++;
-                  });
-                } else {
-                  setState(() {
-                    leftImage25 = "assets/images/ghost.png";
-                    fresh++;
-                  });
-                }
-              } else if (leftImage25 == "assets/images/cherry.png") {
-                setState(() {
-                  leftImage25 = "assets/images/NoCherry.png";
-                  fresh++;
-                  calculate(1);
-                });
-              } else if (leftImage25 == "assets/images/.ghost.png") {}
-            }
+            clickCell(25, true);
           },
-
           child: Padding(
             padding: const EdgeInsets.all(0.1),
-            child: Column(children: [Image.asset(leftImage25)]),
+            child:
+                Column(children: [Image.asset(clickCells[index.toString()])]),
           ));
     } else if (19 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            var doubleValue = Random().nextDouble();
-
-            if (player == 30) {
-
-              if (rightImage19 == "assets/images/guess.png") {
-                if (doubleValue < 0.5) {
-                  setState(() {
-                    rightImage19 = "assets/images/cherry.png";
-                    fresh++;
-                  });
-                } else {
-                  setState(() {
-                    rightImage19 = "assets/images/ghost.png";
-                    fresh++;
-                  });
-                }
-              } else if (rightImage19 == "assets/images/cherry.png") {
-                setState(() {
-                  rightImage19 = "assets/images/NoCherry.png";
-                  fresh++;
-                  calculate(1);
-                });
-              } else if (rightImage19 == "assets/images/.ghost.png") {}
-            }
+            clickCell(19, false);
           },
-          
           child: Padding(
             padding: const EdgeInsets.all(0.1),
-            child: Column(children: [Image.asset(rightImage19)]),
+            child:
+                Column(children: [Image.asset(clickCells[index.toString()])]),
           ));
     } else if (29 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            var doubleValue = Random().nextDouble();
-
-            if (player == 30) {
-              if (rightImage29 == "assets/images/guess.png") {
-                if (doubleValue < 0.5) {
-                  setState(() {
-                    rightImage29  = "assets/images/cherry.png";
-                    fresh++;
-                  });
-                } else {
-                  setState(() {
-                    rightImage29  = "assets/images/ghost.png";
-                    fresh++;
-                  });
-                }
-              } else if (rightImage29  == "assets/images/cherry.png") {
-                setState(() {
-                  rightImage29  = "assets/images/NoCherry.png";
-                  fresh++;
-                  calculate(1);
-                });
-              } else if (rightImage29  == "assets/images/.ghost.png") {}
-            }
+            clickCell(29, false);
           },
-          
           child: Padding(
             padding: const EdgeInsets.all(0.1),
-            child: Column(children: [Image.asset(rightImage29 )]),
+            child:
+                Column(children: [Image.asset(clickCells[index.toString()])]),
           ));
     } else if (31 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            var doubleValue = Random().nextDouble();
-
-            if (player == 30) {
-
-              if (rightImage31 == "assets/images/guess.png") {
-                if (doubleValue < 0.5) {
-                  setState(() {
-                    rightImage31  = "assets/images/cherry.png";
-                    fresh++;
-                  });
-                } else {
-                  setState(() {
-                    rightImage31  = "assets/images/ghost.png";
-                    fresh++;
-                  });
-                }
-              } else if (rightImage31  == "assets/images/cherry.png") {
-                setState(() {
-                  rightImage31  = "assets/images/NoCherry.png";
-                  fresh++;
-                  calculate(1);
-                });
-              } else if (rightImage31  == "assets/images/.ghost.png") {}
-            }
+            clickCell(31, false);
           },
-          
           child: Padding(
             padding: const EdgeInsets.all(0.1),
-            child: Column(
-                children: [
-                  Image.asset(rightImage31)
-                ]
-            ),
-          )
-      );
-    } 
-
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-     else if (pellets.contains(index)) {
+            child:
+                Column(children: [Image.asset(clickCells[index.toString()])]),
+          ));
+    } else if (pellets.contains(index)) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/dot.png")]),
