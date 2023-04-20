@@ -49,12 +49,12 @@ class _GameMap2State extends State<GameMap2> {
     });
   }
 
-  List<int> leftGuess = [17,31,33];
-  List<int> rightGuess = [23,37,39];
+  List<int> leftGuess = [17, 31, 33];
+  List<int> rightGuess = [23, 37, 39];
 
   int fresh = 0;
 
-  List<int> guess = [17,31,33,23,37,39];
+  List<int> guess = [17, 31, 33, 23, 37, 39];
   double topHeight = 60;
   int quarterTurns = 0;
 
@@ -115,8 +115,9 @@ class _GameMap2State extends State<GameMap2> {
     68,
     53,
     38
-
   ];
+
+  List<int> blocks = [58, 73, 88];
 
   List<int> barriers = [
     0,
@@ -175,13 +176,9 @@ class _GameMap2State extends State<GameMap2> {
     36,
     50,
 
-    58,
-    73,
-    88
-
-
-   
-
+    // 58,
+    // 73,
+    // 88
   ];
   int guessIndex = -1;
   List guessesLeft = [17, 31, 33];
@@ -646,7 +643,20 @@ class _GameMap2State extends State<GameMap2> {
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/wall.png")]),
       );
-    } else {
+    } else if (blocks.contains(index)){
+       w = Padding(
+        padding: const EdgeInsets.all(1.0),
+        child: Container(
+          
+          color: Color.fromARGB(255, 19, 19, 19),
+        ),
+      );
+    } else
+    
+    
+    
+    
+    {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Container(
