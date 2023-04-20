@@ -653,7 +653,7 @@ class _GameMap2State extends State<GameMap2> {
         padding: const EdgeInsets.all(1.0),
         child: Container(
           
-          color: Color.fromARGB(255, 19, 19, 19),
+          color: Colors.black,
         ),
       );
     } else
