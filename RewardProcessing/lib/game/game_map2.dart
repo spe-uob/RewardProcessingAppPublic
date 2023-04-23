@@ -196,6 +196,12 @@ class _GameMap2State extends State<GameMap2> {
   bool leftIsEmpty = false;
   bool rightIsEmpty = false;
 
+  bool leftActive = true;
+  bool inactiveFirstClicked = false;
+  double cherryProbability = 0.8;
+  double emptyProbability = 0.2;
+  double switchInactiveProbability = 0.3;
+
   @override
   void dispose() {
     super.dispose();
@@ -306,6 +312,15 @@ class _GameMap2State extends State<GameMap2> {
 
   void randomCanGuess(changeDrection) {
     if (player == 32) {
+      // 左边
+      if (leftActive) {
+        var randomValue = Random().nextDouble();
+        if (randomValue < switchInactiveProbability) {
+          // 有0.3的概率变成inactive
+          leftActive = false;
+          inactiveFirstClicked = false;
+        }
+      }
       if (guessIndex == -1) {
         guessIndex = guessesLeft[Random().nextInt(guessesLeft.length)];
         if (changeDrection) {
@@ -324,6 +339,15 @@ class _GameMap2State extends State<GameMap2> {
       }
     }
     if (player == 38) {
+      //右边
+      if (!leftActive) {
+        var randomValue = Random().nextDouble();
+        if (randomValue < switchInactiveProbability) {
+          // 有0.3的概率变成inactive
+          leftActive = true;
+          inactiveFirstClicked = false;
+        }
+      }
       if (guessIndex == -1) {
         guessIndex = guessesRight[Random().nextInt(guessesRight.length)];
         if (changeDrection) {
@@ -381,37 +405,48 @@ class _GameMap2State extends State<GameMap2> {
     }
     if (guessIndex != -1) {
       guessIndex = -1;
-      var doubleValue = Random().nextDouble();
+      bool ghost = false;
+      var randomValue = Random().nextDouble();
       if (image == "assets/images/thisguess.png") {
-        if (leftIsEmpty || rightIsEmpty) {
-          image = "assets/images/NoCherry.png";
-          clickCells[index.toString()] = image;
-          nextShow();
-        } else if (doubleValue < 0.5) {
-          image = "assets/images/cherry.png";
-          clickCells[index.toString()] = image;
-
-          fresh++;
-        } else if (doubleValue < 0.8) {
-          if (left) {
-            leftIsEmpty = true;
+        if (left && !leftActive) {
+          // 点击左边并且是无效的
+          if (!inactiveFirstClicked) {
+            // 变成inactive 还没有第一次点击
+            allGhost(left);
+            ghost = true;
+            inactiveFirstClicked = true;
           } else {
-            rightIsEmpty = true;
+            image = "assets/images/NoCherry.png";
+            clickCells[index.toString()] = image;
+            fresh++;
           }
-
-          allGhost(left);
-          fresh++;
+        } else if (!left && leftActive) {
+          // 点击y右边并且是无效的
+          if (!inactiveFirstClicked) {
+            // 变成inactive 还没有第一次点击
+            allGhost(left);
+            ghost = true;
+            inactiveFirstClicked = true;
+          } else {
+            image = "assets/images/NoCherry.png";
+            clickCells[index.toString()] = image;
+            fresh++;
+          }
         } else {
-          if (left) {
-            leftIsEmpty = true;
+          if (randomValue < cherryProbability) {
+            // 樱桃
+            image = "assets/images/cherry.png";
+            clickCells[index.toString()] = image;
+            fresh++;
           } else {
-            rightIsEmpty = true;
+            image = "assets/images/NoCherry.png";
+            clickCells[index.toString()] = image;
+            fresh++;
           }
-          image = "assets/images/NoCherry.png";
-          clickCells[index.toString()] = image;
-          nextShow();
-          fresh++;
         }
+      }
+      if (image != "assets/images/cherry.png" && !ghost) {
+        nextShow();
       }
     } else if (image == "assets/images/cherry.png") {
       image = "assets/images/NoCherry.png";
@@ -648,20 +683,14 @@ class _GameMap2State extends State<GameMap2> {
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/wall.png")]),
       );
-    } else if (blocks.contains(index)){
-       w = Padding(
+    } else if (blocks.contains(index)) {
+      w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Container(
-          
           color: Colors.black,
         ),
       );
-    } else
-    
-    
-    
-    
-    {
+    } else {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Container(

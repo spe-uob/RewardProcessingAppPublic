@@ -50,39 +50,14 @@ class _GameMapState extends State<GameMap> {
     });
   }
 
-  List<int> leftGuess = [17,31,33];
-  List<int> rightGuess = [23,37,39];
-  List<int> guess = [17,31,33,23,37,39];
+  List<int> leftGuess = [17, 31, 33];
+  List<int> rightGuess = [23, 37, 39];
+  List<int> guess = [17, 31, 33, 23, 37, 39];
   int fresh = 0;
   double topHeight = 60;
   int quarterTurns = 0;
-  List<int> pellets = [
-    32,
-    47,
-    62,
-    63,
-    64,
-    66,
-    67,
-    68,
-    53,
-    38
-
-  ];
-  List<int> paths = [
-    32,
-    47,
-    62,
-    63,
-    64,
-    66,
-    67,
-    68,
-    53,
-    38,
-    65
-
-  ];
+  List<int> pellets = [32, 47, 62, 63, 64, 66, 67, 68, 53, 38];
+  List<int> paths = [32, 47, 62, 63, 64, 66, 67, 68, 53, 38, 65];
   String leftImage17 = "assets/images/guess.png";
   String leftImage31 = "assets/images/guess.png";
   String leftImage33 = "assets/images/guess.png";
@@ -98,13 +73,16 @@ class _GameMapState extends State<GameMap> {
     "39": "assets/images/guess.png",
   };
   int guessIndex = -1;
-  List guessesLeft = [17,31,33];
-  List guessesRight = [23,37,39];
-  bool leftIsEmpty = false;
-  bool rightIsEmpty = false;
+  List guessesLeft = [17, 31, 33];
+  List guessesRight = [23, 37, 39];
+  bool leftActive = true;
+  bool inactiveFirstClicked = false;
+  double cherryProbability = 0.8;
+  double emptyProbability = 0.2;
+  double switchInactiveProbability = 0.3;
 
   List<int> barriers = [
-     0,
+    0,
     1,
     2,
     3,
@@ -149,7 +127,6 @@ class _GameMapState extends State<GameMap> {
     52,
     54,
     69
-
   ];
 
   @override
@@ -236,15 +213,21 @@ class _GameMapState extends State<GameMap> {
       }
     }
 
-    if (player == 65) {
-      leftIsEmpty = false;
-      rightIsEmpty = false;
-    }
     setState(() {});
   }
 
+  // refresh
   void randomCanGuess(changeDrection) {
     if (player == 32) {
+      // 左边
+      if (leftActive) {
+        var randomValue = Random().nextDouble();
+        if (randomValue < switchInactiveProbability) {
+          // 有0.3的概率变成inactive
+          leftActive = false;
+          inactiveFirstClicked = false;
+        }
+      }
       if (guessIndex == -1) {
         guessIndex = guessesLeft[Random().nextInt(guessesLeft.length)];
         if (changeDrection) {
@@ -258,11 +241,19 @@ class _GameMapState extends State<GameMap> {
             quarterTurns = 0;
           }
         }
-
         clickCells[guessIndex.toString()] = "assets/images/thisguess.png";
       }
     }
     if (player == 38) {
+      //右边
+      if (!leftActive) {
+        var randomValue = Random().nextDouble();
+        if (randomValue < switchInactiveProbability) {
+          // 有0.3的概率变成inactive
+          leftActive = true;
+          inactiveFirstClicked = false;
+        }
+      }
       if (guessIndex == -1) {
         guessIndex = guessesRight[Random().nextInt(guessesRight.length)];
         if (changeDrection) {
@@ -280,7 +271,8 @@ class _GameMapState extends State<GameMap> {
       }
     }
     setState(() {});
-    debugPrint("guessIndex=$guessIndex");
+    debugPrint(
+        "状态,leftActive=$leftActive,inactiveFirstClicked=$inactiveFirstClicked");
   }
 
   void nextShow() {
@@ -320,37 +312,48 @@ class _GameMapState extends State<GameMap> {
     }
     if (guessIndex != -1) {
       guessIndex = -1;
-      var doubleValue = Random().nextDouble();
+      var randomValue = Random().nextDouble();
+      bool ghost = false;
       if (image == "assets/images/thisguess.png") {
-        if (leftIsEmpty || rightIsEmpty) {
-          image = "assets/images/NoCherry.png";
-          clickCells[index.toString()] = image;
-          nextShow();
-        } else if (doubleValue < 0.5) {
-          image = "assets/images/cherry.png";
-          clickCells[index.toString()] = image;
-
-          fresh++;
-        } else if (doubleValue < 0.8) {
-          if (left) {
-            leftIsEmpty = true;
+        if (left && !leftActive) {
+          // 点击左边并且是无效的
+          if (!inactiveFirstClicked) {
+            // 变成inactive 还没有第一次点击
+            allGhost(left);
+            ghost = true;
+            inactiveFirstClicked = true;
           } else {
-            rightIsEmpty = true;
+            image = "assets/images/NoCherry.png";
+            clickCells[index.toString()] = image;
+            fresh++;
           }
-
-          allGhost(left);
-          fresh++;
+        } else if (!left && leftActive) {
+          // 点击y右边并且是无效的
+          if (!inactiveFirstClicked) {
+            // 变成inactive 还没有第一次点击
+            allGhost(left);
+            ghost = true;
+            inactiveFirstClicked = true;
+          } else {
+            image = "assets/images/NoCherry.png";
+            clickCells[index.toString()] = image;
+            fresh++;
+          }
         } else {
-          if (left) {
-            leftIsEmpty = true;
+          if (randomValue < cherryProbability) {
+            // 樱桃
+            image = "assets/images/cherry.png";
+            clickCells[index.toString()] = image;
+            fresh++;
           } else {
-            rightIsEmpty = true;
+            image = "assets/images/NoCherry.png";
+            clickCells[index.toString()] = image;
+            fresh++;
           }
-          image = "assets/images/NoCherry.png";
-          clickCells[index.toString()] = image;
-          fresh++;
-          nextShow();
         }
+      }
+      if (image != "assets/images/cherry.png" && !ghost) {
+        nextShow();
       }
     } else if (image == "assets/images/cherry.png") {
       image = "assets/images/NoCherry.png";
