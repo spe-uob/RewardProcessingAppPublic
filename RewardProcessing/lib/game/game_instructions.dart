@@ -11,6 +11,8 @@ class GameInstructions extends StatefulWidget {
 }
 
 class _GameInstructionsState extends State<GameInstructions> {
+  bool _showText =true;
+
   @override
   void initState() {
     super.initState();
@@ -18,53 +20,87 @@ class _GameInstructionsState extends State<GameInstructions> {
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
     ]);
+     Future.delayed(const Duration(seconds: 5), () {
+      setState(() {
+        _showText = false;
+      });
+    });
   }
+
+// @override
+// Widget build(BuildContext context) {
+//   return Scaffold(
+//     backgroundColor: const Color(0xff000000),
+//     body: GestureDetector(
+//       onTap: () {
+//         Navigator.push(
+//           context,
+//           MaterialPageRoute(builder: (context) => GameInstructions2(id: widget.id)),
+//         );
+//       },
+//       child: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Image.asset(
+//               'assets/images/GI.png',
+//               scale: 2.9,
+//             ),
+//           ],
+//         ),
+//       ),
+//     ),
+//   );
+// }
+// }
+
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-        onWillPop: ()async {
-          return false; // disable back page
-        },
-        child: Scaffold(
-          backgroundColor: const Color(0xFFFFFFFF),
-            body: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image.asset('assets/images/GI.png',
-                        scale: 3.8,
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                // MaterialPageRoute(builder: (context) => const Questionnaire())
-                                MaterialPageRoute(builder: (context) => GameInstructions2(id: widget.id))
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(100, 20),
-                            backgroundColor: const Color(0xFF00A8AF),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100)),
-                            elevation: 2.0,),
-                          child: const Text(
-                              'Continue',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w300
-                              )
-                          )
-                      )
-                    ]
-                )
-              ],
-            )
-        )
+    return Scaffold(
+      backgroundColor: const Color(0xff000000),
+      body: Stack(
+        children: [
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => GameInstructions2(id: widget.id)),
+              );
+            },
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/GI.png',
+                    scale: 2.9,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          if (_showText)
+            Positioned(
+              bottom: 20,
+              left: 0,
+              right: 0,
+              child: Container(
+                color: Colors.white.withOpacity(0.4),
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: const Text(
+                  'Click anywhere to continue',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
     );
   }
 }
+
