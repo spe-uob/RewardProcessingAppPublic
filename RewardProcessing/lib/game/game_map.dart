@@ -25,7 +25,8 @@ String rightImage = "assets/images/guess.png";
 
 class _GameMapState extends State<GameMap> {
   late Timer _timer;
-  int _seconds = 0;
+  // ignore: unused_field
+  final int _seconds = 0;
 
   @override
   void initState() {
@@ -35,19 +36,19 @@ class _GameMapState extends State<GameMap> {
       DeviceOrientation.landscapeLeft,
     ]);
 
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        _seconds++;
-      });
+    // _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    //   setState(() {
+    //     _seconds++;
+    //   });
 
-      if (_seconds > 300) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)),
-        );
-        _timer.cancel(); //stop timer
-      }
-    });
+    //   if (_seconds > 300) {
+    //     Navigator.push(
+    //       context,
+    //       MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)),
+    //     );
+    //     _timer.cancel(); //stop timer
+    //   }
+    // });
   }
 
   List<int> leftGuess = [17, 31, 33];
@@ -203,8 +204,8 @@ class _GameMapState extends State<GameMap> {
     if (lastPlayer != player) {
       if (player == 32 || player == 38) {
         if (guessIndex == -1) {
-          // randomCanGuess(lastPlayer == player);
           randomCanGuess(true);
+          // randomCanGuess(true);
         }
       } else {
         setState(() {
@@ -217,20 +218,20 @@ class _GameMapState extends State<GameMap> {
   }
 
   // refresh
-  void randomCanGuess(changeDrection) {
+  void randomCanGuess(firstEnter) {
     if (player == 32) {
       // 左边
       if (leftActive) {
         var randomValue = Random().nextDouble();
-        if (randomValue < switchInactiveProbability) {
+        if (randomValue < switchInactiveProbability && !firstEnter) {
           // 有0.3的概率变成inactive
           leftActive = false;
-          inactiveFirstClicked = false;
+          inactiveFirstClicked = firstEnter ? false : true;
         }
       }
       if (guessIndex == -1) {
         guessIndex = guessesLeft[Random().nextInt(guessesLeft.length)];
-        if (changeDrection) {
+        if (!firstEnter) {
           if (guessIndex == 17) {
             quarterTurns = -1;
           }
@@ -248,15 +249,15 @@ class _GameMapState extends State<GameMap> {
       //右边
       if (!leftActive) {
         var randomValue = Random().nextDouble();
-        if (randomValue < switchInactiveProbability) {
+        if (randomValue < switchInactiveProbability && !firstEnter) {
           // 有0.3的概率变成inactive
           leftActive = true;
-          inactiveFirstClicked = false;
+          inactiveFirstClicked = firstEnter ? false : true;
         }
       }
       if (guessIndex == -1) {
         guessIndex = guessesRight[Random().nextInt(guessesRight.length)];
-        if (changeDrection) {
+        if (!firstEnter) {
           if (guessIndex == 23) {
             quarterTurns = -1;
           }
@@ -281,7 +282,7 @@ class _GameMapState extends State<GameMap> {
         allGuess();
         guessIndex = -1;
       });
-      randomCanGuess(true);
+      randomCanGuess(false);
     });
   }
 
