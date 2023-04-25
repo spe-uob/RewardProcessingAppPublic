@@ -25,7 +25,7 @@ String rightImage = "assets/images/guess.png";
 
 class _GameMapState extends State<GameMap> {
   late Timer _timer;
-  int _seconds = 0;
+  late int _seconds = 0;
 
   @override
   void initState() {
@@ -38,7 +38,8 @@ class _GameMapState extends State<GameMap> {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         _seconds++;
-      });
+      }
+      );
 
       if (_seconds > 300) {
         Navigator.push(
@@ -203,8 +204,8 @@ class _GameMapState extends State<GameMap> {
     if (lastPlayer != player) {
       if (player == 32 || player == 38) {
         if (guessIndex == -1) {
-          // randomCanGuess(lastPlayer == player);
           randomCanGuess(true);
+          // randomCanGuess(true);
         }
       } else {
         setState(() {
@@ -217,18 +218,20 @@ class _GameMapState extends State<GameMap> {
   }
 
   // refresh
-  void randomCanGuess(changeDrection) {
+  void randomCanGuess(firstEnter) {
     if (player == 32) {
+      // left side
       if (leftActive) {
         var randomValue = Random().nextDouble();
-        if (randomValue < switchInactiveProbability) {
+        if (randomValue < switchInactiveProbability && !firstEnter) {
+          // there 0.3
           leftActive = false;
-          inactiveFirstClicked = false;
+          inactiveFirstClicked = firstEnter ? false : true;
         }
       }
       if (guessIndex == -1) {
         guessIndex = guessesLeft[Random().nextInt(guessesLeft.length)];
-        if (changeDrection) {
+        if (!firstEnter) {
           if (guessIndex == 17) {
             quarterTurns = -1;
           }
@@ -243,16 +246,18 @@ class _GameMapState extends State<GameMap> {
       }
     }
     if (player == 38) {
+      //right side
       if (!leftActive) {
         var randomValue = Random().nextDouble();
-        if (randomValue < switchInactiveProbability) {
+        if (randomValue < switchInactiveProbability && !firstEnter) {
+          // there 0.3 probability become inactive
           leftActive = true;
-          inactiveFirstClicked = false;
+          inactiveFirstClicked = firstEnter ? false : true;
         }
       }
       if (guessIndex == -1) {
         guessIndex = guessesRight[Random().nextInt(guessesRight.length)];
-        if (changeDrection) {
+        if (!firstEnter) {
           if (guessIndex == 23) {
             quarterTurns = -1;
           }
@@ -268,7 +273,7 @@ class _GameMapState extends State<GameMap> {
     }
     setState(() {});
     debugPrint(
-        "状态,leftActive=$leftActive,inactiveFirstClicked=$inactiveFirstClicked");
+        "state,leftActive=$leftActive,inactiveFirstClicked=$inactiveFirstClicked");
   }
 
   void nextShow() {
@@ -277,7 +282,7 @@ class _GameMapState extends State<GameMap> {
         allGuess();
         guessIndex = -1;
       });
-      randomCanGuess(true);
+      randomCanGuess(false);
     });
   }
 
@@ -312,7 +317,9 @@ class _GameMapState extends State<GameMap> {
       bool ghost = false;
       if (image == "assets/images/thisguess.png") {
         if (left && !leftActive) {
+          // click legt side
           if (!inactiveFirstClicked) {
+            // become inactive
             allGhost(left);
             ghost = true;
             inactiveFirstClicked = true;
@@ -322,7 +329,9 @@ class _GameMapState extends State<GameMap> {
             fresh++;
           }
         } else if (!left && leftActive) {
+          // click left side
           if (!inactiveFirstClicked) {
+            // become inactive
             allGhost(left);
             ghost = true;
             inactiveFirstClicked = true;
@@ -333,6 +342,7 @@ class _GameMapState extends State<GameMap> {
           }
         } else {
           if (randomValue < cherryProbability) {
+            // cherry
             image = "assets/images/cherry.png";
             clickCells[index.toString()] = image;
             fresh++;
