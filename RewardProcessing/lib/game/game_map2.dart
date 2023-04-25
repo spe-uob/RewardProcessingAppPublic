@@ -294,7 +294,7 @@ class _GameMap2State extends State<GameMap2> {
       if (player == 32 || player == 38) {
         if (guessIndex == -1) {
           // randomCanGuess(lastPlayer == player);
-          randomCanGuess(true);
+          randomCanGuess(true, true);
         }
       } else {
         setState(() {
@@ -310,18 +310,32 @@ class _GameMap2State extends State<GameMap2> {
     setState(() {});
   }
 
+<<<<<<< Updated upstream
   void randomCanGuess(firstEnter) {
     if (player == 32) {
       if (leftActive) {
         var randomValue = Random().nextDouble();
         if (randomValue < switchInactiveProbability && !firstEnter) {
+=======
+  void randomCanGuess(bool firstEnter, bool changeDirection) {
+    if (player == 32) {
+      // left
+      if (leftActive) {
+        var randomValue = Random().nextDouble();
+        if (randomValue < switchInactiveProbability && !firstEnter) {
+          //  there are 0.3probablity become inactvie
+>>>>>>> Stashed changes
           leftActive = false;
           inactiveFirstClicked = firstEnter ? false : true;
         }
       }
       if (guessIndex == -1) {
         guessIndex = guessesLeft[Random().nextInt(guessesLeft.length)];
+<<<<<<< Updated upstream
         if (firstEnter) {
+=======
+        if (changeDirection) {
+>>>>>>> Stashed changes
           if (guessIndex == 17) {
             quarterTurns = -1;
           }
@@ -337,16 +351,28 @@ class _GameMap2State extends State<GameMap2> {
       }
     }
     if (player == 38) {
+<<<<<<< Updated upstream
       if (!leftActive) {
         var randomValue = Random().nextDouble();
         if (randomValue < switchInactiveProbability && !firstEnter) {
+=======
+      //right
+      if (!leftActive) {
+        var randomValue = Random().nextDouble();
+        if (randomValue < switchInactiveProbability && !firstEnter) {
+          // there are 0.3 probablity become inactive
+>>>>>>> Stashed changes
           leftActive = true;
           inactiveFirstClicked = firstEnter ? false : true;
         }
       }
       if (guessIndex == -1) {
         guessIndex = guessesRight[Random().nextInt(guessesRight.length)];
+<<<<<<< Updated upstream
         if (firstEnter) {
+=======
+        if (changeDirection) {
+>>>>>>> Stashed changes
           if (guessIndex == 23) {
             quarterTurns = -1;
           }
@@ -370,7 +396,11 @@ class _GameMap2State extends State<GameMap2> {
         allGuess();
         guessIndex = -1;
       });
+<<<<<<< Updated upstream
       randomCanGuess(false);
+=======
+      randomCanGuess(false, true);
+>>>>>>> Stashed changes
     });
   }
 
@@ -405,20 +435,32 @@ class _GameMap2State extends State<GameMap2> {
       var randomValue = Random().nextDouble();
       if (image == "assets/images/thisguess.png") {
         if (left && !leftActive) {
+<<<<<<< Updated upstream
           if (!inactiveFirstClicked) {
+=======
+          // click right
+          if (!inactiveFirstClicked) {
+            // become inactive
+>>>>>>> Stashed changes
             allGhost(left);
             ghost = true;
-            inactiveFirstClicked = true;
+            // inactiveFirstClicked = true;
           } else {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
             fresh++;
           }
         } else if (!left && leftActive) {
+<<<<<<< Updated upstream
           if (!inactiveFirstClicked) {
+=======
+          // click right
+          if (!inactiveFirstClicked) {
+            // become inactive, without clicked for first time
+>>>>>>> Stashed changes
             allGhost(left);
             ghost = true;
-            inactiveFirstClicked = true;
+            // inactiveFirstClicked = true;
           } else {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
@@ -426,6 +468,10 @@ class _GameMap2State extends State<GameMap2> {
           }
         } else {
           if (randomValue < cherryProbability) {
+<<<<<<< Updated upstream
+=======
+            // cherry
+>>>>>>> Stashed changes
             image = "assets/images/cherry.png";
             clickCells[index.toString()] = image;
             fresh++;
