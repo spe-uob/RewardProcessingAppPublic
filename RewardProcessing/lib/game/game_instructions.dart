@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 class GameInstructions extends StatefulWidget {
   final String id;
+
   const GameInstructions({super.key, required this.id});
 
   @override
@@ -20,40 +21,12 @@ class _GameInstructionsState extends State<GameInstructions> {
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
     ]);
-     Future.delayed(const Duration(seconds: 5), () {
+     Future.delayed(const Duration(seconds: 2), () {
       setState(() {
         _showText = false;
       });
     });
   }
-
-// @override
-// Widget build(BuildContext context) {
-//   return Scaffold(
-//     backgroundColor: const Color(0xff000000),
-//     body: GestureDetector(
-//       onTap: () {
-//         Navigator.push(
-//           context,
-//           MaterialPageRoute(builder: (context) => GameInstructions2(id: widget.id)),
-//         );
-//       },
-//       child: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Image.asset(
-//               'assets/images/GI.png',
-//               scale: 2.9,
-//             ),
-//           ],
-//         ),
-//       ),
-//     ),
-//   );
-// }
-// }
-
 
   @override
   Widget build(BuildContext context) {
@@ -85,15 +58,21 @@ class _GameInstructionsState extends State<GameInstructions> {
               bottom: 20,
               left: 0,
               right: 0,
-              child: Container(
-                color: Colors.white.withOpacity(0.4),
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: const Text(
-                  'Click anywhere to continue',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 23,
-                    fontWeight: FontWeight.bold,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.easeInOut,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.4),
+                ),
+                child: const Center(
+                  child:Text(
+                    'Click anywhere to continue',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -103,4 +82,3 @@ class _GameInstructionsState extends State<GameInstructions> {
     );
   }
 }
-
