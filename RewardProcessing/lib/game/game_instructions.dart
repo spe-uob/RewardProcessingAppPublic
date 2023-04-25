@@ -34,8 +34,8 @@ class _GameInstructionsState extends State<GameInstructions> {
                 Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image.asset('assets/images/gi1.png',
-                        scale: 11,
+                      Image.asset('assets/images/GI.png',
+                        scale: 3.8,
                       ),
                       ElevatedButton(
                           onPressed: () {
