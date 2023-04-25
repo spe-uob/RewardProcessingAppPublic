@@ -310,20 +310,18 @@ class _GameMap2State extends State<GameMap2> {
     setState(() {});
   }
 
-  void randomCanGuess(firstEnter) {
+  void randomCanGuess(changeDrection) {
     if (player == 32) {
-      // 左边
       if (leftActive) {
         var randomValue = Random().nextDouble();
-        if (randomValue < switchInactiveProbability && !firstEnter) {
-          // 有0.3的概率变成inactive
+        if (randomValue < switchInactiveProbability) {
           leftActive = false;
-          inactiveFirstClicked = firstEnter ? false : true;
+          inactiveFirstClicked = false;
         }
       }
       if (guessIndex == -1) {
         guessIndex = guessesLeft[Random().nextInt(guessesLeft.length)];
-        if (firstEnter) {
+        if (changeDrection) {
           if (guessIndex == 17) {
             quarterTurns = -1;
           }
@@ -339,18 +337,16 @@ class _GameMap2State extends State<GameMap2> {
       }
     }
     if (player == 38) {
-      //右边
       if (!leftActive) {
         var randomValue = Random().nextDouble();
-        if (randomValue < switchInactiveProbability && !firstEnter) {
-          // 有0.3的概率变成inactive
+        if (randomValue < switchInactiveProbability) {
           leftActive = true;
-          inactiveFirstClicked = firstEnter ? false : true;
+          inactiveFirstClicked = false;
         }
       }
       if (guessIndex == -1) {
         guessIndex = guessesRight[Random().nextInt(guessesRight.length)];
-        if (firstEnter) {
+        if (changeDrection) {
           if (guessIndex == 23) {
             quarterTurns = -1;
           }
@@ -374,7 +370,7 @@ class _GameMap2State extends State<GameMap2> {
         allGuess();
         guessIndex = -1;
       });
-      randomCanGuess(false);
+      randomCanGuess(true);
     });
   }
 
@@ -409,9 +405,7 @@ class _GameMap2State extends State<GameMap2> {
       var randomValue = Random().nextDouble();
       if (image == "assets/images/thisguess.png") {
         if (left && !leftActive) {
-          // 点击左边并且是无效的
           if (!inactiveFirstClicked) {
-            // 变成inactive 还没有第一次点击
             allGhost(left);
             ghost = true;
             inactiveFirstClicked = true;
@@ -421,9 +415,7 @@ class _GameMap2State extends State<GameMap2> {
             fresh++;
           }
         } else if (!left && leftActive) {
-          // 点击y右边并且是无效的
           if (!inactiveFirstClicked) {
-            // 变成inactive 还没有第一次点击
             allGhost(left);
             ghost = true;
             inactiveFirstClicked = true;
@@ -434,7 +426,6 @@ class _GameMap2State extends State<GameMap2> {
           }
         } else {
           if (randomValue < cherryProbability) {
-            // 樱桃
             image = "assets/images/cherry.png";
             clickCells[index.toString()] = image;
             fresh++;

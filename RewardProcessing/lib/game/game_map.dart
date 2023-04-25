@@ -25,8 +25,7 @@ String rightImage = "assets/images/guess.png";
 
 class _GameMapState extends State<GameMap> {
   late Timer _timer;
-  // ignore: unused_field
-  final int _seconds = 0;
+  int _seconds = 0;
 
   @override
   void initState() {
@@ -36,19 +35,19 @@ class _GameMapState extends State<GameMap> {
       DeviceOrientation.landscapeLeft,
     ]);
 
-    // _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-    //   setState(() {
-    //     _seconds++;
-    //   });
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _seconds++;
+      });
 
-    //   if (_seconds > 300) {
-    //     Navigator.push(
-    //       context,
-    //       MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)),
-    //     );
-    //     _timer.cancel(); //stop timer
-    //   }
-    // });
+      if (_seconds > 300) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)),
+        );
+        _timer.cancel(); //stop timer
+      }
+    });
   }
 
   List<int> leftGuess = [17, 31, 33];
@@ -204,8 +203,8 @@ class _GameMapState extends State<GameMap> {
     if (lastPlayer != player) {
       if (player == 32 || player == 38) {
         if (guessIndex == -1) {
+          // randomCanGuess(lastPlayer == player);
           randomCanGuess(true);
-          // randomCanGuess(true);
         }
       } else {
         setState(() {
@@ -218,20 +217,18 @@ class _GameMapState extends State<GameMap> {
   }
 
   // refresh
-  void randomCanGuess(firstEnter) {
+  void randomCanGuess(changeDrection) {
     if (player == 32) {
-      // 左边
       if (leftActive) {
         var randomValue = Random().nextDouble();
-        if (randomValue < switchInactiveProbability && !firstEnter) {
-          // 有0.3的概率变成inactive
+        if (randomValue < switchInactiveProbability) {
           leftActive = false;
-          inactiveFirstClicked = firstEnter ? false : true;
+          inactiveFirstClicked = false;
         }
       }
       if (guessIndex == -1) {
         guessIndex = guessesLeft[Random().nextInt(guessesLeft.length)];
-        if (!firstEnter) {
+        if (changeDrection) {
           if (guessIndex == 17) {
             quarterTurns = -1;
           }
@@ -246,18 +243,16 @@ class _GameMapState extends State<GameMap> {
       }
     }
     if (player == 38) {
-      //右边
       if (!leftActive) {
         var randomValue = Random().nextDouble();
-        if (randomValue < switchInactiveProbability && !firstEnter) {
-          // 有0.3的概率变成inactive
+        if (randomValue < switchInactiveProbability) {
           leftActive = true;
-          inactiveFirstClicked = firstEnter ? false : true;
+          inactiveFirstClicked = false;
         }
       }
       if (guessIndex == -1) {
         guessIndex = guessesRight[Random().nextInt(guessesRight.length)];
-        if (!firstEnter) {
+        if (changeDrection) {
           if (guessIndex == 23) {
             quarterTurns = -1;
           }
@@ -282,7 +277,7 @@ class _GameMapState extends State<GameMap> {
         allGuess();
         guessIndex = -1;
       });
-      randomCanGuess(false);
+      randomCanGuess(true);
     });
   }
 
@@ -317,9 +312,7 @@ class _GameMapState extends State<GameMap> {
       bool ghost = false;
       if (image == "assets/images/thisguess.png") {
         if (left && !leftActive) {
-          // 点击左边并且是无效的
           if (!inactiveFirstClicked) {
-            // 变成inactive 还没有第一次点击
             allGhost(left);
             ghost = true;
             inactiveFirstClicked = true;
@@ -329,9 +322,7 @@ class _GameMapState extends State<GameMap> {
             fresh++;
           }
         } else if (!left && leftActive) {
-          // 点击y右边并且是无效的
           if (!inactiveFirstClicked) {
-            // 变成inactive 还没有第一次点击
             allGhost(left);
             ghost = true;
             inactiveFirstClicked = true;
@@ -342,7 +333,6 @@ class _GameMapState extends State<GameMap> {
           }
         } else {
           if (randomValue < cherryProbability) {
-            // 樱桃
             image = "assets/images/cherry.png";
             clickCells[index.toString()] = image;
             fresh++;
