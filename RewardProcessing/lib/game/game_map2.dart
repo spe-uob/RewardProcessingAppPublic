@@ -310,18 +310,18 @@ class _GameMap2State extends State<GameMap2> {
     setState(() {});
   }
 
-  void randomCanGuess(changeDrection) {
+  void randomCanGuess(firstEnter) {
     if (player == 32) {
       if (leftActive) {
         var randomValue = Random().nextDouble();
-        if (randomValue < switchInactiveProbability) {
+        if (randomValue < switchInactiveProbability && !firstEnter) {
           leftActive = false;
-          inactiveFirstClicked = false;
+          inactiveFirstClicked = firstEnter ? false : true;
         }
       }
       if (guessIndex == -1) {
         guessIndex = guessesLeft[Random().nextInt(guessesLeft.length)];
-        if (changeDrection) {
+        if (firstEnter) {
           if (guessIndex == 17) {
             quarterTurns = -1;
           }
@@ -339,14 +339,14 @@ class _GameMap2State extends State<GameMap2> {
     if (player == 38) {
       if (!leftActive) {
         var randomValue = Random().nextDouble();
-        if (randomValue < switchInactiveProbability) {
+        if (randomValue < switchInactiveProbability && !firstEnter) {
           leftActive = true;
-          inactiveFirstClicked = false;
+          inactiveFirstClicked = firstEnter ? false : true;
         }
       }
       if (guessIndex == -1) {
         guessIndex = guessesRight[Random().nextInt(guessesRight.length)];
-        if (changeDrection) {
+        if (firstEnter) {
           if (guessIndex == 23) {
             quarterTurns = -1;
           }
@@ -370,7 +370,7 @@ class _GameMap2State extends State<GameMap2> {
         allGuess();
         guessIndex = -1;
       });
-      randomCanGuess(true);
+      randomCanGuess(false);
     });
   }
 
