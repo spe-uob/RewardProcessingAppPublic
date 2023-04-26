@@ -66,6 +66,7 @@ class _GameMap2State extends State<GameMap2> {
   String rightImage23 = "assets/images/guess.png";
   String rightImage37 = "assets/images/guess.png";
   String rightImage39 = "assets/images/guess.png";
+  bool newMove = false;
 
   List<int> paths = [
     32,
@@ -293,7 +294,7 @@ class _GameMap2State extends State<GameMap2> {
     if (lastPlayer != player) {
       if (player == 32 || player == 38) {
         if (guessIndex == -1) {
-          // randomCanGuess(lastPlayer == player);
+          newMove = true;
           randomCanGuess(true, true);
         }
       } else {
@@ -316,10 +317,12 @@ class _GameMap2State extends State<GameMap2> {
       if (leftActive) {
         var randomValue = Random().nextDouble();
         if (randomValue < switchInactiveProbability && !firstEnter) {
+          // 有0.3的概率变成inactive
           leftActive = false;
-          inactiveFirstClicked = firstEnter ? false : true;
         }
       }
+      inactiveFirstClicked = firstEnter ? false : true;
+
       if (guessIndex == -1) {
         guessIndex = guessesLeft[Random().nextInt(guessesLeft.length)];
         if (changeDirection) {
@@ -338,13 +341,15 @@ class _GameMap2State extends State<GameMap2> {
       }
     }
     if (player == 38) {
+      //right
       if (!leftActive) {
         var randomValue = Random().nextDouble();
         if (randomValue < switchInactiveProbability && !firstEnter) {
+          // there 0.3 probablity become inactive
           leftActive = true;
-          inactiveFirstClicked = firstEnter ? false : true;
         }
       }
+      inactiveFirstClicked = firstEnter ? false : true;
       if (guessIndex == -1) {
         guessIndex = guessesRight[Random().nextInt(guessesRight.length)];
         if (changeDirection) {
@@ -367,11 +372,13 @@ class _GameMap2State extends State<GameMap2> {
 
   void nextShow() {
     Future.delayed(const Duration(seconds: 2), () {
-      setState(() {
-        allGuess();
-        guessIndex = -1;
-      });
-      randomCanGuess(false, true);
+      if (!newMove) {
+        setState(() {
+          allGuess();
+          guessIndex = -1;
+        });
+        randomCanGuess(false, true);
+      }
     });
   }
 
@@ -397,8 +404,10 @@ class _GameMap2State extends State<GameMap2> {
   void clickCell(int index, bool left) {
     String image = clickCells[index.toString()];
     if (image == "assets/images/guess.png") {
+      // guess click return
       return;
     }
+    newMove = false;
     if (guessIndex != -1) {
       guessIndex = -1;
       bool ghost = false;
@@ -408,27 +417,33 @@ class _GameMap2State extends State<GameMap2> {
           if (!inactiveFirstClicked) {
             allGhost(left);
             ghost = true;
-          } else {
+          } 
+          else {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
             fresh++;
           }
         } else if (!left && leftActive) {
+          // 点击y右边并且是无效的
           if (!inactiveFirstClicked) {
+            // 变成inactive 还没有第一次点击
             allGhost(left);
             ghost = true;
+            // inactiveFirstClicked = true;
           } else {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
             fresh++;
           }
-        } else {
+        } 
+        else {
           if (randomValue < cherryProbability) {
-            // 樱桃
+            // cherry
             image = "assets/images/cherry.png";
             clickCells[index.toString()] = image;
             fresh++;
-          } else {
+          } 
+          else {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
             fresh++;
@@ -629,7 +644,8 @@ class _GameMap2State extends State<GameMap2> {
             padding: const EdgeInsets.all(0.1),
             child:
                 Column(children: [Image.asset(clickCells[index.toString()])]),
-          ));
+          )
+          );
     } else if (23 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
@@ -640,7 +656,8 @@ class _GameMap2State extends State<GameMap2> {
             padding: const EdgeInsets.all(0.1),
             child:
                 Column(children: [Image.asset(clickCells[index.toString()])]),
-          ));
+          )
+          );
     } else if (37 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
@@ -688,6 +705,7 @@ class _GameMap2State extends State<GameMap2> {
         ),
       );
     }
+
 
     debugPrint("index$index");
     debugPrint("left${(index % 15) * itemWidth + startLeft}");
