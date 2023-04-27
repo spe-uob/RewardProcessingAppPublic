@@ -27,29 +27,6 @@ class _GameMapState extends State<GameMap> {
   late Timer _timer;
   int _seconds = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
-
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        _seconds++;
-      });
-
-      if (_seconds > 300) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)),
-        );
-        _timer.cancel(); //stop timer
-      }
-    });
-  }
-
   List<int> leftGuess = [17, 31, 33];
   List<int> rightGuess = [23, 37, 39];
   List<int> guess = [17, 31, 33, 23, 37, 39];
@@ -80,6 +57,9 @@ class _GameMapState extends State<GameMap> {
   double cherryProbability = 0.8;
   double emptyProbability = 0.2;
   double switchInactiveProbability = 0.3;
+  bool allwaysGhost = true;
+
+  bool newMove = false;
 
   List<int> barriers = [
     0,
@@ -130,6 +110,30 @@ class _GameMapState extends State<GameMap> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    leftActive = Random().nextDouble() > 0.5;
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ]);
+
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _seconds++;
+      });
+
+      if (_seconds > 300) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)),
+        );
+        _timer.cancel(); //stop timer
+      }
+    });
+  }
+
+  @override
   void dispose() {
     super.dispose();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
@@ -145,11 +149,6 @@ class _GameMapState extends State<GameMap> {
   }
 
   void calculate(int type) {
-    if (score >= 200) {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)));
-    }
-
     if (type == 0) {
       score = score + 1;
     } else if (type == 1) {
@@ -160,6 +159,13 @@ class _GameMapState extends State<GameMap> {
       percentage = score / 2;
     } else {
       percentage = 100;
+    }
+
+    if (score >= 200) {
+      percentage = 100;
+      score = 200;
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)));
     }
   }
 
@@ -203,8 +209,8 @@ class _GameMapState extends State<GameMap> {
     if (lastPlayer != player) {
       if (player == 32 || player == 38) {
         if (guessIndex == -1) {
-          // randomCanGuess(lastPlayer == player);
-          randomCanGuess(true);
+          newMove = true;
+          randomCanGuess(true, true);
         }
       } else {
         setState(() {
@@ -217,20 +223,21 @@ class _GameMapState extends State<GameMap> {
   }
 
   // refresh
-  void randomCanGuess(changeDrection) {
+  void randomCanGuess(bool firstEnter, bool changeDirection) {
     if (player == 32) {
       // 左边
+
       if (leftActive) {
         var randomValue = Random().nextDouble();
-        if (randomValue < switchInactiveProbability) {
+        if (randomValue < switchInactiveProbability && !firstEnter) {
           // 有0.3的概率变成inactive
           leftActive = false;
-          inactiveFirstClicked = false;
         }
       }
+      inactiveFirstClicked = firstEnter ? false : true;
       if (guessIndex == -1) {
         guessIndex = guessesLeft[Random().nextInt(guessesLeft.length)];
-        if (changeDrection) {
+        if (changeDirection) {
           if (guessIndex == 17) {
             quarterTurns = -1;
           }
@@ -248,15 +255,15 @@ class _GameMapState extends State<GameMap> {
       //右边
       if (!leftActive) {
         var randomValue = Random().nextDouble();
-        if (randomValue < switchInactiveProbability) {
+        if (randomValue < switchInactiveProbability && !firstEnter) {
           // 有0.3的概率变成inactive
           leftActive = true;
-          inactiveFirstClicked = false;
         }
       }
+      inactiveFirstClicked = firstEnter ? false : true;
       if (guessIndex == -1) {
         guessIndex = guessesRight[Random().nextInt(guessesRight.length)];
-        if (changeDrection) {
+        if (changeDirection) {
           if (guessIndex == 23) {
             quarterTurns = -1;
           }
@@ -272,16 +279,18 @@ class _GameMapState extends State<GameMap> {
     }
     setState(() {});
     debugPrint(
-        "状态,leftActive=$leftActive,inactiveFirstClicked=$inactiveFirstClicked");
+        "State,leftActive=$leftActive,inactiveFirstClicked=$inactiveFirstClicked");
   }
 
   void nextShow() {
     Future.delayed(const Duration(seconds: 2), () {
-      setState(() {
-        allGuess();
-        guessIndex = -1;
-      });
-      randomCanGuess(true);
+      if (!newMove) {
+        setState(() {
+          allGuess();
+          guessIndex = -1;
+        });
+        randomCanGuess(false, true);
+      }
     });
   }
 
@@ -310,6 +319,7 @@ class _GameMapState extends State<GameMap> {
       // guess click return
       return;
     }
+    newMove = false;
     if (guessIndex != -1) {
       guessIndex = -1;
       var randomValue = Random().nextDouble();
@@ -321,7 +331,7 @@ class _GameMapState extends State<GameMap> {
             // 变成inactive 还没有第一次点击
             allGhost(left);
             ghost = true;
-            inactiveFirstClicked = true;
+            //inactiveFirstClicked = true;
           } else {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
@@ -333,7 +343,7 @@ class _GameMapState extends State<GameMap> {
             // 变成inactive 还没有第一次点击
             allGhost(left);
             ghost = true;
-            inactiveFirstClicked = true;
+            //inactiveFirstClicked = true;
           } else {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
@@ -364,6 +374,9 @@ class _GameMapState extends State<GameMap> {
       nextShow();
       allGuess();
     }
+
+    debugPrint(
+        "state2,leftActive=$leftActive,inactiveFirstClicked=$inactiveFirstClicked");
 
     setState(() {});
   }
