@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -26,6 +27,38 @@ String rightImage = "assets/images/guess.png";
 class _GameMapState extends State<GameMap> {
   late Timer _timer;
   int _seconds = 0;
+  late String reward;
+  late String activeSide;
+  String agentSide = 'N';
+
+  @override
+  void initState() {
+    super.initState();
+    leftActive = Random().nextDouble() > 0.5;
+    if (leftActive == true) {
+      activeSide = 'Left';
+    } else if (leftActive == false) {
+      activeSide = 'Right';
+    }
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ]);
+
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _seconds++;
+      });
+
+      if (_seconds > 300 || score >= 200) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)),
+        );
+        _timer.cancel(); //stop timer
+      }
+    });
+  }
 
   List<int> leftGuess = [17, 31, 33];
   List<int> rightGuess = [23, 37, 39];
@@ -57,7 +90,6 @@ class _GameMapState extends State<GameMap> {
   double cherryProbability = 0.8;
   double emptyProbability = 0.2;
   double switchInactiveProbability = 0.3;
-  bool allwaysGhost = true;
 
   bool newMove = false;
 
@@ -110,30 +142,6 @@ class _GameMapState extends State<GameMap> {
   ];
 
   @override
-  void initState() {
-    super.initState();
-    leftActive = Random().nextDouble() > 0.5;
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
-
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        _seconds++;
-      });
-
-      if (_seconds > 300) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)),
-        );
-        _timer.cancel(); //stop timer
-      }
-    });
-  }
-
-  @override
   void dispose() {
     super.dispose();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
@@ -149,6 +157,7 @@ class _GameMapState extends State<GameMap> {
   }
 
   void calculate(int type) {
+
     if (type == 0) {
       score = score + 1;
     } else if (type == 1) {
@@ -159,13 +168,6 @@ class _GameMapState extends State<GameMap> {
       percentage = score / 2;
     } else {
       percentage = 100;
-    }
-
-    if (score >= 200) {
-      percentage = 100;
-      score = 200;
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)));
     }
   }
 
@@ -215,7 +217,8 @@ class _GameMapState extends State<GameMap> {
       } else {
         setState(() {
           allGuess();
-        });
+        }
+        );
       }
     }
 
@@ -225,13 +228,15 @@ class _GameMapState extends State<GameMap> {
   // refresh
   void randomCanGuess(bool firstEnter, bool changeDirection) {
     if (player == 32) {
-      // 左边
+      // left
+      agentSide = 'Left';
 
       if (leftActive) {
         var randomValue = Random().nextDouble();
         if (randomValue < switchInactiveProbability && !firstEnter) {
-          // 有0.3的概率变成inactive
+          // there's a 0.3 probability of switching to inactive
           leftActive = false;
+          activeSide = 'Right';
         }
       }
       inactiveFirstClicked = firstEnter ? false : true;
@@ -252,12 +257,15 @@ class _GameMapState extends State<GameMap> {
       }
     }
     if (player == 38) {
-      //右边
+      // right
+      agentSide = 'Right';
+
       if (!leftActive) {
         var randomValue = Random().nextDouble();
         if (randomValue < switchInactiveProbability && !firstEnter) {
-          // 有0.3的概率变成inactive
+          // there 0.3 probability become inactive
           leftActive = true;
+          activeSide = 'Left';
         }
       }
       inactiveFirstClicked = firstEnter ? false : true;
@@ -283,7 +291,7 @@ class _GameMapState extends State<GameMap> {
   }
 
   void nextShow() {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       if (!newMove) {
         setState(() {
           allGuess();
@@ -313,7 +321,7 @@ class _GameMapState extends State<GameMap> {
     }
   }
 
-  void clickCell(int index, bool left) {
+  Future<void> clickCell(int index, bool left) async {
     String image = clickCells[index.toString()];
     if (image == "assets/images/guess.png") {
       // guess click return
@@ -326,39 +334,117 @@ class _GameMapState extends State<GameMap> {
       bool ghost = false;
       if (image == "assets/images/thisguess.png") {
         if (left && !leftActive) {
-          // 点击左边并且是无效的
+          // click the left side and it's invalid
           if (!inactiveFirstClicked) {
-            // 变成inactive 还没有第一次点击
+            // become inactive
             allGhost(left);
             ghost = true;
+            reward = 'Ghosts appear';
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              "Guess box selected",
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
             //inactiveFirstClicked = true;
           } else {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
             fresh++;
+            reward = 'Show no cherry';
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              "Guess box selected",
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
           }
         } else if (!left && leftActive) {
-          // 点击y右边并且是无效的
+          // click the right side and it's inactive
           if (!inactiveFirstClicked) {
-            // 变成inactive 还没有第一次点击
+            // become inactive
             allGhost(left);
             ghost = true;
+            reward = 'Ghosts appear';
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              "Guess box selected",
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
             //inactiveFirstClicked = true;
           } else {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
             fresh++;
+            reward = 'Show no cherry';
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              "Guess box selected",
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
           }
         } else {
           if (randomValue < cherryProbability) {
-            // 樱桃
+            // cherry
             image = "assets/images/cherry.png";
             clickCells[index.toString()] = image;
             fresh++;
+            reward = 'Show cherry';
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              "Guess box selected",
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
           } else {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
             fresh++;
+            reward = 'Show no cherry';
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              "Guess box selected",
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
           }
         }
       }
@@ -368,15 +454,15 @@ class _GameMapState extends State<GameMap> {
     } else if (image == "assets/images/cherry.png") {
       image = "assets/images/NoCherry.png";
       clickCells[index.toString()] = image;
-
       fresh++;
+      reward = 'Cherry selected';
       calculate(1);
       nextShow();
       allGuess();
     }
 
     debugPrint(
-        "state2,leftActive=$leftActive,inactiveFirstClicked=$inactiveFirstClicked");
+        "State2,leftActive=$leftActive,inactiveFirstClicked=$inactiveFirstClicked");
 
     setState(() {});
   }
@@ -400,54 +486,62 @@ class _GameMapState extends State<GameMap> {
           backgroundColor: Colors.transparent,
           foregroundColor: Colors.transparent,
         ),
-        body: Column(children: [
-          Container(
-              height: topHeight - 10,
-              width: double.infinity,
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: LinearPercentIndicator(
-                      width: 400.0,
-                      lineHeight: 16,
-                      progressColor: Colors.teal[400],
-                      backgroundColor: Colors.grey[400],
-                      center: Text("$percentage%"),
-                      leading: Text(
-                        "Score:$score",
-                        style: const TextStyle(
+        body: Column(
+            children: [
+              Container(
+                  height: topHeight - 10,
+                  width: double.infinity,
+                  padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: LinearPercentIndicator(
+                          width: 450.0,
+                          lineHeight: 16.0,
+                          progressColor: Colors.teal[400],
+                          backgroundColor: Colors.grey[400],
+                          barRadius: const Radius.circular(10),
+                          center: Text("$percentage%"),
+                          leading: Text(
+                            "Score: $score",
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16.0,
+                                color: Colors.black
+                            ),
+                          ),
+                          percent: percentage / 100,
+                        ),
+                      ),
+                      const Text(
+                        "Target Goal: 200points",
+                        style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16.0,
-                            color: Colors.black),
+                            color: Colors.black
+                        ),
                       ),
-                      percent: percentage / 100,
-                    ),
-                  ),
-                  const Spacer(),
-                  const Text(
-                    "Target Goal: 200points",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16.0,
-                        color: Colors.black),
-                  ),
-                ],
-              )),
-          Container(
-            height: 10,
-            color: const Color(0xffeeeeee),
-          ),
-          Expanded(
-            child: Container(
-                color: Colors.black,
-                child: Stack(
-                  children: items,
-                )),
-          )
-        ]));
+                    ],
+                  )
+              ),
+              Container(
+                height: 10,
+                color: const Color(0xffeeeeee),
+              ),
+              Expanded(
+                child: Container(
+                    color: Colors.black,
+                    child: Stack(
+                      children: items,
+                    )
+                ),
+              )
+            ]
+        )
+    );
   }
 
   Widget getWidget(int index) {
@@ -463,50 +557,115 @@ class _GameMapState extends State<GameMap> {
     if (57 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: () {
+          onTap: () async {
             movePlayer(-1, 0);
             trigger();
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              "Left Click",
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
-            child:
-                Column(children: [Image.asset("assets/images/arrowleft.png")]),
-          ));
+            child: Column(
+                children: [
+                  Image.asset("assets/images/arrowleft.png")
+                ]
+            ),
+          )
+      );
     } else if (59 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: () {
+          onTap: () async {
             movePlayer(1, 0);
             trigger();
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              "Right Click",
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
-            child:
-                Column(children: [Image.asset("assets/images/arrowright.png")]),
-          ));
+            child: Column(
+                children: [
+                  Image.asset("assets/images/arrowright.png")
+                ]
+            ),
+          )
+      );
     } else if (28 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: () {
+          onTap: () async {
             movePlayer(0, -1);
             trigger();
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              "Up Click",
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
-            child: Column(children: [Image.asset("assets/images/arrowup.png")]),
-          ));
+            child: Column(
+                children: [
+                  Image.asset("assets/images/arrowup.png")
+                ]
+            ),
+          )
+      );
     } else if (88 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: () {
+          onTap: () async {
             movePlayer(0, 1);
             trigger();
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              "Down Click",
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
-            child:
-                Column(children: [Image.asset("assets/images/arrowdown.png")]),
-          ));
+            child: Column(
+                children: [
+                  Image.asset("assets/images/arrowdown.png")
+                ]
+            ),
+          )
+      );
     } else if (player == index) {
       w = RotatedBox(
           quarterTurns: quarterTurns == -2 ? 0 : quarterTurns,
@@ -522,82 +681,187 @@ class _GameMapState extends State<GameMap> {
                 height: itemWidth - 2,
               )
             ]),
-          ));
+          )
+      );
     } else if (17 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: () {
+          onTap: () async {
             clickCell(17, true);
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              reward,
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
           },
           child: Padding(
             padding: const EdgeInsets.all(0.1),
-            child:
-                Column(children: [Image.asset(clickCells[index.toString()])]),
-          ));
+            child: Column(
+                children: [
+                  Image.asset(clickCells[index.toString()])
+                ]
+            ),
+          )
+      );
     } else if (31 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: () {
+          onTap: () async {
             clickCell(31, true);
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              reward,
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
           },
           child: Padding(
             padding: const EdgeInsets.all(0.1),
-            child:
-                Column(children: [Image.asset(clickCells[index.toString()])]),
-          ));
+            child: Column(
+                children: [
+                  Image.asset(clickCells[index.toString()])
+                ]
+            ),
+          )
+      );
     } else if (33 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: () {
+          onTap: () async {
             clickCell(33, true);
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              reward,
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
           },
           child: Padding(
             padding: const EdgeInsets.all(0.1),
-            child:
-                Column(children: [Image.asset(clickCells[index.toString()])]),
-          ));
+            child: Column(
+                children: [
+                  Image.asset(clickCells[index.toString()])
+                ]
+            ),
+          )
+      );
     } else if (23 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: () {
+          onTap: () async {
             clickCell(23, false);
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              reward,
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
           },
           child: Padding(
             padding: const EdgeInsets.all(0.1),
-            child:
-                Column(children: [Image.asset(clickCells[index.toString()])]),
-          ));
+            child: Column(
+                children: [
+                  Image.asset(clickCells[index.toString()])
+                ]
+            ),
+          )
+      );
     } else if (37 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: () {
+          onTap: () async {
             clickCell(37, false);
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              reward,
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
           },
           child: Padding(
             padding: const EdgeInsets.all(0.1),
-            child:
-                Column(children: [Image.asset(clickCells[index.toString()])]),
-          ));
+            child: Column(
+                children: [
+                  Image.asset(clickCells[index.toString()])
+                ]
+            ),
+          )
+      );
     } else if (39 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: () {
+          onTap: () async {
             clickCell(39, false);
+            await FirebaseFirestore.instance
+                .collection('game1')
+                .doc(widget.id)
+                .set({Timestamp.now().toString(): [
+              reward,
+              "Score: $score",
+              "Active Side: $activeSide",
+              "Agent Side: $agentSide",
+              "Percentage Complete: $percentage%"
+            ]},
+                SetOptions(merge: true)
+            );
           },
           child: Padding(
             padding: const EdgeInsets.all(0.1),
-            child:
-                Column(children: [Image.asset(clickCells[index.toString()])]),
-          ));
+            child: Column(
+                children: [
+                  Image.asset(clickCells[index.toString()])
+                ]
+            ),
+          )
+      );
     } else if (pellets.contains(index)) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/dot.png")]),
+        child: Column(
+            children: [
+              Image.asset("assets/images/dot.png")
+            ]
+        ),
       );
     } else if (barriers.contains(index)) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/wall.png")]),
+        child: Column(
+            children: [
+              Image.asset("assets/images/wall.png")
+            ]
+        ),
       );
     } else {
       w = Padding(

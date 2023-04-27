@@ -60,7 +60,7 @@ class _GameFinishedState2 extends State<GameFinished2> {
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(240, 20),
+                            fixedSize: const Size(240, 50),
                             backgroundColor: const Color(0xFF00A8AF),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(100)
@@ -73,7 +73,7 @@ class _GameFinishedState2 extends State<GameFinished2> {
                               style:TextStyle(
                                  // fontWeight: FontWeight.bold,
                                   color: Colors.white,
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.bold,
                               )
                           )

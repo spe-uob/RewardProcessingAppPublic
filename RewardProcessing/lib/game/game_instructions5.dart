@@ -20,29 +20,34 @@ class _GameInstructions5State extends State<GameInstructions5> {
     ]);
   }
 
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    backgroundColor: const Color(0xff000000),
-    body: GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Aim(id: widget.id)),
-        );
-      },
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/images/gi5.png',
-              scale: 2.9,
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+        onWillPop: ()async {
+          return false; // disable back page
+        },
+        child: Scaffold(
+          backgroundColor: const Color(0xff000000),
+          body: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Aim(id: widget.id)),
+              );
+            },
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/gi5.png',
+                    scale: 2.9,
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
-    ),
-  );
-}
+          ),
+        )
+    );
+  }
 }

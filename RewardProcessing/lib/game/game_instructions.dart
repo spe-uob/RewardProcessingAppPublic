@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 
 class GameInstructions extends StatefulWidget {
   final String id;
-
   const GameInstructions({super.key, required this.id});
 
   @override
@@ -12,7 +11,7 @@ class GameInstructions extends StatefulWidget {
 }
 
 class _GameInstructionsState extends State<GameInstructions> {
-  bool _showText =true;
+  bool _showText = true;
 
   @override
   void initState() {
@@ -21,7 +20,7 @@ class _GameInstructionsState extends State<GameInstructions> {
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
     ]);
-     Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       setState(() {
         _showText = false;
       });
@@ -30,55 +29,60 @@ class _GameInstructionsState extends State<GameInstructions> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xff000000),
-      body: Stack(
-        children: [
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => GameInstructions2(id: widget.id)),
-              );
-            },
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/images/GI.png',
-                    scale: 2.9,
+    return WillPopScope(
+        onWillPop: () async {
+          return false; // disable back page
+        },
+        child: Scaffold(
+          backgroundColor: const Color(0xff000000),
+          body: Stack(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => GameInstructions2(id: widget.id)),
+                  );
+                },
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/gi1.png',
+                        scale: 2.9,
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          ),
-          if (_showText)
-            Positioned(
-              bottom: 20,
-              left: 0,
-              right: 0,
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                curve: Curves.easeInOut,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.4),
                 ),
-                child: const Center(
-                  child:Text(
-                    'Click anywhere to continue',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 23,
-                      fontWeight: FontWeight.bold,
+              ),
+              if (_showText)
+                Positioned(
+                  bottom: 20,
+                  left: 0,
+                  right: 0,
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 200),
+                    curve: Curves.easeInOut,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.4),
+                    ),
+                    child: const Center(
+                      child:Text(
+                        'Click anywhere to continue',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 23,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
-        ],
-      ),
+            ],
+          ),
+        )
     );
   }
 }
