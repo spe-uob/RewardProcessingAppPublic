@@ -36,7 +36,7 @@ Widget build(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/GI5.png',
+              'assets/images/gi5.png',
               scale: 2.9,
             ),
           ],
