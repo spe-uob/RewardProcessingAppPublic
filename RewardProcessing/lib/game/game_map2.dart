@@ -27,28 +27,6 @@ class _GameMap2State extends State<GameMap2> {
   late Timer _timer;
   int _seconds = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        _seconds++;
-      });
-
-      if (_seconds > 300) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => GameFinished2(id: widget.id)),
-        );
-        _timer.cancel(); //stop timer
-      }
-    });
-  }
-
   List<int> leftGuess = [17, 31, 33];
   List<int> rightGuess = [23, 37, 39];
 
@@ -204,6 +182,29 @@ class _GameMap2State extends State<GameMap2> {
   double switchInactiveProbability = 0.3;
 
   @override
+  void initState() {
+    super.initState();
+    leftActive = Random().nextDouble() > 0.5;
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ]);
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _seconds++;
+      });
+
+      if (_seconds > 300) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => GameFinished2(id: widget.id)),
+        );
+        _timer.cancel(); //stop timer
+      }
+    });
+  }
+
+  @override
   void dispose() {
     super.dispose();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
@@ -239,13 +240,6 @@ class _GameMap2State extends State<GameMap2> {
   }
 
   void calculate(int type) {
-    if (score >= 200) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => GameFinished2(id: widget.id)));
-    }
-
     if (type == 0) {
       score = score + 1;
     } else if (type == 1) {
@@ -253,6 +247,12 @@ class _GameMap2State extends State<GameMap2> {
     }
 
     percentage = score / 2;
+    if (score >= 200) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => GameFinished2(id: widget.id)));
+    }
   }
 
   void movePlayer(int right, int down) {
@@ -313,11 +313,11 @@ class _GameMap2State extends State<GameMap2> {
 
   void randomCanGuess(bool firstEnter, bool changeDirection) {
     if (player == 32) {
-      // 左边
+      // left
       if (leftActive) {
         var randomValue = Random().nextDouble();
         if (randomValue < switchInactiveProbability && !firstEnter) {
-          // 有0.3的概率变成inactive
+          // there are 0.3 probablity become inactive
           leftActive = false;
         }
       }
@@ -345,7 +345,7 @@ class _GameMap2State extends State<GameMap2> {
       if (!leftActive) {
         var randomValue = Random().nextDouble();
         if (randomValue < switchInactiveProbability && !firstEnter) {
-          // there 0.3 probablity become inactive
+          // there are 0.3 probablity become inactive
           leftActive = true;
         }
       }
@@ -408,23 +408,26 @@ class _GameMap2State extends State<GameMap2> {
       return;
     }
     newMove = false;
+
     if (guessIndex != -1) {
       guessIndex = -1;
       bool ghost = false;
       var randomValue = Random().nextDouble();
       if (image == "assets/images/thisguess.png") {
         if (left && !leftActive) {
+          // click left
           if (!inactiveFirstClicked) {
+            // become inactive
             allGhost(left);
             ghost = true;
-          } 
-          else {
+            // inactiveFirstClicked = true;
+          } else {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
             fresh++;
           }
         } else if (!left && leftActive) {
-          // 点击y右边并且是无效的
+          // click right and it's invalid
           if (!inactiveFirstClicked) {
             // 变成inactive 还没有第一次点击
             allGhost(left);
@@ -435,15 +438,15 @@ class _GameMap2State extends State<GameMap2> {
             clickCells[index.toString()] = image;
             fresh++;
           }
-        } 
-        else {
-          if (randomValue < cherryProbability) {
+        } else 
+        {
+          if (randomValue < cherryProbability)
+           {
             // cherry
             image = "assets/images/cherry.png";
             clickCells[index.toString()] = image;
             fresh++;
-          } 
-          else {
+          } else {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
             fresh++;
@@ -644,8 +647,7 @@ class _GameMap2State extends State<GameMap2> {
             padding: const EdgeInsets.all(0.1),
             child:
                 Column(children: [Image.asset(clickCells[index.toString()])]),
-          )
-          );
+          ));
     } else if (23 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
@@ -656,8 +658,7 @@ class _GameMap2State extends State<GameMap2> {
             padding: const EdgeInsets.all(0.1),
             child:
                 Column(children: [Image.asset(clickCells[index.toString()])]),
-          )
-          );
+          ));
     } else if (37 == index) {
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
@@ -705,7 +706,6 @@ class _GameMap2State extends State<GameMap2> {
         ),
       );
     }
-
 
     debugPrint("index$index");
     debugPrint("left${(index % 15) * itemWidth + startLeft}");

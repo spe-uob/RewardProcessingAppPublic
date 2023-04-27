@@ -27,29 +27,6 @@ class _GameMapState extends State<GameMap> {
   late Timer _timer;
   int _seconds = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
-
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        _seconds++;
-      });
-
-      if (_seconds > 300) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)),
-        );
-        _timer.cancel(); //stop timer
-      }
-    });
-  }
-
   List<int> leftGuess = [17, 31, 33];
   List<int> rightGuess = [23, 37, 39];
   List<int> guess = [17, 31, 33, 23, 37, 39];
@@ -133,6 +110,30 @@ class _GameMapState extends State<GameMap> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    leftActive = Random().nextDouble() > 0.5;
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ]);
+
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _seconds++;
+      });
+
+      if (_seconds > 300) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)),
+        );
+        _timer.cancel(); //stop timer
+      }
+    });
+  }
+
+  @override
   void dispose() {
     super.dispose();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
@@ -148,11 +149,6 @@ class _GameMapState extends State<GameMap> {
   }
 
   void calculate(int type) {
-    if (score >= 200) {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)));
-    }
-
     if (type == 0) {
       score = score + 1;
     } else if (type == 1) {
@@ -163,6 +159,13 @@ class _GameMapState extends State<GameMap> {
       percentage = score / 2;
     } else {
       percentage = 100;
+    }
+
+    if (score >= 200) {
+      percentage = 100;
+      score = 200;
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)));
     }
   }
 
@@ -212,8 +215,7 @@ class _GameMapState extends State<GameMap> {
       } else {
         setState(() {
           allGuess();
-        }
-        );
+        });
       }
     }
 
@@ -223,12 +225,12 @@ class _GameMapState extends State<GameMap> {
   // refresh
   void randomCanGuess(bool firstEnter, bool changeDirection) {
     if (player == 32) {
-      // left
+      // 左边
 
       if (leftActive) {
         var randomValue = Random().nextDouble();
         if (randomValue < switchInactiveProbability && !firstEnter) {
-          // there 0.3 probablity switch to inactive
+          // 有0.3的概率变成inactive
           leftActive = false;
         }
       }
@@ -250,11 +252,11 @@ class _GameMapState extends State<GameMap> {
       }
     }
     if (player == 38) {
-      //right
+      //右边
       if (!leftActive) {
         var randomValue = Random().nextDouble();
         if (randomValue < switchInactiveProbability && !firstEnter) {
-          // there 0.3 probablity become inactive
+          // 有0.3的概率变成inactive
           leftActive = true;
         }
       }
@@ -324,9 +326,9 @@ class _GameMapState extends State<GameMap> {
       bool ghost = false;
       if (image == "assets/images/thisguess.png") {
         if (left && !leftActive) {
-          // click the left side and it's invalid
+          // 点击左边并且是无效的
           if (!inactiveFirstClicked) {
-            // become inactive
+            // 变成inactive 还没有第一次点击
             allGhost(left);
             ghost = true;
             //inactiveFirstClicked = true;
@@ -336,9 +338,9 @@ class _GameMapState extends State<GameMap> {
             fresh++;
           }
         } else if (!left && leftActive) {
-          // click the right side and it's invalid
+          // 点击y右边并且是无效的
           if (!inactiveFirstClicked) {
-            // become inactive
+            // 变成inactive 还没有第一次点击
             allGhost(left);
             ghost = true;
             //inactiveFirstClicked = true;
@@ -349,7 +351,7 @@ class _GameMapState extends State<GameMap> {
           }
         } else {
           if (randomValue < cherryProbability) {
-            // cherry
+            // 樱桃
             image = "assets/images/cherry.png";
             clickCells[index.toString()] = image;
             fresh++;
@@ -374,7 +376,7 @@ class _GameMapState extends State<GameMap> {
     }
 
     debugPrint(
-        "State2,leftActive=$leftActive,inactiveFirstClicked=$inactiveFirstClicked");
+        "state2,leftActive=$leftActive,inactiveFirstClicked=$inactiveFirstClicked");
 
     setState(() {});
   }
@@ -586,8 +588,7 @@ class _GameMapState extends State<GameMap> {
             padding: const EdgeInsets.all(0.1),
             child:
                 Column(children: [Image.asset(clickCells[index.toString()])]),
-          )
-          );
+          ));
     } else if (pellets.contains(index)) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
