@@ -46,7 +46,7 @@ class _GameInstructionsState extends State<GameInstructions> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/gi.png',
+                    'assets/images/GI.png',
                     scale: 2.9,
                   ),
                 ],
