@@ -39,7 +39,7 @@ class _FinishedQuestionState extends State<FinishedQuestion> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 30,
+                          fontSize: 25,
                           color: Colors.black
                         ),
                   ),
@@ -48,7 +48,7 @@ class _FinishedQuestionState extends State<FinishedQuestion> {
                       margin: const EdgeInsets.only(right: 30, left: 30, top: 52, bottom: 20),
                       child: const Text('You finished the game!',
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 20,
+                          style: TextStyle(fontSize: 18,
                               color: Colors.black
                           )
                       )
@@ -59,7 +59,7 @@ class _FinishedQuestionState extends State<FinishedQuestion> {
                           overflow: TextOverflow.visible,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 18,
                               color: Colors.black
                           )
                       )

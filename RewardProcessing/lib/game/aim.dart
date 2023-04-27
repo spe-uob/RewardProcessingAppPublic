@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rewardprocessing/game/game_map.dart';
@@ -137,10 +138,20 @@ class _AimState extends State<Aim> {
                       Container(
                           margin: const EdgeInsets.only(left: 10, right: 10),
                           child: ElevatedButton(
-                              onPressed: () {
+                              onPressed: () async {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(builder: (context) => GameMap(id: widget.id))
+                                );
+                                await FirebaseFirestore.instance
+                                    .collection('game1')
+                                    .doc(widget.id)
+                                    .set({'0. Game Details': [
+                                  'Site Switch Probability.: 0.3',
+                                  'Cherry Probability: 0.8',
+                                  'Active Site: 0.5 probability of being on the left/right at the start of every game.'
+                                ]},
+                                    SetOptions(merge: true)
                                 );
                               },
                               style: ElevatedButton.styleFrom(
@@ -149,7 +160,8 @@ class _AimState extends State<Aim> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(100)
                                 ),
-                                elevation: 2.0,),
+                                elevation: 2.0
+                              ),
                               child: const Text(
                                   'Start',
                                   textAlign: TextAlign.center,

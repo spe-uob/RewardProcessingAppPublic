@@ -68,9 +68,9 @@ class _ProlificIDState extends State<ProlificID> {
                           ],
                           validator: (val) {
                             return (RegExp("[A-Za-z0-9]").hasMatch(prolificID) &&
-                                prolificID.length <= 15) 
+                                prolificID.length <= 15)
                                 ? null
-                                 : "Request body length over limit";
+                                : "Request body length over limit";
                           },
                           cursorColor: const Color(0xFF00A8AF),
                           decoration: const InputDecoration(
@@ -96,9 +96,9 @@ class _ProlificIDState extends State<ProlificID> {
                               activeButton = value.isNotEmpty ? true : false;
                               _textEditingController.text = value;
 
-                              if(value.length >15){
+                              if(value.length > 15) {
                                 counterTextColor =Colors.red;
-                              }else {
+                              } else {
                                 counterTextColor = Colors.black;
                               }
                             });
@@ -106,16 +106,16 @@ class _ProlificIDState extends State<ProlificID> {
                   )
               ),
               Container(
-                        margin: const EdgeInsets.only(right: 60),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              '${_textEditingController.text.trim().length}/15',
-                              style: TextStyle(color: counterTextColor),)
-                          ],
-                        ),
-                      ),
+                margin: const EdgeInsets.only(right: 60),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      '${_textEditingController.text.trim().length}/15',
+                      style: TextStyle(color: counterTextColor),)
+                  ],
+                ),
+              ),
               Container(
                   margin: const EdgeInsets.only(top: 60),
                   child: ElevatedButton(
@@ -138,13 +138,15 @@ class _ProlificIDState extends State<ProlificID> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(100)
                           ),
-                          elevation: 2.0),
+                          elevation: 2.0
+                      ),
                       child: const Text('Continue',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 17,
-                              fontWeight: FontWeight.w300)
+                              fontWeight: FontWeight.w300
+                          )
                       )
                   )
               )

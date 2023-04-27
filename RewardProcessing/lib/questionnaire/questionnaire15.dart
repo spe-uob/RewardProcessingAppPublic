@@ -80,7 +80,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                         const Text('No - it was a complete surprise',
                             overflow: TextOverflow.visible,
                             style: TextStyle(
-                                fontSize: 16
+                                fontSize: 15
                             )
                         )
                       ]
@@ -107,7 +107,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                         const Text('Yes - on the day it happened',
                             overflow: TextOverflow.visible,
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 15,
                             )
                         )
                       ]
@@ -131,10 +131,10 @@ class _Questionnaire15State extends State<Questionnaire15> {
                               });
                             }
                         ),
-                        const Text('Yes - up to a week before it happened',
+                        const Text('Yes - up to a week before it \nhappened',
                             overflow: TextOverflow.visible,
                             style: TextStyle(
-                                fontSize: 16
+                                fontSize: 15
                             )
                         )
                       ]
@@ -154,14 +154,15 @@ class _Questionnaire15State extends State<Questionnaire15> {
                               setState(() {
                                 _value = value;
                                 activeButton = true;
-                                text = 'Yes - I knew about it for more than a week before it \n happened';
+                                text = 'Yes - I knew about it for more than a week before it happened';
                               });
                             }
                         ),
-                        const Text('Yes - I knew about it for more than \n a week before it happened',
-                            overflow: TextOverflow.visible,
+                        const Text(
+                            'Yes - I knew about it for more than \na week before it happened',
+                            softWrap: true,
                             style: TextStyle(
-                                fontSize: 16,
+                              fontSize: 15,
                             )
                         )
                       ]

@@ -22,7 +22,7 @@ class _FinishPageState extends State<FinishPage> {
     ]);
   }
 
-@override
+  @override
   Widget build(BuildContext context) {
     return WillPopScope(
         onWillPop: () async {
@@ -61,46 +61,46 @@ class _FinishPageState extends State<FinishPage> {
                   //     ),
                   // ),
                   Container(
-  margin: const EdgeInsets.only(right: 50, left: 50, top: 52, bottom: 20),
-  child: GestureDetector(
-    onTap: () async {
-      // ignore: deprecated_member_use
-      await launch('https://www.samaritans.org');
-    },
-    child: Text.rich(
-      TextSpan(
-        children: [
-          const TextSpan(
-            text:
-                'Please note: If you experience any adverse effects to your mental health please seek help from your usual care providers. If you require immediate help, online advice can be found at ',
-            style: TextStyle(fontSize: 17, color: Colors.black),
-          ),
-          TextSpan(
-            text: 'www.samaritans.org',
-            style: const TextStyle(
-              fontSize: 17,
-              color: Colors.blue,
-              decoration: TextDecoration.underline,
-            ),
-            recognizer: TapGestureRecognizer()
-              ..onTap = () async {
-                // ignore: deprecated_member_use
-                await launch('https://www.samaritans.org');
-              },
-          ),
-          const TextSpan(
-            text:
-                ', or alternatively you can contact a Samaritan free of charge on 116 123 (available 24 hours a day, 365 days a year).',
-            style: TextStyle(fontSize: 17, color: Colors.black),
-          ),
-        ],
-      ),
-      textAlign: TextAlign.center,
-    ),
-  ),
-),
+                    margin: const EdgeInsets.only(right: 50, left: 50, top: 52, bottom: 20),
+                    child: GestureDetector(
+                      onTap: () async {
+                        // ignore: deprecated_member_use
+                        await launch('https://www.samaritans.org');
+                      },
+                      child: Text.rich(
+                        TextSpan(
+                          children: [
+                            const TextSpan(
+                              text:
+                              'Please note: If you experience any adverse effects to your mental health please seek help from your usual care providers. If you require immediate help, online advice can be found at ',
+                              style: TextStyle(fontSize: 17, color: Colors.black),
+                            ),
+                            TextSpan(
+                              text: 'www.samaritans.org',
+                              style: const TextStyle(
+                                fontSize: 17,
+                                color: Colors.blue,
+                                decoration: TextDecoration.underline,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () async {
+                                  // ignore: deprecated_member_use
+                                  await launch('https://www.samaritans.org');
+                                },
+                            ),
+                            const TextSpan(
+                              text:
+                              ', or alternatively you can contact a Samaritan free of charge on 116 123 (available 24 hours a day, 365 days a year).',
+                              style: TextStyle(fontSize: 17, color: Colors.black),
+                            ),
+                          ],
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
 
-                
+
 
                   Container(
                       margin: const EdgeInsets.only(left: 10, right: 10, top: 30),
@@ -109,7 +109,7 @@ class _FinishPageState extends State<FinishPage> {
                           onPressed: () {
                             //SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop');
                             exit(0);
-                            },
+                          },
                           style: ElevatedButton.styleFrom(
                             fixedSize: const Size(160, 60),
                             backgroundColor: const Color(0xFF00A8AF),
