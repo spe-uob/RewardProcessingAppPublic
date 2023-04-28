@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rewardprocessing/questionnaire/finishedquestion.dart';
 
+//script shown after completion of level2
 
 class GameFinished2 extends StatefulWidget {
   final String id;
@@ -12,13 +13,13 @@ class GameFinished2 extends StatefulWidget {
 }
 
 class _GameFinishedState2 extends State<GameFinished2> {
-  double topHeight = 60;
+  double topHeight = 60;//height dimension of the game finish page
 
   @override
   @override
   void initState() {
     super.initState();
-    SystemChrome.setPreferredOrientations([
+    SystemChrome.setPreferredOrientations([//Specifies the set of orientations the application interface can be displayed in
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
     ]);
@@ -30,7 +31,7 @@ class _GameFinishedState2 extends State<GameFinished2> {
         onWillPop: ()async {
           return false; // disable back page
         },
-        child: Scaffold(
+        child: Scaffold(//screen appearance parameters
             backgroundColor: const Color(0xff000000),
             extendBodyBehindAppBar: true,
             appBar:AppBar(
@@ -46,7 +47,7 @@ class _GameFinishedState2 extends State<GameFinished2> {
                 Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image.asset('assets/images/finishpage2.png',
+                      Image.asset('assets/images/finishpage2.png',//displays the status of the game
                         fit:BoxFit.contain,
                         scale: 2,
                       ),
@@ -68,7 +69,7 @@ class _GameFinishedState2 extends State<GameFinished2> {
                             elevation: 2.0
                           ),
                           child: const Text(
-                              'CLICK HERE TO FINISH',
+                              'CLICK HERE TO FINISH',//displays the button to push to finish the game
                               textAlign: TextAlign.center,
                               style:TextStyle(
                                  // fontWeight: FontWeight.bold,
