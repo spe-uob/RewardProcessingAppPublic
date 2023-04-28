@@ -41,7 +41,7 @@ class _GameInstructions2State extends State<GameInstructions2> {
                 children: [
                   Image.asset(
                     'assets/images/gi2.png',
-                    scale: 2.7,
+                    scale: 2.9,
                   ),
                 ],
               ),

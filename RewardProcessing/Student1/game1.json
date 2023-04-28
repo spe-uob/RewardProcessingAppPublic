@@ -1,0 +1,2601 @@
+{
+  "__collections__": {},
+  "0. Game Details": [
+    "Site Switch Probability.: 0.3",
+    "Cherry Probability: 0.8",
+    "Active Site: 0.5 probability of being on the left/right at the start of every game."
+  ],
+  "Timestamp(seconds=1682696756, nanoseconds=586937000)": [
+    "Right Click",
+    "Score: 1",
+    "Active Side: Left",
+    "Agent Side: N",
+    "Percentage Complete: 0.5%"
+  ],
+  "Timestamp(seconds=1682696758, nanoseconds=257785000)": [
+    "Right Click",
+    "Score: 2",
+    "Active Side: Left",
+    "Agent Side: N",
+    "Percentage Complete: 1.0%"
+  ],
+  "Timestamp(seconds=1682696760, nanoseconds=393672000)": [
+    "Right Click",
+    "Score: 3",
+    "Active Side: Left",
+    "Agent Side: N",
+    "Percentage Complete: 1.5%"
+  ],
+  "Timestamp(seconds=1682696760, nanoseconds=959379000)": [
+    "Up Click",
+    "Score: 4",
+    "Active Side: Left",
+    "Agent Side: N",
+    "Percentage Complete: 2.0%"
+  ],
+  "Timestamp(seconds=1682696761, nanoseconds=110628000)": [
+    "Up Click",
+    "Score: 5",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 2.5%"
+  ],
+  "Timestamp(seconds=1682696761, nanoseconds=621790000)": [
+    "Guess box selected",
+    "Score: 5",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 2.5%"
+  ],
+  "Timestamp(seconds=1682696761, nanoseconds=622198000)": [
+    "Ghosts appear",
+    "Score: 5",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 2.5%"
+  ],
+  "Timestamp(seconds=1682696764, nanoseconds=342894000)": [
+    "Down Click",
+    "Score: 5",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 2.5%"
+  ],
+  "Timestamp(seconds=1682696764, nanoseconds=776025000)": [
+    "Down Click",
+    "Score: 5",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 2.5%"
+  ],
+  "Timestamp(seconds=1682696765, nanoseconds=120218000)": [
+    "Left Click",
+    "Score: 5",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 2.5%"
+  ],
+  "Timestamp(seconds=1682696765, nanoseconds=273542000)": [
+    "Left Click",
+    "Score: 5",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 2.5%"
+  ],
+  "Timestamp(seconds=1682696765, nanoseconds=425839000)": [
+    "Left Click",
+    "Score: 5",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 2.5%"
+  ],
+  "Timestamp(seconds=1682696765, nanoseconds=594589000)": [
+    "Left Click",
+    "Score: 6",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 3.0%"
+  ],
+  "Timestamp(seconds=1682696766, nanoseconds=586000)": [
+    "Left Click",
+    "Score: 7",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 3.5%"
+  ],
+  "Timestamp(seconds=1682696766, nanoseconds=643744000)": [
+    "Score: 7",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 3.5%"
+  ],
+  "Timestamp(seconds=1682696772, nanoseconds=634995000)": [
+    "Left Click",
+    "Score: 8",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 4.0%"
+  ],
+  "Timestamp(seconds=1682696774, nanoseconds=560326000)": [
+    "Up Click",
+    "Score: 9",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 4.5%"
+  ],
+  "Timestamp(seconds=1682696774, nanoseconds=917770000)": [
+    "Up Click",
+    "Score: 10",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 5.0%"
+  ],
+  "Timestamp(seconds=1682696775, nanoseconds=525304000)": [
+    "Guess box selected",
+    "Score: 10",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 5.0%"
+  ],
+  "Timestamp(seconds=1682696775, nanoseconds=525670000)": [
+    "Show cherry",
+    "Score: 10",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 5.0%"
+  ],
+  "Timestamp(seconds=1682696776, nanoseconds=18811000)": [
+    "Cherry selected",
+    "Score: 15",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 7.5%"
+  ],
+  "Timestamp(seconds=1682696777, nanoseconds=867979000)": [
+    "Guess box selected",
+    "Score: 15",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 7.5%"
+  ],
+  "Timestamp(seconds=1682696777, nanoseconds=868228000)": [
+    "Show cherry",
+    "Score: 15",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 7.5%"
+  ],
+  "Timestamp(seconds=1682696778, nanoseconds=367549000)": [
+    "Cherry selected",
+    "Score: 20",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 10.0%"
+  ],
+  "Timestamp(seconds=1682696780, nanoseconds=192805000)": [
+    "Guess box selected",
+    "Score: 20",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 10.0%"
+  ],
+  "Timestamp(seconds=1682696780, nanoseconds=193165000)": [
+    "Show cherry",
+    "Score: 20",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 10.0%"
+  ],
+  "Timestamp(seconds=1682696780, nanoseconds=698648000)": [
+    "Cherry selected",
+    "Score: 25",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 12.5%"
+  ],
+  "Timestamp(seconds=1682696785, nanoseconds=254870000)": [
+    "Guess box selected",
+    "Score: 25",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 12.5%"
+  ],
+  "Timestamp(seconds=1682696785, nanoseconds=255135000)": [
+    "Show cherry",
+    "Score: 25",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 12.5%"
+  ],
+  "Timestamp(seconds=1682696785, nanoseconds=765825000)": [
+    "Cherry selected",
+    "Score: 30",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 15.0%"
+  ],
+  "Timestamp(seconds=1682696787, nanoseconds=809013000)": [
+    "Guess box selected",
+    "Score: 30",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 15.0%"
+  ],
+  "Timestamp(seconds=1682696787, nanoseconds=809323000)": [
+    "Show no cherry",
+    "Score: 30",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 15.0%"
+  ],
+  "Timestamp(seconds=1682696789, nanoseconds=571207000)": [
+    "Guess box selected",
+    "Score: 30",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 15.0%"
+  ],
+  "Timestamp(seconds=1682696789, nanoseconds=571399000)": [
+    "Show cherry",
+    "Score: 30",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 15.0%"
+  ],
+  "Timestamp(seconds=1682696790, nanoseconds=158988000)": [
+    "Cherry selected",
+    "Score: 35",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 17.5%"
+  ],
+  "Timestamp(seconds=1682696792, nanoseconds=452039000)": [
+    "Guess box selected",
+    "Score: 35",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 17.5%"
+  ],
+  "Timestamp(seconds=1682696792, nanoseconds=452340000)": [
+    "Show cherry",
+    "Score: 35",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 17.5%"
+  ],
+  "Timestamp(seconds=1682696792, nanoseconds=955788000)": [
+    "Cherry selected",
+    "Score: 40",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696795, nanoseconds=174749000)": [
+    "Guess box selected",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696795, nanoseconds=175027000)": [
+    "Show no cherry",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696797, nanoseconds=232345000)": [
+    "Guess box selected",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696797, nanoseconds=232638000)": [
+    "Show no cherry",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696799, nanoseconds=58530000)": [
+    "Guess box selected",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696799, nanoseconds=58845000)": [
+    "Show no cherry",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696800, nanoseconds=875531000)": [
+    "Guess box selected",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696800, nanoseconds=875892000)": [
+    "Show no cherry",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696801, nanoseconds=572344000)": [
+    "Down Click",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696801, nanoseconds=939711000)": [
+    "Down Click",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696802, nanoseconds=275331000)": [
+    "Right Click",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696802, nanoseconds=425140000)": [
+    "Right Click",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696802, nanoseconds=573622000)": [
+    "Right Click",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696802, nanoseconds=750033000)": [
+    "Right Click",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696802, nanoseconds=917712000)": [
+    "Right Click",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696803, nanoseconds=326050000)": [
+    "Right Click",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696803, nanoseconds=625128000)": [
+    "Up Click",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696803, nanoseconds=754775000)": [
+    "Up Click",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696805, nanoseconds=716544000)": [
+    "Guess box selected",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696805, nanoseconds=716825000)": [
+    "Show no cherry",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696807, nanoseconds=749018000)": [
+    "Guess box selected",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696807, nanoseconds=749247000)": [
+    "Show no cherry",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696809, nanoseconds=830869000)": [
+    "Guess box selected",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696809, nanoseconds=831125000)": [
+    "Show cherry",
+    "Score: 40",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 20.0%"
+  ],
+  "Timestamp(seconds=1682696810, nanoseconds=274945000)": [
+    "Cherry selected",
+    "Score: 45",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696812, nanoseconds=58887000)": [
+    "Guess box selected",
+    "Score: 45",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696812, nanoseconds=59274000)": [
+    "Show no cherry",
+    "Score: 45",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696813, nanoseconds=489838000)": [
+    "Guess box selected",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696813, nanoseconds=490123000)": [
+    "Show no cherry",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696815, nanoseconds=7549000)": [
+    "Guess box selected",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696815, nanoseconds=7787000)": [
+    "Show no cherry",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696816, nanoseconds=607446000)": [
+    "Down Click",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696816, nanoseconds=750704000)": [
+    "Down Click",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696817, nanoseconds=33028000)": [
+    "Left Click",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696817, nanoseconds=183176000)": [
+    "Left Click",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696817, nanoseconds=323985000)": [
+    "Left Click",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696817, nanoseconds=483235000)": [
+    "Left Click",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696817, nanoseconds=646596000)": [
+    "Left Click",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696818, nanoseconds=415184000)": [
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696823, nanoseconds=390760000)": [
+    "Left Click",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696824, nanoseconds=51713000)": [
+    "Up Click",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696824, nanoseconds=183097000)": [
+    "Up Click",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696824, nanoseconds=700272000)": [
+    "Guess box selected",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696824, nanoseconds=700640000)": [
+    "Show cherry",
+    "Score: 45",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 22.5%"
+  ],
+  "Timestamp(seconds=1682696825, nanoseconds=191793000)": [
+    "Cherry selected",
+    "Score: 50",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 25.0%"
+  ],
+  "Timestamp(seconds=1682696827, nanoseconds=165209000)": [
+    "Guess box selected",
+    "Score: 50",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 25.0%"
+  ],
+  "Timestamp(seconds=1682696827, nanoseconds=165501000)": [
+    "Show cherry",
+    "Score: 50",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 25.0%"
+  ],
+  "Timestamp(seconds=1682696827, nanoseconds=631816000)": [
+    "Cherry selected",
+    "Score: 55",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 27.5%"
+  ],
+  "Timestamp(seconds=1682696829, nanoseconds=72697000)": [
+    "Guess box selected",
+    "Score: 55",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 27.5%"
+  ],
+  "Timestamp(seconds=1682696829, nanoseconds=72931000)": [
+    "Show cherry",
+    "Score: 55",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 27.5%"
+  ],
+  "Timestamp(seconds=1682696829, nanoseconds=790792000)": [
+    "Cherry selected",
+    "Score: 60",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 30.0%"
+  ],
+  "Timestamp(seconds=1682696831, nanoseconds=297662000)": [
+    "Guess box selected",
+    "Score: 60",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 30.0%"
+  ],
+  "Timestamp(seconds=1682696831, nanoseconds=297938000)": [
+    "Show cherry",
+    "Score: 60",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 30.0%"
+  ],
+  "Timestamp(seconds=1682696831, nanoseconds=748411000)": [
+    "Cherry selected",
+    "Score: 65",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 32.5%"
+  ],
+  "Timestamp(seconds=1682696833, nanoseconds=499154000)": [
+    "Guess box selected",
+    "Score: 65",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 32.5%"
+  ],
+  "Timestamp(seconds=1682696833, nanoseconds=499452000)": [
+    "Show cherry",
+    "Score: 65",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 32.5%"
+  ],
+  "Timestamp(seconds=1682696833, nanoseconds=947829000)": [
+    "Cherry selected",
+    "Score: 70",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 35.0%"
+  ],
+  "Timestamp(seconds=1682696836, nanoseconds=69996000)": [
+    "Guess box selected",
+    "Score: 70",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 35.0%"
+  ],
+  "Timestamp(seconds=1682696836, nanoseconds=70249000)": [
+    "Show cherry",
+    "Score: 70",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 35.0%"
+  ],
+  "Timestamp(seconds=1682696836, nanoseconds=451725000)": [
+    "Cherry selected",
+    "Score: 75",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696837, nanoseconds=914131000)": [
+    "Guess box selected",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696837, nanoseconds=914411000)": [
+    "Show no cherry",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696840, nanoseconds=531615000)": [
+    "Guess box selected",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696840, nanoseconds=531952000)": [
+    "Show no cherry",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696842, nanoseconds=264510000)": [
+    "Guess box selected",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696842, nanoseconds=264775000)": [
+    "Show no cherry",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696843, nanoseconds=863860000)": [
+    "Guess box selected",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696843, nanoseconds=864120000)": [
+    "Show no cherry",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696845, nanoseconds=937123000)": [
+    "Guess box selected",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696845, nanoseconds=937303000)": [
+    "Show no cherry",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696846, nanoseconds=830842000)": [
+    "Down Click",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696846, nanoseconds=964335000)": [
+    "Down Click",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696847, nanoseconds=280790000)": [
+    "Right Click",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696847, nanoseconds=447660000)": [
+    "Right Click",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696847, nanoseconds=586886000)": [
+    "Right Click",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696847, nanoseconds=762707000)": [
+    "Right Click",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696847, nanoseconds=914587000)": [
+    "Right Click",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696848, nanoseconds=239258000)": [
+    "Right Click",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696848, nanoseconds=550457000)": [
+    "Up Click",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696848, nanoseconds=678648000)": [
+    "Up Click",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696849, nanoseconds=130865000)": [
+    "Guess box selected",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696849, nanoseconds=131206000)": [
+    "Show cherry",
+    "Score: 75",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 37.5%"
+  ],
+  "Timestamp(seconds=1682696849, nanoseconds=580410000)": [
+    "Cherry selected",
+    "Score: 80",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696852, nanoseconds=130262000)": [
+    "Guess box selected",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696852, nanoseconds=130496000)": [
+    "Show no cherry",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696853, nanoseconds=780964000)": [
+    "Guess box selected",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696853, nanoseconds=781321000)": [
+    "Show no cherry",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696855, nanoseconds=371104000)": [
+    "Guess box selected",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696855, nanoseconds=371322000)": [
+    "Show no cherry",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696855, nanoseconds=871238000)": [
+    "Down Click",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696856, nanoseconds=54459000)": [
+    "Down Click",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696856, nanoseconds=345961000)": [
+    "Left Click",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696856, nanoseconds=494305000)": [
+    "Left Click",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696856, nanoseconds=645196000)": [
+    "Left Click",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696856, nanoseconds=796872000)": [
+    "Left Click",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696856, nanoseconds=955061000)": [
+    "Left Click",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696917, nanoseconds=366080000)": [
+    "Left Click",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696917, nanoseconds=918815000)": [
+    "Up Click",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696918, nanoseconds=42939000)": [
+    "Up Click",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696921, nanoseconds=476346000)": [
+    "Guess box selected",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696921, nanoseconds=476528000)": [
+    "Show cherry",
+    "Score: 80",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 40.0%"
+  ],
+  "Timestamp(seconds=1682696921, nanoseconds=934966000)": [
+    "Cherry selected",
+    "Score: 85",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 42.5%"
+  ],
+  "Timestamp(seconds=1682696923, nanoseconds=579779000)": [
+    "Guess box selected",
+    "Score: 85",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 42.5%"
+  ],
+  "Timestamp(seconds=1682696923, nanoseconds=579946000)": [
+    "Show cherry",
+    "Score: 85",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 42.5%"
+  ],
+  "Timestamp(seconds=1682696924, nanoseconds=1690000)": [
+    "Cherry selected",
+    "Score: 90",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 45.0%"
+  ],
+  "Timestamp(seconds=1682696925, nanoseconds=492605000)": [
+    "Guess box selected",
+    "Score: 90",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 45.0%"
+  ],
+  "Timestamp(seconds=1682696925, nanoseconds=492925000)": [
+    "Show cherry",
+    "Score: 90",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 45.0%"
+  ],
+  "Timestamp(seconds=1682696925, nanoseconds=883000000)": [
+    "Cherry selected",
+    "Score: 95",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696927, nanoseconds=693455000)": [
+    "Guess box selected",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696927, nanoseconds=693721000)": [
+    "Show no cherry",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696929, nanoseconds=338295000)": [
+    "Guess box selected",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696929, nanoseconds=338576000)": [
+    "Show no cherry",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696931, nanoseconds=681799000)": [
+    "Down Click",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696931, nanoseconds=809069000)": [
+    "Down Click",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696932, nanoseconds=251329000)": [
+    "Right Click",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696932, nanoseconds=397904000)": [
+    "Right Click",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696932, nanoseconds=561943000)": [
+    "Right Click",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696932, nanoseconds=726503000)": [
+    "Right Click",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696932, nanoseconds=883268000)": [
+    "Right Click",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696933, nanoseconds=34070000)": [
+    "Right Click",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696933, nanoseconds=524478000)": [
+    "Up Click",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696933, nanoseconds=676429000)": [
+    "Up Click",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696934, nanoseconds=209243000)": [
+    "Guess box selected",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696934, nanoseconds=209596000)": [
+    "Show no cherry",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696936, nanoseconds=399371000)": [
+    "Guess box selected",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696936, nanoseconds=399628000)": [
+    "Show cherry",
+    "Score: 95",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 47.5%"
+  ],
+  "Timestamp(seconds=1682696936, nanoseconds=884052000)": [
+    "Cherry selected",
+    "Score: 100",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 50.0%"
+  ],
+  "Timestamp(seconds=1682696938, nanoseconds=592939000)": [
+    "Guess box selected",
+    "Score: 100",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 50.0%"
+  ],
+  "Timestamp(seconds=1682696938, nanoseconds=593229000)": [
+    "Show cherry",
+    "Score: 100",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 50.0%"
+  ],
+  "Timestamp(seconds=1682696939, nanoseconds=25585000)": [
+    "Cherry selected",
+    "Score: 105",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 52.5%"
+  ],
+  "Timestamp(seconds=1682696941, nanoseconds=40414000)": [
+    "Guess box selected",
+    "Score: 105",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 52.5%"
+  ],
+  "Timestamp(seconds=1682696941, nanoseconds=40707000)": [
+    "Show cherry",
+    "Score: 105",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 52.5%"
+  ],
+  "Timestamp(seconds=1682696941, nanoseconds=474263000)": [
+    "Cherry selected",
+    "Score: 110",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696943, nanoseconds=129647000)": [
+    "Guess box selected",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696943, nanoseconds=129924000)": [
+    "Show no cherry",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696945, nanoseconds=74106000)": [
+    "Guess box selected",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696945, nanoseconds=74507000)": [
+    "Show no cherry",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696945, nanoseconds=700167000)": [
+    "Down Click",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696945, nanoseconds=815068000)": [
+    "Down Click",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696946, nanoseconds=49049000)": [
+    "Left Click",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696946, nanoseconds=195725000)": [
+    "Left Click",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696946, nanoseconds=349858000)": [
+    "Left Click",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696946, nanoseconds=500051000)": [
+    "Left Click",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696946, nanoseconds=646437000)": [
+    "Left Click",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696946, nanoseconds=791420000)": [
+    "Left Click",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696947, nanoseconds=237315000)": [
+    "Up Click",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696947, nanoseconds=383375000)": [
+    "Up Click",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696947, nanoseconds=873701000)": [
+    "Guess box selected",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696947, nanoseconds=873988000)": [
+    "Show cherry",
+    "Score: 110",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 55.0%"
+  ],
+  "Timestamp(seconds=1682696948, nanoseconds=297673000)": [
+    "Cherry selected",
+    "Score: 115",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696950, nanoseconds=666028000)": [
+    "Guess box selected",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696950, nanoseconds=666373000)": [
+    "Show no cherry",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696953, nanoseconds=815778000)": [
+    "Guess box selected",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696953, nanoseconds=816165000)": [
+    "Show no cherry",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696954, nanoseconds=394729000)": [
+    "Down Click",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696954, nanoseconds=527095000)": [
+    "Down Click",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696954, nanoseconds=834679000)": [
+    "Right Click",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696954, nanoseconds=980845000)": [
+    "Right Click",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696955, nanoseconds=142587000)": [
+    "Right Click",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696955, nanoseconds=289587000)": [
+    "Right Click",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696955, nanoseconds=441117000)": [
+    "Right Click",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696955, nanoseconds=573565000)": [
+    "Right Click",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696956, nanoseconds=42179000)": [
+    "Up Click",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696956, nanoseconds=207848000)": [
+    "Up Click",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696956, nanoseconds=658515000)": [
+    "Guess box selected",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696956, nanoseconds=658791000)": [
+    "Show cherry",
+    "Score: 115",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 57.5%"
+  ],
+  "Timestamp(seconds=1682696957, nanoseconds=58652000)": [
+    "Cherry selected",
+    "Score: 120",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 60.0%"
+  ],
+  "Timestamp(seconds=1682696958, nanoseconds=534132000)": [
+    "Guess box selected",
+    "Score: 120",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 60.0%"
+  ],
+  "Timestamp(seconds=1682696958, nanoseconds=534440000)": [
+    "Show cherry",
+    "Score: 120",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 60.0%"
+  ],
+  "Timestamp(seconds=1682696958, nanoseconds=907543000)": [
+    "Cherry selected",
+    "Score: 125",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 62.5%"
+  ],
+  "Timestamp(seconds=1682696960, nanoseconds=381576000)": [
+    "Guess box selected",
+    "Score: 125",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 62.5%"
+  ],
+  "Timestamp(seconds=1682696960, nanoseconds=381819000)": [
+    "Show no cherry",
+    "Score: 125",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 62.5%"
+  ],
+  "Timestamp(seconds=1682696961, nanoseconds=915750000)": [
+    "Guess box selected",
+    "Score: 125",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 62.5%"
+  ],
+  "Timestamp(seconds=1682696961, nanoseconds=916048000)": [
+    "Show cherry",
+    "Score: 125",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 62.5%"
+  ],
+  "Timestamp(seconds=1682696962, nanoseconds=873609000)": [
+    "Cherry selected",
+    "Score: 130",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 65.0%"
+  ],
+  "Timestamp(seconds=1682696965, nanoseconds=122910000)": [
+    "Guess box selected",
+    "Score: 130",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 65.0%"
+  ],
+  "Timestamp(seconds=1682696965, nanoseconds=123389000)": [
+    "Show cherry",
+    "Score: 130",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 65.0%"
+  ],
+  "Timestamp(seconds=1682696965, nanoseconds=612486000)": [
+    "Cherry selected",
+    "Score: 135",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 67.5%"
+  ],
+  "Timestamp(seconds=1682696967, nanoseconds=98891000)": [
+    "Guess box selected",
+    "Score: 135",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 67.5%"
+  ],
+  "Timestamp(seconds=1682696967, nanoseconds=99234000)": [
+    "Show cherry",
+    "Score: 135",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 67.5%"
+  ],
+  "Timestamp(seconds=1682696967, nanoseconds=597654000)": [
+    "Cherry selected",
+    "Score: 140",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696969, nanoseconds=57086000)": [
+    "Guess box selected",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696969, nanoseconds=57418000)": [
+    "Show no cherry",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696970, nanoseconds=588804000)": [
+    "Guess box selected",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696970, nanoseconds=589114000)": [
+    "Show no cherry",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696971, nanoseconds=230782000)": [
+    "Down Click",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696971, nanoseconds=354280000)": [
+    "Down Click",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696971, nanoseconds=637156000)": [
+    "Left Click",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696971, nanoseconds=805939000)": [
+    "Left Click",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696971, nanoseconds=948487000)": [
+    "Left Click",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696972, nanoseconds=105825000)": [
+    "Left Click",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696972, nanoseconds=261666000)": [
+    "Left Click",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696972, nanoseconds=623201000)": [
+    "Left Click",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696972, nanoseconds=881341000)": [
+    "Up Click",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696973, nanoseconds=31054000)": [
+    "Up Click",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696973, nanoseconds=423949000)": [
+    "Guess box selected",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696973, nanoseconds=424219000)": [
+    "Show cherry",
+    "Score: 140",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 70.0%"
+  ],
+  "Timestamp(seconds=1682696973, nanoseconds=948977000)": [
+    "Cherry selected",
+    "Score: 145",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696976, nanoseconds=414086000)": [
+    "Guess box selected",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696976, nanoseconds=414395000)": [
+    "Show no cherry",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696977, nanoseconds=930516000)": [
+    "Guess box selected",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696977, nanoseconds=930786000)": [
+    "Show no cherry",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696979, nanoseconds=156016000)": [
+    "Down Click",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696979, nanoseconds=322691000)": [
+    "Down Click",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696979, nanoseconds=706888000)": [
+    "Right Click",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696979, nanoseconds=864791000)": [
+    "Right Click",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696980, nanoseconds=15783000)": [
+    "Right Click",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696980, nanoseconds=171183000)": [
+    "Right Click",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696980, nanoseconds=324033000)": [
+    "Right Click",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696980, nanoseconds=471646000)": [
+    "Right Click",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696980, nanoseconds=856546000)": [
+    "Up Click",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696980, nanoseconds=998724000)": [
+    "Up Click",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696981, nanoseconds=448002000)": [
+    "Guess box selected",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696981, nanoseconds=448342000)": [
+    "Show cherry",
+    "Score: 145",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 72.5%"
+  ],
+  "Timestamp(seconds=1682696981, nanoseconds=881885000)": [
+    "Cherry selected",
+    "Score: 150",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696983, nanoseconds=331167000)": [
+    "Guess box selected",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696983, nanoseconds=331526000)": [
+    "Show no cherry",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696984, nanoseconds=847714000)": [
+    "Guess box selected",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696984, nanoseconds=847875000)": [
+    "Show no cherry",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696986, nanoseconds=897839000)": [
+    "Down Click",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696987, nanoseconds=82031000)": [
+    "Down Click",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696987, nanoseconds=966930000)": [
+    "Left Click",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696988, nanoseconds=123364000)": [
+    "Left Click",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696988, nanoseconds=285638000)": [
+    "Left Click",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696988, nanoseconds=456184000)": [
+    "Left Click",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696988, nanoseconds=610603000)": [
+    "Left Click",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696988, nanoseconds=760911000)": [
+    "Left Click",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696989, nanoseconds=204779000)": [
+    "Up Click",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696989, nanoseconds=355875000)": [
+    "Up Click",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696989, nanoseconds=871701000)": [
+    "Guess box selected",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696989, nanoseconds=871945000)": [
+    "Show no cherry",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696996, nanoseconds=639589000)": [
+    "Guess box selected",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696996, nanoseconds=639908000)": [
+    "Show cherry",
+    "Score: 150",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 75.0%"
+  ],
+  "Timestamp(seconds=1682696997, nanoseconds=129692000)": [
+    "Cherry selected",
+    "Score: 155",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682696999, nanoseconds=330777000)": [
+    "Guess box selected",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682696999, nanoseconds=331049000)": [
+    "Show no cherry",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697001, nanoseconds=318482000)": [
+    "Guess box selected",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697001, nanoseconds=318880000)": [
+    "Show no cherry",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697003, nanoseconds=295852000)": [
+    "Guess box selected",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697003, nanoseconds=296117000)": [
+    "Show no cherry",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697005, nanoseconds=138697000)": [
+    "Guess box selected",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697005, nanoseconds=139103000)": [
+    "Show no cherry",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697006, nanoseconds=455964000)": [
+    "Down Click",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697006, nanoseconds=585043000)": [
+    "Down Click",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697007, nanoseconds=79600000)": [
+    "Right Click",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697007, nanoseconds=229488000)": [
+    "Right Click",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697007, nanoseconds=389212000)": [
+    "Right Click",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697007, nanoseconds=537298000)": [
+    "Right Click",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697007, nanoseconds=703661000)": [
+    "Right Click",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697008, nanoseconds=72129000)": [
+    "Right Click",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697008, nanoseconds=329403000)": [
+    "Up Click",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697008, nanoseconds=479518000)": [
+    "Up Click",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697008, nanoseconds=971812000)": [
+    "Guess box selected",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697008, nanoseconds=972065000)": [
+    "Show cherry",
+    "Score: 155",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 77.5%"
+  ],
+  "Timestamp(seconds=1682697009, nanoseconds=437684000)": [
+    "Cherry selected",
+    "Score: 160",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697011, nanoseconds=395131000)": [
+    "Guess box selected",
+    "Score: 160",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697011, nanoseconds=395387000)": [
+    "Show no cherry",
+    "Score: 160",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697012, nanoseconds=937406000)": [
+    "Guess box selected",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697012, nanoseconds=937797000)": [
+    "Show no cherry",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697014, nanoseconds=420131000)": [
+    "Guess box selected",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697014, nanoseconds=420477000)": [
+    "Show no cherry",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697015, nanoseconds=87564000)": [
+    "Down Click",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697015, nanoseconds=210833000)": [
+    "Down Click",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697015, nanoseconds=478557000)": [
+    "Left Click",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697015, nanoseconds=626466000)": [
+    "Left Click",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697015, nanoseconds=789184000)": [
+    "Left Click",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697015, nanoseconds=937214000)": [
+    "Left Click",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697016, nanoseconds=105194000)": [
+    "Left Click",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697016, nanoseconds=455056000)": [
+    "Left Click",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697016, nanoseconds=755242000)": [
+    "Up Click",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697016, nanoseconds=874744000)": [
+    "Up Click",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697017, nanoseconds=329236000)": [
+    "Guess box selected",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697017, nanoseconds=329613000)": [
+    "Show cherry",
+    "Score: 160",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 80.0%"
+  ],
+  "Timestamp(seconds=1682697017, nanoseconds=762685000)": [
+    "Cherry selected",
+    "Score: 165",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697019, nanoseconds=237712000)": [
+    "Guess box selected",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697019, nanoseconds=237938000)": [
+    "Show no cherry",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697021, nanoseconds=732423000)": [
+    "Guess box selected",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697021, nanoseconds=732973000)": [
+    "Show no cherry",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697023, nanoseconds=362228000)": [
+    "Guess box selected",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697023, nanoseconds=362538000)": [
+    "Show no cherry",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697025, nanoseconds=129122000)": [
+    "Guess box selected",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697025, nanoseconds=129542000)": [
+    "Show no cherry",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697026, nanoseconds=769702000)": [
+    "Guess box selected",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697026, nanoseconds=770015000)": [
+    "Show no cherry",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697027, nanoseconds=853726000)": [
+    "Down Click",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697027, nanoseconds=990354000)": [
+    "Down Click",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697028, nanoseconds=254147000)": [
+    "Right Click",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697028, nanoseconds=389849000)": [
+    "Right Click",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697028, nanoseconds=535944000)": [
+    "Right Click",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697028, nanoseconds=696081000)": [
+    "Right Click",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697028, nanoseconds=851861000)": [
+    "Right Click",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697028, nanoseconds=990379000)": [
+    "Right Click",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697029, nanoseconds=426257000)": [
+    "Up Click",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697029, nanoseconds=575042000)": [
+    "Up Click",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697030, nanoseconds=11260000)": [
+    "Guess box selected",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697030, nanoseconds=11557000)": [
+    "Show no cherry",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697031, nanoseconds=570125000)": [
+    "Guess box selected",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697031, nanoseconds=570428000)": [
+    "Show cherry",
+    "Score: 165",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 82.5%"
+  ],
+  "Timestamp(seconds=1682697032, nanoseconds=95041000)": [
+    "Cherry selected",
+    "Score: 170",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697035, nanoseconds=386360000)": [
+    "Guess box selected",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697035, nanoseconds=386614000)": [
+    "Show no cherry",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697037, nanoseconds=2224000)": [
+    "Guess box selected",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697037, nanoseconds=2546000)": [
+    "Show no cherry",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697038, nanoseconds=670051000)": [
+    "Down Click",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697038, nanoseconds=800549000)": [
+    "Down Click",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697039, nanoseconds=378838000)": [
+    "Left Click",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697039, nanoseconds=538661000)": [
+    "Left Click",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697039, nanoseconds=674066000)": [
+    "Left Click",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697039, nanoseconds=833443000)": [
+    "Left Click",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697039, nanoseconds=990600000)": [
+    "Left Click",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697040, nanoseconds=952955000)": [
+    "Left Click",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697041, nanoseconds=312048000)": [
+    "Up Click",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697041, nanoseconds=440212000)": [
+    "Up Click",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697041, nanoseconds=919207000)": [
+    "Guess box selected",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697041, nanoseconds=919532000)": [
+    "Show no cherry",
+    "Score: 170",
+    "Active Side: Left",
+    "Agent Side: Left",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697046, nanoseconds=502352000)": [
+    "Guess box selected",
+    "Score: 170",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697046, nanoseconds=502720000)": [
+    "Show no cherry",
+    "Score: 170",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697049, nanoseconds=4883000)": [
+    "Down Click",
+    "Score: 170",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697049, nanoseconds=151806000)": [
+    "Down Click",
+    "Score: 170",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697049, nanoseconds=426420000)": [
+    "Right Click",
+    "Score: 170",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697049, nanoseconds=567059000)": [
+    "Right Click",
+    "Score: 170",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697049, nanoseconds=743980000)": [
+    "Right Click",
+    "Score: 170",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697049, nanoseconds=904929000)": [
+    "Right Click",
+    "Score: 170",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697050, nanoseconds=69758000)": [
+    "Right Click",
+    "Score: 170",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697050, nanoseconds=327858000)": [
+    "Right Click",
+    "Score: 170",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697050, nanoseconds=703606000)": [
+    "Up Click",
+    "Score: 170",
+    "Active Side: Right",
+    "Agent Side: Left",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697050, nanoseconds=850088000)": [
+    "Up Click",
+    "Score: 170",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697051, nanoseconds=286201000)": [
+    "Guess box selected",
+    "Score: 170",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697051, nanoseconds=286508000)": [
+    "Show cherry",
+    "Score: 170",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 85.0%"
+  ],
+  "Timestamp(seconds=1682697051, nanoseconds=800085000)": [
+    "Cherry selected",
+    "Score: 175",
+    "Active Side: Right",
+    "Agent Side: Right",
+    "Percentage Complete: 87.5%"
+  ],
+  "Timestamp(seconds=1682697053, nanoseconds=244999000)": [
+    "Guess box selected",
+    "Score: 175",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 87.5%"
+  ],
+  "Timestamp(seconds=1682697053, nanoseconds=245398000)": [
+    "Show no cherry",
+    "Score: 175",
+    "Active Side: Left",
+    "Agent Side: Right",
+    "Percentage Complete: 87.5%"
+  ],
+  "Timestamp(seconds=1682697054, nanoseconds=371348000)": [
+    "Time's Up!",
+    "Final Score: 175/200",
+    "Percentage Complete: 87.5%"
+  ]
+}
