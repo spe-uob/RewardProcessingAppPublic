@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:rewardprocessing/game/game_map2.dart';
 import 'package:flutter/services.dart';
 
-
+//script shown after completion of level1
+//allows advancement to level2
 class GameFinished extends StatefulWidget {
   final String id;
   const GameFinished({super.key, required this.id});
@@ -13,13 +14,13 @@ class GameFinished extends StatefulWidget {
 }
 
 class _GameFinishedState extends State<GameFinished> {
-  double topHeight = 60;
+  double topHeight = 60;//height dimension of the game finish page
 
   @override
   @override
   void initState() {
     super.initState();
-    SystemChrome.setPreferredOrientations([
+    SystemChrome.setPreferredOrientations([//Specifies the set of orientations the application interface can be displayed in
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
     ]);
@@ -31,7 +32,7 @@ class _GameFinishedState extends State<GameFinished> {
         onWillPop: ()async {
           return false; // disable back page
         },
-        child: Scaffold(
+        child: Scaffold(//screen appearance parameters
             backgroundColor: const Color(0xff000000),
             extendBodyBehindAppBar: true,
             appBar:AppBar(
@@ -47,7 +48,7 @@ class _GameFinishedState extends State<GameFinished> {
                 Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image.asset('assets/images/finishpage1.png',
+                      Image.asset('assets/images/finishpage1.png',//displays the status of the game
                       fit:BoxFit.contain,
                         scale: 2.5,
                       ),
@@ -76,7 +77,7 @@ class _GameFinishedState extends State<GameFinished> {
                                 borderRadius: BorderRadius.circular(100)),
                             elevation: 2.0,),
                           child: const Text(
-                              'CLICK HERE TO LEVLE2',
+                              'CLICK HERE TO LEVLE2',//displays the button to push to advance to level2
                               textAlign: TextAlign.center,
                               style:TextStyle(
                                  // fontWeight: FontWeight.bold,
