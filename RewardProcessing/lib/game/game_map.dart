@@ -230,7 +230,7 @@ class _GameMapState extends State<GameMap> {
   // refresh
   void randomCanGuess(bool firstEnter, bool changeDirection) {
     if (player == 32) {
-      // left
+      // left vertex
       agentSide = 'Left';
 
       if (leftActive) {
@@ -259,7 +259,7 @@ class _GameMapState extends State<GameMap> {
       }
     }
     if (player == 38) {
-      // right
+      // right vertex
       agentSide = 'Right';
 
       if (!leftActive) {

@@ -187,9 +187,6 @@ class _GameMap2State extends State<GameMap2> {
     36,
     50,
 
-    // 58,
-    // 73,
-    // 88
   ];
   int guessIndex = -1;
   List guessesLeft = [17, 31, 33];
@@ -223,6 +220,7 @@ class _GameMap2State extends State<GameMap2> {
 
   void trigger() {
     if (pellets.contains(player)) {
+      //The action of pacman eating pellets
       pellets.remove(player);
       calculate(0);
       refresh();
@@ -249,6 +247,7 @@ class _GameMap2State extends State<GameMap2> {
   }
 
   void calculate(int type) {
+    //Statistical score
 
     if (type == 0) {
       score = score + 1;
@@ -316,9 +315,11 @@ class _GameMap2State extends State<GameMap2> {
   }
 
   void randomCanGuess(bool firstEnter, bool changeDirection) {
+    //refresh
     if (player == 32) {
-      // left
+      // left vertex
       agentSide = 'Left';
+
       if (leftActive) {
         var randomValue = Random().nextDouble();
         if (randomValue < switchInactiveProbability && !firstEnter) {
@@ -347,7 +348,7 @@ class _GameMap2State extends State<GameMap2> {
       }
     }
     if (player == 38) {
-      // right
+      // right vertex
       agentSide = 'Right';
       if (!leftActive) {
         var randomValue = Random().nextDouble();
@@ -422,7 +423,9 @@ class _GameMap2State extends State<GameMap2> {
       var randomValue = Random().nextDouble();
       if (image == "assets/images/thisguess.png") {
         if (left && !leftActive) {
+           // click the left side and it's invalid
           if (!inactiveFirstClicked) {
+            // become inactive
             allGhost(left);
             ghost = true;
             reward = 'Ghosts appear';
@@ -456,6 +459,7 @@ class _GameMap2State extends State<GameMap2> {
             ]},
                 SetOptions(merge: true)
             );
+            //inactiveFirstClicked = true;
           }
         } else if (!left && leftActive) {
           // click the right side and it's inactive
@@ -640,6 +644,7 @@ class _GameMap2State extends State<GameMap2> {
     double startTop =
         ((MediaQuery.of(context).size.height - topHeight) - itemWidth * 8) / 2;
     if (72 == index) {
+      //left button
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -669,6 +674,7 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (74 == index) {
+      //right button
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -698,6 +704,7 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (43 == index) {
+      //up button
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -727,6 +734,7 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (103 == index) {
+      //down button
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -775,6 +783,7 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (17 == index) {
+      //The guessbox on the left side of the top
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -802,6 +811,7 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (31 == index) {
+      //The guessbox on the left side of the left half
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -829,6 +839,7 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (33 == index) {
+      //The guessbox on the right side of the top     
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -856,6 +867,7 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (23 == index) {
+      //The guessbox on the right side of the top
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -883,6 +895,7 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (37 == index) {
+      //The guessbox on the right side of the left half
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -910,6 +923,7 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (39 == index) {
+      //The guessbox on the right side of the right half
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -937,11 +951,13 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (pellets.contains(index)) {
+      //generate pellets
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/dot.png")]),
       );
     } else if (barriers.contains(index)) {
+      //generate barriers
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(children: [Image.asset("assets/images/wall.png")]),
