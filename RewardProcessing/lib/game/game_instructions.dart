@@ -20,8 +20,8 @@ class _GameInstructionsState extends State<GameInstructions> {
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
     ]);
-    Future.delayed(const Duration(seconds: 2), () {
-      setState(() {
+    Future.delayed(const Duration(seconds: 2), () {//freezes screen for 2 seconds
+      setState(() {//function called to reflect the change on the user interface
         _showText = false;
       });
     });
