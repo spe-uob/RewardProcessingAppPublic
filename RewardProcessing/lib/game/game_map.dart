@@ -74,9 +74,9 @@ class _GameMapState extends State<GameMap> {
   List<int> guess = [17, 31, 33, 23, 37, 39];
   int fresh = 0;
   double topHeight = 60;
-  int quarterTurns = 0;
+  int quarterTurns = 0;   //pacman turns 4 directions
   List<int> pellets = [32, 47, 62, 63, 64, 66, 67, 68, 53, 38];
-  List<int> paths = [32, 47, 62, 63, 64, 65, 66, 67, 68, 53, 38];
+  List<int> paths = [32, 47, 62, 63, 64, 65, 66, 67, 68, 53, 38]; //path is where pacman can move
   String leftImage17 = "assets/images/guess.png";
   String leftImage31 = "assets/images/guess.png";
   String leftImage33 = "assets/images/guess.png";
@@ -94,7 +94,7 @@ class _GameMapState extends State<GameMap> {
 
   // logic related variables are here
 
-  // guessIndex indicate clickable guessbox. -1 indicate non-clickable
+  // guessIndex indicate clickable guessbox. -1 indicate non-clickable guess box
   int guessIndex = -1;
 
   // guess box of left and right sites
@@ -103,7 +103,8 @@ class _GameMapState extends State<GameMap> {
 
   // left site is active
   bool leftActive = true;
-  // If it's the first time you click an inactive site (the first time ghoest appear)
+
+  // If it's the first time you click an inactive site (the first time ghost appear)
   bool inactiveFirstClicked = false;
 
   // active site probability
@@ -113,8 +114,8 @@ class _GameMapState extends State<GameMap> {
   // site switching happens when a player finds a reward in an active site
   double switchInactiveProbability = 0.3;
 
-  // When a guess box is selected, the pacman will change direction
-  bool newMove = false;
+  //pacman moved by click the button
+  bool newMove = false;   //clicked the button but doesn't move to other gird
 
   // barriers index
   List<int> barriers = [0,1,2,3,4,5,6,7,8,9,10,15,30,45,60,75,76,77,78,79,80,81,
@@ -236,7 +237,7 @@ class _GameMapState extends State<GameMap> {
         nowPlayer = player;
       }
     }
-    // the pacman turns directions
+    // the pacman turns 4 directions
     if (right == -1 && down == 0) {
       quarterTurns = -2;
     }
@@ -354,7 +355,7 @@ class _GameMapState extends State<GameMap> {
     });
   }
 
-  // guess boxes appear
+  //all become the guess boxes
   void allGuess() {
     guessIndex = -1;
     for (var a in clickCells.keys) {
