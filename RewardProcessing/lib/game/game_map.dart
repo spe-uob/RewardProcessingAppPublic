@@ -24,7 +24,7 @@ class GameMap extends StatefulWidget {
   State<GameMap> createState() => _GameMapState();
 }
 
-//Create a map for 8 rows and 15 colomns
+//Create a map for 8 rows and 15 columns
 int row = 8;
 int col = row * 15;
 int player = 65;
