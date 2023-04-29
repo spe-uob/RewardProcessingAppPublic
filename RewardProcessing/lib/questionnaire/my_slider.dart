@@ -37,30 +37,28 @@ class _MySliderState extends State<MySlider> {
 
   void computeValue() {
     if (widget.divisions != null) {
-      if (widget.divisions != null) {
-        for (var i = 0; i <= widget.divisions!; i++) {
-          var v =
-              widget.min + (i / widget.divisions!) * (widget.max - widget.min);
-          if (i < widget.divisions!) {
-            var vNext = widget.min +
-                ((i + 1) / widget.divisions!) * (widget.max - widget.min);
-            if (value < v + (vNext - v) && value > v + (vNext - v) / 2) {
-              setState(() {
-                value = vNext;
-              });
-              break;
-            } else if (value < v + (vNext - v) / 2 && value > v) {
-              setState(() {
-                value = v;
-              });
-              break;
-            }
-          } else {
+      for (var i = 0; i <= widget.divisions!; i++) {
+        var v =
+            widget.min + (i / widget.divisions!) * (widget.max - widget.min);
+        if (i < widget.divisions!) {
+          var vNext = widget.min +
+              ((i + 1) / widget.divisions!) * (widget.max - widget.min);
+          if (value < v + (vNext - v) && value > v + (vNext - v) / 2) {
+            setState(() {
+              value = vNext;
+            });
+            break;
+          } else if (value < v + (vNext - v) / 2 && value > v) {
             setState(() {
               value = v;
             });
             break;
           }
+        } else {
+          setState(() {
+            value = v;
+          });
+          break;
         }
       }
     }
@@ -68,17 +66,19 @@ class _MySliderState extends State<MySlider> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> divisionWigets = [];
+    List<Widget> divisionWidgets = [];
     if (widget.divisions != null) {
       for (var i = 0; i <= widget.divisions!; i++) {
-        divisionWigets.add(Container(
-          width: 8,
-          height: 8,
-          decoration: BoxDecoration(
-              color: const Color(0xFF00A8AF),
-              borderRadius: BorderRadius.circular(10)
-          ),
-        ));
+        divisionWidgets.add(
+            Container(
+              width: 8,
+              height: 8,
+              decoration: BoxDecoration(
+                  color: const Color(0xFF00A8AF),
+                  borderRadius: BorderRadius.circular(10)
+              ),
+            )
+        );
       }
     }
     return GestureDetector(
@@ -120,7 +120,7 @@ class _MySliderState extends State<MySlider> {
                     width: MediaQuery.of(context).size.width - 60,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: divisionWigets,
+                      children: divisionWidgets,
                     ),
                   ),
                 )
@@ -135,8 +135,8 @@ class _MySliderState extends State<MySlider> {
                     children: [
                       Container(
                         alignment: Alignment.center,
-                        width: 30,
-                        height: 30,
+                        width: 35,
+                        height: 35,
                         decoration: BoxDecoration(
                             color: const Color(0xFF00A8AF),
                             borderRadius: BorderRadius.circular(20)),

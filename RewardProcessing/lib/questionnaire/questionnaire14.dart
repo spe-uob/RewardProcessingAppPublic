@@ -87,6 +87,11 @@ class _Questionnaire14State extends State<Questionnaire14> {
                               label: _currentSliderValue.round().toString(),
                               onChanged: (value) {
                                 setState(() {
+                                  if (value > 100) {
+                                    value = 100;
+                                  } else if (value < -100) {
+                                    value = -100;
+                                  }
                                   _currentSliderValue = value;
                                   activeButton = true;
                                 });
@@ -129,7 +134,7 @@ class _Questionnaire14State extends State<Questionnaire14> {
                             await FirebaseFirestore.instance
                                 .collection('questionnaire')
                                 .doc(widget.id)
-                                .set({'14. How negative or positive the experience was (-100/100)': _currentSliderValue.toInt()},
+                                .set({'14. How negative or positive the experience was (-100/100)': _currentSliderValue.round()},
                                 SetOptions(merge: true)
                             );
                           } : null,
@@ -139,7 +144,8 @@ class _Questionnaire14State extends State<Questionnaire14> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(100)
                               ),
-                              elevation: 2.0),
+                              elevation: 2.0
+                          ),
                           child: const Text('Continue',
                               textAlign: TextAlign.center,
                               style: TextStyle(

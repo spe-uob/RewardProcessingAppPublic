@@ -1,22 +1,22 @@
 # Studying Reward Processing Through a Mobile App
 
-<p align="center">
+<p style="text-align:center;">
 <a>
-
-   <img  height="22"
-         width="150" 
-         src="https://img.shields.io/badge/Porject-RewardProcessing-9cf" />
-    <img height="22"
-         width="100" 
-         src="https://img.shields.io/badge/Version-v0.0.2-9cf"/>
+   <img alt height="22"
+         width="170"
+         src="https://img.shields.io/badge/Project-RewardProcessing-9cf" />
+    <img alt height="22"
+         width="140"
+         src="https://img.shields.io/badge/Flutter%20Build-Passing-brightgreen"/>
 </a>
 </p>
 
 ## Table of Contents
-- [Navigating the GitHub pages](#Navigating-the-GitHub-pages)
+- [Navigating the GitHub pages](#Navigating-the-GitHub-Pages)
 - [Project Description](#project-description)
 - [Development](#Development)
 - [Setup Guide](#Setup-guide)
+- [Exporting Firebase Data](#Exporting-Firebase-Data)
 - [Our Clients](#our-clients)
 - [Stakeholders](#stakeholders)
 - [User Stories](#user-stories)
@@ -28,8 +28,13 @@
 * [Kanban Board](https://github.com/spe-uob/2022-RewardProcessingApp/projects/1)
 * [Meeting Minutes](https://github.com/spe-uob/2022-RewardProcessingApp/tree/main/Meetings)
 * [Gantt Chart](https://github.com/spe-uob/2022-RewardProcessingApp/blob/main/RewardProcessinApp%20Gantt%20chart.xlsx)
-### Code
-* [RewardProcessing](https://github.com/spe-uob/2022-RewardProcessingApp/tree/main/RewardProcessing/lib)
+### Source Code
+* [Reward Processing](RewardProcessing/lib)
+    * [Questionnaire](RewardProcessing/lib/questionnaire)
+    * [Game](RewardProcessing/lib/game)
+        * [Level 1](RewardProcessing/lib/game/game_map.dart)
+        * [Level 2](RewardProcessing/lib/game/game_map2.dart)
+
 ## Project Description
 Our mood greatly impacts our decision-making skills by influencing the type of information we attend to and also how we process it. According to research, individuals with depression tend to have negative responses to losses, leading them to make risky decisions. In contrast, those with anxiety are likely to make less risky decisions as they need certainty of outcomes to gain the sense of security.
 
@@ -51,6 +56,58 @@ To run this application, chance directory to `RewardProcessing` in your terminal
 ### Build
 * iOS: `flutter build ios --release --no-codedesign`
 * Android: `flutter build apk`
+
+## Exporting Firebase Data
+To export data from Firebase, please follow the instructions below:
+1. Install node/npm using Homebrew
+    * If Homebrew is not already installed on your machine, please go to this [link](https://docs.brew.sh/Installation) to install.
+    * Follow the commands below to install node or check this [link](https://treehouse.github.io/installation-guides/mac/node-mac.html)
+
+      `brew update`
+
+      `brew install node`
+    * Test it
+
+      `node -v`
+
+      `npm -v`
+2. Set up Firebase credentials
+    1. Option 1
+        1. Generate a private key file for your service account. In the Firebase console, open Settings > Service Accounts.
+        2. Click Generate New Private Key, then confirm by clicking Generate Key button.
+        3. Rename the JSON file to credentials.json.
+    2. Option 2
+        1. Download the file [credentials.json](RewardProcessing/credentials.json).
+3. Use these command lines to export Firebase data to a JSON file:
+    1. `npx -p node-firestore-import-export firestore-export -a credentials.json -n [COLLECTION]/[DOCUMENT] -b [FOLDER]/[FILE.json]`,
+        * `[COLLECTION]` is the name of the collection on Firebase (e.g., questionnaire, game1, game2, feedback)
+        * `[DOCUMENT]` is the name of the document on Firebase (in this case, the prolific IDs of the participants)
+        * `[FOLDER]` is where you want the data to be exported to
+        * `[FILE]` is the name you want for the json file of the exported data
+        * Example:
+            * `npx -p node-firestore-import-export firestore-export -a credentials.json -b [Student1]/[q.json] -n [questionnaire]/[Student1]`
+    2. `cd FOLDER`; change to the directory where your data is saved (e.g., `cd Student1`)
+    3. `jq . FILE.json > FILE2.json`; organise the data and transfer it to a new json file (e.g., `jq . q.json > questionnaire.json`)
+    4. `rm FILE.json`; remove the unsorted data file (e.g., `rm q.json`)
+* Since each user has (Student1) 4 different data collections (questionnaire, game1, game2, feedback), you can export all of them at the same time for each user. This means each user will have 4 different files in their folder.
+  ```
+  npx -p node-firestore-import-export firestore-export -a credentials.json -n questionnaire/Student1 -b Student1/q.json
+  npx -p node-firestore-import-export firestore-export -a credentials.json -n game1/Student1 -b Student1/g1.json
+  npx -p node-firestore-import-export firestore-export -a credentials.json -n game2/Student1 -b Student1/g2.json
+  npx -p node-firestore-import-export firestore-export -a credentials.json -n feedback/Student1 -b Student1/f.json
+  cd Student1
+  jq . q.json > questionnaire.json
+  jq . g1.json > game1.json
+  jq . g2.json > game2.json
+  jq . f.json > feedback.json
+  rm q.json
+  rm g1.json
+  rm g2.json
+  rm f.json
+  ```
+* [Here](RewardProcessing/Student1) is an example of the exported files.
+
+
 
 ## Our Clients
 * Conor Houghton - an associate professor in Computer Science at University of Bristol
