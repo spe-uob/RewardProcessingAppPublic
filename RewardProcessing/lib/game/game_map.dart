@@ -1,3 +1,13 @@
+//Introduction: This page is for level 1
+//and it contains everything related to level one
+//including the game map
+//Pac-Man's movement and turning
+//the random selection of the guess box
+//clicking the button
+//score bar
+//the scoring mechanism
+//the probability of the inactive site and active site switches.
+//and data storage on Firebase.
 import 'dart:async';
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -13,7 +23,7 @@ class GameMap extends StatefulWidget {
   @override
   State<GameMap> createState() => _GameMapState();
 }
-
+//Create a map for 8 rows and 15 colomns
 int row = 8;
 int col = row * 15;
 int player = 65;
@@ -27,9 +37,9 @@ String rightImage = "assets/images/guess.png";
 class _GameMapState extends State<GameMap> {
   late Timer _timer;
   int _seconds = 0;
-  late String reward;
-  late String activeSide;
-  String agentSide = 'N';
+  late String reward; // the reward will be initialised in the game logic
+  late String activeSide; // activeSide will be initialised in the game logic
+  String agentSide = 'N'; // agentSide starts with N but will be initialised in the game logic
 
   @override
   void initState() {
@@ -45,6 +55,7 @@ class _GameMapState extends State<GameMap> {
       DeviceOrientation.landscapeLeft,
     ]);
 
+// count 5 minutes
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         _seconds++;
@@ -59,9 +70,9 @@ class _GameMapState extends State<GameMap> {
       }
     });
   }
-
-  List<int> leftGuess = [17, 31, 33];
-  List<int> rightGuess = [23, 37, 39];
+  
+  List<int> leftGuess = [17, 31, 33]; // guess boxes of left site
+  List<int> rightGuess = [23, 37, 39];  // guess boxes of right site
   List<int> guess = [17, 31, 33, 23, 37, 39];
   int fresh = 0;
   double topHeight = 60;
@@ -82,64 +93,35 @@ class _GameMapState extends State<GameMap> {
     "37": "assets/images/guess.png",
     "39": "assets/images/guess.png",
   };
-  int guessIndex = -1;
-  List guessesLeft = [17, 31, 33];
-  List guessesRight = [23, 37, 39];
-  bool leftActive = true;
-  bool inactiveFirstClicked = false;
-  double cherryProbability = 0.8;
+
+// logic related variables are here
+
+// guessIndex indicate clickable guessbox. -1 indicate non-clickable
+  int guessIndex = -1;    
+
+// guess box of left and right sites
+  List guessesLeft = [17, 31, 33];    
+  List guessesRight = [23, 37, 39];    
+
+// left site is active
+  bool leftActive = true;   
+// If it's the first time you click an inactive site (the first time ghoest appear)
+  bool inactiveFirstClicked = false;  
+
+// active site probability
+  double cherryProbability = 0.8;     
   double emptyProbability = 0.2;
-  double switchInactiveProbability = 0.3;
 
+// site switching happens when a player finds a reward in an active site 
+  double switchInactiveProbability = 0.3;   
+
+// When a guess box is selected, the pacman will change direction
   bool newMove = false;
-
-  List<int> barriers = [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    15,
-    30,
-    45,
-    60,
-    75,
-    76,
-    77,
-    78,
-    79,
-    80,
-    81,
-    82,
-    83,
-    84,
-    85,
-    70,
-    55,
-    40,
-    25,
-    46,
-    61,
-    48,
-    19,
-    34,
-    49,
-    20,
-    35,
-    50,
-    21,
-    36,
-    51,
-    52,
-    54,
-    69
-  ];
+  
+  // barriers index
+  List<int> barriers = [0,1,2,3,4,5,6,7,8,9,10,15,30,45,60,75,76,77,78,79,80,81,
+                        82,83,84,85,70,55,40,25,46,61,48,19,34,49,20,35,50,21,36,
+                        51,52,54,69];
 
   @override
   void dispose() {
@@ -151,23 +133,25 @@ class _GameMapState extends State<GameMap> {
 
   void trigger() {
     if (pellets.contains(player)) {
+      // The action of pacman eating pellets
       pellets.remove(player);
       calculate(0);
     }
   }
-
+  
+  // Calculating the score
   void calculate(int type) {
 
     if (type == 0) {
-      score = score + 1;
+      score = score + 1; // +1 point for each pellet
     } else if (type == 1) {
-      score = score + 5;
+      score = score + 5; // +5 point for finding a cherry
     }
 
     if (score <= 200) {
-      percentage = score / 2;
-    } else {
-      percentage = 100;
+      percentage = score / 2; // (score / 200) * 100 = score / 2
+    } else { 
+      percentage = 100; // when the score exceeds 200, the percentage stays 100
     }
   }
 
@@ -186,7 +170,7 @@ class _GameMapState extends State<GameMap> {
         nowPlayer = player;
       }
     }
-
+// the pacman turns directions
     if (right == -1 && down == 0) {
       quarterTurns = -2;
     }
@@ -209,7 +193,7 @@ class _GameMapState extends State<GameMap> {
     }
 
     if (lastPlayer != player) {
-      if (player == 32 || player == 38) {
+      if (player == 32 || player == 38) { // when the pacman is either on the left/right site
         if (guessIndex == -1) {
           newMove = true;
           randomCanGuess(true, true);
@@ -228,7 +212,7 @@ class _GameMapState extends State<GameMap> {
   // refresh
   void randomCanGuess(bool firstEnter, bool changeDirection) {
     if (player == 32) {
-      // left
+      // left site
       agentSide = 'Left';
 
       if (leftActive) {
@@ -257,13 +241,13 @@ class _GameMapState extends State<GameMap> {
       }
     }
     if (player == 38) {
-      // right
+      // right site
       agentSide = 'Right';
 
       if (!leftActive) {
         var randomValue = Random().nextDouble();
         if (randomValue < switchInactiveProbability && !firstEnter) {
-          // there 0.3 probability become inactive
+          // there's a 0.3 probability of switching to inactive
           leftActive = true;
           activeSide = 'Left';
         }
@@ -290,9 +274,12 @@ class _GameMapState extends State<GameMap> {
         "State,leftActive=$leftActive,inactiveFirstClicked=$inactiveFirstClicked");
   }
 
+  // switch guess box every 2 seconds
   void nextShow() {
-    Future.delayed(const Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 2), () {
       if (!newMove) {
+        // No movement yet before refreshing
+        // it solves the problem of multiple fast movements
         setState(() {
           allGuess();
           guessIndex = -1;
@@ -302,6 +289,7 @@ class _GameMapState extends State<GameMap> {
     });
   }
 
+  // guess boxes appear
   void allGuess() {
     guessIndex = -1;
     for (var a in clickCells.keys) {
@@ -309,8 +297,9 @@ class _GameMapState extends State<GameMap> {
     }
   }
 
+  // all ghosts appear
   void allGhost(bool left) {
-    if (left) {
+    if (left) { // when left is inactive
       clickCells["17"] = "assets/images/ghost.png";
       clickCells["31"] = "assets/images/ghost.png";
       clickCells["33"] = "assets/images/ghost.png";
@@ -321,6 +310,7 @@ class _GameMapState extends State<GameMap> {
     }
   }
 
+  // when a cell is clicked 
   Future<void> clickCell(int index, bool left) async {
     String image = clickCells[index.toString()];
     if (image == "assets/images/guess.png") {
@@ -372,9 +362,9 @@ class _GameMapState extends State<GameMap> {
             );
           }
         } else if (!left && leftActive) {
-          // click the right side and it's inactive
+          // click the right side and it's invalid
           if (!inactiveFirstClicked) {
-            // become inactive
+            // become inactive, without the first click
             allGhost(left);
             ghost = true;
             reward = 'Ghosts appear';
@@ -390,7 +380,6 @@ class _GameMapState extends State<GameMap> {
             ]},
                 SetOptions(merge: true)
             );
-            //inactiveFirstClicked = true;
           } else {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
@@ -477,7 +466,7 @@ class _GameMapState extends State<GameMap> {
     }
 
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-
+    //the score bar
     return Scaffold(
         backgroundColor: Colors.white,
         extendBodyBehindAppBar: true,
@@ -544,6 +533,7 @@ class _GameMapState extends State<GameMap> {
     );
   }
 
+// make widget adaptive
   Widget getWidget(int index) {
     double itemWidth = (MediaQuery.of(context).size.height - topHeight) / row;
     if (itemWidth > (MediaQuery.of(context).size.width / 15)) {
@@ -552,9 +542,9 @@ class _GameMapState extends State<GameMap> {
     Widget w;
 
     double startLeft = (MediaQuery.of(context).size.width - itemWidth * 15) / 2;
-    double startTop =
-        ((MediaQuery.of(context).size.height - topHeight) - itemWidth * 6) / 2;
+    double startTop = ((MediaQuery.of(context).size.height - topHeight) - itemWidth * 6) / 2;
     if (57 == index) {
+      //left navigation button
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -583,6 +573,7 @@ class _GameMapState extends State<GameMap> {
           )
       );
     } else if (59 == index) {
+      // right navigation button
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -611,6 +602,7 @@ class _GameMapState extends State<GameMap> {
           )
       );
     } else if (28 == index) {
+      //up navigation button
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -639,6 +631,7 @@ class _GameMapState extends State<GameMap> {
           )
       );
     } else if (88 == index) {
+      //down navigation button
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -667,6 +660,8 @@ class _GameMapState extends State<GameMap> {
           )
       );
     } else if (player == index) {
+      // The current grid shows pacman
+      // quarterTurns indicates Rotation Direction
       w = RotatedBox(
           quarterTurns: quarterTurns == -2 ? 0 : quarterTurns,
           child: Container(
@@ -684,6 +679,7 @@ class _GameMapState extends State<GameMap> {
           )
       );
     } else if (17 == index) {
+      //The guessbox on the top of left site
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -711,6 +707,7 @@ class _GameMapState extends State<GameMap> {
           )
       );
     } else if (31 == index) {
+      //The guessbox on the left of left site
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -738,6 +735,7 @@ class _GameMapState extends State<GameMap> {
           )
       );
     } else if (33 == index) {
+      //The guessbox on the right of the left site  
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -765,6 +763,7 @@ class _GameMapState extends State<GameMap> {
           )
       );
     } else if (23 == index) {
+      //The guessbox on the top of the right site
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -792,6 +791,7 @@ class _GameMapState extends State<GameMap> {
           )
       );
     } else if (37 == index) {
+      //The guessbox on the left of right site
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -819,6 +819,7 @@ class _GameMapState extends State<GameMap> {
           )
       );
     } else if (39 == index) {
+      //The guessbox on the right of the right site
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
@@ -846,6 +847,7 @@ class _GameMapState extends State<GameMap> {
           )
       );
     } else if (pellets.contains(index)) {
+      // generate pellets
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(
@@ -855,6 +857,7 @@ class _GameMapState extends State<GameMap> {
         ),
       );
     } else if (barriers.contains(index)) {
+      // generate barriers
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(
