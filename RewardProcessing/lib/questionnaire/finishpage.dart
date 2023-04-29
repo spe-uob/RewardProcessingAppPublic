@@ -13,6 +13,9 @@ class FinishPage extends StatefulWidget {
 }
 
 class _FinishPageState extends State<FinishPage> {
+  static final _url = Uri.parse('https://www.samaritans.org');
+
+
   @override
   void initState() {
     super.initState();
@@ -21,6 +24,9 @@ class _FinishPageState extends State<FinishPage> {
       DeviceOrientation.portraitDown,
     ]);
   }
+
+  void launch() async =>
+      await canLaunchUrl(_url) ? await launchUrl(_url) : throw 'Could not launch $_url';
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +56,8 @@ class _FinishPageState extends State<FinishPage> {
                   Container(
                     margin: const EdgeInsets.only(right: 40, left: 40, top: 20, bottom: 20),
                     child: GestureDetector(
-                      onTap: () async {
-                        await launch('https://www.samaritans.org');
+                      onTap: () {
+                        launch;
                       },
                       child: Text.rich(
                         TextSpan(
@@ -67,8 +73,8 @@ class _FinishPageState extends State<FinishPage> {
                                 color: Colors.blue,
                                 decoration: TextDecoration.underline,
                               ),
-                              recognizer: TapGestureRecognizer()..onTap = () async {
-                                  await launch('https://www.samaritans.org');
+                              recognizer: TapGestureRecognizer()..onTap = () {
+                                  launch;
                                 },
                             ),
                             const TextSpan(
