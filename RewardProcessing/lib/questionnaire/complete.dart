@@ -39,6 +39,7 @@ class _CompleteState extends State<Complete> {
                       child: const Text('Thank you for completing the questionnaire!',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 24,
+                              fontWeight: FontWeight.bold,
                               color: Colors.black
                           )
                       )
@@ -64,7 +65,7 @@ class _CompleteState extends State<Complete> {
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(160, 60),
+                            fixedSize: const Size(170, 70),
                             backgroundColor: const Color(0xFF00A8AF),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(100)

@@ -37,7 +37,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                           SizedBox(
                               child: Container(
                                   margin: const EdgeInsets.only(bottom: 40, left:30, right: 30),
-                                  width: 380,
+                                  width: 400,
                                   height: 110,
                                   decoration: const BoxDecoration(
                                       color: Color(0xFFFFD9A0),
