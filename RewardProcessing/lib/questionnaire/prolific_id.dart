@@ -13,6 +13,7 @@ class ProlificID extends StatefulWidget {
 
 class _ProlificIDState extends State<ProlificID> {
   bool activeButton = false;
+  late bool exist;
   final formKey = GlobalKey<FormState>();
   late String prolificID;
   final TextEditingController _textEditingController = TextEditingController();
@@ -31,6 +32,71 @@ class _ProlificIDState extends State<ProlificID> {
     ]);
   }
 
+  Future<void> checkExistence(String id) async {
+    var user = await FirebaseFirestore.instance
+        .collection('questionnaire')
+        .doc(id)
+        .get();
+    if (user.exists) {
+      Map<String, dynamic>? map = user.data();
+      if (map != null && map.isNotEmpty) {
+        exist = true;
+      } else if (map != null && map.isEmpty) {
+        exist = false;
+      }
+    }
+  }
+
+  // a message pops up once the time is up or when the user reaches 200 points
+  void popup(BuildContext context) {
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: const Text(
+              'The prolific ID already exists. Please enter a valid ID.',
+              textAlign: TextAlign.center,
+            ),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20)
+            ),
+            insetPadding: const EdgeInsets.only(right: 50, left: 50),
+            actions: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                      alignment: Alignment.center,
+                      child: ElevatedButton(
+                          onPressed: () => Navigator.pop(context),
+                          style: ElevatedButton.styleFrom(
+                            fixedSize: const Size(90, 45),
+                            backgroundColor: const Color(0xFF00A8AF),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100)
+                            ),
+                            elevation: 2.0,
+                          ),
+                          child: const Text(
+                              'OK',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w300
+                              )
+                          )
+                      )
+                  )
+                ],
+              )
+            ],
+          );
+        }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,8 +110,7 @@ class _ProlificIDState extends State<ProlificID> {
                       height: 90,
                       decoration: const BoxDecoration(
                           color: Color(0xFFFFD9A0),
-                          borderRadius: BorderRadius.all(Radius.circular(30)
-                          )
+                          borderRadius: BorderRadius.all(Radius.circular(30))
                       ),
                       alignment: Alignment.center,
                       child: Container(
@@ -64,10 +129,12 @@ class _ProlificIDState extends State<ProlificID> {
                       child: TextFormField(
                           maxLines: 1,
                           inputFormatters: [
-                            FilteringTextInputFormatter.allow(RegExp('[A-Za-z0-9]')),
+                            FilteringTextInputFormatter.allow(
+                                RegExp('[A-Za-z0-9]')),
                           ],
                           validator: (val) {
-                            return (RegExp("[A-Za-z0-9]").hasMatch(prolificID) &&
+                            return (RegExp("[A-Za-z0-9]").hasMatch(
+                                prolificID) &&
                                 prolificID.length <= 15)
                                 ? null
                                 : "Request body length over limit";
@@ -76,13 +143,15 @@ class _ProlificIDState extends State<ProlificID> {
                           decoration: const InputDecoration(
                               hintText: 'Enter here',
                               enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(10)),
                                   borderSide: BorderSide(
                                       width: 2,
                                       color: Colors.grey,
                                       style: BorderStyle.solid)),
                               focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(10)),
                                   borderSide: BorderSide(
                                       width: 2,
                                       color: Color(0xFF00A8AF),
@@ -95,9 +164,10 @@ class _ProlificIDState extends State<ProlificID> {
                               prolificID = value;
                               activeButton = value.isNotEmpty ? true : false;
                               _textEditingController.text = value;
+                              checkExistence(prolificID);
 
-                              if(value.length > 15) {
-                                counterTextColor =Colors.red;
+                              if (value.length > 15) {
+                                counterTextColor = Colors.red;
                               } else {
                                 counterTextColor = Colors.black;
                               }
@@ -111,8 +181,13 @@ class _ProlificIDState extends State<ProlificID> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      '${_textEditingController.text.trim().length}/15',
-                      style: TextStyle(color: counterTextColor),)
+                      '${_textEditingController.text
+                          .trim()
+                          .length}/15',
+                      style: TextStyle(
+                          color: counterTextColor
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -121,16 +196,21 @@ class _ProlificIDState extends State<ProlificID> {
                   child: ElevatedButton(
                       onPressed: activeButton ? () async {
                         if (formKey.currentState!.validate()) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Consent(id: prolificID)
-                              )
-                          );
+                          if (exist == false) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) =>
+                                    Consent(id: prolificID)
+                                )
+                            );
+                            await FirebaseFirestore.instance
+                                .collection('questionnaire')
+                                .doc(prolificID)
+                                .set({'00. Prolific ID': prolificID});
+                          } else if (exist == true) {
+                            popup(context);
+                          }
                         }
-                        await FirebaseFirestore.instance
-                            .collection('questionnaire')
-                            .doc(prolificID)
-                            .set({'00. Prolific ID': prolificID});
                       } : null,
                       style: ElevatedButton.styleFrom(
                           fixedSize: const Size(160, 60),

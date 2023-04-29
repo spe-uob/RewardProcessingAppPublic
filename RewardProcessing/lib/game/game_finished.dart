@@ -40,8 +40,7 @@ class _GameFinishedState extends State<GameFinished> {
               foregroundColor: Colors.transparent,
             ),
 
-            body:
-            Row(
+            body: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Column(
@@ -55,14 +54,13 @@ class _GameFinishedState extends State<GameFinished> {
                           onPressed: () async {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const GameMap2(
-                                    id: ''))
+                                MaterialPageRoute(builder: (context) => GameMap2(id: widget.id))
                             );
                             await FirebaseFirestore.instance
                                 .collection('game2')
                                 .doc(widget.id)
                                 .set({'0. Game Details': [
-                              'Site Switch Probability.: 0.3',
+                              'Site Switch Probability: 0.3',
                               'Cherry Probability: 0.8',
                               'Active Site: 0.5 probability of being on the left/right at the start of every game.'
                             ]},
@@ -70,13 +68,15 @@ class _GameFinishedState extends State<GameFinished> {
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(240, 50),
+                            fixedSize: const Size(300, 60),
                             backgroundColor: const Color(0xFF00A8AF),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100)),
-                            elevation: 2.0,),
+                                borderRadius: BorderRadius.circular(100)
+                            ),
+                            elevation: 2.0,
+                          ),
                           child: const Text(
-                              'CLICK HERE TO LEVLE2',
+                              'CLICK HERE TO LEVEL 2',
                               textAlign: TextAlign.center,
                               style:TextStyle(
                                  // fontWeight: FontWeight.bold,
