@@ -75,8 +75,7 @@ class _ConsentState extends State<Consent> {
                                           fixedSize: const Size(160, 60),
                                           backgroundColor: Colors.white70,
                                           shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                              BorderRadius.circular(100)
+                                              borderRadius: BorderRadius.circular(100)
                                           ),
                                           elevation: 2.0,
                                         ),
@@ -106,8 +105,7 @@ class _ConsentState extends State<Consent> {
                                           fixedSize: const Size(160, 60),
                                           backgroundColor: const Color(0xFF00A8AF),
                                           shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                              BorderRadius.circular(100)
+                                              borderRadius: BorderRadius.circular(100)
                                           ),
                                           elevation: 2.0,
                                         ),

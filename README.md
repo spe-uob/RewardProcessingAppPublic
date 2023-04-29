@@ -84,12 +84,11 @@ To export data from Firebase, please follow the instructions below:
         * `[DOCUMENT]` is the name of the document on Firebase (in this case, the prolific IDs of the participants)
         * `[FOLDER]` is where you want the data to be exported to
         * `[FILE]` is the name you want for the json file of the exported data
-        * Example:
-            * `npx -p node-firestore-import-export firestore-export -a credentials.json -b [Student1]/[q.json] -n [questionnaire]/[Student1]`
+        * _Example_: `npx -p node-firestore-import-export firestore-export -a credentials.json -n [questionnaire]/[Student1] -b [Student1]/[q.json]`
     2. `cd FOLDER`; change to the directory where your data is saved (e.g., `cd Student1`)
     3. `jq . FILE.json > FILE2.json`; organise the data and transfer it to a new json file (e.g., `jq . q.json > questionnaire.json`)
     4. `rm FILE.json`; remove the unsorted data file (e.g., `rm q.json`)
-* Since each user has (Student1) 4 different data collections (questionnaire, game1, game2, feedback), you can export all of them at the same time for each user. This means each user will have 4 different files in their folder.
+* Since each user (Student1) has  4 different data collections (questionnaire, game1, game2, feedback), you can export all of them at the same time for each user. This means each user will have 4 different files in their folder.
   ```
   npx -p node-firestore-import-export firestore-export -a credentials.json -n questionnaire/Student1 -b Student1/q.json
   npx -p node-firestore-import-export firestore-export -a credentials.json -n game1/Student1 -b Student1/g1.json
@@ -107,28 +106,23 @@ To export data from Firebase, please follow the instructions below:
   ```
 * [Here](RewardProcessing/Student1) is an example of the exported files.
 
-
-
 ## Our Clients
 * Conor Houghton - an associate professor in Computer Science at University of Bristol
 * Kimberley Beaumont - a postgraduate student in Digital Health and Care at University of Bristol
 * Ian Penton-Voak - a professor in Evolutionary Psychology at University of Bristol
 
 ## Stakeholders
-- Clients: Conor Houghton, Kimberley Beaumont and Ian Penton-Voak
-- University of Bristol's Department of Digital Health and Care
-- Participants of Questionnaire and Surveys
-- RewardProcessingApp Team
-- Mentor (Kejia Zhang)
-- End-users (who are easily affected by mood, especially those with mood disorders)
+### Clients
+The clients are members of University of Bristol who are interested in studying the affect of a person's mood on their decision-making skills. At the moment, they have a web page for the questionnaire and the game. However, they want to adapt this to a mobile application which will facilitate the research process.
+### Participants
+The participants who consent to be part of this study are the primary source of data collection, including the answers to the questionnaire and every movement made on the PacMan which will be analysed later. The application must be easily accessible and contains clear guidance.
 
 ## User Stories
+### Clients
+As researchers, the clients want the participants to have a true naturally-occurring mood states while going through the questionnaire and the game. Thus, the database system will have to designed in order for the clients to analyse the participants decision-making skills in response to their moods through the questionnaire responses and the movements of the game. They will be given full access to our Firebase at the end of the project.
 
-### Player
-As a player, I want to play this game with the same strategy as the real-world settings, know the impact of mood on decision-making and get the state of mind.
-
-### Researcher
-As a researcher, I want players to have a true naturally-occurring mood states while playing the game in order to analyse their mental state in response to the game data.
+### Participants
+Participants need to be able to undergo the research with the same decision strategies in real-world settings. This means they can take part anywhere and anytime. Therefore, both researchers and participants gain benefits from this application.
 
 ## License
 This project is distributed under the [GNU Affero General Public License v3.0](LICENSE.txt)
