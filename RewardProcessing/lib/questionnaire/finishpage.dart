@@ -13,6 +13,9 @@ class FinishPage extends StatefulWidget {
 }
 
 class _FinishPageState extends State<FinishPage> {
+  static final _url = Uri.parse('https://www.samaritans.org');
+
+
   @override
   void initState() {
     super.initState();
@@ -21,6 +24,9 @@ class _FinishPageState extends State<FinishPage> {
       DeviceOrientation.portraitDown,
     ]);
   }
+
+  void launch() async =>
+      await canLaunchUrl(_url) ? await launchUrl(_url) : throw 'Could not launch $_url';
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +38,12 @@ class _FinishPageState extends State<FinishPage> {
             body: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.asset('assets/images/UoB_logo2.png',
+                  Image.asset(
+                    'assets/images/UoB_logo2.png',
                     width: 300,
                   ),
                   Container(
-                    margin: const EdgeInsets.only(right:50,left:50,top:55,bottom:20),
+                    margin: const EdgeInsets.only(right: 50, left: 50, top: 50, bottom: 20),
                     child: const Text("THANK YOU FOR COMPLETING TODAY'S STUDY",
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -46,33 +53,17 @@ class _FinishPageState extends State<FinishPage> {
                       ),
                     ),
                   ),
-                  // Container(
-                  //     margin: const EdgeInsets.only(right: 50, left: 50, top: 52, bottom: 20),
-                  //     child: GestureDetector(
-                  //       onTap: ()async{
-                  //         // ignore: deprecated_member_use
-                  //         await launch('https://www.samaritans.org' );
-                  //       },
-                  //       child: const Text(
-                  //         'Please note: If you experience any adverse effects to your mental health please seek help from your usual care providers. If you require immediate help, online advice can be found at www.samaritans.org, or alternatively you can contact a Samaritan free of charge on 116 123 (available 24 hours a day, 365 days a year).',
-                  //         textAlign: TextAlign.center,
-                  //         style: TextStyle(fontSize: 17, color: Colors.black),
-                  //       ),
-                  //     ),
-                  // ),
                   Container(
-                    margin: const EdgeInsets.only(right: 50, left: 50, top: 52, bottom: 20),
+                    margin: const EdgeInsets.only(right: 40, left: 40, top: 20, bottom: 20),
                     child: GestureDetector(
-                      onTap: () async {
-                        // ignore: deprecated_member_use
-                        await launch('https://www.samaritans.org');
+                      onTap: () {
+                        launch;
                       },
                       child: Text.rich(
                         TextSpan(
                           children: [
                             const TextSpan(
-                              text:
-                              'Please note: If you experience any adverse effects to your mental health please seek help from your usual care providers. If you require immediate help, online advice can be found at ',
+                              text: 'Please note: If you experience any adverse effects to your mental health, please seek help from your usual care providers. If you require immediate help, online advice can be found at ',
                               style: TextStyle(fontSize: 17, color: Colors.black),
                             ),
                             TextSpan(
@@ -82,16 +73,14 @@ class _FinishPageState extends State<FinishPage> {
                                 color: Colors.blue,
                                 decoration: TextDecoration.underline,
                               ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () async {
-                                  // ignore: deprecated_member_use
-                                  await launch('https://www.samaritans.org');
+                              recognizer: TapGestureRecognizer()..onTap = () {
+                                  launch;
                                 },
                             ),
                             const TextSpan(
                               text:
-                              ', or alternatively you can contact a Samaritan free of charge on 116 123 (available 24 hours a day, 365 days a year).',
-                              style: TextStyle(fontSize: 17, color: Colors.black),
+                              ', or alternatively you can contact a Samaritan on 116 123 (free of charge and available 24 hours a day, 365 days a year).',
+                              style: TextStyle(fontSize: 16, color: Colors.black),
                             ),
                           ],
                         ),
@@ -99,16 +88,15 @@ class _FinishPageState extends State<FinishPage> {
                       ),
                     ),
                   ),
-
-
-
                   Container(
                       margin: const EdgeInsets.only(left: 10, right: 10, top: 30),
-                      child:
-                      ElevatedButton(
+                      child: ElevatedButton(
                           onPressed: () {
-                            //SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop');
-                            exit(0);
+                            if (Platform.isAndroid) {
+                              SystemNavigator.pop();
+                            } else {
+                              exit(0);
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                             fixedSize: const Size(160, 60),
@@ -118,7 +106,7 @@ class _FinishPageState extends State<FinishPage> {
                             ),
                             elevation: 2.0,),
                           child: const Text(
-                              'Exit',
+                              'Complete',
                               textAlign: TextAlign.center,
                               style: TextStyle(color: Colors.white,
                                   fontSize: 18,

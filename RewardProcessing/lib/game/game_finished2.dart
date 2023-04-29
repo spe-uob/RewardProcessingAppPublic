@@ -60,9 +60,9 @@ class _GameFinishedState2 extends State<GameFinished2> {
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(240, 50),
-                            backgroundColor: const Color(0xFF00A8AF),
-                            shape: RoundedRectangleBorder(
+                              fixedSize: const Size(300, 60),
+                              backgroundColor: const Color(0xFF00A8AF),
+                              shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(100)
                             ),
                             elevation: 2.0

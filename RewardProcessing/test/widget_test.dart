@@ -8,20 +8,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:rewardprocessing/questionnaire/my_slider.dart';
-import 'package:rewardprocessing/questionnaire/prolific_id.dart';
 import 'package:rewardprocessing/questionnaire/questionnaire.dart';
+import 'package:rewardprocessing/questionnaire/questionnaire16.dart';
 
 void main() {
   testWidgets('Text field test', (tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MaterialApp(home: ProlificID()));
+    await tester.pumpWidget(const MaterialApp(home: Questionnaire16(id: 'Test')));
 
     expect(find.text(''), findsOneWidget);
 
-    await tester.enterText(find.byType(TextFormField), 'Hello123');
+    await tester.enterText(find.byType(TextFormField), 'TestWidget');
     await tester.pumpAndSettle(const Duration(seconds: 2));
 
-    expect(find.text('Hello123'), findsOneWidget);
+    expect(find.text('TestWidget'), findsOneWidget);
   });
 
   testWidgets('Slider test', (tester) async {
