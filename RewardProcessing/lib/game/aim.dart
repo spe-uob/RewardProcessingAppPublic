@@ -23,32 +23,28 @@ class _AimState extends State<Aim> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-        onWillPop: () async {
-          return false; // disable back page
-        },
-        child: Scaffold(
-            body: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      const Text('THE AIM OF THE GAME:',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 24,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline,
-                          )
-                      ),
-                      Container(
-                          margin: const EdgeInsets.only(right :50, left: 50, top: 20, bottom: 10),
-                          child: RichText(
-                              text: const TextSpan(
-                                  style: TextStyle(color: Colors.blue), //apply style to all
-                                  children: [
-                                    TextSpan(
+    return Scaffold(
+        body: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text('THE AIM OF THE GAME:',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 24,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline,
+                        )
+                    ),
+                    Container(
+                        margin: const EdgeInsets.only(right :50, left: 50, top: 20, bottom: 10),
+                        child: RichText(
+                            text: const TextSpan(
+                                style: TextStyle(color: Colors.blue), //apply style to all
+                                children: [
+                                  TextSpan(
                                       text: 'Your goal is to',
                                       style: TextStyle(
                                           fontSize: 16,
