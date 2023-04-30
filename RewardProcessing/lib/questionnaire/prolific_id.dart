@@ -47,7 +47,7 @@ class _ProlificIDState extends State<ProlificID> {
     }
   }
 
-  // a message pops up once the time is up or when the user reaches 200 points
+  // a message pops up if the ID is invalid
   void popup(BuildContext context) {
     showDialog(
         barrierDismissible: false,

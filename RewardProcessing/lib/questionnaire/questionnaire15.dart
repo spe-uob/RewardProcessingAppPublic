@@ -51,7 +51,7 @@ class _Questionnaire15State extends State<Questionnaire15> {
                               child: const Text (
                                   'Did you know the event/experience was going to occur before it happened?',
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(fontSize: 16,
+                                  style: TextStyle(fontSize: 15,
                                     letterSpacing: 0.75,
                                   )
                               )

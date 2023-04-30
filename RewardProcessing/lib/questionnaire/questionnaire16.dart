@@ -38,7 +38,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                               child: Container(
                                   margin: const EdgeInsets.only(bottom: 40, left:30, right: 30),
                                   width: 380,
-                                  height: 110,
+                                  height: 140,
                                   decoration: const BoxDecoration(
                                       color: Color(0xFFFFD9A0),
                                       borderRadius: BorderRadius.all(Radius.circular(30))

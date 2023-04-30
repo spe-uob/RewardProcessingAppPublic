@@ -15,7 +15,6 @@ class _GameFinishedState2 extends State<GameFinished2> {
   double topHeight = 60;
 
   @override
-  @override
   void initState() {
     super.initState();
     SystemChrome.setPreferredOrientations([
@@ -63,18 +62,18 @@ class _GameFinishedState2 extends State<GameFinished2> {
                               fixedSize: const Size(300, 60),
                               backgroundColor: const Color(0xFF00A8AF),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100)
-                            ),
-                            elevation: 2.0
+                                  borderRadius: BorderRadius.circular(100)
+                              ),
+                              elevation: 2.0
                           ),
                           child: const Text(
                               'CLICK HERE TO FINISH',
                               textAlign: TextAlign.center,
                               style:TextStyle(
-                                 // fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
+                                // fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
                               )
                           )
                       )
@@ -86,5 +85,3 @@ class _GameFinishedState2 extends State<GameFinished2> {
     );
   }
 }
-
-

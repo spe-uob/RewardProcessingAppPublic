@@ -28,7 +28,7 @@ class _GameFinishedState extends State<GameFinished> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: ()async {
+        onWillPop: () async {
           return false; // disable back page
         },
         child: Scaffold(
@@ -47,7 +47,7 @@ class _GameFinishedState extends State<GameFinished> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Image.asset('assets/images/finishpage1.png',
-                      fit:BoxFit.contain,
+                        fit:BoxFit.contain,
                         scale: 2.5,
                       ),
                       ElevatedButton(
@@ -79,10 +79,9 @@ class _GameFinishedState extends State<GameFinished> {
                               'CLICK HERE TO LEVEL 2',
                               textAlign: TextAlign.center,
                               style:TextStyle(
-                                 // fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
                               )
                           )
                       )
@@ -94,5 +93,3 @@ class _GameFinishedState extends State<GameFinished> {
     );
   }
 }
-
-

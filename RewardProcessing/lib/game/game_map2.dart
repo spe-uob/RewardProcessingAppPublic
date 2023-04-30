@@ -1,3 +1,13 @@
+//Introduction: This page is for level 1
+//and it contains everything related to level one
+//including the game map
+//Pac-Man's movement and turning
+//the random selection of the guess box
+//clicking the button
+//score bar
+//the scoring mechanism
+//the probability of the inactive site and active site switches.
+//and data storage on Firebase.
 import 'dart:math';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -14,6 +24,7 @@ class GameMap2 extends StatefulWidget {
   State<GameMap2> createState() => _GameMap2State();
 }
 
+//Create a map for 8 rows and 15 colomns
 int row = 8;
 int col = row * 15;
 int player = 65;
@@ -27,9 +38,17 @@ String rightImage = "assets/images/guess.png";
 class _GameMap2State extends State<GameMap2> {
   late Timer _timer;
   int _seconds = 0;
-  late String reward;
+  //reward initialised in the game logic
+  late String reward; 
+
+  //activeSide initialised
   late String activeSide;
+
+  //agentSide starts with N but will be intialised in the game logic
   String agentSide = 'N';
+
+  //this message that will pop up dueto the cpmpleteness of the player
+  late String end;
 
   @override
   void initState() {
@@ -49,24 +68,21 @@ class _GameMap2State extends State<GameMap2> {
         _seconds++;
       });
 
-      if (_seconds > 300 || score >= 200) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => GameFinished2(id: widget.id)),
-        );
+      if (_seconds > 5 || score >= 200) {
+        popup(context); // call the popup message
         _timer.cancel(); //stop timer
       }
     });
   }
 
-  List<int> leftGuess = [17, 31, 33];
-  List<int> rightGuess = [23, 37, 39];
+  List<int> leftGuess = [17, 31, 33];//guess boxew of legt site
+  List<int> rightGuess = [23, 37, 39];//guess boxes of right site
 
   int fresh = 0;
 
   List<int> guess = [17, 31, 33, 23, 37, 39];
   double topHeight = 60;
-  int quarterTurns = 0;
+  int quarterTurns = 0;  //pacman turns 4 directions
 
   String leftImage17 = "assets/images/guess.png";
   String leftImage31 = "assets/images/guess.png";
@@ -76,119 +92,30 @@ class _GameMap2State extends State<GameMap2> {
   String rightImage23 = "assets/images/guess.png";
   String rightImage37 = "assets/images/guess.png";
   String rightImage39 = "assets/images/guess.png";
-  bool newMove = false;
 
-  List<int> paths = [
-    32,
-    47,
-    62,
-    61,
-    76,
-    91,
-    92,
-    93,
-    94,
-    79,
-    64,
-    66,
-    81,
-    96,
-    97,
-    98,
-    99,
-    84,
-    69,
-    68,
-    53,
-    38,
-    65
-  ];
-  List<int> pellets = [
-    32,
-    47,
-    62,
-    61,
-    76,
-    91,
-    92,
-    93,
-    94,
-    79,
-    64,
-    66,
-    81,
-    96,
-    97,
-    98,
-    99,
-    84,
-    69,
-    68,
-    53,
-    38
-  ];
+  //pacman moved by click the button
+  bool newMove = false;   //clicked the button but doesn't move to other grid
+
+//path is where pacman can move
+  List<int> paths = [32,47,62,61,76,91,92,93,94,79,64,66,81,96,
+                     97,98,99,84,69,68,53,38,65];
+
+//pellets index
+  List<int> pellets = [32,47,62,61,76,91,92,93,94,79,64,66,81,
+                        96,97,98,99,84,69,68,53,38];
 
   List<int> blocks = [58, 73, 88];
 
-  List<int> barriers = [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    15,
-    30,
-    45,
-    60,
-    75,
-    90,
-    105,
-    106,
-    107,
-    108,
-    109,
-    110,
-    111,
-    112,
-    113,
-    114,
-    115,
-    100,
-    85,
-    70,
-    55,
-    40,
-    25,
-    46,
-    77,
-    78,
-    63,
-    48,
-    49,
-    19,
-    35,
-    21,
-    51,
-    52,
-    67,
-    82,
-    83,
-    54,
-    80,
-    95,
-    20,
-    34,
-    36,
-    50,
+  List<int> barriers = [0,1,2,3,4,5,6,7,8,9,10,15,30,45,60,75,
+                        90,105,106,107,108,109,110,111,112,113,
+                        114,115,100,85,70,55,40,25,46,77,78,63,
+                        48,49,19,35,21,51,52,67,82,83,54,80,95,
+                        20,34,36,50,];
 
-  ];
+ //guessIndex indicate clickable guess. -1 indicate non-clickable guess box                       
   int guessIndex = -1;
+
+  //guess box of left and right site
   List guessesLeft = [17, 31, 33];
   List guessesRight = [23, 37, 39];
 
@@ -204,10 +131,17 @@ class _GameMap2State extends State<GameMap2> {
   bool leftIsEmpty = false;
   bool rightIsEmpty = false;
 
+//left site is active
   bool leftActive = true;
+
+ //If tit's the first time you click an inactive site(the first time ghost appear) 
   bool inactiveFirstClicked = false;
+
+//active site probablity
   double cherryProbability = 0.8;
   double emptyProbability = 0.2;
+
+//site swithcing happens when a player finds a reward in an active site
   double switchInactiveProbability = 0.3;
 
   @override
@@ -220,7 +154,7 @@ class _GameMap2State extends State<GameMap2> {
 
   void trigger() {
     if (pellets.contains(player)) {
-      //The action of pacman eating pellets
+      // The action of pacman eating pellets
       pellets.remove(player);
       calculate(0);
       refresh();
@@ -243,19 +177,89 @@ class _GameMap2State extends State<GameMap2> {
     setState(() {
       imagePath == "assets/images/guess.png";
     });
-    // }
   }
 
+//calculating the score
   void calculate(int type) {
-    //Statistical score
-
     if (type == 0) {
-      score = score + 1;
-    } else if (type == 1) {
-      score = score + 5;
+      score = score + 1;  //+1 point for each pallet
+    } else if (type == 1) {   //+5 point for finding a cherry
+      score = score + 50;
     }
 
-    percentage = score / 2;
+    if (score < 200) {
+      percentage = score / 2;  //(score / 200) * 100 = score / 2
+      end = "Time's up!";   //if the score is not completed, the it means the time's up
+    } else {
+      score = 200;
+      percentage = 100;  // // when the score exceeds 200, the percentage stays 100
+      end = 'Level 1 Complete!';
+    }
+  }
+
+//a message pops up once the time is up or when the user reaches 200 points
+  void popup(BuildContext context) {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(
+            end,
+            textAlign: TextAlign.center,
+          ),
+          content: const Text(
+            'Please click the button below to continue.',
+            textAlign: TextAlign.center,
+          ),
+          actions: [
+            Row (
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                    alignment: Alignment.center,
+                    child: ElevatedButton(
+                        onPressed: () async {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => GameFinished2(id: widget.id)),
+                          );
+                          await FirebaseFirestore.instance
+                              .collection('game2')
+                              .doc(widget.id)
+                              .set({Timestamp.now().toString(): [
+                            end,
+                            "Final Score: $score/200",
+                            "Percentage Complete: $percentage%"
+                          ]},
+                              SetOptions(merge: true)
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          fixedSize: const Size(160, 60),
+                          backgroundColor: const Color(0xFF00A8AF),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100)
+                          ),
+                          elevation: 2.0,
+                        ),
+                        child: const Text(
+                            'Continue',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w300
+                            )
+                        )
+                    )
+                )
+              ],
+            )
+          ],
+        );
+      },
+    );
   }
 
   void movePlayer(int right, int down) {
@@ -273,7 +277,7 @@ class _GameMap2State extends State<GameMap2> {
         nowPlayer = player;
       }
     }
-
+    //the pacman turns 4 directions
     if (right == -1 && down == 0) {
       quarterTurns = -2;
     }
@@ -295,7 +299,7 @@ class _GameMap2State extends State<GameMap2> {
       });
     }
     if (lastPlayer != player) {
-      if (player == 32 || player == 38) {
+      if (player == 32 || player == 38) { // when the pacman is either on the left/right site
         if (guessIndex == -1) {
           newMove = true;
           randomCanGuess(true, true);
@@ -314,16 +318,16 @@ class _GameMap2State extends State<GameMap2> {
     setState(() {});
   }
 
+//refresh
   void randomCanGuess(bool firstEnter, bool changeDirection) {
-    //refresh
     if (player == 32) {
-      // left vertex
+      // left site
       agentSide = 'Left';
 
       if (leftActive) {
         var randomValue = Random().nextDouble();
         if (randomValue < switchInactiveProbability && !firstEnter) {
-          // there's a 0.3 probability of side switching
+          // there's a 0.3 probability of switching to inactive
           leftActive = false;
           activeSide = 'Right';
         }
@@ -348,12 +352,12 @@ class _GameMap2State extends State<GameMap2> {
       }
     }
     if (player == 38) {
-      // right vertex
+      // right site
       agentSide = 'Right';
       if (!leftActive) {
         var randomValue = Random().nextDouble();
         if (randomValue < switchInactiveProbability && !firstEnter) {
-          // there's a 0.3 probability of side switching
+          // there's a 0.3 probability of switching to inactive
           leftActive = true;
           activeSide = 'Left';
         }
@@ -379,9 +383,12 @@ class _GameMap2State extends State<GameMap2> {
     debugPrint("guessIndex=$guessIndex");
   }
 
+//switch guess box every 2 seconds
   void nextShow() {
     Future.delayed(const Duration(seconds: 1), () {
       if (!newMove) {
+        //no movement yet vefore refreshing
+        //it soloves the problem of multiple fast movements
         setState(() {
           allGuess();
           guessIndex = -1;
@@ -391,6 +398,7 @@ class _GameMap2State extends State<GameMap2> {
     });
   }
 
+//all become the guess boxes
   void allGuess() {
     guessIndex = -1;
     for (var a in clickCells.keys) {
@@ -398,6 +406,7 @@ class _GameMap2State extends State<GameMap2> {
     }
   }
 
+  // ghosts appear in the guess boxes
   void allGhost(bool left) {
     if (left) {
       clickCells["17"] = "assets/images/ghost.png";
@@ -410,6 +419,7 @@ class _GameMap2State extends State<GameMap2> {
     }
   }
 
+//when a cell is clicked
   Future<void> clickCell(int index, bool left) async {
     String image = clickCells[index.toString()];
     if (image == "assets/images/guess.png") {
@@ -423,12 +433,16 @@ class _GameMap2State extends State<GameMap2> {
       var randomValue = Random().nextDouble();
       if (image == "assets/images/thisguess.png") {
         if (left && !leftActive) {
-           // click the left side and it's invalid
+          // if you're on the left grid and it's inactive
           if (!inactiveFirstClicked) {
-            // become inactive
+            // becomes inactive
             allGhost(left);
             ghost = true;
-            reward = 'Ghosts appear';
+
+            // ghost appears
+            reward = 'Ghosts appear'; // will be used later when 'clickCell' is called
+
+            // data storage of guess box selected
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -443,10 +457,13 @@ class _GameMap2State extends State<GameMap2> {
             );
           }
           else {
+            // empty guess box
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
             fresh++;
-            reward = 'Show no cherry';
+            reward = 'Show no cherry';// will be used later when 'clickCell' is called
+
+            // data storage of guess box selected
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -462,12 +479,16 @@ class _GameMap2State extends State<GameMap2> {
             //inactiveFirstClicked = true;
           }
         } else if (!left && leftActive) {
-          // click the right side and it's inactive
+          // if you're on the right grid and it's inactive
           if (!inactiveFirstClicked) {
-            // become inactive
+            // becomes inactive
             allGhost(left);
             ghost = true;
-            reward = 'Ghosts appear';
+
+            // ghosts appear
+            reward = 'Ghosts appear'; // will be used later when 'clickCell' is called
+
+            // data storage of guess box selected
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -485,7 +506,11 @@ class _GameMap2State extends State<GameMap2> {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
             fresh++;
-            reward = 'Show no cherry';
+
+            // empty guess box
+            reward = 'Show no cherry'; // will be used later when 'clickCell' is called
+
+            // data storage of guess box selected
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -506,7 +531,11 @@ class _GameMap2State extends State<GameMap2> {
             image = "assets/images/cherry.png";
             clickCells[index.toString()] = image;
             fresh++;
-            reward = 'Show cherry';
+
+            // reward (cherry) shows
+            reward = 'Show cherry'; // will be used later when 'clickCell' is called
+
+            // data storage of guess box selected
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -524,7 +553,11 @@ class _GameMap2State extends State<GameMap2> {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
             fresh++;
-            reward = 'Show no cherry';
+
+            // empty guess box
+            reward = 'Show no cherry'; // will be used later when 'clickCell' is called
+
+            // data storage of guess box selected
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -545,10 +578,11 @@ class _GameMap2State extends State<GameMap2> {
       }
     } else if (image == "assets/images/cherry.png") {
       image = "assets/images/NoCherry.png";
+      // image turing from cherry to empty guess box indicates that the cherry was selected
       clickCells[index.toString()] = image;
-      reward = 'Cherry selected';
       fresh++;
-      calculate(1);
+      reward = 'Cherry selected'; // will be used later when 'clickCell' is called
+      calculate(1); // score +5 for finding a cherry
       nextShow();
       allGuess();
     }
@@ -597,7 +631,7 @@ class _GameMap2State extends State<GameMap2> {
                                   "Score: $score",
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 16.0,
+                                      fontSize: 15.0,
                                       color: Color(0xFF000000)
                                   )
                               ),
@@ -609,7 +643,7 @@ class _GameMap2State extends State<GameMap2> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 16.0,
+                                fontSize: 15.0,
                                 color: Colors.black
                             )
                         )
@@ -644,13 +678,15 @@ class _GameMap2State extends State<GameMap2> {
     double startTop =
         ((MediaQuery.of(context).size.height - topHeight) - itemWidth * 8) / 2;
     if (72 == index) {
-      //left button
+      // left navigation button
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
-            movePlayer(-1, 0);
+            movePlayer(-1, 0); // move the pacman to the left
             trigger();
             refresh();
+
+            // data storage of the movement
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -674,13 +710,15 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (74 == index) {
-      //right button
+      // right navigation button
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
-            movePlayer(1, 0);
+            movePlayer(1, 0); // move the pacman to the left
             trigger();
             refresh();
+
+            // data storage of the movement
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -704,13 +742,15 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (43 == index) {
-      //up button
+      // up navigation button
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
-            movePlayer(0, -1);
+            movePlayer(0, -1); // move the pacman to the left
             trigger();
             refresh();
+
+            // data storage of the movement
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -734,13 +774,15 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (103 == index) {
-      //down button
+      // down navigation button
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
-            movePlayer(0, 1);
+            movePlayer(0, 1); // move the pacman to the left
             trigger();
             refresh();
+
+            // data storage of the movement
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -783,11 +825,13 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (17 == index) {
-      //The guessbox on the left side of the top
+      // The guess box on top of the left grid
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
-            clickCell(17, true);
+            clickCell(17, true); // call 'clickCell'
+
+            // data storage of the reward (empty, ghosts, show cherry, cherry selected)
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -811,11 +855,12 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (31 == index) {
-      //The guessbox on the left side of the left half
+      // The guess box on the left side of the left grid
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
-            clickCell(31, true);
+            clickCell(31, true); // call 'clickCell'
+            // data storage of the reward (empty, ghosts, show cherry, cherry selected)
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -839,11 +884,13 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (33 == index) {
-      //The guessbox on the right side of the top     
+      // The guess box on the right side of left grid
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
-            clickCell(33, true);
+            clickCell(33, true); // call 'clickCell'
+
+            // data storage of the reward (empty, ghosts, show cherry, cherry selected)
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -867,11 +914,13 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (23 == index) {
-      //The guessbox on the right side of the top
+      //The guess box on top of on the right grid
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
-            clickCell(23, false);
+            clickCell(23, false); // call 'clickCell'
+
+            // data storage of the reward (empty, ghosts, show cherry, cherry selected)
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -895,11 +944,13 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (37 == index) {
-      //The guessbox on the right side of the left half
+      // The guess box on the left side of the right grid
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
-            clickCell(37, false);
+            clickCell(37, false); // call 'clickCell'
+
+            // data storage of the reward (empty, ghosts, show cherry, cherry selected)
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -923,11 +974,13 @@ class _GameMap2State extends State<GameMap2> {
           )
       );
     } else if (39 == index) {
-      //The guessbox on the right side of the right half
+      // The guess box on the right side of the right grid
       w = GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () async {
-            clickCell(39, false);
+            clickCell(39, false); // call 'clickCell'
+
+            // data storage of the reward (empty, ghosts, show cherry, cherry selected)
             await FirebaseFirestore.instance
                 .collection('game2')
                 .doc(widget.id)
@@ -954,13 +1007,21 @@ class _GameMap2State extends State<GameMap2> {
       //generate pellets
       w = Padding(
         padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/dot.png")]),
+        child: Column(
+            children: [
+              Image.asset("assets/images/dot.png")
+            ]
+        ),
       );
     } else if (barriers.contains(index)) {
       //generate barriers
       w = Padding(
         padding: const EdgeInsets.all(1.0),
-        child: Column(children: [Image.asset("assets/images/wall.png")]),
+        child: Column(
+            children: [
+              Image.asset("assets/images/wall.png")
+            ]
+        ),
       );
     } else if (blocks.contains(index)) {
       w = Padding(

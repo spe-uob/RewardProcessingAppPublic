@@ -54,7 +54,7 @@ class _Questionnaire14State extends State<Questionnaire14> {
                                   'Please indicate on the sliding scale how positive or negative the experience was for you',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 15,
                                     letterSpacing: 0.75,
                                   )
                               )
