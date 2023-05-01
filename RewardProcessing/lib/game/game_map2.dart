@@ -376,7 +376,7 @@ class _GameMap2State extends State<GameMap2> {
     debugPrint("guessIndex=$guessIndex");
   }
 
-//switch guess box every 2 seconds
+//switch guess box every 1 second
   void nextShow() {
     Future.delayed(const Duration(seconds: 1), () {
       if (!newMove) {
