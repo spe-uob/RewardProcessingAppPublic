@@ -61,7 +61,7 @@ class _GameMap2State extends State<GameMap2> {
         _seconds++;
       });
 
-      if (_seconds > 5 || score >= 200) {
+      if (_seconds > 300 || score >= 200) {
         popup(context); // call the popup message
         _timer.cancel(); //stop timer
       }
@@ -177,15 +177,15 @@ class _GameMap2State extends State<GameMap2> {
     if (type == 0) {
       score = score + 1;  //+1 point for each pallet
     } else if (type == 1) {   //+5 point for finding a cherry
-      score = score + 50;
+      score = score + 5;
     }
 
     if (score < 200) {
-      percentage = score / 2;  //(score / 200) * 100 = score / 2
-      end = "Time's up!";   //if the score is not completed, the it means the time's up
+      percentage = score / 2;  // (score / 200) * 100 = score / 2
+      end = "Time's up!";   // if the score is not completed, the it means the time's up
     } else {
       score = 200;
-      percentage = 100;  // // when the score exceeds 200, the percentage stays 100
+      percentage = 100;  // when the score exceeds 200, the percentage stays 100
       end = 'Level 1 Complete!';
     }
   }
