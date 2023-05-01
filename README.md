@@ -1,22 +1,15 @@
 # Studying Reward Processing Through a Mobile App
-
 <a name="readme-top"></a><p align="center">
     [![Contributors][contributors-shield]][contributors-url]
-</a>
+        </a><p align="center">
+    ![FlutterBuild](https://img.shields.io/badge/Flutter%20Build-Passing-brightgreen)
+    ![FrontEnd](https://img.shields.io/badge/Front%20End-Flutter-brightgreen)
+    ![BackEnd](https://img.shields.io/badge/Back%20End-Firebase-brightgreen)
 
-<p style="text-align:center;">
-<a>
-    <img alt height="20"
-        width="130"
-        src="https://img.shields.io/badge/Flutter%20Build-Passing-brightgreen" />
-    <img alt height="20"
-        width="110"
-        src="https://img.shields.io/badge/Front%20End-Flutter-brightgreen"/>
-    <img alt height="20"
-        width="120"
-        src="https://img.shields.io/badge/Back%20End-Firebase-brightgreen"/>
+
 </a>
 </p>
+
 
 ## Table of Contents
 - [Navigating the GitHub pages](#Navigating-the-GitHub-Pages)
@@ -46,10 +39,12 @@
 Our mood greatly impacts our decision-making skills by influencing the type of information we attend to and also how we process it. According to research, individuals with depression tend to have negative responses to losses, leading them to make risky decisions. In contrast, those with anxiety are likely to make less risky decisions as they need certainty of outcomes to gain the sense of security.
 
 Presently, there is a wide array of research focusing on the important role of emotions in decision-making and how the change in our mental processes and logic impact our critical-thinking skills. However, most of this research is based on artificial mood-manipulation strategies in controlled laboratory settings. This makes it difficult for the results from these studies to ascertain that this reflects our true decision-making capabilities. This brings us to the importance of our app, where we are able to monitor decision-making skills in response to day-to-day fluctuations in a real-time manner using a gamified approach. Thus,the main objective of this project is to find a method to comprehensively assess emotions and decision-making, and our approach is to design a mobile app.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Development
 * **Front-end**: We develop this application with Flutter (uses Dart) since it supports both iOS and Android application development. Flutter was released in 2017 by Google. It is an open-source user interface (UI) software development kit that helps developers efficiently build multi-platform, beautiful applications across mobile, web, desktop, and embedded platforms from a single code base. We will use Flutter to implement both the questionnaire and the game part of our project. Please follow this [link](https://docs.flutter.dev/) to learn more about Flutter.
 * **Back-end**: For our backend, we use Firebase to store our data. It is a hosting service for any application. It offers a real-time hosting of databases and does not require an SQL server. We will be storing our data in Firestore Database. For more information, please follow this [link](https://firebase.flutter.dev/docs/firestore/overview).
+
 
 ## Setup Guide
 Clone the repository by typing `git clone https://github.com/spe-uob/2022-RewardProcessingApp.git` in your terminal.
@@ -58,11 +53,16 @@ You will need to install the following to build the application:
 * [Flutter Packages](https://docs.flutter.dev/get-started/install)
 * [Android Studio](https://developer.android.com/studio)
 * An emulator for iOS and Android devices
+
+
 ### Test and Run
 To run this application, chance directory to `RewardProcessing` in your terminal and do `flutter run`. You will be asked to connect to an emulator or a physical device in order to run the application.
+
+
 ### Build
 * iOS: `flutter build ios --release --no-codedesign`
 * Android: `flutter build apk`
+
 
 ## Exporting Firebase Data
 To export data from Firebase, please follow the instructions below:
@@ -95,7 +95,7 @@ To export data from Firebase, please follow the instructions below:
          * _Example_: `npx -p node-firestore-import-export firestore-export -a credentials.json -n [questionnaire]/[Student1] -b [Student1]/[q.json]`
     3. `cd FOLDER`; change to the directory where your data is saved (e.g., `cd Student1`)
     4. `jq . FILE.json > FILE2.json`; organise the data and transfer it to a new json file (e.g., `jq . q.json > questionnaire.json`)
-    5. `rm FILE.json`; remove the unsorted data file (e.g., `rm q.json`)
+    5. `rm FILE.json`; remove the unsorted data file (e.g. `rm q.json`)
 * Since each user (Student1) has  4 different data collections (questionnaire, game1, game2, feedback), you can export all of them at the same time for each user. This means each user will have 4 different files in their folder.
   ```
   mkdir Student1
@@ -114,6 +114,8 @@ To export data from Firebase, please follow the instructions below:
   rm f.json
   ```
 * [Here](RewardProcessing/Student1) is an example of the exported files.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Our Clients
 * Conor Houghton - an associate professor in Computer Science at University of Bristol
@@ -144,3 +146,10 @@ This project is distributed under the [GNU Affero General Public License v3.0](L
 - Chongqi Xue
 
 Supporting Mentor: Kejia Zhang
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[contributors-shield]: https://img.shields.io/badge/RewardProcessing-Contributor-9cf
+[contributors-url]: https://github.com/spe-uob/2022-RewardProcessingApp/graphs/contributors
