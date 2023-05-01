@@ -634,8 +634,8 @@ class _GameMapState extends State<GameMap> {
         ((MediaQuery.of(context).size.height - topHeight) - itemWidth * 6) / 2;
     if (57 == index) {
       // left navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             movePlayer(-1, 0); // move the pacman to the left
             trigger();
@@ -665,8 +665,8 @@ class _GameMapState extends State<GameMap> {
       );
     } else if (59 == index) {
       // right navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             movePlayer(1, 0); // move the pacman to the right
             trigger();
@@ -696,8 +696,8 @@ class _GameMapState extends State<GameMap> {
       );
     } else if (28 == index) {
       // up navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             movePlayer(0, -1); // move the pacman up
             trigger();
@@ -727,8 +727,8 @@ class _GameMapState extends State<GameMap> {
       );
     } else if (88 == index) {
       // down navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             movePlayer(0, 1); // move the pacman down
             trigger();
