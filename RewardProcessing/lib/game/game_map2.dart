@@ -670,8 +670,8 @@ class _GameMap2State extends State<GameMap2> {
         ((MediaQuery.of(context).size.height - topHeight) - itemWidth * 8) / 2;
     if (72 == index) {
       // left navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+         
           onTap: () async {
             movePlayer(-1, 0); // move the pacman to the left
             trigger();
@@ -702,8 +702,8 @@ class _GameMap2State extends State<GameMap2> {
       );
     } else if (74 == index) {
       // right navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             movePlayer(1, 0); // move the pacman to the left
             trigger();
@@ -734,8 +734,8 @@ class _GameMap2State extends State<GameMap2> {
       );
     } else if (43 == index) {
       // up navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             movePlayer(0, -1); // move the pacman to the left
             trigger();
@@ -766,8 +766,8 @@ class _GameMap2State extends State<GameMap2> {
       );
     } else if (103 == index) {
       // down navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             movePlayer(0, 1); // move the pacman to the left
             trigger();
@@ -817,8 +817,8 @@ class _GameMap2State extends State<GameMap2> {
       );
     } else if (17 == index) {
       // The guess box on top of the left grid
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+         
           onTap: () async {
             clickCell(17, true); // call 'clickCell'
 
@@ -847,8 +847,8 @@ class _GameMap2State extends State<GameMap2> {
       );
     } else if (31 == index) {
       // The guess box on the left side of the left grid
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+
           onTap: () async {
             clickCell(31, true); // call 'clickCell'
             // data storage of the reward (empty, ghosts, show cherry, cherry selected)
@@ -876,8 +876,8 @@ class _GameMap2State extends State<GameMap2> {
       );
     } else if (33 == index) {
       // The guess box on the right side of left grid
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             clickCell(33, true); // call 'clickCell'
 
