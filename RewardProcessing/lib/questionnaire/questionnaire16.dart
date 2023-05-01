@@ -36,7 +36,7 @@ class _Questionnaire16State extends State<Questionnaire16> {
                         children: <Widget>[
                           SizedBox(
                               child: Container(
-                                  margin: const EdgeInsets.only(bottom: 40, left:30, right: 30),
+                                  margin: const EdgeInsets.only(bottom: 40, left: 30, right: 30),
                                   width: 380,
                                   height: 140,
                                   decoration: const BoxDecoration(
@@ -44,13 +44,15 @@ class _Questionnaire16State extends State<Questionnaire16> {
                                       borderRadius: BorderRadius.all(Radius.circular(30))
                                   ),
                                   alignment: Alignment.center,
-                                  child: Container (
+                                  child: Container(
+                                      alignment: Alignment.center,
                                       margin: const EdgeInsets.only(left: 10, right: 10),
                                       child: const Text (
                                           '*Optional: \n'
-                                              'If you feel comfortable, please briefly describe the event or experience that significantly affected your mood:',
+                                          'If you feel comfortable, please briefly describe the event or experience that significantly affected your mood:',
                                           textAlign: TextAlign.center,
-                                          style: TextStyle(fontSize: 15,
+                                          style: TextStyle(
+                                              fontSize: 15,
                                               height: 1.45
                                           )
                                       )

@@ -1,4 +1,4 @@
-//Introduction: This page is for level 1
+//Introduction: This page is for level 2
 //and it contains everything related to level one
 //including the game map
 //Pac-Man's movement and turning
@@ -24,7 +24,7 @@ class GameMap2 extends StatefulWidget {
   State<GameMap2> createState() => _GameMap2State();
 }
 
-//Create a map for 8 rows and 15 colomns
+//Create a map for 8 rows and 15 columns
 int row = 8;
 int col = row * 15;
 int player = 65;
@@ -38,17 +38,10 @@ String rightImage = "assets/images/guess.png";
 class _GameMap2State extends State<GameMap2> {
   late Timer _timer;
   int _seconds = 0;
-  //reward initialised in the game logic
-  late String reward; 
-
-  //activeSide initialised
-  late String activeSide;
-
-  //agentSide starts with N but will be intialised in the game logic
-  String agentSide = 'N';
-
-  //this message that will pop up dueto the cpmpleteness of the player
-  late String end;
+  late String reward; // the reward will be initialised in the game logic
+  late String activeSide; // activeSide will be initialised in the game logic
+  String agentSide = 'N'; // agentSide starts with N but will be initialised in the game logic
+  late String end; // this is the message that will pop up due to the completeness of the player
 
   @override
   void initState() {
@@ -75,7 +68,7 @@ class _GameMap2State extends State<GameMap2> {
     });
   }
 
-  List<int> leftGuess = [17, 31, 33];//guess boxew of legt site
+  List<int> leftGuess = [17, 31, 33];//guess boxes of left site
   List<int> rightGuess = [23, 37, 39];//guess boxes of right site
 
   int fresh = 0;
@@ -98,21 +91,21 @@ class _GameMap2State extends State<GameMap2> {
 
 //path is where pacman can move
   List<int> paths = [32,47,62,61,76,91,92,93,94,79,64,66,81,96,
-                     97,98,99,84,69,68,53,38,65];
+    97,98,99,84,69,68,53,38,65];
 
 //pellets index
   List<int> pellets = [32,47,62,61,76,91,92,93,94,79,64,66,81,
-                        96,97,98,99,84,69,68,53,38];
+    96,97,98,99,84,69,68,53,38];
 
   List<int> blocks = [58, 73, 88];
 
   List<int> barriers = [0,1,2,3,4,5,6,7,8,9,10,15,30,45,60,75,
-                        90,105,106,107,108,109,110,111,112,113,
-                        114,115,100,85,70,55,40,25,46,77,78,63,
-                        48,49,19,35,21,51,52,67,82,83,54,80,95,
-                        20,34,36,50,];
+    90,105,106,107,108,109,110,111,112,113,
+    114,115,100,85,70,55,40,25,46,77,78,63,
+    48,49,19,35,21,51,52,67,82,83,54,80,95,
+    20,34,36,50,];
 
- //guessIndex indicate clickable guess. -1 indicate non-clickable guess box                       
+  //guessIndex indicate clickable guess. -1 indicate non-clickable guess box
   int guessIndex = -1;
 
   //guess box of left and right site
@@ -131,17 +124,17 @@ class _GameMap2State extends State<GameMap2> {
   bool leftIsEmpty = false;
   bool rightIsEmpty = false;
 
-//left site is active
+  // left site is active
   bool leftActive = true;
 
- //If tit's the first time you click an inactive site(the first time ghost appear) 
+  // If tit's the first time you click an inactive site(the first time ghost appear)
   bool inactiveFirstClicked = false;
 
-//active site probablity
+  // active site probability
   double cherryProbability = 0.8;
   double emptyProbability = 0.2;
 
-//site swithcing happens when a player finds a reward in an active site
+  // site switching happens when a player finds a reward in an active site
   double switchInactiveProbability = 0.3;
 
   @override
@@ -387,8 +380,8 @@ class _GameMap2State extends State<GameMap2> {
   void nextShow() {
     Future.delayed(const Duration(seconds: 1), () {
       if (!newMove) {
-        //no movement yet vefore refreshing
-        //it soloves the problem of multiple fast movements
+        // no movement yet before refreshing
+        // it solves the problem of multiple fast movements
         setState(() {
           allGuess();
           guessIndex = -1;
@@ -398,7 +391,7 @@ class _GameMap2State extends State<GameMap2> {
     });
   }
 
-//all become the guess boxes
+  // all become the guess boxes
   void allGuess() {
     guessIndex = -1;
     for (var a in clickCells.keys) {
@@ -419,7 +412,7 @@ class _GameMap2State extends State<GameMap2> {
     }
   }
 
-//when a cell is clicked
+  // when a cell is clicked
   Future<void> clickCell(int index, bool left) async {
     String image = clickCells[index.toString()];
     if (image == "assets/images/guess.png") {
@@ -476,7 +469,6 @@ class _GameMap2State extends State<GameMap2> {
             ]},
                 SetOptions(merge: true)
             );
-            //inactiveFirstClicked = true;
           }
         } else if (!left && leftActive) {
           // if you're on the right grid and it's inactive
@@ -501,7 +493,6 @@ class _GameMap2State extends State<GameMap2> {
             ]},
                 SetOptions(merge: true)
             );
-            // inactiveFirstClicked = true;
           } else {
             image = "assets/images/NoCherry.png";
             clickCells[index.toString()] = image;
