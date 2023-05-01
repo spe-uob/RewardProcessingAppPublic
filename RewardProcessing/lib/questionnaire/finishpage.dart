@@ -25,9 +25,6 @@ class _FinishPageState extends State<FinishPage> {
     ]);
   }
 
-  void launch() async =>
-      await canLaunchUrl(_url) ? await launchUrl(_url) : throw 'Could not launch $_url';
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -73,8 +70,9 @@ class _FinishPageState extends State<FinishPage> {
                                 color: Colors.blue,
                                 decoration: TextDecoration.underline,
                               ),
-                              recognizer: TapGestureRecognizer()..onTap = () {
-                                  launch;
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  launchUrl(_url);
                                 },
                             ),
                             const TextSpan(
