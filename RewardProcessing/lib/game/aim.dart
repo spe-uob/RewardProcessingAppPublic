@@ -143,7 +143,7 @@ class _AimState extends State<Aim> {
                                   .collection('game1')
                                   .doc(widget.id)
                                   .set({'0. Game Details': [
-                                'Site Switch Probability.: 0.3',
+                                'Site Switch Probability: 0.3',
                                 'Cherry Probability: 0.8',
                                 'Active Site: 0.5 probability of being on the left/right at the start of every game.'
                               ]},

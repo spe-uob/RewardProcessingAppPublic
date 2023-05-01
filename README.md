@@ -79,17 +79,19 @@ To export data from Firebase, please follow the instructions below:
     2. Option 2
         1. Download the file [credentials.json](RewardProcessing/credentials.json).
 3. Use these command lines to export Firebase data to a JSON file:
-    1. `npx -p node-firestore-import-export firestore-export -a credentials.json -n [COLLECTION]/[DOCUMENT] -b [FOLDER]/[FILE.json]`,
-        * `[COLLECTION]` is the name of the collection on Firebase (e.g., questionnaire, game1, game2, feedback)
-        * `[DOCUMENT]` is the name of the document on Firebase (in this case, the prolific IDs of the participants)
-        * `[FOLDER]` is where you want the data to be exported to
-        * `[FILE]` is the name you want for the json file of the exported data
-        * _Example_: `npx -p node-firestore-import-export firestore-export -a credentials.json -n [questionnaire]/[Student1] -b [Student1]/[q.json]`
-    2. `cd FOLDER`; change to the directory where your data is saved (e.g., `cd Student1`)
-    3. `jq . FILE.json > FILE2.json`; organise the data and transfer it to a new json file (e.g., `jq . q.json > questionnaire.json`)
-    4. `rm FILE.json`; remove the unsorted data file (e.g., `rm q.json`)
+    1. `mkdir [FOLDER]`; create a directory to store a participant's data (e.g. `mkdir Student1`)
+    2. `npx -p node-firestore-import-export firestore-export -a credentials.json -n [COLLECTION]/[DOCUMENT] -b [FOLDER]/[FILE.json]`,
+         * `[COLLECTION]` is the name of the collection on Firebase (e.g., questionnaire, game1, game2, feedback)
+         * `[DOCUMENT]` is the name of the document on Firebase (in this case, the prolific IDs of the participants)
+         * `[FOLDER]` is where you want the data to be exported to
+         * `[FILE]` is the name you want for the json file of the exported data
+         * _Example_: `npx -p node-firestore-import-export firestore-export -a credentials.json -n [questionnaire]/[Student1] -b [Student1]/[q.json]`
+    3. `cd FOLDER`; change to the directory where your data is saved (e.g., `cd Student1`)
+    4. `jq . FILE.json > FILE2.json`; organise the data and transfer it to a new json file (e.g., `jq . q.json > questionnaire.json`)
+    5. `rm FILE.json`; remove the unsorted data file (e.g., `rm q.json`)
 * Since each user (Student1) has  4 different data collections (questionnaire, game1, game2, feedback), you can export all of them at the same time for each user. This means each user will have 4 different files in their folder.
   ```
+  mkdir Student1
   npx -p node-firestore-import-export firestore-export -a credentials.json -n questionnaire/Student1 -b Student1/q.json
   npx -p node-firestore-import-export firestore-export -a credentials.json -n game1/Student1 -b Student1/g1.json
   npx -p node-firestore-import-export firestore-export -a credentials.json -n game2/Student1 -b Student1/g2.json

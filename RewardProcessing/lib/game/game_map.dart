@@ -340,9 +340,9 @@ class _GameMapState extends State<GameMap> {
         "State,leftActive=$leftActive,inactiveFirstClicked=$inactiveFirstClicked");
   }
 
-  // switch guess box every 2 seconds
+  // switch guess box every 1 second
   void nextShow() {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       if (!newMove) {
         // No movement yet before refreshing
         // it solves the problem of multiple fast movements
