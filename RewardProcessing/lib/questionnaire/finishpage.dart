@@ -54,6 +54,7 @@ class _FinishPageState extends State<FinishPage> {
                     margin: const EdgeInsets.only(right: 40, left: 40, top: 20, bottom: 20),
                     child: GestureDetector(
                       onTap: () {
+                        // ignore: deprecated_member_use
                         launch;
                       },
                       child: Text.rich(
