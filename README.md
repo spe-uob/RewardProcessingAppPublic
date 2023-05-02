@@ -1,4 +1,8 @@
-# Studying Reward Processing Through a Mobile App
+<p align="center">
+<img src= "rewardprocessing/assets/images/readmeicon.png"
+width=“10”>
+<h1 align="center"> Reward Precessing App</h1>
+
 <a name="readme-top"></a><p align="center">
     [![Contributors][contributors-shield]][contributors-url]
         </a><p align="center">
@@ -135,6 +139,7 @@ This is for the clients to import a list of prolific IDs onto the database's doc
    3. Example of the imported documents:
    ![](../Desktop/Screenshot 2023-05-02 at 2.33.07 am.png)
 
+
 ## Our Clients
 * Conor Houghton - an associate professor in Computer Science at University of Bristol
 * Kimberley Beaumont - a postgraduate student in Digital Health and Care at University of Bristol
@@ -164,8 +169,9 @@ This project is distributed under the [GNU Affero General Public License v3.0](L
 - Chongqi Xue
 
 Supporting Mentor: Kejia Zhang
-
-<p align="right">(<a href="#readme-top">Back to top</a>)</p>
+<br /><p align="center">
+    <a href="https://github.com/spe-uob/2022-RewardProcessingApp"><strong>Back to top »</strong></a>
+  </p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/badge/RewardProcessing-Contributors-9cf
