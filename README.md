@@ -1,10 +1,10 @@
 # Studying Reward Processing Through a Mobile App
 <a name="readme-top"></a><p align="center">
-    [![Contributors](https://img.shields.io/badge/RewardProcessing-Contributors-9cf)][contributors-url]
+    [![Contributors][contributors-shield]][contributors-url]
         </a><p align="center">
-    [![FlutterBuild](https://img.shields.io/badge/Flutter%20Build-Passing-brightgreen)](https://github.com/spe-uob/2022-RewardProcessingApp/actions/workflows/CD.yml)
-    [![FrontEnd](https://img.shields.io/badge/Front%20End-Flutter-brightgreen)](https://flutter.dev/)
-    [![BackEnd](https://img.shields.io/badge/Back%20End-Firebase-brightgreen)](https://firebase.google.com/)
+    [![FlutterBuild][build-shield]][build-url]
+    [![FrontEnd][frontend-shield]][frontend-url]
+    [![BackEnd][backend-shield]][backend-url]
 </a>
 </p>
 
@@ -112,8 +112,6 @@ To export data from Firebase, please follow the instructions below:
   ```
 * [Here](RewardProcessing/Student1) is an example of the exported files.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Our Clients
 * Conor Houghton - an associate professor in Computer Science at University of Bristol
 * Kimberley Beaumont - a postgraduate student in Digital Health and Care at University of Bristol
@@ -144,9 +142,14 @@ This project is distributed under the [GNU Affero General Public License v3.0](L
 
 Supporting Mentor: Kejia Zhang
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+<p align="right">(<a href="#readme-top">Back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/badge/RewardProcessing-Contributor-9cf
+[contributors-shield]: https://img.shields.io/badge/RewardProcessing-Contributors-9cf
 [contributors-url]: https://github.com/spe-uob/2022-RewardProcessingApp/graphs/contributors
+[build-shield]: https://img.shields.io/badge/Flutter%20Build-Passing-brightgreen
+[build-url]: https://github.com/spe-uob/2022-RewardProcessingApp/actions/workflows/CD.yml
+[frontend-shield]: https://img.shields.io/badge/Front%20End-Flutter-informational
+[frontend-url]: https://flutter.dev/
+[backend-shield]: https://img.shields.io/badge/Back%20End-Firebase-yellow
+[backend-url]: https://firebase.google.com/
