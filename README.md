@@ -1,6 +1,6 @@
 <p align="center">
-<img src= "rewardprocessing/assets/images/readmeicon.png"
-width=“10”>
+<img src= "readmeicon.png"
+    width=“10”>
 <h1 align="center"> Reward Precessing Mobile Application</h1>
 
 <a name="readme-top"></a><p align="center">
@@ -134,7 +134,9 @@ This is for the clients to import a list of prolific IDs onto the database's doc
         * There should **NOT** be an extra comma at the end.
         * `Student1`, `Student2`, `Student3`, and `Student4` are the prolific IDs that will be stored as the `[DOCUMENT]` on Firebase with `{}` empty data inside it.
     3. Example of the imported documents:
-       ![](../Desktop/Screenshot 2023-05-02 at 2.33.07 am.png)
+       <a name="readme-top"></a><p align="center">
+       ![Contributors](firebase_import.png)
+       </a>
 
 ## Our Clients
 * Conor Houghton - an associate professor in Computer Science at University of Bristol
