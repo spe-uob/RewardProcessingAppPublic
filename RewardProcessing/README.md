@@ -1,16 +1,35 @@
-# homescreen
+# Reworad Processing App
+Welcome to the repository for the Reward Processing App. Our application is developed using Flutte(dart), which allows us to support both iOS and Android platforms. We use a cloud-based database, Firebase, to store all relevant data, and everything related to the database is also included in this repository.
 
-Participant Consent Form
 
-## Getting Started
+## Feature
+Our code is divided into two main sections:
 
-This project is a starting point for a Flutter application.
+### Questionnaire:
 
-A few resources to get you started if this is your first Flutter project:
+This section includes the following pages:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Splash screen
+- Welcome page
+- Prolific ID page
+- Consent page
+- 16-page questionnaire
+- Two questionnaires after the game
+- Finish page
+### Game
+This section includes the following pages:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Game instruction page
+- Game (game_map & game_map2)
+- Jump pages
+
+We believe that our application is designed to provide a user-friendly experience, and we aim to continuously improve it in future updates.
+
+Thank you for using our Reward Processing App!
+
+
+
+
+
+
+

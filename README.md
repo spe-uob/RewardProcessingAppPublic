@@ -167,7 +167,6 @@ This project is distributed under the [GNU Affero General Public License v3.0](L
 - Chongqi Xue
 
 Supporting Mentor: Kejia Zhang
-
 <br />
 <p align="center">
     <a href="#readme-top"><strong>⬆︎ Back to top</strong>
