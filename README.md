@@ -2,14 +2,11 @@
 <a name="readme-top"></a><p align="center">
     [![Contributors][contributors-shield]][contributors-url]
         </a><p align="center">
-    ![FlutterBuild](https://img.shields.io/badge/Flutter%20Build-Passing-brightgreen)
-    ![FrontEnd](https://img.shields.io/badge/Front%20End-Flutter-brightgreen)
-    ![BackEnd](https://img.shields.io/badge/Back%20End-Firebase-brightgreen)
-
-
+    [![FlutterBuild](https://img.shields.io/badge/Flutter%20Build-Passing-brightgreen)](https://github.com/spe-uob/2022-RewardProcessingApp/actions/workflows/CD.yml)
+    [![FrontEnd](https://img.shields.io/badge/Front%20End-Flutter-brightgreen)](https://flutter.dev/)
+    [![BackEnd](https://img.shields.io/badge/Back%20End-Firebase-brightgreen)](https://firebase.google.com/)
 </a>
 </p>
-
 
 ## Table of Contents
 - [Navigating the GitHub pages](#Navigating-the-GitHub-Pages)
