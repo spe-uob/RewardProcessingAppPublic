@@ -87,9 +87,9 @@ class _ProlificIDState extends State<ProlificID> {
                           )
                       )
                   )
-                ],
+                ]
               )
-            ],
+            ]
           );
         }
     );
@@ -133,7 +133,7 @@ class _ProlificIDState extends State<ProlificID> {
                               inputFormatters: [
                                 FilteringTextInputFormatter.allow(
                                     RegExp('[A-Za-z0-9]')
-                                ),
+                                )
                               ],
                               validator: (val) {
                                 return (RegExp("[A-Za-z0-9]").hasMatch(
@@ -147,15 +147,18 @@ class _ProlificIDState extends State<ProlificID> {
                                   hintText: 'Enter here',
                                   enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.all(
-                                          Radius.circular(10)),
+                                          Radius.circular(10)
+                                      ),
                                       borderSide: BorderSide(
                                           width: 2,
                                           color: Colors.grey,
-                                          style: BorderStyle.solid)
+                                          style: BorderStyle.solid
+                                      )
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.all(
-                                          Radius.circular(10)),
+                                          Radius.circular(10)
+                                      ),
                                       borderSide: BorderSide(
                                           width: 2,
                                           color: Color(0xFF00A8AF),
@@ -190,10 +193,10 @@ class _ProlificIDState extends State<ProlificID> {
                               .length}/15',
                           style: TextStyle(
                               color: counterTextColor
-                          ),
+                          )
                         )
-                      ],
-                    ),
+                      ]
+                    )
                   ),
                   Container(
                       margin: const EdgeInsets.only(top: 60),

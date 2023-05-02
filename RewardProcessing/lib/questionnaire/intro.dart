@@ -11,8 +11,10 @@ class Intro extends StatefulWidget {
 }
 
 class _IntroState extends State<Intro> {
-  String content =
-      'Are you ready to test your emotions and decision-making skills? Our app offers a unique combination of a questionnaire and '
+  String content = 'Are you ready to test your emotions and decision-making skills?';
+
+  String content1 =
+      'Our app offers a unique combination of a questionnaire and '
       'a game for research purposes. First, you will answer 16 questions regarding your current moods. Next, you will play two levels of a '
       'PacMan-style game. Once you complete the game, you will be asked to answer two additional questions.\n\n';
 
@@ -69,28 +71,40 @@ class _IntroState extends State<Intro> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Container(
-                              margin: const EdgeInsets.all(30),
+                              margin: const EdgeInsets.only(top: 30, left: 30, right: 30, bottom: 20),
+                              child: Text(
+                                content,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )
+                          ),
+                          Container(
+                              margin: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
                               child: RichText(
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                       style: const TextStyle(
-                                        fontSize: 14,
+                                        fontSize: 15,
                                         fontStyle: FontStyle.normal,
                                         color: Colors.black,
                                         height: 1.75,
                                         letterSpacing: 0.75,
                                       ),
-                                    children: <TextSpan>[
-                                      TextSpan(text: content),
-                                      TextSpan(
-                                          text: content2,
-                                          style: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              decoration: TextDecoration.underline
-                                          )
-                                      ),
-                                      TextSpan(text: content3),
-                                    ]
+                                      children: <TextSpan>[
+                                        TextSpan(text: content1),
+                                        TextSpan(
+                                            text: content2,
+                                            style: const TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                                decoration: TextDecoration.underline
+                                            )
+                                        ),
+                                        TextSpan(text: content3),
+                                      ]
                                   )
                               )
                           ),
@@ -157,4 +171,3 @@ class _IntroState extends State<Intro> {
     );
   }
 }
-

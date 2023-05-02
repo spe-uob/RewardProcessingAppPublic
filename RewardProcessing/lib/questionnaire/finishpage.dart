@@ -25,9 +25,6 @@ class _FinishPageState extends State<FinishPage> {
     ]);
   }
 
-  void launch() async =>
-      await canLaunchUrl(_url) ? await launchUrl(_url) : throw 'Could not launch $_url';
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -48,45 +45,45 @@ class _FinishPageState extends State<FinishPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 25,
+                          fontSize: 23,
                           color: Colors.black
                       ),
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(right: 40, left: 40, top: 20, bottom: 20),
-                    child: GestureDetector(
-                      onTap: () {
-                        launch;
-                      },
-                      child: Text.rich(
-                        TextSpan(
-                          children: [
-                            const TextSpan(
-                              text: 'Please note: If you experience any adverse effects to your mental health, please seek help from your usual care providers. If you require immediate help, online advice can be found at ',
-                              style: TextStyle(fontSize: 17, color: Colors.black),
-                            ),
-                            TextSpan(
-                              text: 'www.samaritans.org',
-                              style: const TextStyle(
-                                fontSize: 17,
-                                color: Colors.blue,
-                                decoration: TextDecoration.underline,
-                              ),
-                              recognizer: TapGestureRecognizer()..onTap = () {
-                                  launch;
-                                },
-                            ),
-                            const TextSpan(
-                              text:
-                              ', or alternatively you can contact a Samaritan on 116 123 (free of charge and available 24 hours a day, 365 days a year).',
-                              style: TextStyle(fontSize: 16, color: Colors.black),
-                            ),
-                          ],
-                        ),
-                        textAlign: TextAlign.center,
+                    margin: const EdgeInsets.only(right: 35, left: 35, top: 20, bottom: 20),
+                    child: Text.rich(
+                      textAlign: TextAlign.justify,
+                      style: const TextStyle(
+                        height: 1.3,
+                        letterSpacing: 0.75
                       ),
-                    ),
+                      TextSpan(
+                        children: [
+                          const TextSpan(
+                            text: 'Please note: If you experience any adverse effects to your mental health, please seek help from your usual care providers. If you require immediate help, online advice can be found at ',
+                            style: TextStyle(fontSize: 16, color: Colors.black),
+                          ),
+                          TextSpan(
+                            text: 'www.samaritans.org',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.blue,
+                              decoration: TextDecoration.underline,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                launchUrl(_url);
+                              },
+                          ),
+                          const TextSpan(
+                            text:
+                            '; or alternatively, free of charge, you can contact a Samaritan on 116 123 (available 24 hours a day, 365 days a year).',
+                            style: TextStyle(fontSize: 16, color: Colors.black),
+                          )
+                        ]
+                      )
+                    )
                   ),
                   Container(
                       margin: const EdgeInsets.only(left: 10, right: 10, top: 30),
