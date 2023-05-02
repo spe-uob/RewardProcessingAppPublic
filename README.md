@@ -14,6 +14,7 @@
 - [Development](#Development)
 - [Setup Guide](#Setup-guide)
 - [Exporting Firebase Data](#Exporting-Firebase-Data)
+- [Importing to Firebase](#Importing-to-Firebase)
 - [Our Clients](#our-clients)
 - [Stakeholders](#stakeholders)
 - [User Stories](#user-stories)
@@ -110,7 +111,30 @@ To export data from Firebase, please follow the instructions below:
   rm g2.json
   rm f.json
   ```
-* [Here](RewardProcessing/Student1) is an example of the exported files.
+* [This](Student1) is an example of the exported files.
+
+## Importing to Firebase
+This is for the clients to import a list of prolific IDs onto the database's document to check for validation when participants use the application.
+1. Follow the first two steps of [Exporting Firebase Data](#Exporting-Firebase-Data) if you haven't already.
+2. Use this command line to import a JSON file to Firebase's document section
+    1. `npx -p node-firestore-import-export firestore-import -a credentials.json -n [COLLECTINO] -b [FILE].json`
+        * `[COLLECTION]` is the name of the collection on Firebase (e.g., questionnaire, game1, game2, feedback)
+          * However, in this case, the file could be imported to the `questionnaire` collection only since the prolific ID the participants enter will be checked for validation in this collection and the data will be stored in the other collections later as the participants get to that part of the app.
+        * `[FILE]` is the JSON file of the client's prolific IDs.
+   2. The file format should be like this:
+      ```
+      {
+         "Student1": {},
+         "Student2": {},
+         "Student3": {},
+         "Student4": {}
+      }
+      ```
+        [This](prolific_ids.json) is the JSON file.
+         * There should **NOT** be an extra comma at the end. 
+         * `Student1`, `Student2`, `Student3`, and `Student4` are the prolific IDs that will be stored as the `[DOCUMENT]` on Firebase with `{}` empty data inside it.
+   3. Example of the imported documents:
+   ![](../Desktop/Screenshot 2023-05-02 at 2.33.07 am.png)
 
 ## Our Clients
 * Conor Houghton - an associate professor in Computer Science at University of Bristol
