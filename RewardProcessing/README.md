@@ -26,6 +26,10 @@ This section includes the following pages:
 We believe that our application is designed to provide a user-friendly experience, and we aim to continuously improve it in future updates.
 
 Thank you for using our Reward Processing App!
+</br><p align="center">
+[Navigate our Github page](https://github.com/spe-uob/2022-RewardProcessingApp)
+</a>
+</p>
 
 
 
