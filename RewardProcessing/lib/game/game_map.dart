@@ -611,7 +611,31 @@ class _GameMapState extends State<GameMap> {
               ),
               Expanded(
                 child: Container(
-                    color: Colors.black,
+
+                  decoration: BoxDecoration(
+
+                      gradient: LinearGradient(
+
+                        begin: Alignment.centerLeft,
+
+                        end: Alignment.centerRight,
+
+                        stops: [0.33, 1.0],
+
+                        colors: [
+                          
+                          Colors.transparent.withOpacity(0.33),
+                          Colors.black.withOpacity(0.66),
+                          ],
+                          ),
+                          ),
+
+
+
+
+
+
+
                     child: Stack(
                       children: items,
                     )
