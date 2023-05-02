@@ -170,9 +170,9 @@ This project is distributed under the [GNU Affero General Public License v3.0](L
 
 Supporting Mentor: Kejia Zhang
 <br /><p align="center">
-    <a href="https://github.com/spe-uob/2022-RewardProcessingApp"><strong>Back to top »</strong></a>
+    <a href="#readme-top"><strong>Back to top »</strong></a>
   </p>
-
+  
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/badge/RewardProcessing-Contributors-9cf
 [contributors-url]: https://github.com/spe-uob/2022-RewardProcessingApp/graphs/contributors
