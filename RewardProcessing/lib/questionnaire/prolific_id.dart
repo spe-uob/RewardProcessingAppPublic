@@ -12,7 +12,6 @@ class ProlificID extends StatefulWidget {
 
 class _ProlificIDState extends State<ProlificID> {
   bool activeButton = false;
-  late bool valid;
   final formKey = GlobalKey<FormState>();
   late String prolificID;
   final TextEditingController _textEditingController = TextEditingController();
@@ -41,13 +40,11 @@ class _ProlificIDState extends State<ProlificID> {
         .get();
     if (user.exists) { // if the ID exists
       Map<String, dynamic>? map = user.data();
-      if (map != null && map.isNotEmpty) { // if the data exists in the document
-        valid = false;
+      if (map != null && map.isNotEmpty) { // if document exists and data exists inside, it's invalid
         if (mounted) {
           popup(context);
         }
-      } else if (map != null && map.isEmpty) { // if the document is empty
-        valid = true;
+      } else if (map != null && map.isEmpty) { // if the document exists and has no data inside, it's valid
         if (mounted) {
           Navigator.push(
               context,
@@ -61,8 +58,7 @@ class _ProlificIDState extends State<ProlificID> {
               .set({'00. Prolific ID': prolificID});
         }
       }
-    } else {
-      valid = false;
+    } else { // if the document does not exist, it's invalid
       if (mounted) {
         popup(context);
       }
