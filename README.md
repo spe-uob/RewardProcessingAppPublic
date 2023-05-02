@@ -60,21 +60,18 @@ To run this application, chance directory to `RewardProcessing` in your terminal
 * iOS: `flutter build ios --release --no-codedesign`
 * Android: `flutter build apk`
 
-
 ## Exporting Firebase Data
 To export data from Firebase, please follow the instructions below:
-1. Install node/npm using Homebrew
-    * If Homebrew is not already installed on your machine, please go to this [link](https://docs.brew.sh/Installation) to install.
-    * Follow the commands below to install node or check this [link](https://treehouse.github.io/installation-guides/mac/node-mac.html)
-
-      `brew update`
-
-      `brew install node`
-    * Test it
-
-      `node -v`
-
-      `npm -v`
+1. Install node/npm
+   1. For both Mac and Windows, go to this [link](https://nodejs.org/en/download) to install node.
+   2. For Mac users, you can install via Homebrew.
+       * If Homebrew is not already installed on your machine, please go to this [link](https://docs.brew.sh/Installation) to install.
+       * Follow the commands below to install node:
+         * `brew update`
+         * `brew install node`
+   3. Test it:
+      * `node -v`
+      * `npm -v`
 2. Set up Firebase credentials
     1. Option 1
         1. Generate a private key file for your service account. In the Firebase console, open Settings > Service Accounts.
@@ -93,7 +90,7 @@ To export data from Firebase, please follow the instructions below:
     3. `cd FOLDER`; change to the directory where your data is saved (e.g., `cd Student1`)
     4. `jq . FILE.json > FILE2.json`; organise the data and transfer it to a new json file (e.g., `jq . q.json > questionnaire.json`)
     5. `rm FILE.json`; remove the unsorted data file (e.g. `rm q.json`)
-* Since each user (Student1) has  4 different data collections (questionnaire, game1, game2, feedback), you can export all of them at the same time for each user. This means each user will have 4 different files in their folder.
+* Since each user (Student1) has  4 different data collections (questionnaire, game1, game2, feedback), you can export all of them at the same time for each user (example below). This means each user will have 4 different files in their folder.
   ```
   mkdir Student1
   npx -p node-firestore-import-export firestore-export -a credentials.json -n questionnaire/Student1 -b Student1/q.json
