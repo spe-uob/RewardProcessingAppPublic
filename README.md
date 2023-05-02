@@ -1,13 +1,14 @@
-# Studying Reward Processing Through a Mobile App
+<p align="center">
+<img src= "readmeicon.png"
+    width=“10”>
+<h1 align="center"> Reward Precessing Mobile Application</h1>
 
-<p style="text-align:center;">
-<a>
-   <img alt height="22"
-         width="170"
-         src="https://img.shields.io/badge/Project-RewardProcessing-9cf" />
-    <img alt height="22"
-         width="140"
-         src="https://img.shields.io/badge/Flutter%20Build-Passing-brightgreen"/>
+<a name="readme-top"></a><p align="center">
+    [![Contributors][contributors-shield]][contributors-url]
+    </a><p align="center">
+    [![FlutterBuild][build-shield]][build-url]
+    [![FrontEnd][frontend-shield]][frontend-url]
+    [![BackEnd][backend-shield]][backend-url]
 </a>
 </p>
 
@@ -17,6 +18,7 @@
 - [Development](#Development)
 - [Setup Guide](#Setup-guide)
 - [Exporting Firebase Data](#Exporting-Firebase-Data)
+- [Importing to Firebase](#Importing-to-Firebase)
 - [Our Clients](#our-clients)
 - [Stakeholders](#stakeholders)
 - [User Stories](#user-stories)
@@ -44,6 +46,7 @@ Presently, there is a wide array of research focusing on the important role of e
 * **Front-end**: We develop this application with Flutter (uses Dart) since it supports both iOS and Android application development. Flutter was released in 2017 by Google. It is an open-source user interface (UI) software development kit that helps developers efficiently build multi-platform, beautiful applications across mobile, web, desktop, and embedded platforms from a single code base. We will use Flutter to implement both the questionnaire and the game part of our project. Please follow this [link](https://docs.flutter.dev/) to learn more about Flutter.
 * **Back-end**: For our backend, we use Firebase to store our data. It is a hosting service for any application. It offers a real-time hosting of databases and does not require an SQL server. We will be storing our data in Firestore Database. For more information, please follow this [link](https://firebase.flutter.dev/docs/firestore/overview).
 
+
 ## Setup Guide
 Clone the repository by typing `git clone https://github.com/spe-uob/2022-RewardProcessingApp.git` in your terminal.
 
@@ -51,26 +54,28 @@ You will need to install the following to build the application:
 * [Flutter Packages](https://docs.flutter.dev/get-started/install)
 * [Android Studio](https://developer.android.com/studio)
 * An emulator for iOS and Android devices
+
+
 ### Test and Run
 To run this application, chance directory to `RewardProcessing` in your terminal and do `flutter run`. You will be asked to connect to an emulator or a physical device in order to run the application.
+
+
 ### Build
 * iOS: `flutter build ios --release --no-codedesign`
 * Android: `flutter build apk`
 
 ## Exporting Firebase Data
 To export data from Firebase, please follow the instructions below:
-1. Install node/npm using Homebrew
-    * If Homebrew is not already installed on your machine, please go to this [link](https://docs.brew.sh/Installation) to install.
-    * Follow the commands below to install node or check this [link](https://treehouse.github.io/installation-guides/mac/node-mac.html)
-
-      `brew update`
-
-      `brew install node`
-    * Test it
-
-      `node -v`
-
-      `npm -v`
+1. Install node/npm
+    1. For both Mac and Windows, go to this [link](https://nodejs.org/en/download) to install node.
+    2. For Mac users, you can install via Homebrew.
+        * If Homebrew is not already installed on your machine, please go to this [link](https://docs.brew.sh/Installation) to install.
+        * Follow the commands below to install node:
+            * `brew update`
+            * `brew install node`
+    3. Test it:
+        * `node -v`
+        * `npm -v`
 2. Set up Firebase credentials
     1. Option 1
         1. Generate a private key file for your service account. In the Firebase console, open Settings > Service Accounts.
@@ -79,17 +84,17 @@ To export data from Firebase, please follow the instructions below:
     2. Option 2
         1. Download the file [credentials.json](RewardProcessing/credentials.json).
 3. Use these command lines to export Firebase data to a JSON file:
-    1. `mkdir [FOLDER]`; create a directory to store a participant's data (e.g. `mkdir Student1`)
+    1. `mkdir [FOLDER]`; create a directory to store a participant's data (e.g., `mkdir Student1`)
     2. `npx -p node-firestore-import-export firestore-export -a credentials.json -n [COLLECTION]/[DOCUMENT] -b [FOLDER]/[FILE.json]`,
-         * `[COLLECTION]` is the name of the collection on Firebase (e.g., questionnaire, game1, game2, feedback)
-         * `[DOCUMENT]` is the name of the document on Firebase (in this case, the prolific IDs of the participants)
-         * `[FOLDER]` is where you want the data to be exported to
-         * `[FILE]` is the name you want for the json file of the exported data
-         * _Example_: `npx -p node-firestore-import-export firestore-export -a credentials.json -n [questionnaire]/[Student1] -b [Student1]/[q.json]`
+        * `[COLLECTION]` is the name of the collection on Firebase (e.g., questionnaire, game1, game2, feedback)
+        * `[DOCUMENT]` is the name of the document on Firebase (in this case, the prolific IDs of the participants)
+        * `[FOLDER]` is where you want the data to be exported to
+        * `[FILE]` is the name you want for the json file of the exported data
+        * _Example_: `npx -p node-firestore-import-export firestore-export -a credentials.json -n [questionnaire]/[Student1] -b [Student1]/[q.json]`
     3. `cd FOLDER`; change to the directory where your data is saved (e.g., `cd Student1`)
     4. `jq . FILE.json > FILE2.json`; organise the data and transfer it to a new json file (e.g., `jq . q.json > questionnaire.json`)
     5. `rm FILE.json`; remove the unsorted data file (e.g., `rm q.json`)
-* Since each user (Student1) has  4 different data collections (questionnaire, game1, game2, feedback), you can export all of them at the same time for each user. This means each user will have 4 different files in their folder.
+* Since each user (Student1) has  4 different data collections (questionnaire, game1, game2, feedback), you can export all of them at the same time for each user (example below). This means each user will have 4 different files in their folder.
   ```
   mkdir Student1
   npx -p node-firestore-import-export firestore-export -a credentials.json -n questionnaire/Student1 -b Student1/q.json
@@ -106,7 +111,32 @@ To export data from Firebase, please follow the instructions below:
   rm g2.json
   rm f.json
   ```
-* [Here](RewardProcessing/Student1) is an example of the exported files.
+* [This](Student1) is an example of the exported files.
+
+## Importing to Firebase
+This is for the clients to import a list of prolific IDs onto the database's document to check for validation when participants use the application.
+1. Follow the first two steps of [Exporting Firebase Data](#Exporting-Firebase-Data) if you haven't already.
+2. Use this command line to import a JSON file to Firebase's document section
+    1. `npx -p node-firestore-import-export firestore-import -a credentials.json -n [COLLECTINO] -b [FILE].json`
+        * `[COLLECTION]` is the name of the collection on Firebase (e.g., questionnaire, game1, game2, feedback)
+            * However, in this case, the file could be imported to the `questionnaire` collection only since the prolific ID the participants enter will be checked for validation in this collection and the data will be stored in the other collections later as the participants get to that part of the app.
+        * `[FILE]` is the JSON file of the client's prolific IDs.
+    2. The file format should be like this:
+       ```
+       {
+          "Student1": {},
+          "Student2": {},
+          "Student3": {},
+          "Student4": {}
+       }
+       ```
+       [This](prolific_ids.json) is the JSON file.
+        * There should **NOT** be an extra comma at the end.
+        * `Student1`, `Student2`, `Student3`, and `Student4` are the prolific IDs that will be stored as the `[DOCUMENT]` on Firebase with `{}` empty data inside it.
+    3. Example of the imported documents:
+       <a name="readme-top"></a><p align="center">
+       ![Contributors](firebase_import.png)
+       </a>
 
 ## Our Clients
 * Conor Houghton - an associate professor in Computer Science at University of Bristol
@@ -137,3 +167,18 @@ This project is distributed under the [GNU Affero General Public License v3.0](L
 - Chongqi Xue
 
 Supporting Mentor: Kejia Zhang
+<br />
+<p align="center">
+    <a href="#readme-top"><strong>⬆︎ Back to top</strong>
+</a>
+</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[contributors-shield]: https://img.shields.io/badge/RewardProcessing-Contributors-9cf
+[contributors-url]: https://github.com/spe-uob/2022-RewardProcessingApp/graphs/contributors
+[build-shield]: https://img.shields.io/badge/Flutter%20Build-Passing-brightgreen
+[build-url]: https://github.com/spe-uob/2022-RewardProcessingApp/actions/workflows/CD.yml
+[frontend-shield]: https://img.shields.io/badge/Front%20End-Flutter-informational
+[frontend-url]: https://flutter.dev/
+[backend-shield]: https://img.shields.io/badge/Back%20End-Firebase-yellow
+[backend-url]: https://firebase.google.com/
