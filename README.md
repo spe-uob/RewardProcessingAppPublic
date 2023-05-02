@@ -1,6 +1,6 @@
 # Studying Reward Processing Through a Mobile App
 <a name="readme-top"></a><p align="center">
-    [![Contributors][contributors-shield]][contributors-url]
+    [![Contributors](https://img.shields.io/badge/RewardProcessing-Contributors-9cf)][contributors-url]
         </a><p align="center">
     [![FlutterBuild](https://img.shields.io/badge/Flutter%20Build-Passing-brightgreen)](https://github.com/spe-uob/2022-RewardProcessingApp/actions/workflows/CD.yml)
     [![FrontEnd](https://img.shields.io/badge/Front%20End-Flutter-brightgreen)](https://flutter.dev/)
