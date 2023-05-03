@@ -71,8 +71,34 @@ class _GameMap2State extends State<GameMap2> {
   List<int> leftGuess = [17, 31, 33];//guess boxes of left site
   List<int> rightGuess = [23, 37, 39];//guess boxes of right site
 
-  List<int> transpa = [11, 26, 41, 56, 71, 86,
-  12, 13, 14, 27, 29, 42, 43, 44, 58, 72, 73, 74, 87, 89
+  List<int> transpa = [11,
+  12,
+  13,
+  14,
+  26,
+  27,
+  28,
+  29,
+  41,
+  42,
+  44,
+  56,
+  57,
+  59,
+  71,
+  86,
+  87,
+  89,
+  101,
+  102,
+  104,
+  116,
+  117,
+  118,
+  119,
+  58,
+  73,
+  88
   ];
 
   int fresh = 0;
@@ -627,7 +653,7 @@ class _GameMap2State extends State<GameMap2> {
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15.0,
-                                      color: Color(0xFF000000)
+                                      color: Colors.black
                                   )
                               ),
                               percent: percentage / 100,
@@ -651,20 +677,24 @@ class _GameMap2State extends State<GameMap2> {
               ),
               Expanded(
                   child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        stops: [0.6, 0,8, 1.0],
 
-                        colors: [
-                          Colors.black,
-                          Colors.black.withOpacity(0.3),
-                          Colors.black,
-                          
-                          ],
-                          ),
-                          ),
+                decoration: BoxDecoration(
+    gradient: LinearGradient(
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+      stops: [0, 0.6, 0.8, 1.0],
+      colors: [
+        Colors.black.withOpacity(0.99),
+
+        Colors.black.withOpacity(0.99),
+        Colors.black.withOpacity(0.33),
+        
+        Colors.black.withOpacity(0.99)
+         ],
+    ),
+  ),
+
+
 
                       child: Stack(
                         children: items,
