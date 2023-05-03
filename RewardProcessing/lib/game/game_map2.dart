@@ -71,6 +71,10 @@ class _GameMap2State extends State<GameMap2> {
   List<int> leftGuess = [17, 31, 33];//guess boxes of left site
   List<int> rightGuess = [23, 37, 39];//guess boxes of right site
 
+  List<int> transpa = [11, 26, 41, 56, 71, 86,
+  12, 13, 14, 27, 29, 42, 43, 44, 58, 72, 73, 74, 87, 89
+  ];
+
   int fresh = 0;
 
   List<int> guess = [17, 31, 33, 23, 37, 39];
@@ -1020,13 +1024,24 @@ class _GameMap2State extends State<GameMap2> {
             ]
         ),
       );
-    } else if (blocks.contains(index)) {
-      w = Padding(
+    } 
+    // else if (blocks.contains(index)) {
+    //   w = Padding(
+    //     padding: const EdgeInsets.all(1.0),
+    //     child: Container(
+    //       color: Colors.black,
+    //     ),
+    //   );
+    // } 
+    else if (transpa.contains(index)){
+       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Container(
-          color: Colors.black,
+          color: Colors.transparent,
         ),
+        
       );
+
     } else {
       w = Padding(
         padding: const EdgeInsets.all(1.0),

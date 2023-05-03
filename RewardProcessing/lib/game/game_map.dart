@@ -618,7 +618,7 @@ class _GameMapState extends State<GameMap> {
                         stops: [0.6, 0.8, 1.0],
 
                         colors: [
-                          Colors.black
+                          Colors.black,
                           
                           Colors.black.withOpacity(0.33),
                           Colors.black,
