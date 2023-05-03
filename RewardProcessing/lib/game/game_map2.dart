@@ -682,7 +682,7 @@ class _GameMap2State extends State<GameMap2> {
     gradient: LinearGradient(
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
-      stops: [0, 0.6, 0.8, 1.0],
+      stops: const [0, 0.6, 0.8, 1.0],
       colors: [
         Colors.black.withOpacity(0.99),
 
@@ -742,7 +742,7 @@ class _GameMap2State extends State<GameMap2> {
           child: Padding(
             padding: const EdgeInsets.all(1.0),
             child: Ink.image(
-              image: AssetImage("assets/images/arrowleft.png",),
+              image: const AssetImage("assets/images/arrowleft.png",),
             ),
           )
       );
@@ -772,7 +772,7 @@ class _GameMap2State extends State<GameMap2> {
           child: Padding(
             padding: const EdgeInsets.all(1.0),
             child: Ink.image(
-              image: AssetImage("assets/images/arrowright.png",),
+              image: const AssetImage("assets/images/arrowright.png",),
             ),
           )
       );
@@ -802,7 +802,7 @@ class _GameMap2State extends State<GameMap2> {
           child: Padding(
             padding: const EdgeInsets.all(1.0),
             child: Ink.image(
-              image: AssetImage("assets/images/arrowup.png",),
+              image: const AssetImage("assets/images/arrowup.png",),
             ),
           )
       );
@@ -832,7 +832,7 @@ class _GameMap2State extends State<GameMap2> {
           child: Padding(
             padding: const EdgeInsets.all(1.0),
             child: Ink.image(
-              image: AssetImage("assets/images/arrowdown.png",),
+              image: const AssetImage("assets/images/arrowdown.png",),
             ),
           )
       );
