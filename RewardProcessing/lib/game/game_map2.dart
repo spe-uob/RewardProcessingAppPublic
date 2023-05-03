@@ -647,21 +647,17 @@ class _GameMap2State extends State<GameMap2> {
               ),
               Expanded(
                   child: Container(
-
                     decoration: BoxDecoration(
-
                       gradient: LinearGradient(
-
                         begin: Alignment.centerLeft,
-
                         end: Alignment.centerRight,
-
-                        stops: [0.33, 1.0],
+                        stops: [0.6, 0,8, 1.0],
 
                         colors: [
+                          Colors.black,
+                          Colors.black.withOpacity(0.3),
+                          Colors.black,
                           
-                          Colors.transparent.withOpacity(0.33),
-                          Colors.black.withOpacity(0.66),
                           ],
                           ),
                           ),
@@ -711,10 +707,8 @@ class _GameMap2State extends State<GameMap2> {
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
-            child: Column(
-                children: [
-                  Image.asset("assets/images/arrowleft.png")
-                ]
+            child: Ink.image(
+              image: AssetImage("assets/images/arrowleft.png",),
             ),
           )
       );
@@ -743,10 +737,8 @@ class _GameMap2State extends State<GameMap2> {
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
-            child: Column(
-                children: [
-                  Image.asset("assets/images/arrowright.png")
-                ]
+            child: Ink.image(
+              image: AssetImage("assets/images/arrowright.png",),
             ),
           )
       );
@@ -775,10 +767,8 @@ class _GameMap2State extends State<GameMap2> {
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
-            child: Column(
-                children: [
-                  Image.asset("assets/images/arrowup.png")
-                ]
+            child: Ink.image(
+              image: AssetImage("assets/images/arrowup.png",),
             ),
           )
       );
@@ -807,10 +797,8 @@ class _GameMap2State extends State<GameMap2> {
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
-            child: Column(
-                children: [
-                  Image.asset("assets/images/arrowdown.png")
-                ]
+            child: Ink.image(
+              image: AssetImage("assets/images/arrowdown.png",),
             ),
           )
       );
