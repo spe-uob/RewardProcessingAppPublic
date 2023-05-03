@@ -617,19 +617,8 @@ class _GameMapState extends State<GameMap> {
               ),
               Expanded(
                 child: Container(
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        stops: const [0.6, 0.8, 1.0],
 
-                        colors: [
-                          Colors.black,
-                          Colors.black.withOpacity(0.33),
-                          Colors.black,
-                          ],
-                          ),
-                          ),
+                  color: Colors.black,
                     child: Stack(
                       children: items,
                     )
@@ -674,9 +663,12 @@ class _GameMapState extends State<GameMap> {
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
-            child: Ink.image(
-              image: const AssetImage("assets/images/arrowleft.png",),
+            child: Column(
+                children: [
+                  Image.asset("assets/images/arrowleft.png")
+                ]
             ),
+            
                        
           )
       );
@@ -704,8 +696,10 @@ class _GameMapState extends State<GameMap> {
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
-            child: Ink.image(
-              image: const AssetImage("assets/images/arrowright.png",),
+            child: Column(
+                children: [
+                  Image.asset("assets/images/arrowright.png")
+                ]
             ),
           )
       );
@@ -733,8 +727,10 @@ class _GameMapState extends State<GameMap> {
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
-            child: Ink.image(
-              image: const AssetImage("assets/images/arrowup.png",),
+            child: Column(
+                children: [
+                  Image.asset("assets/images/arrowup.png")
+                ]
             ),
           )
       );
@@ -762,8 +758,10 @@ class _GameMapState extends State<GameMap> {
           },
           child: Padding(
             padding: const EdgeInsets.all(1.0),
-            child: Ink.image(
-              image: const AssetImage("assets/images/arrowdown.png",),
+            child: Column(
+                children: [
+                  Image.asset("assets/images/arrowdown.png")
+                ]
             ),
           )
       );
@@ -986,17 +984,6 @@ class _GameMapState extends State<GameMap> {
             ]
         ),
       );
-    } 
-
-    else if (transpa.contains(index)){
-       w = Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Container(
-          color: Colors.transparent,
-        ),
-        
-      );
-
     } else {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
