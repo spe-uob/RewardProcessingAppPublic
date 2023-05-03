@@ -12,7 +12,6 @@ class ProlificID extends StatefulWidget {
 
 class _ProlificIDState extends State<ProlificID> {
   bool activeButton = false;
-  late bool valid;
   final formKey = GlobalKey<FormState>();
   late String prolificID;
   final TextEditingController _textEditingController = TextEditingController();
@@ -28,6 +27,12 @@ class _ProlificIDState extends State<ProlificID> {
     ]);
   }
 
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
+
   Future<void> checkValidation(String id) async {
     var user = await FirebaseFirestore.instance
         .collection('questionnaire')
@@ -35,13 +40,28 @@ class _ProlificIDState extends State<ProlificID> {
         .get();
     if (user.exists) { // if the ID exists
       Map<String, dynamic>? map = user.data();
-      if (map != null && map.isNotEmpty) { // if the data exists in the document
-        valid = false;
-      } else if (map != null && map.isEmpty) { // if the document is empty
-        valid = true;
+      if (map != null && map.isNotEmpty) { // if document exists and data exists inside, it's invalid
+        if (mounted) {
+          popup(context);
+        }
+      } else if (map != null && map.isEmpty) { // if the document exists and has no data inside, it's valid
+        if (mounted) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) =>
+                  Consent(id: prolificID)
+              )
+          );
+          await FirebaseFirestore.instance
+              .collection('questionnaire')
+              .doc(prolificID)
+              .set({'00. Prolific ID': prolificID});
+        }
       }
-    } else {
-      valid = false;
+    } else { // if the document does not exist, it's invalid
+      if (mounted) {
+        popup(context);
+      }
     }
   }
 
@@ -130,6 +150,8 @@ class _ProlificIDState extends State<ProlificID> {
                           key: formKey,
                           child: TextFormField(
                               maxLines: 1,
+                              keyboardType: TextInputType.text,
+                              textInputAction: TextInputAction.done,
                               inputFormatters: [
                                 FilteringTextInputFormatter.allow(
                                     RegExp('[A-Za-z0-9]')
@@ -171,7 +193,6 @@ class _ProlificIDState extends State<ProlificID> {
                                   prolificID = value;
                                   activeButton = value.isNotEmpty ? true : false;
                                   _textEditingController.text = value;
-                                  checkValidation(prolificID);
 
                                   if (value.length > 15) {
                                     counterTextColor = Colors.red;
@@ -202,21 +223,8 @@ class _ProlificIDState extends State<ProlificID> {
                       margin: const EdgeInsets.only(top: 60),
                       child: ElevatedButton(
                           onPressed: activeButton ? () async {
+                            checkValidation(prolificID);
                             if (formKey.currentState!.validate()) {
-                              if (valid == true) {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) =>
-                                        Consent(id: prolificID)
-                                    )
-                                );
-                                await FirebaseFirestore.instance
-                                    .collection('questionnaire')
-                                    .doc(prolificID)
-                                    .set({'00. Prolific ID': prolificID});
-                              } else if (valid == false) {
-                                popup(context);
-                              }
                             }
                           } : null,
                           style: ElevatedButton.styleFrom(
@@ -227,7 +235,8 @@ class _ProlificIDState extends State<ProlificID> {
                               ),
                               elevation: 2.0
                           ),
-                          child: const Text('Continue',
+                          child: const Text(
+                              'Continue',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.white,
