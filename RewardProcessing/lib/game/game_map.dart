@@ -72,6 +72,12 @@ class _GameMapState extends State<GameMap> {
   List<int> leftGuess = [17, 31, 33]; // guess boxes of left site
   List<int> rightGuess = [23, 37, 39];  // guess boxes of right site
   List<int> guess = [17, 31, 33, 23, 37, 39];
+
+  List<int> transpa = [11, 26, 41, 56, 71, 86,
+  12, 13, 14, 27, 29, 42, 43, 44, 58, 72, 73, 74, 87, 89
+  ];
+
+
   int fresh = 0;
   double topHeight = 60;
   int quarterTurns = 0;   //pacman turns 4 directions
@@ -611,7 +617,8 @@ class _GameMapState extends State<GameMap> {
               ),
               Expanded(
                 child: Container(
-                    color: Colors.black,
+
+                  color: Colors.black,
                     child: Stack(
                       children: items,
                     )
@@ -634,8 +641,8 @@ class _GameMapState extends State<GameMap> {
         ((MediaQuery.of(context).size.height - topHeight) - itemWidth * 6) / 2;
     if (57 == index) {
       // left navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             movePlayer(-1, 0); // move the pacman to the left
             trigger();
@@ -661,12 +668,14 @@ class _GameMapState extends State<GameMap> {
                   Image.asset("assets/images/arrowleft.png")
                 ]
             ),
+            
+                       
           )
       );
     } else if (59 == index) {
       // right navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             movePlayer(1, 0); // move the pacman to the right
             trigger();
@@ -696,8 +705,8 @@ class _GameMapState extends State<GameMap> {
       );
     } else if (28 == index) {
       // up navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             movePlayer(0, -1); // move the pacman up
             trigger();
@@ -727,8 +736,8 @@ class _GameMapState extends State<GameMap> {
       );
     } else if (88 == index) {
       // down navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             movePlayer(0, 1); // move the pacman down
             trigger();

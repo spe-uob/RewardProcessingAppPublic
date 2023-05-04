@@ -71,6 +71,36 @@ class _GameMap2State extends State<GameMap2> {
   List<int> leftGuess = [17, 31, 33];//guess boxes of left site
   List<int> rightGuess = [23, 37, 39];//guess boxes of right site
 
+  List<int> transpa = [11,
+  12,
+  13,
+  14,
+  26,
+  27,
+  28,
+  29,
+  41,
+  42,
+  44,
+  56,
+  57,
+  59,
+  71,
+  86,
+  87,
+  89,
+  101,
+  102,
+  104,
+  116,
+  117,
+  118,
+  119,
+  58,
+  73,
+  88
+  ];
+
   int fresh = 0;
 
   List<int> guess = [17, 31, 33, 23, 37, 39];
@@ -623,7 +653,7 @@ class _GameMap2State extends State<GameMap2> {
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15.0,
-                                      color: Color(0xFF000000)
+                                      color: Colors.black
                                   )
                               ),
                               percent: percentage / 100,
@@ -647,7 +677,7 @@ class _GameMap2State extends State<GameMap2> {
               ),
               Expanded(
                   child: Container(
-                      color: Colors.black,
+                    color: Colors.black,
                       child: Stack(
                         children: items,
                       )
@@ -670,8 +700,8 @@ class _GameMap2State extends State<GameMap2> {
         ((MediaQuery.of(context).size.height - topHeight) - itemWidth * 8) / 2;
     if (72 == index) {
       // left navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+         
           onTap: () async {
             movePlayer(-1, 0); // move the pacman to the left
             trigger();
@@ -699,11 +729,12 @@ class _GameMap2State extends State<GameMap2> {
                 ]
             ),
           )
+          
       );
     } else if (74 == index) {
       // right navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             movePlayer(1, 0); // move the pacman to the left
             trigger();
@@ -734,8 +765,8 @@ class _GameMap2State extends State<GameMap2> {
       );
     } else if (43 == index) {
       // up navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             movePlayer(0, -1); // move the pacman to the left
             trigger();
@@ -766,8 +797,8 @@ class _GameMap2State extends State<GameMap2> {
       );
     } else if (103 == index) {
       // down navigation button
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             movePlayer(0, 1); // move the pacman to the left
             trigger();
@@ -817,8 +848,8 @@ class _GameMap2State extends State<GameMap2> {
       );
     } else if (17 == index) {
       // The guess box on top of the left grid
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+         
           onTap: () async {
             clickCell(17, true); // call 'clickCell'
 
@@ -847,8 +878,8 @@ class _GameMap2State extends State<GameMap2> {
       );
     } else if (31 == index) {
       // The guess box on the left side of the left grid
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+
           onTap: () async {
             clickCell(31, true); // call 'clickCell'
             // data storage of the reward (empty, ghosts, show cherry, cherry selected)
@@ -876,8 +907,8 @@ class _GameMap2State extends State<GameMap2> {
       );
     } else if (33 == index) {
       // The guess box on the right side of left grid
-      w = GestureDetector(
-          behavior: HitTestBehavior.opaque,
+      w = InkWell(
+          
           onTap: () async {
             clickCell(33, true); // call 'clickCell'
 
@@ -1014,14 +1045,16 @@ class _GameMap2State extends State<GameMap2> {
             ]
         ),
       );
-    } else if (blocks.contains(index)) {
+    } 
+    else if (blocks.contains(index)) {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Container(
           color: Colors.black,
         ),
       );
-    } else {
+    } 
+    else {
       w = Padding(
         padding: const EdgeInsets.all(1.0),
         child: Container(
