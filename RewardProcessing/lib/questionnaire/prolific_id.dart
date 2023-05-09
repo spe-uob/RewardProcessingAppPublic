@@ -160,7 +160,7 @@ class _ProlificIDState extends State<ProlificID> {
                               validator: (val) {
                                 return (RegExp("[A-Za-z0-9]").hasMatch(
                                     prolificID) &&
-                                    prolificID.length <= 15)
+                                    prolificID.length <= 30)
                                     ? null
                                     : "Request body length over limit";
                               },
@@ -194,7 +194,7 @@ class _ProlificIDState extends State<ProlificID> {
                                   activeButton = value.isNotEmpty ? true : false;
                                   _textEditingController.text = value;
 
-                                  if (value.length > 15) {
+                                  if (value.length > 30) {
                                     counterTextColor = Colors.red;
                                   } else {
                                     counterTextColor = Colors.black;
@@ -211,7 +211,7 @@ class _ProlificIDState extends State<ProlificID> {
                         Text(
                           '${_textEditingController.text
                               .trim()
-                              .length}/15',
+                              .length}/30',
                           style: TextStyle(
                               color: counterTextColor
                           )
