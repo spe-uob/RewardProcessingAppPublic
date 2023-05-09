@@ -11,8 +11,6 @@ class GameInstructions extends StatefulWidget {
 }
 
 class _GameInstructionsState extends State<GameInstructions> {
-  bool _showText = true;
-
   @override
   void initState() {
     super.initState();
@@ -20,68 +18,52 @@ class _GameInstructionsState extends State<GameInstructions> {
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
     ]);
-    Future.delayed(const Duration(seconds: 2), () {
-      setState(() {
-        _showText = false;
-      });
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: () async {
+        onWillPop: ()async {
           return false; // disable back page
         },
         child: Scaffold(
-          backgroundColor: const Color(0xff000000),
-          body: Stack(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => GameInstructions2(id: widget.id)),
-                  );
-                },
-                child: Center(
-                  child: Column(
+          backgroundColor: const Color(0xFFFFFFFF),
+            body: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/gi1.png',
-                        scale: 2.9,
+                    children: <Widget>[
+                      Image.asset('assets/images/gi1.png',
+                        scale: 3,
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              if (_showText)
-                Positioned(
-                  bottom: 20,
-                  left: 0,
-                  right: 0,
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
-                    curve: Curves.easeInOut,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.4),
-                    ),
-                    child: const Center(
-                      child:Text(
-                        'Click anywhere to continue',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 23,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-            ],
-          ),
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                // MaterialPageRoute(builder: (context) => const Questionnaire())
+                                MaterialPageRoute(builder: (context) => GameInstructions2(id: widget.id))
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            fixedSize: const Size(100, 20),
+                            backgroundColor: const Color(0xFF00A8AF),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100)),
+                            elevation: 2.0,),
+                          child: const Text(
+                              'Continue',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w300
+                              )
+                          )
+                      )
+                    ]
+                )
+              ],
+            )
         )
     );
   }
