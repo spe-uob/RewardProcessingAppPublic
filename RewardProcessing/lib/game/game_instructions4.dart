@@ -22,27 +22,49 @@ class _GameInstructions4State extends State<GameInstructions4> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xff000000),
-      body: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => GameInstructions5(id: widget.id)),
-          );
+    return WillPopScope(
+        onWillPop: ()async {
+          return false; // disable back page
         },
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/images/gi4.png',
-                scale: 2.9,
-              ),
-            ],
-          ),
-        ),
-      ),
+        child: Scaffold(
+          backgroundColor: const Color(0xFFFFFFFF),
+            body: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset('assets/images/gi4.png',
+                        scale: 3,
+                      ),
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                // MaterialPageRoute(builder: (context) => const Questionnaire())
+                                MaterialPageRoute(builder: (context) => GameInstructions5(id: widget.id))
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            fixedSize: const Size(100, 20),
+                            backgroundColor: const Color(0xFF00A8AF),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100)),
+                            elevation: 2.0,),
+                          child: const Text(
+                              'Continue',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w300
+                              )
+                          )
+                      )
+                    ]
+                )
+              ],
+            )
+        )
     );
   }
 }

@@ -51,7 +51,7 @@ class _Questionnaire4State extends State<Questionnaire4> {
                               child: Container(
                                   margin: const EdgeInsets.only(left: 20, right: 20),
                                   child: const Text(
-                                      'Using the bar below, rate how you feel right now:',
+                                      'Using the sliding scale below, rate how you feel right now:',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: 17,
