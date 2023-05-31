@@ -4,7 +4,8 @@ import 'package:rewardprocessing/game/aim.dart';
 
 class GameInstructions5 extends StatefulWidget {
   final String id;
-  const GameInstructions5({super.key, required this.id});
+  final String day;
+  const GameInstructions5({super.key, required this.id, required this.day});
 
   @override
   State<GameInstructions5> createState() => _GameInstructions5State();
@@ -35,21 +36,21 @@ class _GameInstructions5State extends State<GameInstructions5> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Image.asset('assets/images/gi5.png',
-                        scale: 3,
+                        scale: 3.75,
                       ),
                       ElevatedButton(
                           onPressed: () {
                             Navigator.push(
                                 context,
-                                // MaterialPageRoute(builder: (context) => const Questionnaire())
-                                MaterialPageRoute(builder: (context) => Aim(id: widget.id))
+                                MaterialPageRoute(builder: (context) => Aim(id: widget.id, day: widget.day))
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(100, 20),
+                            fixedSize: const Size(110, 25),
                             backgroundColor: const Color(0xFF00A8AF),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100)),
+                                borderRadius: BorderRadius.circular(100)
+                            ),
                             elevation: 2.0,),
                           child: const Text(
                               'Continue',

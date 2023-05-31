@@ -18,7 +18,8 @@ import 'package:rewardprocessing/game/game_finished.dart';
 
 class GameMap extends StatefulWidget {
   final String id;
-  const GameMap({super.key, required this.id});
+  final String day;
+  const GameMap({super.key, required this.id, required this.day});
 
   @override
   State<GameMap> createState() => _GameMapState();
@@ -100,7 +101,7 @@ class _GameMapState extends State<GameMap> {
 
   // logic related variables are here
 
-  // guessIndex indicate clickable guessbox. -1 indicate non-clickable guess box
+  // guessIndex indicate clickable guess box. -1 indicate non-clickable guess box
   int guessIndex = -1;
 
   // guess box of left and right sites
@@ -189,11 +190,13 @@ class _GameMapState extends State<GameMap> {
                         onPressed: () async {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => GameFinished(id: widget.id)),
+                            MaterialPageRoute(builder: (context) => GameFinished(id: widget.id, day: widget.day)),
                           );
                           await FirebaseFirestore.instance
-                              .collection('game1')
+                              .collection('participants')
                               .doc(widget.id)
+                              .collection(widget.day)
+                              .doc('game1')
                               .set({Timestamp.now().toString(): [
                             end,
                             "Final Score: $score/200",
@@ -407,8 +410,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of guess box selected
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               "Guess box selected",
               "Score: $score",
@@ -427,8 +432,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of guess box selected
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               "Guess box selected",
               "Score: $score",
@@ -451,8 +458,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of guess box selected
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               "Guess box selected",
               "Score: $score",
@@ -472,8 +481,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of guess box selected
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               "Guess box selected",
               "Score: $score",
@@ -496,8 +507,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of guess box selected
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               "Guess box selected",
               "Score: $score",
@@ -517,8 +530,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of guess box selected
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               "Guess box selected",
               "Score: $score",
@@ -649,8 +664,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of the movement
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               "Left Click",
               "Score: $score",
@@ -682,8 +699,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of the movement
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               "Right Click",
               "Score: $score",
@@ -713,8 +732,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of the movement
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               "Up Click",
               "Score: $score",
@@ -744,8 +765,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of the movement
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               "Down Click",
               "Score: $score",
@@ -793,8 +816,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of the reward (empty, ghosts, show cherry, cherry selected)
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               reward,
               "Score: $score",
@@ -823,8 +848,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of the reward (empty, ghosts, show cherry, cherry selected)
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               reward,
               "Score: $score",
@@ -853,8 +880,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of the reward (empty, ghosts, show cherry, cherry selected)
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               reward,
               "Score: $score",
@@ -883,8 +912,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of the reward (empty, ghosts, show cherry, cherry selected)
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               reward,
               "Score: $score",
@@ -913,8 +944,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of the reward (empty, ghosts, show cherry, cherry selected)
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               reward,
               "Score: $score",
@@ -943,8 +976,10 @@ class _GameMapState extends State<GameMap> {
 
             // data storage of the reward (empty, ghosts, show cherry, cherry selected)
             await FirebaseFirestore.instance
-                .collection('game1')
+                .collection('participants')
                 .doc(widget.id)
+                .collection(widget.day)
+                .doc('game1')
                 .set({Timestamp.now().toString(): [
               reward,
               "Score: $score",

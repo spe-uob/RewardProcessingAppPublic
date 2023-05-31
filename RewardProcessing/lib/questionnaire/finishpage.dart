@@ -6,7 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class FinishPage extends StatefulWidget {
   final String id;
-  const FinishPage({super.key, required this.id});
+  final String day;
+  const FinishPage({super.key, required this.id, required this.day});
 
   @override
   State<FinishPage> createState() => _FinishPageState();

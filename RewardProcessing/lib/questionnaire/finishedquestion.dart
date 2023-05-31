@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 
 class FinishedQuestion extends StatefulWidget {
   final String id;
-  const FinishedQuestion({super.key, required this.id});
+  final String day;
+  const FinishedQuestion({super.key, required this.id, required this.day});
 
   @override
   State<FinishedQuestion> createState() => _FinishedQuestionState();
@@ -71,8 +72,7 @@ class _FinishedQuestionState extends State<FinishedQuestion> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) => FinishedQuestion2 (
-                                    id: widget.id
-                                )
+                                    id: widget.id, day: widget.day)
                                 )
                             );
                           },

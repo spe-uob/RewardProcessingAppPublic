@@ -7,7 +7,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Questionnaire3 extends StatefulWidget {
   final String id;
-  const Questionnaire3({super.key, required this.id});
+  final String day;
+  const Questionnaire3({super.key, required this.id, required this.day});
 
   @override
   State<Questionnaire3> createState() => _Questionnaire3State();
@@ -99,7 +100,9 @@ class _Questionnaire3State extends State<Questionnaire3> {
                                 margin: const EdgeInsets.only(left: 10),
                                 child: const Text('Apathetic',
                                     style:
-                                    TextStyle(fontSize: 15, letterSpacing: 0.5))),
+                                    TextStyle(fontSize: 15, letterSpacing: 0.5)
+                                )
+                            ),
                             Container(
                                 margin: const EdgeInsets.only(left: 220, right: 10),
                                 child: const Text('Motivated',
@@ -114,12 +117,14 @@ class _Questionnaire3State extends State<Questionnaire3> {
                               onPressed: activeButton ? () async {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => Questionnaire4(id: widget.id)
+                                    MaterialPageRoute(builder: (context) => Questionnaire4(id: widget.id, day: widget.day)
                                     )
                                 );
                                 await FirebaseFirestore.instance
-                                    .collection('questionnaire')
+                                    .collection('participants')
                                     .doc(widget.id)
+                                    .collection(widget.day)
+                                    .doc('questionnaire')
                                     .set({'03. Apathetic/Motivated (-3/3)': _currentSliderValue},
                                     SetOptions(merge: true)
                                 );

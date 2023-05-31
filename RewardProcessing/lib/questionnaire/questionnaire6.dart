@@ -7,7 +7,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Questionnaire6 extends StatefulWidget {
   final String id;
-  const Questionnaire6({super.key, required this.id});
+  final String day;
+  const Questionnaire6({super.key, required this.id, required this.day});
 
   @override
   State<Questionnaire6> createState() => _Questionnaire6State();
@@ -115,12 +116,14 @@ class _Questionnaire6State extends State<Questionnaire6> {
                               onPressed: activeButton ? () async {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => Questionnaire7(id: widget.id)
+                                    MaterialPageRoute(builder: (context) => Questionnaire7(id: widget.id, day: widget.day)
                                     )
                                 );
                                 await FirebaseFirestore.instance
-                                    .collection('questionnaire')
+                                    .collection('participants')
                                     .doc(widget.id)
+                                    .collection(widget.day)
+                                    .doc('questionnaire')
                                     .set({'06. Withdrawn/Welcoming (-3/3)': _currentSliderValue},
                                     SetOptions(merge: true)
                                 );
@@ -137,7 +140,8 @@ class _Questionnaire6State extends State<Questionnaire6> {
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 17,
-                                      fontWeight: FontWeight.w300)
+                                      fontWeight: FontWeight.w300
+                                  )
                               )
                           )
                       )

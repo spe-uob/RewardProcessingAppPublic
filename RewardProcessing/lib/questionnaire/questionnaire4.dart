@@ -7,7 +7,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Questionnaire4 extends StatefulWidget {
   final String id;
-  const Questionnaire4({super.key, required this.id});
+  final String day;
+  const Questionnaire4({super.key, required this.id, required this.day});
 
   @override
   State<Questionnaire4> createState() => _Questionnaire4State();
@@ -115,12 +116,14 @@ class _Questionnaire4State extends State<Questionnaire4> {
                               onPressed: activeButton ? () async {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => Questionnaire5(id: widget.id)
+                                    MaterialPageRoute(builder: (context) => Questionnaire5(id: widget.id, day: widget.day)
                                     )
                                 );
                                 await FirebaseFirestore.instance
-                                    .collection('questionnaire')
+                                    .collection('participants')
                                     .doc(widget.id)
+                                    .collection(widget.day)
+                                    .doc('questionnaire')
                                     .set({'04. Guilty/Proud (-3/3)': _currentSliderValue},
                                     SetOptions(merge: true)
                                 );
@@ -129,7 +132,8 @@ class _Questionnaire4State extends State<Questionnaire4> {
                                   fixedSize: const Size(160, 60),
                                   backgroundColor: const Color(0xFF00A8AF),
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(100)),
+                                      borderRadius: BorderRadius.circular(100)
+                                  ),
                                   elevation: 2.0),
                               child: const Text('Continue',
                                   textAlign: TextAlign.center,

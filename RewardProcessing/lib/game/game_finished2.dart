@@ -5,7 +5,8 @@ import 'package:rewardprocessing/questionnaire/finishedquestion.dart';
 
 class GameFinished2 extends StatefulWidget {
   final String id;
-  const GameFinished2({super.key, required this.id});
+  final String day;
+  const GameFinished2({super.key, required this.id, required this.day});
 
   @override
   State<GameFinished2> createState() => _GameFinishedState2();
@@ -54,7 +55,7 @@ class _GameFinishedState2 extends State<GameFinished2> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) => FinishedQuestion(
-                                    id: widget.id)
+                                    id: widget.id, day: widget.day)
                                 )
                             );
                           },

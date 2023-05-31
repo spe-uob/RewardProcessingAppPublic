@@ -5,7 +5,8 @@ import 'package:rewardprocessing/game/game_map.dart';
 
 class Aim extends StatefulWidget {
   final String id;
-  const Aim({super.key, required this.id});
+  final String day;
+  const Aim({super.key, required this.id, required this.day});
 
   @override
   State<Aim> createState() => _AimState();
@@ -137,11 +138,13 @@ class _AimState extends State<Aim> {
                             onPressed: () async {
                               Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => GameMap(id: widget.id))
+                                  MaterialPageRoute(builder: (context) => GameMap(id: widget.id, day: widget.day))
                               );
                               await FirebaseFirestore.instance
-                                  .collection('game1')
+                                  .collection('participants')
                                   .doc(widget.id)
+                                  .collection(widget.day)
+                                  .doc('game1')
                                   .set({'0. Game Details': [
                                 'Site Switch Probability: 0.3',
                                 'Cherry Probability: 0.8',

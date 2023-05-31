@@ -7,7 +7,8 @@ import 'package:rewardprocessing/questionnaire/complete.dart';
 
 class Questionnaire13 extends StatefulWidget {
   final String id;
-  const Questionnaire13({super.key, required this.id});
+  final String day;
+  const Questionnaire13({super.key, required this.id, required this.day});
 
   @override
   State<Questionnaire13> createState() => _Questionnaire13State();
@@ -118,21 +119,23 @@ class _Questionnaire13State extends State<Questionnaire13> {
                             if (_value != 2) {
                               Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) =>
-                                      Questionnaire14(
-                                          id: widget.id)
+                                  MaterialPageRoute(builder: (context) => Questionnaire14(
+                                          id: widget.id, day: widget.day)
                                   )
                               );
                             }
                             else {
                               Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => Complete(id: widget.id))
+                                  MaterialPageRoute(builder: (context) => Complete(id: widget.id, day: widget.day)
+                                  )
                               );
                             }
                             await FirebaseFirestore.instance
-                                .collection('questionnaire')
+                                .collection('participants')
                                 .doc(widget.id)
+                                .collection(widget.day)
+                                .doc('questionnaire')
                                 .set({'13. In the last 24 hours, has an event or experience significantly affected your mood?': text},
                                 SetOptions(merge: true));
                           }:null,

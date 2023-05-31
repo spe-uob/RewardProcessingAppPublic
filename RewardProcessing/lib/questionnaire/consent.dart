@@ -5,7 +5,8 @@ import 'package:rewardprocessing/questionnaire/questionnaire.dart';
 
 class Consent extends StatefulWidget {
   final String id;
-  const Consent({super.key, required this.id});
+  final String day;
+  const Consent({super.key, required this.id, required this.day});
 
   @override
   State<Consent> createState() => _ConsentState();
@@ -97,7 +98,7 @@ class _ConsentState extends State<Consent> {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                  builder: (context) => Questionnaire(id: widget.id)
+                                                  builder: (context) => Questionnaire(id: widget.id, day: widget.day)
                                               )
                                           );
                                         },
