@@ -6,7 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Questionnaire15 extends StatefulWidget {
   final String id;
-  const Questionnaire15({super.key, required this.id});
+  final String day;
+  const Questionnaire15({super.key, required this.id, required this.day});
 
   @override
   State<Questionnaire15> createState() => _Questionnaire15State();
@@ -173,11 +174,13 @@ class _Questionnaire15State extends State<Questionnaire15> {
                           onPressed: activeButton ? () async {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => Questionnaire16(id: widget.id))
+                                MaterialPageRoute(builder: (context) => Questionnaire16(id: widget.id, day: widget.day))
                             );
                             await FirebaseFirestore.instance
-                                .collection('questionnaire')
+                                .collection('participants')
                                 .doc(widget.id)
+                                .collection(widget.day)
+                                .doc('questionnaire')
                                 .set({'15. Did you know the event/experience was going to occur before it happened?': text},
                                 SetOptions(merge: true)
                             );

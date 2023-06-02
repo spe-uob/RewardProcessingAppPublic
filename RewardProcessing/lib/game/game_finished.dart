@@ -6,7 +6,8 @@ import 'package:flutter/services.dart';
 
 class GameFinished extends StatefulWidget {
   final String id;
-  const GameFinished({super.key, required this.id});
+  final String day;
+  const GameFinished({super.key, required this.id, required this.day});
 
   @override
   State<GameFinished> createState() => _GameFinishedState();
@@ -54,11 +55,13 @@ class _GameFinishedState extends State<GameFinished> {
                           onPressed: () async {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => GameMap2(id: widget.id))
+                                MaterialPageRoute(builder: (context) => GameMap2(id: widget.id, day: widget.day))
                             );
                             await FirebaseFirestore.instance
-                                .collection('game2')
+                                .collection('participants')
                                 .doc(widget.id)
+                                .collection(widget.day)
+                                .doc('game2')
                                 .set({'0. Game Details': [
                               'Site Switch Probability: 0.3',
                               'Cherry Probability: 0.8',

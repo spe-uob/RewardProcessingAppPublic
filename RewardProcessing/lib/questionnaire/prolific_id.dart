@@ -16,6 +16,8 @@ class _ProlificIDState extends State<ProlificID> {
   late String prolificID;
   final TextEditingController _textEditingController = TextEditingController();
   Color counterTextColor = Colors.black;
+  int dayCount = 1;
+  late String day;
 
   @override
   void initState() {
@@ -33,30 +35,46 @@ class _ProlificIDState extends State<ProlificID> {
     super.dispose();
   }
 
+  Future<void> checkDay(String id) async {
+    var user = await FirebaseFirestore.instance
+        .collection('participants')
+        .doc(id)
+        .collection('Day$day')
+        .doc('questionnaire')
+        .get();
+    if(user.exists) {
+      Map<String, dynamic>? map = user.data();
+      if (map != null && map.isNotEmpty) { // if data exists in the document
+        dayCount += 1; // move on to the next day
+        checkDay(prolificID);
+      }
+      else {
+        dayCount;
+        day = 'Day$dayCount';
+      }
+    }
+  }
+
   Future<void> checkValidation(String id) async {
     var user = await FirebaseFirestore.instance
-        .collection('questionnaire')
+        .collection('participants')
         .doc(id)
         .get();
-    if (user.exists) { // if the ID exists
-      Map<String, dynamic>? map = user.data();
-      if (map != null && map.isNotEmpty) { // if document exists and data exists inside, it's invalid
-        if (mounted) {
-          popup(context);
-        }
-      } else if (map != null && map.isEmpty) { // if the document exists and has no data inside, it's valid
-        if (mounted) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) =>
-                  Consent(id: prolificID)
-              )
-          );
-          await FirebaseFirestore.instance
-              .collection('questionnaire')
-              .doc(prolificID)
-              .set({'00. Prolific ID': prolificID});
-        }
+    if (user.exists) {
+      checkDay(prolificID);
+      if (mounted) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) =>
+                Consent(id: prolificID, day: day)
+            )
+        );
+        await FirebaseFirestore.instance
+            .collection('participants')
+            .doc(prolificID)
+            .collection(day)
+            .doc('questionnaire')
+            .set({'00. Prolific ID': prolificID});
       }
     } else { // if the document does not exist, it's invalid
       if (mounted) {

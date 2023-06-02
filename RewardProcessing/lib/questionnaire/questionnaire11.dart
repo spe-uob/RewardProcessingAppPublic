@@ -7,7 +7,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Questionnaire11 extends StatefulWidget {
   final String id;
-  const Questionnaire11({super.key, required this.id});
+  final String day;
+  const Questionnaire11({super.key, required this.id, required this.day});
 
   @override
   State<Questionnaire11> createState() => _Questionnaire11State();
@@ -97,7 +98,9 @@ class _Questionnaire11State extends State<Questionnaire11> {
                             margin: const EdgeInsets.only(left: 10),
                             child: const Text('Anxious',
                                 style:
-                                TextStyle(fontSize: 15, letterSpacing: 0.5))),
+                                TextStyle(fontSize: 15, letterSpacing: 0.5)
+                            )
+                        ),
                         Container(
                             margin: const EdgeInsets.only(left: 210, right: 10),
                             child: const Text('Peaceful',
@@ -113,12 +116,14 @@ class _Questionnaire11State extends State<Questionnaire11> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Questionnaire12(id: widget.id)
+                                    builder: (context) => Questionnaire12(id: widget.id, day: widget.day)
                                 )
                             );
                             await FirebaseFirestore.instance
-                                .collection('questionnaire')
+                                .collection('participants')
                                 .doc(widget.id)
+                                .collection(widget.day)
+                                .doc('questionnaire')
                                 .set({'11. Anxious/Peaceful (-3/3)': _currentSliderValue},
                                 SetOptions(merge: true)
                             );

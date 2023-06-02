@@ -14,7 +14,7 @@ import 'package:rewardprocessing/questionnaire/questionnaire16.dart';
 void main() {
   testWidgets('Text field test', (tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MaterialApp(home: Questionnaire16(id: 'Test')));
+    await tester.pumpWidget(const MaterialApp(home: Questionnaire16(id: 'Test', day: 'Day1')));
 
     expect(find.text(''), findsOneWidget);
 
@@ -26,7 +26,7 @@ void main() {
 
   testWidgets('Slider test', (tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MaterialApp(home: Questionnaire(id: 'Test')));
+    await tester.pumpWidget(const MaterialApp(home: Questionnaire(id: 'Test', day: 'Day1')));
 
     await tester.drag(find.byType(MySlider), const Offset(3, 0));
     await tester.pumpAndSettle(const Duration(seconds: 2));

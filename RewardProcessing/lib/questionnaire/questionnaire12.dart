@@ -7,7 +7,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Questionnaire12 extends StatefulWidget {
   final String id;
-  const Questionnaire12({super.key, required this.id});
+  final String day;
+  const Questionnaire12({super.key, required this.id, required this.day});
 
   @override
   State<Questionnaire12> createState() => _Questionnaire12State();
@@ -117,12 +118,14 @@ class _Questionnaire12State extends State<Questionnaire12> {
                           onPressed: activeButton ? () async {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => Questionnaire13(id: widget.id)
+                                MaterialPageRoute(builder: (context) => Questionnaire13(id: widget.id, day: widget.day)
                                 )
                             );
                             await FirebaseFirestore.instance
-                                .collection('questionnaire')
+                                .collection('participants')
                                 .doc(widget.id)
+                                .collection(widget.day)
+                                .doc('questionnaire')
                                 .set({'12. Restless/Calm (-3/3)': _currentSliderValue},
                                 SetOptions(merge: true)
                             );
@@ -131,7 +134,8 @@ class _Questionnaire12State extends State<Questionnaire12> {
                               fixedSize: const Size(160, 60),
                               backgroundColor: const Color(0xFF00A8AF),
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(100)),
+                                  borderRadius: BorderRadius.circular(100)
+                              ),
                               elevation: 2.0),
                           child: const Text('Continue',
                               textAlign: TextAlign.center,

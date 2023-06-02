@@ -6,7 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FinishedQuestion2 extends StatefulWidget {
   final String id;
-  const FinishedQuestion2({super.key, required this.id});
+  final String day;
+  const FinishedQuestion2({super.key, required this.id, required this.day});
 
   @override
   State<FinishedQuestion2> createState() => _FinishedQuestion2State();
@@ -123,12 +124,14 @@ class _FinishedQuestion2State extends State<FinishedQuestion2> {
                                 onPressed: activeButton ? () async {
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => FinishedQuestion3(id: widget.id)
+                                      MaterialPageRoute(builder: (context) => FinishedQuestion3(id: widget.id, day: widget.day)
                                       )
                                   );
                                   await FirebaseFirestore.instance
-                                      .collection('feedback')
+                                      .collection('participants')
                                       .doc(widget.id)
+                                      .collection(widget.day)
+                                      .doc('feedback')
                                       .set({'01. Strategy of the game': _textEditingController.text},
                                       SetOptions(merge: true)
                                   );
