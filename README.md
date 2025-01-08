@@ -1,7 +1,7 @@
 <p align="center">
 <img src= "docs/readmeicon.png"
     width=“10”>
-<h1 align="center"> Reward Precessing Mobile Application</h1>
+<h1 align="center"> Reward Processing Mobile Application</h1>
 
 <a name="readme-top"></a><p align="center">
 [![Contributors][contributors-shield]][contributors-url]
